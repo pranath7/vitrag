@@ -7,6 +7,7 @@ import { formatPrice } from "@/lib/utils";
 import { useCart } from "@/context/CartContext";
 import { Heart, ShoppingBag, Eye } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
+import { ProductArtwork } from "@/components/product/ProductArtwork";
 
 interface ProductCardProps {
   product: Product;
@@ -27,22 +28,16 @@ export function ProductCard({ product }: ProductCardProps) {
     <article className="group relative flex flex-col bg-white border border-[#E7E0D6] transition-all duration-300 hover:shadow-lg hover:border-[#8B8176]/50">
       {/* 1. Image Container */}
       <div className="relative aspect-4/5 w-full overflow-hidden bg-[#F7F4EE]">
-        {/* Placeholder Artwork Presentation */}
+        {/* Artwork Presentation */}
         <Link
           href={`/product/${product.slug}`}
-          className="w-full h-full flex flex-col items-center justify-center p-6 text-center transition-transform duration-500 group-hover:scale-105"
+          className="w-full h-full block relative transition-transform duration-500 group-hover:scale-105"
         >
-          <div className="w-24 h-24 rounded-full border border-[#D9D0C1] bg-[#E9DFD1]/40 flex items-center justify-center mb-3">
-            <span className="font-heading text-xs tracking-widest text-[#5A252E] uppercase">
-              VITRAG
-            </span>
-          </div>
-          <span className="text-[11px] uppercase tracking-widest text-[#8B8176] font-medium max-w-[180px] line-clamp-2">
-            {product.category}
-          </span>
-          <span className="text-[10px] text-[#8B8176]/70 mt-1">
-            {product.pieceCount ? `${product.pieceCount} Pieces` : product.material || "Artisan Crafted"}
-          </span>
+          <ProductArtwork
+            category={product.category}
+            name={product.name}
+            hasGold={product.tags.includes("24K Gold") || product.name.toLowerCase().includes("gold")}
+          />
         </Link>
 
         {/* Badges Overlay */}

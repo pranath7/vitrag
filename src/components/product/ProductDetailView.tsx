@@ -21,6 +21,7 @@ import {
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { ProductCard } from "./ProductCard";
+import { ProductArtwork } from "./ProductArtwork";
 
 interface ProductDetailViewProps {
   product: Product;
@@ -74,21 +75,13 @@ export function ProductDetailView({
         {/* Left Column: Image Gallery */}
         <div className="lg:col-span-7 space-y-4">
           {/* Main Visual Display */}
-          <div className="relative aspect-4/5 w-full bg-[#E9DFD1]/50 border border-[#D9D0C1] overflow-hidden flex flex-col items-center justify-center p-8 sm:p-12 text-center shadow-xs">
-            <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full border border-[#D9D0C1] bg-white/70 flex flex-col items-center justify-center shadow-inner">
-              <span className="font-heading text-xl text-[#5A252E] tracking-[0.2em] uppercase">
-                VITRAG
-              </span>
-              <span className="text-[9px] uppercase tracking-widest text-[#8B8176]">
-                Artisan Piece
-              </span>
-            </div>
-            <p className="font-heading text-lg sm:text-xl text-[#252522] mt-6 max-w-sm">
-              {product.images[activeImageIndex]?.alt || product.name}
-            </p>
-            <span className="text-xs uppercase tracking-widest text-[#8B8176] mt-1">
-              {product.material || "Handcrafted Crockery"}
-            </span>
+          <div className="relative aspect-4/5 w-full bg-[#F7F4EE] border border-[#D9D0C1] overflow-hidden flex flex-col items-center justify-center shadow-xs">
+            <ProductArtwork
+              category={product.category}
+              name={product.name}
+              className="w-full h-full"
+              hasGold={product.tags.includes("24K Gold") || product.name.toLowerCase().includes("gold")}
+            />
 
             {/* Badges */}
             <div className="absolute top-4 left-4 flex flex-col gap-2">

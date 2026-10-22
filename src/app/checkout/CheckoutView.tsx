@@ -14,11 +14,12 @@ import {
   ArrowRight,
   CheckCircle2,
   AlertCircle,
+  ExternalLink,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
 export function CheckoutView() {
-  const { items, subtotalPaise } = useCart();
+  const { items, subtotalPaise, clearCart } = useCart();
 
   // Customer Delivery Information Form
   const [formData, setFormData] = useState({
@@ -33,7 +34,8 @@ export function CheckoutView() {
   });
 
   const [paymentMode, setPaymentMode] = useState<"whatsapp" | "online">("whatsapp");
-  const [submitting, setSubmitting] = useState(false);
+  const [orderSent, setOrderSent] = useState(false);
+  const [lastWhatsAppUrl, setLastWhatsAppUrl] = useState("");
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -44,7 +46,6 @@ export function CheckoutView() {
 
   const handleWhatsAppOrder = (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitting(true);
 
     const number = siteConfig.contact.whatsappNumber;
     let message = `*NEW ORDER REQUEST — VITRAG Tableware & Gifting*\n\n`;
@@ -65,9 +66,85 @@ export function CheckoutView() {
     message += `_(Please confirm delivery courier charges and share authorized UPI QR/details for payment verification)_\n`;
 
     const url = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
-    window.open(url, "_blank");
-    setSubmitting(false);
+    setLastWhatsAppUrl(url);
+    setOrderSent(true);
+
+    try {
+      window.open(url, "_blank");
+    } catch {
+      // In case window.open is blocked by browser, user can click the button on screen
+    }
   };
+
+  // Order Confirmed / Dispatched State
+  if (orderSent) {
+    return (
+      <div className="py-12 sm:py-20 max-w-2xl mx-auto">
+        <div className="bg-white border border-[#E7E0D6] p-8 sm:p-12 text-center space-y-6 shadow-sm">
+          <div className="w-16 h-16 rounded-full bg-[#E9DFD1]/50 border border-[#D9D0C1] flex items-center justify-center mx-auto text-[#25D366]">
+            <CheckCircle2 className="w-10 h-10" />
+          </div>
+
+          <div>
+            <span className="text-xs uppercase tracking-[0.2em] text-[#5A252E] font-semibold">
+              Order Dispatched to WhatsApp
+            </span>
+            <h1 className="font-heading text-3xl sm:text-4xl text-[#252522] mt-2">
+              Thank You, {formData.fullName}!
+            </h1>
+            <p className="text-xs sm:text-sm text-[#8B8176] mt-2 max-w-md mx-auto leading-relaxed">
+              Your order breakdown has been prepared for WhatsApp number <strong>{siteConfig.contact.displayPhone}</strong>.
+            </p>
+          </div>
+
+          {/* Action button in case popup was blocked */}
+          <div className="bg-[#F7F4EE] p-5 border border-[#E7E0D6] space-y-3">
+            <p className="text-xs text-[#252522] font-medium">
+              Did WhatsApp not open automatically?
+            </p>
+            <a
+              href={lastWhatsAppUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#25D366] hover:bg-[#20ba59] text-white text-xs uppercase tracking-widest font-semibold transition-all shadow-sm w-full sm:w-auto"
+            >
+              <MessageSquare className="w-4 h-4 fill-white" />
+              <span>Click to Open WhatsApp Chat</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+          </div>
+
+          <div className="text-left bg-white border border-[#E7E0D6] p-5 space-y-2 text-xs text-[#8B8176]">
+            <strong className="block text-[#252522] font-medium">Next Steps:</strong>
+            <p>1. Our concierge desk will review your items and confirm immediate stock.</p>
+            <p>2. We will calculate exact postal/courier charges to PIN code <strong>{formData.pinCode}</strong>.</p>
+            <p>3. Pay securely via authorized UPI QR code or bank transfer.</p>
+            <p>4. Once verified, your pieces are packed with breakage protection and dispatched.</p>
+          </div>
+
+          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Button
+              onClick={() => {
+                clearCart();
+                window.location.href = "/shop";
+              }}
+              variant="primary"
+              size="md"
+            >
+              Clear Bag & Return to Shop
+            </Button>
+            <Button
+              onClick={() => setOrderSent(false)}
+              variant="outline"
+              size="md"
+            >
+              Review Order Form
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (items.length === 0) {
     return (
@@ -266,11 +343,11 @@ export function CheckoutView() {
                           Order via WhatsApp & Pay by UPI / Bank Transfer
                         </span>
                         <span className="text-[10px] uppercase tracking-wider bg-[#25D366] text-white px-2 py-0.5 font-bold">
-                          Recommended
+                          Direct Concierge
                         </span>
                       </div>
                       <p className="text-xs text-[#8B8176] mt-1 font-light leading-relaxed">
-                        Instant direct concierge service. We will review your delivery address, calculate exact courier charges, verify stock, and provide direct authorized UPI QR/details for payment.
+                        Instant direct service to <strong>{siteConfig.contact.displayPhone}</strong>. We will review your delivery address, calculate exact courier charges, verify stock, and provide direct authorized UPI QR/details for payment.
                       </p>
                     </div>
                   </div>
@@ -312,7 +389,7 @@ export function CheckoutView() {
               className="w-full py-4 text-sm"
               leftIcon={<MessageSquare className="w-5 h-5 fill-white" />}
             >
-              Confirm Order & Send via WhatsApp
+              Confirm Order & Send to WhatsApp (+91 63691 42027)
             </Button>
           </form>
         </div>

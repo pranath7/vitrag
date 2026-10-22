@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { Product } from "@/lib/types";
 import { ProductCard } from "@/components/product/ProductCard";
 import { collections } from "@/lib/products";
@@ -22,15 +23,36 @@ export function ProductGrid({
   description,
 }: ProductGridProps) {
   const { wishlist } = useCart();
+  const searchParams = useSearchParams();
+
+  const urlFilter = searchParams.get("filter");
+  const urlPrice = searchParams.get("price");
+  const urlCollection = searchParams.get("collection");
   
   // Filter States
   const [selectedCategory, setSelectedCategory] = useState<string>(
-    currentCollectionId || "all"
+    currentCollectionId || urlCollection || "all"
   );
   const [priceRange, setPriceRange] = useState<string>("all");
   const [sortBy, setSortBy] = useState<string>("featured");
-  const [onlyWishlist, setOnlyWishlist] = useState<boolean>(false);
+  const [onlyWishlist, setOnlyWishlist] = useState<boolean>(urlFilter === "wishlist");
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
+
+  // Sync with URL parameters if user navigated from homepage price guide or wishlist icon
+  useEffect(() => {
+    if (urlFilter === "wishlist") {
+      setOnlyWishlist(true);
+    }
+    if (urlPrice) {
+      if (urlPrice === "under-999") setPriceRange("under-999");
+      else if (urlPrice === "under-1999") setPriceRange("under-1999");
+      else if (urlPrice === "under-4999") setPriceRange("2000-4999");
+      else if (urlPrice === "wedding" || urlPrice === "5000-above") setPriceRange("5000-above");
+    }
+    if (urlCollection) {
+      setSelectedCategory(urlCollection);
+    }
+  }, [urlFilter, urlPrice, urlCollection]);
 
   // Filter & Sort Logic
   const filteredProducts = useMemo(() => {

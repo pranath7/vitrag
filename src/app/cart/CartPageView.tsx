@@ -16,6 +16,7 @@ import {
   RotateCcw,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { ProductArtwork } from "@/components/product/ProductArtwork";
 
 export function CartPageView() {
   const { items, removeItem, updateQuantity, clearCart, subtotalPaise } = useCart();
@@ -90,10 +91,8 @@ export function CartPageView() {
               >
                 {/* Product Info */}
                 <div className="w-full sm:col-span-6 flex gap-4 items-center">
-                  <div className="w-20 h-20 bg-white border border-[#E7E0D6] flex items-center justify-center shrink-0">
-                    <span className="font-heading text-xs tracking-widest text-[#5A252E]">
-                      VITRAG
-                    </span>
+                  <div className="w-20 h-20 bg-white border border-[#E7E0D6] flex items-center justify-center shrink-0 overflow-hidden">
+                    <ProductArtwork category={item.name} name={item.name} />
                   </div>
                   <div>
                     <Link

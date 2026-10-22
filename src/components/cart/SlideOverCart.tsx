@@ -7,6 +7,7 @@ import { useCart } from "@/context/CartContext";
 import { formatPrice, generateWhatsAppOrderUrl } from "@/lib/utils";
 import { X, Plus, Minus, Trash2, ShoppingBag, ArrowRight, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { ProductArtwork } from "@/components/product/ProductArtwork";
 
 export function SlideOverCart() {
   const {
@@ -91,9 +92,7 @@ export function SlideOverCart() {
                   className="flex gap-4 p-4 bg-white border border-[#E7E0D6] rounded-xs shadow-2xs"
                 >
                   <div className="relative w-20 h-20 bg-[#F7F4EE] shrink-0 overflow-hidden rounded-xs border border-[#E7E0D6]">
-                    <div className="w-full h-full flex items-center justify-center text-xs font-serif text-[#8B8176] bg-[#E9DFD1]/40">
-                      VITRAG
-                    </div>
+                    <ProductArtwork category={item.name} name={item.name} />
                   </div>
 
                   <div className="flex-1 flex flex-col justify-between">

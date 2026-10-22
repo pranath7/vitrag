@@ -11,8 +11,8 @@ export const siteConfig = {
   currencySymbol: "₹",
 
   contact: {
-    whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "919840123456",
-    displayPhone: "+91 98401 23456",
+    whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "916369142027",
+    displayPhone: "+91 63691 42027",
     email: "enquiries@vitrag.in",
     city: "Chennai",
     state: "Tamil Nadu",

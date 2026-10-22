@@ -1,3 +1,4 @@
+import React, { Suspense } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import {
@@ -63,12 +64,20 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
           ]}
         />
       </Container>
-      <ProductGrid
-        initialProducts={collectionProducts}
-        currentCollectionId={collection.id}
-        title={collection.name}
-        description={collection.description}
-      />
+      <Suspense
+        fallback={
+          <div className="py-20 text-center text-xs uppercase tracking-widest text-[#8B8176]">
+            Loading {collection.name}...
+          </div>
+        }
+      >
+        <ProductGrid
+          initialProducts={collectionProducts}
+          currentCollectionId={collection.id}
+          title={collection.name}
+          description={collection.description}
+        />
+      </Suspense>
     </main>
   );
 }

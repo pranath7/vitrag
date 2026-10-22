@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function CartPage() {
   return (
-    <main className="bg-[#F7F4EE] min-h-screen">
+    <main className="bg-[#FFF5E6] min-h-screen">
       <Container size="lg">
         <Breadcrumbs items={[{ label: "Shopping Bag" }]} />
         <CartPageView />

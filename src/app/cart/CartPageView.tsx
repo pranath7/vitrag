@@ -27,13 +27,13 @@ export function CartPageView() {
   if (items.length === 0) {
     return (
       <div className="py-20 text-center max-w-md mx-auto">
-        <div className="w-20 h-20 rounded-full bg-[#E9DFD1]/50 border border-[#D9D0C1] flex items-center justify-center mx-auto mb-6">
-          <ShoppingBag className="w-10 h-10 text-[#5A252E]" />
+        <div className="w-20 h-20 rounded-full bg-[#CBAE9B]/30 border border-[#CBAE9B]/60 flex items-center justify-center mx-auto mb-6">
+          <ShoppingBag className="w-10 h-10 text-[#6E2023]" />
         </div>
-        <h1 className="font-heading text-3xl sm:text-4xl text-[#252522] mb-3">
+        <h1 className="font-heading text-3xl sm:text-4xl text-[#6E2023] mb-3 font-medium">
           Your Shopping Bag is Empty
         </h1>
-        <p className="text-sm text-[#8B8176] font-light leading-relaxed mb-8">
+        <p className="text-sm text-[#84766A] font-light leading-relaxed mb-8">
           Explore our handcrafted ceramic dinnerware, artisanal platters, and luxury gifting boxes to begin setting your table.
         </p>
         <div className="space-y-3">
@@ -55,18 +55,18 @@ export function CartPageView() {
 
   return (
     <div className="py-12 sm:py-16">
-      <div className="flex items-baseline justify-between border-b border-[#E7E0D6] pb-6 mb-8">
+      <div className="flex items-baseline justify-between border-b border-[#EADBC8] pb-6 mb-8">
         <div>
-          <h1 className="font-heading text-3xl sm:text-4xl text-[#252522]">
+          <h1 className="font-heading text-3xl sm:text-4xl text-[#6E2023] font-medium">
             Shopping Bag
           </h1>
-          <p className="text-xs uppercase tracking-wider text-[#8B8176] mt-1">
+          <p className="text-xs uppercase tracking-wider text-[#84766A] mt-1 font-medium">
             {items.reduce((a, b) => a + b.quantity, 0)} pieces selected
           </p>
         </div>
         <button
           onClick={clearCart}
-          className="text-xs uppercase tracking-wider text-[#8B8176] hover:text-[#5A252E] flex items-center gap-1 font-medium transition-colors"
+          className="text-xs uppercase tracking-wider text-[#84766A] hover:text-[#6E2023] flex items-center gap-1 font-medium transition-colors"
         >
           <RotateCcw className="w-3.5 h-3.5" />
           Clear Bag
@@ -76,39 +76,39 @@ export function CartPageView() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
         {/* Items Table */}
         <div className="lg:col-span-8 space-y-4">
-          <div className="hidden sm:grid grid-cols-12 gap-4 pb-3 border-b border-[#E7E0D6] text-[11px] uppercase tracking-wider text-[#8B8176] font-semibold">
+          <div className="hidden sm:grid grid-cols-12 gap-4 pb-3 border-b border-[#EADBC8] text-[11px] uppercase tracking-wider text-[#84766A] font-semibold">
             <span className="col-span-6">Item</span>
             <span className="col-span-2 text-center">Quantity</span>
             <span className="col-span-2 text-right">Price</span>
             <span className="col-span-2 text-right">Total</span>
           </div>
 
-          <div className="divide-y divide-[#E7E0D6]">
+          <div className="divide-y divide-[#EADBC8]">
             {items.map((item) => (
               <div
                 key={item.id}
-                className="py-6 flex flex-col sm:grid sm:grid-cols-12 gap-4 items-center bg-white p-4 border border-[#E7E0D6] sm:border-0 sm:p-0 sm:bg-transparent"
+                className="py-6 flex flex-col sm:grid sm:grid-cols-12 gap-4 items-center bg-white p-4 border border-[#EADBC8] rounded-xl sm:border-0 sm:p-0 sm:bg-transparent"
               >
                 {/* Product Info */}
                 <div className="w-full sm:col-span-6 flex gap-4 items-center">
-                  <div className="w-20 h-20 bg-white border border-[#E7E0D6] flex items-center justify-center shrink-0 overflow-hidden">
+                  <div className="w-20 h-20 bg-white border border-[#EADBC8] rounded-lg flex items-center justify-center shrink-0 overflow-hidden">
                     <ProductArtwork category={item.name} name={item.name} />
                   </div>
                   <div>
                     <Link
                       href={`/product/${item.slug}`}
-                      className="font-heading text-base sm:text-lg text-[#252522] hover:text-[#5A252E] transition-colors line-clamp-1"
+                      className="font-heading text-base sm:text-lg text-[#6E2023] hover:text-[#55181A] transition-colors line-clamp-1 font-medium"
                     >
                       {item.name}
                     </Link>
                     {item.variantName && (
-                      <p className="text-xs text-[#8B8176] mt-0.5">
+                      <p className="text-xs text-[#84766A] mt-0.5">
                         Finish: {item.variantName}
                       </p>
                     )}
                     <button
                       onClick={() => removeItem(item.id)}
-                      className="text-xs text-[#8B8176] hover:text-[#5A252E] flex items-center gap-1 mt-2 sm:hidden"
+                      className="text-xs text-[#84766A] hover:text-[#6E2023] flex items-center gap-1 mt-2 sm:hidden"
                     >
                       <Trash2 className="w-3 h-3" />
                       Remove
@@ -118,11 +118,11 @@ export function CartPageView() {
 
                 {/* Quantity */}
                 <div className="w-full sm:col-span-2 flex items-center justify-between sm:justify-center">
-                  <span className="sm:hidden text-xs text-[#8B8176]">Quantity:</span>
-                  <div className="flex items-center border border-[#E7E0D6] bg-white">
+                  <span className="sm:hidden text-xs text-[#84766A]">Quantity:</span>
+                  <div className="flex items-center border border-[#EADBC8] bg-white rounded-lg overflow-hidden">
                     <button
                       onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                      className="p-1.5 hover:bg-[#F7F4EE] text-[#252522]"
+                      className="p-1.5 hover:bg-[#FFF5E6] text-[#6E2023]"
                       aria-label="Decrease"
                     >
                       <Minus className="w-3 h-3" />
@@ -133,7 +133,7 @@ export function CartPageView() {
                     <button
                       onClick={() => updateQuantity(item.id, item.quantity + 1)}
                       disabled={item.quantity >= item.maxStock}
-                      className="p-1.5 hover:bg-[#F7F4EE] text-[#252522] disabled:opacity-30"
+                      className="p-1.5 hover:bg-[#FFF5E6] text-[#6E2023] disabled:opacity-30"
                       aria-label="Increase"
                     >
                       <Plus className="w-3 h-3" />
@@ -142,7 +142,7 @@ export function CartPageView() {
                 </div>
 
                 {/* Unit Price */}
-                <div className="w-full sm:col-span-2 flex items-center justify-between sm:justify-end text-xs sm:text-sm text-[#8B8176]">
+                <div className="w-full sm:col-span-2 flex items-center justify-between sm:justify-end text-xs sm:text-sm text-[#84766A]">
                   <span className="sm:hidden">Unit Price:</span>
                   <span>{formatPrice(item.price)}</span>
                 </div>
@@ -150,12 +150,12 @@ export function CartPageView() {
                 {/* Subtotal & Delete */}
                 <div className="w-full sm:col-span-2 flex items-center justify-between sm:justify-end gap-3">
                   <span className="sm:hidden font-semibold">Item Total:</span>
-                  <span className="text-sm sm:text-base font-semibold text-[#5A252E]">
+                  <span className="text-sm sm:text-base font-semibold text-[#6E2023]">
                     {formatPrice(item.price * item.quantity)}
                   </span>
                   <button
                     onClick={() => removeItem(item.id)}
-                    className="hidden sm:block text-[#8B8176] hover:text-[#5A252E] p-1 transition-colors"
+                    className="hidden sm:block text-[#84766A] hover:text-[#6E2023] p-1 transition-colors"
                     aria-label="Remove item"
                   >
                     <Trash2 className="w-4 h-4" />
@@ -168,7 +168,7 @@ export function CartPageView() {
           <div className="pt-6">
             <Link
               href="/shop"
-              className="text-xs uppercase tracking-widest text-[#5A252E] font-medium hover:underline inline-flex items-center gap-1.5"
+              className="text-xs uppercase tracking-widest text-[#6E2023] font-semibold hover:underline inline-flex items-center gap-1.5"
             >
               ← Continue Browsing Catalogue
             </Link>
@@ -176,29 +176,29 @@ export function CartPageView() {
         </div>
 
         {/* Order Summary Sidebar */}
-        <div className="lg:col-span-4 bg-white border border-[#E7E0D6] p-6 sm:p-8 space-y-6">
-          <h2 className="font-heading text-2xl text-[#252522] border-b border-[#E7E0D6] pb-4">
+        <div className="lg:col-span-4 bg-white border border-[#EADBC8] rounded-2xl p-6 sm:p-8 space-y-6 shadow-sm">
+          <h2 className="font-heading text-2xl text-[#6E2023] border-b border-[#EADBC8] pb-4 font-medium">
             Order Summary
           </h2>
 
           <div className="space-y-3 text-sm">
-            <div className="flex justify-between text-[#8B8176]">
+            <div className="flex justify-between text-[#84766A]">
               <span>Estimated Subtotal</span>
-              <span className="font-semibold text-[#252522] text-base">
+              <span className="font-semibold text-[#6E2023] text-base">
                 {formatPrice(subtotalPaise)}
               </span>
             </div>
-            <div className="flex justify-between text-[#8B8176]">
+            <div className="flex justify-between text-[#84766A]">
               <span>Taxes & GST</span>
               <span className="text-[#252522] font-medium">Included</span>
             </div>
-            <div className="flex justify-between text-[#8B8176]">
+            <div className="flex justify-between text-[#84766A]">
               <span>Shipping</span>
-              <span className="text-xs text-[#5A252E]">
+              <span className="text-xs text-[#6E2023] font-semibold">
                 Calculated on Delivery PIN
               </span>
             </div>
-            <div className="border-t border-[#E7E0D6] pt-3 flex justify-between font-semibold text-lg text-[#5A252E]">
+            <div className="border-t border-[#EADBC8] pt-3 flex justify-between font-bold text-lg text-[#6E2023]">
               <span>Estimated Total</span>
               <span>{formatPrice(subtotalPaise)}</span>
             </div>
@@ -208,7 +208,7 @@ export function CartPageView() {
           <div>
             <label
               htmlFor="cart-order-notes"
-              className="block text-xs uppercase tracking-wider text-[#8B8176] font-semibold mb-1"
+              className="block text-xs uppercase tracking-wider text-[#6E2023] font-semibold mb-1"
             >
               Order & Gifting Notes (Optional)
             </label>
@@ -218,7 +218,7 @@ export function CartPageView() {
               value={customerNotes}
               onChange={(e) => setCustomerNotes(e.target.value)}
               placeholder="Provide delivery instructions, wedding gift message, or custom packing requests..."
-              className="w-full text-xs p-3 bg-[#F7F4EE] border border-[#E7E0D6] rounded-none focus:outline-none focus:border-[#5A252E]"
+              className="w-full text-xs p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
             />
           </div>
 
@@ -228,17 +228,17 @@ export function CartPageView() {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 bg-[#25D366] hover:bg-[#20ba59] text-white text-xs uppercase tracking-widest font-semibold transition-all shadow-md active:scale-[0.99]"
+              className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 bg-[#25D366] hover:bg-[#20ba59] text-white text-xs uppercase tracking-widest font-semibold transition-all rounded-lg shadow-md active:scale-[0.99]"
             >
               <MessageSquare className="w-4 h-4 fill-white" />
-              Order Instantly on WhatsApp
+              Order Instantly on WhatsApp (6369142027)
             </a>
 
             <Button
               href="/checkout"
               variant="primary"
               size="lg"
-              className="w-full py-4"
+              className="w-full py-4 shadow-md"
               rightIcon={<ArrowRight className="w-4 h-4" />}
             >
               Proceed to Checkout
@@ -246,13 +246,13 @@ export function CartPageView() {
           </div>
 
           {/* Guarantee Badges */}
-          <div className="pt-4 border-t border-[#E7E0D6] space-y-2 text-xs text-[#8B8176]">
+          <div className="pt-4 border-t border-[#EADBC8] space-y-2 text-xs text-[#84766A]">
             <div className="flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-[#5A252E]" />
+              <ShieldCheck className="w-4 h-4 text-[#6E2023]" />
               <span>Safe Transit Guarantee</span>
             </div>
             <div className="flex items-center gap-2">
-              <Truck className="w-4 h-4 text-[#5A252E]" />
+              <Truck className="w-4 h-4 text-[#6E2023]" />
               <span>Insured dispatch from Chennai</span>
             </div>
           </div>

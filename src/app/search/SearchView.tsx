@@ -61,10 +61,10 @@ export function SearchView() {
     <div className="py-12 sm:py-16">
       {/* Search Bar Header */}
       <div className="max-w-3xl mx-auto text-center space-y-6">
-        <h1 className="font-heading text-4xl sm:text-5xl text-[#252522]">
+        <h1 className="font-heading text-4xl sm:text-5xl text-[#6E2023] font-medium">
           Search Our Catalogue
         </h1>
-        <p className="text-sm text-[#8B8176] font-light">
+        <p className="text-sm text-[#84766A] font-light">
           Find handcrafted dinnerware, serving platters, dry-fruit boxes, and curated gifts.
         </p>
 
@@ -74,15 +74,15 @@ export function SearchView() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search by product name, category, material, or keyword..."
-            className="w-full pl-12 pr-28 py-4 bg-white border border-[#E7E0D6] text-sm text-[#252522] rounded-none focus:outline-none focus:border-[#5A252E] shadow-sm"
+            className="w-full pl-12 pr-28 py-4 bg-white border border-[#EADBC8] text-sm text-[#252522] rounded-xl focus:outline-none focus:border-[#6E2023] shadow-sm"
           />
-          <Search className="w-5 h-5 text-[#8B8176] absolute left-4 top-1/2 -translate-y-1/2" />
+          <Search className="w-5 h-5 text-[#84766A] absolute left-4 top-1/2 -translate-y-1/2" />
           
           {query && (
             <button
               type="button"
               onClick={handleClear}
-              className="absolute right-24 top-1/2 -translate-y-1/2 text-[#8B8176] hover:text-[#252522] p-1"
+              className="absolute right-24 top-1/2 -translate-y-1/2 text-[#84766A] hover:text-[#6E2023] p-1"
             >
               <X className="w-4 h-4" />
             </button>
@@ -90,7 +90,7 @@ export function SearchView() {
 
           <button
             type="submit"
-            className="absolute right-2 top-1/2 -translate-y-1/2 bg-[#5A252E] hover:bg-[#431b22] text-white text-xs uppercase tracking-widest font-semibold px-5 py-2.5 transition-colors"
+            className="absolute right-2 top-1/2 -translate-y-1/2 bg-[#6E2023] hover:bg-[#55181A] text-white text-xs uppercase tracking-widest font-semibold px-5 py-2.5 transition-colors rounded-lg shadow-sm"
           >
             Search
           </button>
@@ -109,7 +109,7 @@ export function SearchView() {
                 setQuery(term);
                 router.push(`/search?q=${encodeURIComponent(term)}`);
               }}
-              className="text-xs px-2.5 py-1 bg-white border border-[#E7E0D6] text-[#252522] hover:border-[#5A252E] hover:text-[#5A252E] transition-colors"
+              className="text-xs px-2.5 py-1 bg-white border border-[#EADBC8] text-[#252522] hover:border-[#6E2023] hover:text-[#6E2023] transition-colors"
             >
               {term}
             </button>
@@ -121,7 +121,7 @@ export function SearchView() {
       <div className="mt-16">
         {hasSearched ? (
           <div>
-            <div className="border-b border-[#E7E0D6] pb-4 mb-8 flex justify-between items-baseline">
+            <div className="border-b border-[#EADBC8] pb-4 mb-8 flex justify-between items-baseline">
               <h2 className="font-heading text-2xl text-[#252522]">
                 Results for &ldquo;{initialQuery}&rdquo;
               </h2>
@@ -137,7 +137,7 @@ export function SearchView() {
                 ))}
               </div>
             ) : (
-              <div className="bg-white border border-[#E7E0D6] p-12 text-center space-y-4 max-w-lg mx-auto">
+              <div className="bg-white border border-[#EADBC8] p-12 text-center space-y-4 max-w-lg mx-auto">
                 <h3 className="font-heading text-2xl text-[#252522]">
                   No matching items found
                 </h3>
@@ -160,9 +160,9 @@ export function SearchView() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
               <Link
                 href="/collections/dinner-sets"
-                className="p-6 bg-white border border-[#E7E0D6] hover:border-[#5A252E] transition-colors group"
+                className="p-6 bg-white border border-[#EADBC8] hover:border-[#6E2023] transition-colors group"
               >
-                <span className="font-heading text-xl text-[#252522] group-hover:text-[#5A252E] block">
+                <span className="font-heading text-xl text-[#252522] group-hover:text-[#6E2023] block">
                   Dinner Sets
                 </span>
                 <span className="text-[11px] text-[#8B8176] mt-1 block">
@@ -171,9 +171,9 @@ export function SearchView() {
               </Link>
               <Link
                 href="/collections/platters-serving"
-                className="p-6 bg-white border border-[#E7E0D6] hover:border-[#5A252E] transition-colors group"
+                className="p-6 bg-white border border-[#EADBC8] hover:border-[#6E2023] transition-colors group"
               >
-                <span className="font-heading text-xl text-[#252522] group-hover:text-[#5A252E] block">
+                <span className="font-heading text-xl text-[#252522] group-hover:text-[#6E2023] block">
                   Platters & Serving
                 </span>
                 <span className="text-[11px] text-[#8B8176] mt-1 block">
@@ -182,9 +182,9 @@ export function SearchView() {
               </Link>
               <Link
                 href="/collections/gift-sets"
-                className="p-6 bg-white border border-[#E7E0D6] hover:border-[#5A252E] transition-colors group"
+                className="p-6 bg-white border border-[#EADBC8] hover:border-[#6E2023] transition-colors group"
               >
-                <span className="font-heading text-xl text-[#252522] group-hover:text-[#5A252E] block">
+                <span className="font-heading text-xl text-[#252522] group-hover:text-[#6E2023] block">
                   Curated Gift Sets
                 </span>
                 <span className="text-[11px] text-[#8B8176] mt-1 block">
@@ -193,9 +193,9 @@ export function SearchView() {
               </Link>
               <Link
                 href="/collections/dry-fruit-boxes"
-                className="p-6 bg-white border border-[#E7E0D6] hover:border-[#5A252E] transition-colors group"
+                className="p-6 bg-white border border-[#EADBC8] hover:border-[#6E2023] transition-colors group"
               >
-                <span className="font-heading text-xl text-[#252522] group-hover:text-[#5A252E] block">
+                <span className="font-heading text-xl text-[#252522] group-hover:text-[#6E2023] block">
                   Dry-Fruit Boxes
                 </span>
                 <span className="text-[11px] text-[#8B8176] mt-1 block">

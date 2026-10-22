@@ -14,7 +14,7 @@ function Breadcrumb() {
         <li>
           <Link
             href="/"
-            className="transition-colors hover:text-[#5A252E]"
+            className="transition-colors hover:text-[#6E2023]"
           >
             Home
           </Link>
@@ -51,7 +51,7 @@ function PolicySection({
 
 export default function PrivacyPolicyPage() {
   return (
-    <main className="bg-[#F7F4EE] min-h-screen">
+    <main className="bg-[#FFF5E6] min-h-screen">
       <div className="mx-auto max-w-3xl px-4 py-12 sm:py-20">
         <Breadcrumb />
 
@@ -117,7 +117,7 @@ export default function PrivacyPolicyPage() {
             </ul>
           </PolicySection>
 
-          <hr className="border-[#E7E0D6]" />
+          <hr className="border-[#EADBC8]" />
 
           {/* How We Use Information */}
           <PolicySection title="How We Use Your Information">
@@ -147,7 +147,7 @@ export default function PrivacyPolicyPage() {
             </ul>
           </PolicySection>
 
-          <hr className="border-[#E7E0D6]" />
+          <hr className="border-[#EADBC8]" />
 
           {/* Information Sharing */}
           <PolicySection title="Information Sharing & Disclosure">
@@ -181,7 +181,7 @@ export default function PrivacyPolicyPage() {
             </ul>
           </PolicySection>
 
-          <hr className="border-[#E7E0D6]" />
+          <hr className="border-[#EADBC8]" />
 
           {/* Data Security */}
           <PolicySection title="Data Security">
@@ -212,7 +212,7 @@ export default function PrivacyPolicyPage() {
             </p>
           </PolicySection>
 
-          <hr className="border-[#E7E0D6]" />
+          <hr className="border-[#EADBC8]" />
 
           {/* Cookies */}
           <PolicySection title="Cookies & Tracking Technologies">
@@ -243,7 +243,7 @@ export default function PrivacyPolicyPage() {
             </p>
           </PolicySection>
 
-          <hr className="border-[#E7E0D6]" />
+          <hr className="border-[#EADBC8]" />
 
           {/* Third-Party Services */}
           <PolicySection title="Third-Party Services">
@@ -277,7 +277,7 @@ export default function PrivacyPolicyPage() {
             </p>
           </PolicySection>
 
-          <hr className="border-[#E7E0D6]" />
+          <hr className="border-[#EADBC8]" />
 
           {/* Your Rights */}
           <PolicySection title="Your Rights">
@@ -314,7 +314,7 @@ export default function PrivacyPolicyPage() {
             </p>
           </PolicySection>
 
-          <hr className="border-[#E7E0D6]" />
+          <hr className="border-[#EADBC8]" />
 
           {/* Children's Privacy */}
           <PolicySection title="Children&apos;s Privacy">
@@ -327,7 +327,7 @@ export default function PrivacyPolicyPage() {
             </p>
           </PolicySection>
 
-          <hr className="border-[#E7E0D6]" />
+          <hr className="border-[#EADBC8]" />
 
           {/* Changes to Policy */}
           <PolicySection title="Changes to This Policy">
@@ -344,7 +344,7 @@ export default function PrivacyPolicyPage() {
             </p>
           </PolicySection>
 
-          <hr className="border-[#E7E0D6]" />
+          <hr className="border-[#EADBC8]" />
 
           {/* Contact */}
           <PolicySection title="Contact Us">
@@ -353,14 +353,14 @@ export default function PrivacyPolicyPage() {
               Privacy Policy or how we handle your personal information, please
               contact us:
             </p>
-            <div className="rounded-sm border border-[#E7E0D6] bg-white p-5">
+            <div className="rounded-sm border border-[#EADBC8] bg-white p-5">
               <p className="font-medium text-[#252522]">VITRAG</p>
               <ul className="mt-2 space-y-1 text-sm text-[#252522]/80">
                 <li>
                   Email:{" "}
                   <a
                     href="mailto:hello@vitrag.in"
-                    className="text-[#5A252E] underline underline-offset-2 hover:text-[#5A252E]/80"
+                    className="text-[#6E2023] underline underline-offset-2 hover:text-[#6E2023]/80"
                   >
                     hello@vitrag.in
                   </a>
@@ -380,7 +380,7 @@ export default function PrivacyPolicyPage() {
         <div className="mt-12">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-sm text-[#5A252E] transition-colors hover:text-[#5A252E]/80"
+            className="inline-flex items-center gap-2 text-sm text-[#6E2023] transition-colors hover:text-[#6E2023]/80"
           >
             ← Back to Home
           </Link>

@@ -66,7 +66,7 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
       className={`${cormorant.variable} ${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#F7F4EE] text-[#252522] font-body selection:bg-[#5A252E] selection:text-white">
+      <body className="min-h-full flex flex-col bg-[#FFF5E6] text-[#252522] font-body selection:bg-[#6E2023] selection:text-white">
         <CartProvider>
           <Header />
           <div className="flex-1">{children}</div>

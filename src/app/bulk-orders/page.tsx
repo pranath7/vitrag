@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function BulkOrdersPage() {
   return (
-    <main className="bg-[#F7F4EE] min-h-screen">
+    <main className="bg-[#FFF5E6] min-h-screen">
       <Container size="lg">
         <Breadcrumbs items={[{ label: "Corporate & Bulk Gifting" }]} />
         <BulkOrdersView />

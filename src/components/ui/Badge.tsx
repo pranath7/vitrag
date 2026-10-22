@@ -2,7 +2,7 @@ import React from "react";
 import { cn } from "@/lib/utils";
 
 interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
-  variant?: "burgundy" | "beige" | "gold" | "outline" | "charcoal";
+  variant?: "burgundy" | "champagne" | "rose" | "outline" | "charcoal";
 }
 
 export function Badge({
@@ -12,17 +12,17 @@ export function Badge({
   ...props
 }: BadgeProps) {
   const variantStyles = {
-    burgundy: "bg-[#5A252E] text-white",
-    beige: "bg-[#E9DFD1] text-[#252522]",
-    gold: "bg-[#F3E5AB] text-[#5A252E] border border-[#D4AF37]/30",
-    outline: "border border-[#E7E0D6] text-[#8B8176] bg-white/70",
+    burgundy: "bg-[#6E2023] text-white",
+    champagne: "bg-[#CBAE9B] text-[#6E2023] font-semibold",
+    rose: "bg-[#E8C5C8] text-[#6E2023] font-semibold",
+    outline: "border border-[#EADBC8] text-[#84766A] bg-white/80",
     charcoal: "bg-[#252522] text-white",
   };
 
   return (
     <span
       className={cn(
-        "inline-flex items-center text-[10px] sm:text-xs uppercase tracking-widest font-medium px-2 py-0.5 select-none",
+        "inline-flex items-center text-[10px] sm:text-xs uppercase tracking-wider font-medium px-2.5 py-0.5 rounded-full select-none shadow-2xs",
         variantStyles[variant],
         className
       )}

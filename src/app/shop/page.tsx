@@ -15,7 +15,7 @@ export default function ShopPage() {
   const products = getAllProducts();
 
   return (
-    <main className="bg-[#F7F4EE] min-h-screen">
+    <main className="bg-[#FFF5E6] min-h-screen">
       <Container size="lg">
         <Breadcrumbs items={[{ label: "Shop All" }]} />
       </Container>

@@ -53,30 +53,30 @@ export function BulkOrdersView() {
     <div className="py-12 sm:py-20">
       {/* Header */}
       <div className="max-w-3xl mx-auto text-center space-y-4 mb-16">
-        <span className="text-xs uppercase tracking-[0.25em] text-[#5A252E] font-medium">
+        <span className="text-xs uppercase tracking-[0.25em] text-[#6E2023] font-bold">
           Corporate & Bulk Gifting Services
         </span>
-        <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl text-[#252522]">
+        <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl text-[#6E2023] font-medium">
           Thoughtful Gifting. Made for Business.
         </h1>
-        <p className="text-base text-[#8B8176] font-light max-w-xl mx-auto leading-relaxed">
+        <p className="text-base text-[#84766A] font-light max-w-xl mx-auto leading-relaxed">
           From Diwali executive hampers to wedding trousseau favors and milestone client appreciation, we craft bespoke tableware gifts that leave an enduring impression.
         </p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start max-w-6xl mx-auto">
         {/* Form Column */}
-        <div className="lg:col-span-7 bg-white p-8 sm:p-10 border border-[#E7E0D6] shadow-sm">
+        <div className="lg:col-span-7 bg-white p-8 sm:p-10 border border-[#EADBC8] rounded-2xl shadow-sm">
           {submitted ? (
             <div className="py-12 text-center space-y-4">
-              <div className="w-16 h-16 rounded-full bg-[#E9DFD1]/50 border border-[#D9D0C1] flex items-center justify-center mx-auto text-[#5A252E]">
+              <div className="w-16 h-16 rounded-full bg-[#CBAE9B]/30 border border-[#CBAE9B] flex items-center justify-center mx-auto text-[#6E2023]">
                 <CheckCircle2 className="w-8 h-8" />
               </div>
-              <h2 className="font-heading text-3xl text-[#252522]">
+              <h2 className="font-heading text-3xl text-[#6E2023] font-medium">
                 Enquiry Dispatched!
               </h2>
-              <p className="text-xs sm:text-sm text-[#8B8176] max-w-md mx-auto leading-relaxed font-light">
-                Thank you, {formData.name}. Your bulk gifting enquiry has been sent to our corporate desk on WhatsApp. Our concierge team will review your quantities and budget to prepare a tailored PDF proposal within 24 business hours.
+              <p className="text-xs sm:text-sm text-[#84766A] max-w-md mx-auto leading-relaxed font-light">
+                Thank you, {formData.name}. Your bulk gifting enquiry has been sent to our corporate desk on WhatsApp (6369142027). Our concierge team will review your quantities and budget to prepare a tailored PDF proposal within 24 business hours.
               </p>
               <div className="pt-4">
                 <Button
@@ -90,18 +90,18 @@ export function BulkOrdersView() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="border-b border-[#E7E0D6] pb-4">
-                <h2 className="font-heading text-2xl text-[#252522]">
+              <div className="border-b border-[#EADBC8] pb-4">
+                <h2 className="font-heading text-2xl text-[#6E2023] font-medium">
                   Request a Tailored Bulk Proposal
                 </h2>
-                <p className="text-xs text-[#8B8176] mt-1">
-                  Fill in your requirements below to instantly connect with our Chennai gifting concierge.
+                <p className="text-xs text-[#84766A] mt-1 font-light">
+                  Fill in your requirements below to instantly connect with our Chennai gifting concierge on WhatsApp.
                 </p>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs uppercase tracking-wider text-[#8B8176] font-semibold mb-1">
+                  <label className="block text-xs uppercase tracking-wider text-[#6E2023] font-semibold mb-1">
                     Your Name *
                   </label>
                   <input
@@ -111,12 +111,12 @@ export function BulkOrdersView() {
                     placeholder="e.g. Ramesh Krishnan"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full text-xs p-3 bg-[#F7F4EE] border border-[#E7E0D6] focus:outline-none focus:border-[#5A252E]"
+                    className="w-full text-xs p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs uppercase tracking-wider text-[#8B8176] font-semibold mb-1">
+                  <label className="block text-xs uppercase tracking-wider text-[#6E2023] font-semibold mb-1">
                     Company / Organization
                   </label>
                   <input
@@ -125,12 +125,12 @@ export function BulkOrdersView() {
                     placeholder="e.g. Zoho Corp / Personal Event"
                     value={formData.company}
                     onChange={handleChange}
-                    className="w-full text-xs p-3 bg-[#F7F4EE] border border-[#E7E0D6] focus:outline-none focus:border-[#5A252E]"
+                    className="w-full text-xs p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs uppercase tracking-wider text-[#8B8176] font-semibold mb-1">
+                  <label className="block text-xs uppercase tracking-wider text-[#6E2023] font-semibold mb-1">
                     Phone / WhatsApp *
                   </label>
                   <input
@@ -140,12 +140,12 @@ export function BulkOrdersView() {
                     placeholder="+91 98400 54321"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full text-xs p-3 bg-[#F7F4EE] border border-[#E7E0D6] focus:outline-none focus:border-[#5A252E]"
+                    className="w-full text-xs p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs uppercase tracking-wider text-[#8B8176] font-semibold mb-1">
+                  <label className="block text-xs uppercase tracking-wider text-[#6E2023] font-semibold mb-1">
                     Email Address
                   </label>
                   <input
@@ -154,19 +154,19 @@ export function BulkOrdersView() {
                     placeholder="ramesh@company.com"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full text-xs p-3 bg-[#F7F4EE] border border-[#E7E0D6] focus:outline-none focus:border-[#5A252E]"
+                    className="w-full text-xs p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs uppercase tracking-wider text-[#8B8176] font-semibold mb-1">
+                  <label className="block text-xs uppercase tracking-wider text-[#6E2023] font-semibold mb-1">
                     Product Interest *
                   </label>
                   <select
                     name="productInterest"
                     value={formData.productInterest}
                     onChange={handleChange}
-                    className="w-full text-xs p-3 bg-[#F7F4EE] border border-[#E7E0D6] focus:outline-none focus:border-[#5A252E]"
+                    className="w-full text-xs p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
                   >
                     <option value="Curated Gift Sets">Curated Tableware Gift Sets</option>
                     <option value="Dry-Fruit Boxes">Handcrafted Dry-Fruit Boxes</option>
@@ -178,14 +178,14 @@ export function BulkOrdersView() {
                 </div>
 
                 <div>
-                  <label className="block text-xs uppercase tracking-wider text-[#8B8176] font-semibold mb-1">
+                  <label className="block text-xs uppercase tracking-wider text-[#6E2023] font-semibold mb-1">
                     Estimated Quantity *
                   </label>
                   <select
                     name="quantity"
                     value={formData.quantity}
                     onChange={handleChange}
-                    className="w-full text-xs p-3 bg-[#F7F4EE] border border-[#E7E0D6] focus:outline-none focus:border-[#5A252E]"
+                    className="w-full text-xs p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
                   >
                     <option value="10 – 25 units">10 – 25 units</option>
                     <option value="25 – 50 units">25 – 50 units</option>
@@ -196,14 +196,14 @@ export function BulkOrdersView() {
                 </div>
 
                 <div>
-                  <label className="block text-xs uppercase tracking-wider text-[#8B8176] font-semibold mb-1">
+                  <label className="block text-xs uppercase tracking-wider text-[#6E2023] font-semibold mb-1">
                     Budget per Gift *
                   </label>
                   <select
                     name="budgetPerGift"
                     value={formData.budgetPerGift}
                     onChange={handleChange}
-                    className="w-full text-xs p-3 bg-[#F7F4EE] border border-[#E7E0D6] focus:outline-none focus:border-[#5A252E]"
+                    className="w-full text-xs p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
                   >
                     <option value="Under ₹1,000">Under ₹1,000</option>
                     <option value="₹1,000 – ₹2,000">₹1,000 – ₹2,000</option>
@@ -214,7 +214,7 @@ export function BulkOrdersView() {
                 </div>
 
                 <div>
-                  <label className="block text-xs uppercase tracking-wider text-[#8B8176] font-semibold mb-1">
+                  <label className="block text-xs uppercase tracking-wider text-[#6E2023] font-semibold mb-1">
                     Target Delivery PIN *
                   </label>
                   <input
@@ -224,13 +224,13 @@ export function BulkOrdersView() {
                     placeholder="e.g. 600017"
                     value={formData.pinCode}
                     onChange={handleChange}
-                    className="w-full text-xs p-3 bg-[#F7F4EE] border border-[#E7E0D6] focus:outline-none focus:border-[#5A252E]"
+                    className="w-full text-xs p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs uppercase tracking-wider text-[#8B8176] font-semibold mb-1">
+                <label className="block text-xs uppercase tracking-wider text-[#6E2023] font-semibold mb-1">
                   Required By Date (Optional)
                 </label>
                 <input
@@ -238,12 +238,12 @@ export function BulkOrdersView() {
                   name="deliveryDate"
                   value={formData.deliveryDate}
                   onChange={handleChange}
-                  className="w-full text-xs p-3 bg-[#F7F4EE] border border-[#E7E0D6] focus:outline-none focus:border-[#5A252E]"
+                  className="w-full text-xs p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
                 />
               </div>
 
               <div>
-                <label className="block text-xs uppercase tracking-wider text-[#8B8176] font-semibold mb-1">
+                <label className="block text-xs uppercase tracking-wider text-[#6E2023] font-semibold mb-1">
                   Additional Notes & Customization Requests
                 </label>
                 <textarea
@@ -252,7 +252,7 @@ export function BulkOrdersView() {
                   placeholder="Specify custom box branding, personalized message cards, or specific event themes..."
                   value={formData.notes}
                   onChange={handleChange}
-                  className="w-full text-xs p-3 bg-[#F7F4EE] border border-[#E7E0D6] focus:outline-none focus:border-[#5A252E]"
+                  className="w-full text-xs p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
                 />
               </div>
 
@@ -260,37 +260,37 @@ export function BulkOrdersView() {
                 type="submit"
                 variant="burgundy"
                 size="lg"
-                className="w-full py-4 text-xs tracking-widest"
+                className="w-full py-4 text-xs tracking-widest shadow-md"
                 rightIcon={<MessageSquare className="w-4 h-4 fill-white" />}
               >
-                Send Request via WhatsApp Concierge
+                Send Request via WhatsApp Concierge (6369142027)
               </Button>
             </form>
           )}
         </div>
 
-        {/* Benefits Column */}
+        {/* Benefits Column (Champagne Base with Burgundy Typography) */}
         <div className="lg:col-span-5 space-y-6">
-          <div className="bg-[#E9DFD1] p-8 border border-[#D9D0C1] space-y-6">
-            <h3 className="font-heading text-2xl text-[#252522]">
+          <div className="bg-[#CBAE9B] p-8 rounded-2xl border border-[#bfa08c] shadow-md space-y-6">
+            <h3 className="font-heading text-2xl text-[#6E2023] font-medium">
               The VITRAG Corporate Advantage
             </h3>
             
-            <div className="space-y-5 text-xs text-[#252522]/85">
+            <div className="space-y-5 text-xs text-[#6E2023]">
               <div className="flex gap-3">
-                <Sparkles className="w-5 h-5 text-[#5A252E] shrink-0 mt-0.5" />
+                <Sparkles className="w-5 h-5 text-[#6E2023] shrink-0 mt-0.5" />
                 <div>
-                  <strong className="block text-sm text-[#252522] mb-0.5 font-serif">
+                  <strong className="block text-sm text-[#6E2023] mb-0.5 font-serif font-bold">
                     Custom Monogramming & Packaging
                   </strong>
-                  Foil-stamped corporate logos on luxury rigid boxes, bespoke satin ribbons, and personalized executive greetings.
+                  Foil-stamped corporate logos on luxury burgundy rigid boxes, champagne satin ribbons, and personalized executive greetings.
                 </div>
               </div>
 
               <div className="flex gap-3">
-                <Truck className="w-5 h-5 text-[#5A252E] shrink-0 mt-0.5" />
+                <Truck className="w-5 h-5 text-[#6E2023] shrink-0 mt-0.5" />
                 <div>
-                  <strong className="block text-sm text-[#252522] mb-0.5 font-serif">
+                  <strong className="block text-sm text-[#6E2023] mb-0.5 font-serif font-bold">
                     Multi-Address Pan-India Shipping
                   </strong>
                   Provide an Excel sheet of client addresses across India; we pack, insure, and dispatch directly to individual doorsteps.
@@ -298,9 +298,9 @@ export function BulkOrdersView() {
               </div>
 
               <div className="flex gap-3">
-                <Layers className="w-5 h-5 text-[#5A252E] shrink-0 mt-0.5" />
+                <Layers className="w-5 h-5 text-[#6E2023] shrink-0 mt-0.5" />
                 <div>
-                  <strong className="block text-sm text-[#252522] mb-0.5 font-serif">
+                  <strong className="block text-sm text-[#6E2023] mb-0.5 font-serif font-bold">
                     Volume Tier Pricing & GST Invoicing
                   </strong>
                   Transparent tier discounts for bulk orders. Full GST tax invoices provided for company tax input credit.
@@ -308,9 +308,9 @@ export function BulkOrdersView() {
               </div>
 
               <div className="flex gap-3">
-                <Building2 className="w-5 h-5 text-[#5A252E] shrink-0 mt-0.5" />
+                <Building2 className="w-5 h-5 text-[#6E2023] shrink-0 mt-0.5" />
                 <div>
-                  <strong className="block text-sm text-[#252522] mb-0.5 font-serif">
+                  <strong className="block text-sm text-[#6E2023] mb-0.5 font-serif font-bold">
                     Showroom Sampling in Chennai
                   </strong>
                   Visit our studio in T. Nagar, Chennai to inspect physical samples, weight, and glazes prior to confirming large runs.

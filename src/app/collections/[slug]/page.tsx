@@ -55,7 +55,7 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
   const collectionProducts = getProductsByCollection(collection.id);
 
   return (
-    <main className="bg-[#F7F4EE] min-h-screen">
+    <main className="bg-[#FFF5E6] min-h-screen">
       <Container size="lg">
         <Breadcrumbs
           items={[

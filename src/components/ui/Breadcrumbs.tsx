@@ -12,7 +12,7 @@ export function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
     <nav aria-label="Breadcrumb" className="py-4">
       <ol className="flex flex-wrap items-center gap-1.5 text-xs tracking-wider uppercase text-[#8B8176]">
         <li>
-          <Link href="/" className="transition-colors hover:text-[#5A252E]">
+          <Link href="/" className="transition-colors hover:text-[#6E2023]">
             Home
           </Link>
         </li>
@@ -31,7 +31,7 @@ export function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
                 ) : (
                   <Link
                     href={item.href}
-                    className="transition-colors hover:text-[#5A252E]"
+                    className="transition-colors hover:text-[#6E2023]"
                   >
                     {item.label}
                   </Link>

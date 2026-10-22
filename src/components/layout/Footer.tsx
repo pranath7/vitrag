@@ -12,43 +12,42 @@ export function Footer() {
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
     if (email.trim()) {
-      // In production, connect to mailing list provider
       setSubscribed(true);
     }
   };
 
   return (
-    <footer className="bg-[#252522] text-[#F7F4EE] pt-16 sm:pt-20 pb-12 border-t border-[#3a3a35]">
+    <footer className="bg-[#6E2023] text-[#FFF5E6] pt-16 sm:pt-20 pb-12 border-t border-[#55181A]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Section: Brand Story & Newsletter */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-[#3a3a35]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-[#CBAE9B]/25">
           <div className="lg:col-span-5 space-y-4">
             <span className="font-heading text-3xl sm:text-4xl tracking-[0.2em] uppercase font-light text-white block">
               {siteConfig.name}
             </span>
-            <p className="text-xs uppercase tracking-[0.25em] text-[#E9DFD1]/70 font-sans">
+            <p className="text-xs uppercase tracking-[0.25em] text-[#CBAE9B] font-sans font-medium">
               {siteConfig.descriptor}
             </p>
-            <p className="text-sm text-[#F7F4EE]/80 max-w-md leading-relaxed pt-2">
+            <p className="text-sm text-[#FFF5E6]/85 max-w-md leading-relaxed pt-2 font-light">
               From everyday meals to festive tables and meaningful gifts, VITRAG brings together carefully selected pieces that make hosting, celebrating, and gifting feel special.
             </p>
-            <p className="font-heading italic text-base text-[#E9DFD1] pt-1">
+            <p className="font-heading italic text-base text-[#CBAE9B] pt-1">
               &ldquo;{siteConfig.tagline}&rdquo;
             </p>
           </div>
 
           <div className="lg:col-span-7 lg:pl-10 flex flex-col justify-center">
-            <div className="bg-[#2e2e2a] p-6 sm:p-8 border border-[#44443e]">
+            <div className="bg-[#55181A] p-6 sm:p-8 rounded-2xl border border-[#8A2B2F]">
               <h3 className="font-heading text-2xl text-white mb-2">
                 Join the VITRAG Journal
               </h3>
-              <p className="text-xs text-[#F7F4EE]/70 max-w-lg mb-6 leading-relaxed">
+              <p className="text-xs text-[#CBAE9B] max-w-lg mb-6 leading-relaxed font-light">
                 Receive private invitations to seasonal dinnerware releases, table styling guides, and festive gifting edits.
               </p>
 
               {subscribed ? (
-                <div className="flex items-center gap-2 text-xs uppercase tracking-wider text-[#E9DFD1] bg-[#5A252E]/40 p-3 border border-[#5A252E]">
-                  <CheckCircle2 className="w-4 h-4 text-[#E9DFD1]" />
+                <div className="flex items-center gap-2 text-xs uppercase tracking-wider text-[#CBAE9B] bg-[#6E2023] p-3 rounded-lg border border-[#CBAE9B]/50">
+                  <CheckCircle2 className="w-4 h-4 text-[#CBAE9B]" />
                   <span>Thank you for subscribing to the VITRAG Journal.</span>
                 </div>
               ) : (
@@ -59,11 +58,11 @@ export function Footer() {
                     placeholder="Enter your email address"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="flex-1 bg-[#252522] border border-[#505048] px-4 py-3 text-xs text-white placeholder-[#8B8176] focus:outline-none focus:border-[#E9DFD1]"
+                    className="flex-1 bg-[#6E2023] border border-[#CBAE9B]/40 px-4 py-3 text-xs text-white placeholder-[#CBAE9B]/60 rounded-lg focus:outline-none focus:border-[#CBAE9B]"
                   />
                   <button
                     type="submit"
-                    className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#5A252E] hover:bg-[#431b22] text-white text-xs uppercase tracking-widest font-medium transition-colors"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#CBAE9B] hover:bg-[#bfa08c] text-[#6E2023] text-xs uppercase tracking-widest font-semibold transition-colors rounded-lg shadow-sm"
                   >
                     <span>Subscribe</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -75,35 +74,35 @@ export function Footer() {
         </div>
 
         {/* Middle Section: Navigation Columns */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-14 border-b border-[#3a3a35] text-xs">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-14 border-b border-[#CBAE9B]/25 text-xs">
           {/* Col 1: Shop */}
           <div className="space-y-4">
-            <h4 className="font-heading text-lg text-white tracking-wider uppercase">
+            <h4 className="font-heading text-lg text-white tracking-wider uppercase font-medium">
               Tableware
             </h4>
-            <ul className="space-y-2.5 text-[#F7F4EE]/75">
+            <ul className="space-y-2.5 text-[#FFF5E6]/80 font-light">
               <li>
-                <Link href="/shop" className="hover:text-white transition-colors">
+                <Link href="/shop" className="hover:text-white hover:underline transition-colors">
                   All Collections
                 </Link>
               </li>
               <li>
-                <Link href="/collections/dinner-sets" className="hover:text-white transition-colors">
+                <Link href="/collections/dinner-sets" className="hover:text-white hover:underline transition-colors">
                   Dinner Sets
                 </Link>
               </li>
               <li>
-                <Link href="/collections/platters-serving" className="hover:text-white transition-colors">
+                <Link href="/collections/platters-serving" className="hover:text-white hover:underline transition-colors">
                   Platters & Serving
                 </Link>
               </li>
               <li>
-                <Link href="/collections/mugs-cups" className="hover:text-white transition-colors">
+                <Link href="/collections/mugs-cups" className="hover:text-white hover:underline transition-colors">
                   Mugs & Teaware
                 </Link>
               </li>
               <li>
-                <Link href="/collections/kitchenware" className="hover:text-white transition-colors">
+                <Link href="/collections/kitchenware" className="hover:text-white hover:underline transition-colors">
                   Artisan Kitchenware
                 </Link>
               </li>
@@ -112,32 +111,32 @@ export function Footer() {
 
           {/* Col 2: Gifting */}
           <div className="space-y-4">
-            <h4 className="font-heading text-lg text-white tracking-wider uppercase">
+            <h4 className="font-heading text-lg text-white tracking-wider uppercase font-medium">
               Gifting
             </h4>
-            <ul className="space-y-2.5 text-[#F7F4EE]/75">
+            <ul className="space-y-2.5 text-[#FFF5E6]/80 font-light">
               <li>
-                <Link href="/collections/gift-sets" className="hover:text-white transition-colors">
+                <Link href="/collections/gift-sets" className="hover:text-white hover:underline transition-colors">
                   Curated Gift Sets
                 </Link>
               </li>
               <li>
-                <Link href="/collections/dry-fruit-boxes" className="hover:text-white transition-colors">
+                <Link href="/collections/dry-fruit-boxes" className="hover:text-white hover:underline transition-colors">
                   Dry-Fruit Boxes
                 </Link>
               </li>
               <li>
-                <Link href="/collections/cracker-sets" className="hover:text-white transition-colors">
+                <Link href="/collections/cracker-sets" className="hover:text-white hover:underline transition-colors">
                   Cracker Sets
                 </Link>
               </li>
               <li>
-                <Link href="/collections/wedding-gifts" className="hover:text-white transition-colors">
+                <Link href="/collections/wedding-gifts" className="hover:text-white hover:underline transition-colors">
                   Wedding & Trousseau
                 </Link>
               </li>
               <li>
-                <Link href="/bulk-orders" className="hover:text-white text-[#E9DFD1] transition-colors font-medium">
+                <Link href="/bulk-orders" className="hover:text-white text-[#CBAE9B] transition-colors font-medium">
                   Corporate & Bulk Orders
                 </Link>
               </li>
@@ -146,37 +145,37 @@ export function Footer() {
 
           {/* Col 3: Brand & Policies */}
           <div className="space-y-4">
-            <h4 className="font-heading text-lg text-white tracking-wider uppercase">
+            <h4 className="font-heading text-lg text-white tracking-wider uppercase font-medium">
               Client Care
             </h4>
-            <ul className="space-y-2.5 text-[#F7F4EE]/75">
+            <ul className="space-y-2.5 text-[#FFF5E6]/80 font-light">
               <li>
-                <Link href="/about" className="hover:text-white transition-colors">
+                <Link href="/about" className="hover:text-white hover:underline transition-colors">
                   Our Story & Values
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-white transition-colors">
+                <Link href="/contact" className="hover:text-white hover:underline transition-colors">
                   Showroom & Contact
                 </Link>
               </li>
               <li>
-                <Link href="/shipping-policy" className="hover:text-white transition-colors">
+                <Link href="/shipping-policy" className="hover:text-white hover:underline transition-colors">
                   Shipping Policy
                 </Link>
               </li>
               <li>
-                <Link href="/returns-refunds" className="hover:text-white transition-colors">
+                <Link href="/returns-refunds" className="hover:text-white hover:underline transition-colors">
                   Returns & Refunds
                 </Link>
               </li>
               <li>
-                <Link href="/privacy-policy" className="hover:text-white transition-colors">
+                <Link href="/privacy-policy" className="hover:text-white hover:underline transition-colors">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/terms" className="hover:text-white transition-colors">
+                <Link href="/terms" className="hover:text-white hover:underline transition-colors">
                   Terms of Service
                 </Link>
               </li>
@@ -185,25 +184,25 @@ export function Footer() {
 
           {/* Col 4: Contact & Showroom */}
           <div className="space-y-4">
-            <h4 className="font-heading text-lg text-white tracking-wider uppercase">
+            <h4 className="font-heading text-lg text-white tracking-wider uppercase font-medium">
               Showroom
             </h4>
-            <div className="space-y-3 text-[#F7F4EE]/75">
+            <div className="space-y-3 text-[#FFF5E6]/80 font-light">
               <div className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 text-[#E9DFD1] shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-[#CBAE9B] shrink-0 mt-0.5" />
                 <span>{siteConfig.contact.address}</span>
               </div>
               <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-[#E9DFD1] shrink-0" />
+                <Phone className="w-4 h-4 text-[#CBAE9B] shrink-0" />
                 <a
                   href={`https://wa.me/${siteConfig.contact.whatsappNumber}`}
-                  className="hover:text-white transition-colors"
+                  className="hover:text-white transition-colors text-[#CBAE9B] font-medium"
                 >
                   {siteConfig.contact.displayPhone}
                 </a>
               </div>
               <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-[#E9DFD1] shrink-0" />
+                <Mail className="w-4 h-4 text-[#CBAE9B] shrink-0" />
                 <a
                   href={`mailto:${siteConfig.contact.email}`}
                   className="hover:text-white transition-colors"
@@ -211,7 +210,7 @@ export function Footer() {
                   {siteConfig.contact.email}
                 </a>
               </div>
-              <p className="text-[11px] text-[#8B8176] pt-1">
+              <p className="text-[11px] text-[#CBAE9B]/80 pt-1">
                 {siteConfig.contact.hours}
               </p>
             </div>
@@ -219,9 +218,9 @@ export function Footer() {
         </div>
 
         {/* Bottom Section: Copyright & Disclaimer */}
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-[#8B8176] gap-4">
+        <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-[#CBAE9B] gap-4">
           <p>© 2026 VITRAG Tableware & Gifting. All rights reserved.</p>
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-6 text-[#FFF5E6]/75">
             <span>Chennai • Pan-India Shipping</span>
             <span>Handcrafted Ceramics & Fine Dinnerware</span>
           </div>

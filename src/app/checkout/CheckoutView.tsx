@@ -80,13 +80,13 @@ export function CheckoutView() {
   if (orderSent) {
     return (
       <div className="py-12 sm:py-20 max-w-2xl mx-auto">
-        <div className="bg-white border border-[#E7E0D6] p-8 sm:p-12 text-center space-y-6 shadow-sm">
-          <div className="w-16 h-16 rounded-full bg-[#E9DFD1]/50 border border-[#D9D0C1] flex items-center justify-center mx-auto text-[#25D366]">
+        <div className="bg-white border border-[#EADBC8] p-8 sm:p-12 text-center space-y-6 shadow-sm">
+          <div className="w-16 h-16 rounded-full bg-[#CBAE9B]/50 border border-[#D9D0C1] flex items-center justify-center mx-auto text-[#25D366]">
             <CheckCircle2 className="w-10 h-10" />
           </div>
 
           <div>
-            <span className="text-xs uppercase tracking-[0.2em] text-[#5A252E] font-semibold">
+            <span className="text-xs uppercase tracking-[0.2em] text-[#6E2023] font-semibold">
               Order Dispatched to WhatsApp
             </span>
             <h1 className="font-heading text-3xl sm:text-4xl text-[#252522] mt-2">
@@ -98,7 +98,7 @@ export function CheckoutView() {
           </div>
 
           {/* Action button in case popup was blocked */}
-          <div className="bg-[#F7F4EE] p-5 border border-[#E7E0D6] space-y-3">
+          <div className="bg-[#FFF5E6] p-5 border border-[#EADBC8] space-y-3">
             <p className="text-xs text-[#252522] font-medium">
               Did WhatsApp not open automatically?
             </p>
@@ -114,7 +114,7 @@ export function CheckoutView() {
             </a>
           </div>
 
-          <div className="text-left bg-white border border-[#E7E0D6] p-5 space-y-2 text-xs text-[#8B8176]">
+          <div className="text-left bg-white border border-[#EADBC8] p-5 space-y-2 text-xs text-[#8B8176]">
             <strong className="block text-[#252522] font-medium">Next Steps:</strong>
             <p>1. Our concierge desk will review your items and confirm immediate stock.</p>
             <p>2. We will calculate exact postal/courier charges to PIN code <strong>{formData.pinCode}</strong>.</p>
@@ -164,7 +164,7 @@ export function CheckoutView() {
 
   return (
     <div className="py-12 sm:py-16">
-      <div className="border-b border-[#E7E0D6] pb-6 mb-10">
+      <div className="border-b border-[#EADBC8] pb-6 mb-10">
         <span className="text-xs uppercase tracking-widest text-[#8B8176]">
           Secure Checkout Process
         </span>
@@ -178,8 +178,8 @@ export function CheckoutView() {
         <div className="lg:col-span-7 space-y-8">
           <form id="checkout-form" onSubmit={handleWhatsAppOrder} className="space-y-6">
             {/* 1. Contact Information */}
-            <div className="bg-white p-6 sm:p-8 border border-[#E7E0D6] space-y-4">
-              <h2 className="font-heading text-xl text-[#252522] border-b border-[#E7E0D6] pb-3 flex items-center justify-between">
+            <div className="bg-white p-6 sm:p-8 border border-[#EADBC8] space-y-4">
+              <h2 className="font-heading text-xl text-[#252522] border-b border-[#EADBC8] pb-3 flex items-center justify-between">
                 <span>1. Contact & Customer Details</span>
                 <span className="text-xs text-[#8B8176] font-sans font-normal">
                   Step 1 of 2
@@ -198,7 +198,7 @@ export function CheckoutView() {
                     placeholder="e.g. Priya Sundaram"
                     value={formData.fullName}
                     onChange={handleInputChange}
-                    className="w-full text-xs p-3 bg-[#F7F4EE] border border-[#E7E0D6] focus:outline-none focus:border-[#5A252E]"
+                    className="w-full text-xs p-3 bg-[#FFF5E6] border border-[#EADBC8] focus:outline-none focus:border-[#6E2023]"
                   />
                 </div>
 
@@ -213,7 +213,7 @@ export function CheckoutView() {
                     placeholder="+91 98400 12345"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full text-xs p-3 bg-[#F7F4EE] border border-[#E7E0D6] focus:outline-none focus:border-[#5A252E]"
+                    className="w-full text-xs p-3 bg-[#FFF5E6] border border-[#EADBC8] focus:outline-none focus:border-[#6E2023]"
                   />
                 </div>
 
@@ -227,15 +227,15 @@ export function CheckoutView() {
                     placeholder="priya@example.com"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full text-xs p-3 bg-[#F7F4EE] border border-[#E7E0D6] focus:outline-none focus:border-[#5A252E]"
+                    className="w-full text-xs p-3 bg-[#FFF5E6] border border-[#EADBC8] focus:outline-none focus:border-[#6E2023]"
                   />
                 </div>
               </div>
             </div>
 
             {/* 2. Shipping Address */}
-            <div className="bg-white p-6 sm:p-8 border border-[#E7E0D6] space-y-4">
-              <h2 className="font-heading text-xl text-[#252522] border-b border-[#E7E0D6] pb-3 flex items-center justify-between">
+            <div className="bg-white p-6 sm:p-8 border border-[#EADBC8] space-y-4">
+              <h2 className="font-heading text-xl text-[#252522] border-b border-[#EADBC8] pb-3 flex items-center justify-between">
                 <span>2. Delivery Address</span>
                 <span className="text-xs text-[#8B8176] font-sans font-normal">
                   Step 2 of 2
@@ -254,7 +254,7 @@ export function CheckoutView() {
                     placeholder="No. 14, 2nd Cross Street, Alwarpet"
                     value={formData.address}
                     onChange={handleInputChange}
-                    className="w-full text-xs p-3 bg-[#F7F4EE] border border-[#E7E0D6] focus:outline-none focus:border-[#5A252E]"
+                    className="w-full text-xs p-3 bg-[#FFF5E6] border border-[#EADBC8] focus:outline-none focus:border-[#6E2023]"
                   />
                 </div>
 
@@ -269,7 +269,7 @@ export function CheckoutView() {
                       required
                       value={formData.city}
                       onChange={handleInputChange}
-                      className="w-full text-xs p-3 bg-[#F7F4EE] border border-[#E7E0D6] focus:outline-none focus:border-[#5A252E]"
+                      className="w-full text-xs p-3 bg-[#FFF5E6] border border-[#EADBC8] focus:outline-none focus:border-[#6E2023]"
                     />
                   </div>
 
@@ -283,7 +283,7 @@ export function CheckoutView() {
                       required
                       value={formData.state}
                       onChange={handleInputChange}
-                      className="w-full text-xs p-3 bg-[#F7F4EE] border border-[#E7E0D6] focus:outline-none focus:border-[#5A252E]"
+                      className="w-full text-xs p-3 bg-[#FFF5E6] border border-[#EADBC8] focus:outline-none focus:border-[#6E2023]"
                     />
                   </div>
 
@@ -298,7 +298,7 @@ export function CheckoutView() {
                       placeholder="600018"
                       value={formData.pinCode}
                       onChange={handleInputChange}
-                      className="w-full text-xs p-3 bg-[#F7F4EE] border border-[#E7E0D6] focus:outline-none focus:border-[#5A252E]"
+                      className="w-full text-xs p-3 bg-[#FFF5E6] border border-[#EADBC8] focus:outline-none focus:border-[#6E2023]"
                     />
                   </div>
                 </div>
@@ -313,21 +313,21 @@ export function CheckoutView() {
                     placeholder="e.g. Please add a handwritten card wishing Happy Anniversary..."
                     value={formData.giftNote}
                     onChange={handleInputChange}
-                    className="w-full text-xs p-3 bg-[#F7F4EE] border border-[#E7E0D6] focus:outline-none focus:border-[#5A252E]"
+                    className="w-full text-xs p-3 bg-[#FFF5E6] border border-[#EADBC8] focus:outline-none focus:border-[#6E2023]"
                   />
                 </div>
               </div>
             </div>
 
             {/* 3. Payment Mode Selection */}
-            <div className="bg-white p-6 sm:p-8 border border-[#E7E0D6] space-y-4">
-              <h2 className="font-heading text-xl text-[#252522] border-b border-[#E7E0D6] pb-3">
+            <div className="bg-white p-6 sm:p-8 border border-[#EADBC8] space-y-4">
+              <h2 className="font-heading text-xl text-[#252522] border-b border-[#EADBC8] pb-3">
                 3. Choose Payment Method
               </h2>
 
               <div className="space-y-3">
                 {/* Mode A: WhatsApp + UPI Verification */}
-                <label className="block p-4 border border-[#5A252E] bg-[#F7F4EE] cursor-pointer">
+                <label className="block p-4 border border-[#6E2023] bg-[#FFF5E6] cursor-pointer">
                   <div className="flex items-start gap-3">
                     <input
                       type="radio"
@@ -335,7 +335,7 @@ export function CheckoutView() {
                       value="whatsapp"
                       checked={paymentMode === "whatsapp"}
                       onChange={() => setPaymentMode("whatsapp")}
-                      className="accent-[#5A252E] mt-1"
+                      className="accent-[#6E2023] mt-1"
                     />
                     <div>
                       <div className="flex items-center gap-2">
@@ -354,7 +354,7 @@ export function CheckoutView() {
                 </label>
 
                 {/* Mode B: Online Gateway Adapter */}
-                <label className="block p-4 border border-[#E7E0D6] bg-white opacity-75 cursor-not-allowed">
+                <label className="block p-4 border border-[#EADBC8] bg-white opacity-75 cursor-not-allowed">
                   <div className="flex items-start gap-3">
                     <input
                       type="radio"
@@ -395,12 +395,12 @@ export function CheckoutView() {
         </div>
 
         {/* Right: Order Summary Sidebar */}
-        <div className="lg:col-span-5 bg-white border border-[#E7E0D6] p-6 sm:p-8 space-y-6 sticky top-28">
-          <h2 className="font-heading text-2xl text-[#252522] border-b border-[#E7E0D6] pb-4">
+        <div className="lg:col-span-5 bg-white border border-[#EADBC8] p-6 sm:p-8 space-y-6 sticky top-28">
+          <h2 className="font-heading text-2xl text-[#252522] border-b border-[#EADBC8] pb-4">
             Items in Your Order ({items.length})
           </h2>
 
-          <div className="divide-y divide-[#E7E0D6] max-h-80 overflow-y-auto pr-2 space-y-3">
+          <div className="divide-y divide-[#EADBC8] max-h-80 overflow-y-auto pr-2 space-y-3">
             {items.map((item) => (
               <div key={item.id} className="pt-3 flex justify-between gap-3 text-xs">
                 <div>
@@ -423,7 +423,7 @@ export function CheckoutView() {
             ))}
           </div>
 
-          <div className="border-t border-[#E7E0D6] pt-4 space-y-2 text-xs">
+          <div className="border-t border-[#EADBC8] pt-4 space-y-2 text-xs">
             <div className="flex justify-between text-[#8B8176]">
               <span>Subtotal</span>
               <span className="text-sm font-semibold text-[#252522]">
@@ -436,17 +436,17 @@ export function CheckoutView() {
             </div>
             <div className="flex justify-between text-[#8B8176]">
               <span>Estimated Shipping</span>
-              <span className="text-[#5A252E] font-medium">
+              <span className="text-[#6E2023] font-medium">
                 Calculated by PIN Code
               </span>
             </div>
-            <div className="border-t border-[#E7E0D6] pt-3 flex justify-between text-base font-bold text-[#5A252E]">
+            <div className="border-t border-[#EADBC8] pt-3 flex justify-between text-base font-bold text-[#6E2023]">
               <span>Estimated Total</span>
               <span>{formatPrice(subtotalPaise)}</span>
             </div>
           </div>
 
-          <div className="bg-[#F7F4EE] p-4 border border-[#E7E0D6] space-y-2 text-[11px] text-[#8B8176]">
+          <div className="bg-[#FFF5E6] p-4 border border-[#EADBC8] space-y-2 text-[11px] text-[#8B8176]">
             <p className="font-medium text-[#252522]">Order Flow Guarantee:</p>
             <p>1. Send your cart order via WhatsApp with a single tap.</p>
             <p>2. We verify stock availability and confirm final delivery amount.</p>

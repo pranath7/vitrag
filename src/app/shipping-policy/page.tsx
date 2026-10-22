@@ -14,7 +14,7 @@ function Breadcrumb() {
         <li>
           <Link
             href="/"
-            className="transition-colors hover:text-[#5A252E]"
+            className="transition-colors hover:text-[#6E2023]"
           >
             Home
           </Link>
@@ -51,7 +51,7 @@ function PolicySection({
 
 export default function ShippingPolicyPage() {
   return (
-    <main className="bg-[#F7F4EE] min-h-screen">
+    <main className="bg-[#FFF5E6] min-h-screen">
       <div className="mx-auto max-w-3xl px-4 py-12 sm:py-20">
         <Breadcrumb />
 
@@ -84,7 +84,7 @@ export default function ShippingPolicyPage() {
             </p>
           </PolicySection>
 
-          <hr className="border-[#E7E0D6]" />
+          <hr className="border-[#EADBC8]" />
 
           {/* Processing Time */}
           <PolicySection title="Order Processing Time">
@@ -100,14 +100,14 @@ export default function ShippingPolicyPage() {
             </p>
           </PolicySection>
 
-          <hr className="border-[#E7E0D6]" />
+          <hr className="border-[#EADBC8]" />
 
           {/* Delivery Timeframes */}
           <PolicySection title="Delivery Timeframes">
             <div className="overflow-x-auto">
               <table className="w-full border-collapse text-left text-sm">
                 <thead>
-                  <tr className="border-b border-[#E7E0D6]">
+                  <tr className="border-b border-[#EADBC8]">
                     <th className="py-3 pr-4 font-semibold text-[#252522]">
                       Location
                     </th>
@@ -117,15 +117,15 @@ export default function ShippingPolicyPage() {
                   </tr>
                 </thead>
                 <tbody className="text-[#252522]/80">
-                  <tr className="border-b border-[#E7E0D6]">
+                  <tr className="border-b border-[#EADBC8]">
                     <td className="py-3 pr-4">Chennai (Local)</td>
                     <td className="py-3">2–4 business days</td>
                   </tr>
-                  <tr className="border-b border-[#E7E0D6]">
+                  <tr className="border-b border-[#EADBC8]">
                     <td className="py-3 pr-4">Tamil Nadu</td>
                     <td className="py-3">3–5 business days</td>
                   </tr>
-                  <tr className="border-b border-[#E7E0D6]">
+                  <tr className="border-b border-[#EADBC8]">
                     <td className="py-3 pr-4">Rest of India*</td>
                     <td className="py-3">5–10 business days</td>
                   </tr>
@@ -143,7 +143,7 @@ export default function ShippingPolicyPage() {
             </p>
           </PolicySection>
 
-          <hr className="border-[#E7E0D6]" />
+          <hr className="border-[#EADBC8]" />
 
           {/* Shipping Charges */}
           <PolicySection title="Shipping Charges">
@@ -159,7 +159,7 @@ export default function ShippingPolicyPage() {
             </p>
           </PolicySection>
 
-          <hr className="border-[#E7E0D6]" />
+          <hr className="border-[#EADBC8]" />
 
           {/* Order Tracking */}
           <PolicySection title="Order Tracking">
@@ -174,7 +174,7 @@ export default function ShippingPolicyPage() {
             </p>
           </PolicySection>
 
-          <hr className="border-[#E7E0D6]" />
+          <hr className="border-[#EADBC8]" />
 
           {/* Packaging & Safety */}
           <PolicySection title="Packaging & Safety">
@@ -203,7 +203,7 @@ export default function ShippingPolicyPage() {
             </p>
           </PolicySection>
 
-          <hr className="border-[#E7E0D6]" />
+          <hr className="border-[#EADBC8]" />
 
           {/* Damaged in Transit */}
           <PolicySection title="Damaged in Transit">
@@ -236,7 +236,7 @@ export default function ShippingPolicyPage() {
         </div>
 
         {/* Contact & Back */}
-        <div className="mt-16 rounded-sm border border-[#E7E0D6] bg-white p-6 sm:p-8">
+        <div className="mt-16 rounded-sm border border-[#EADBC8] bg-white p-6 sm:p-8">
           <h2 className="font-heading text-xl text-[#252522] sm:text-2xl">
             Have Questions?
           </h2>
@@ -245,7 +245,7 @@ export default function ShippingPolicyPage() {
             reach out to us at{" "}
             <a
               href="mailto:hello@vitrag.in"
-              className="text-[#5A252E] underline underline-offset-2 hover:text-[#5A252E]/80"
+              className="text-[#6E2023] underline underline-offset-2 hover:text-[#6E2023]/80"
             >
               hello@vitrag.in
             </a>{" "}
@@ -256,7 +256,7 @@ export default function ShippingPolicyPage() {
         <div className="mt-8">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-sm text-[#5A252E] transition-colors hover:text-[#5A252E]/80"
+            className="inline-flex items-center gap-2 text-sm text-[#6E2023] transition-colors hover:text-[#6E2023]/80"
           >
             ← Back to Home
           </Link>

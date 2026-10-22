@@ -10,18 +10,18 @@ export const metadata: Metadata = {
 function Breadcrumb() {
   return (
     <nav aria-label="Breadcrumb" className="mb-8">
-      <ol className="flex items-center gap-2 text-sm text-[#8B8176]">
+      <ol className="flex items-center gap-2 text-sm text-[#84766A]">
         <li>
           <Link
             href="/"
-            className="transition-colors hover:text-[#5A252E]"
+            className="transition-colors hover:text-[#6E2023]"
           >
             Home
           </Link>
         </li>
         <li aria-hidden="true" className="select-none">/</li>
         <li>
-          <span className="text-[#252522]" aria-current="page">
+          <span className="text-[#6E2023] font-medium" aria-current="page">
             About
           </span>
         </li>
@@ -32,18 +32,18 @@ function Breadcrumb() {
 
 export default function AboutPage() {
   return (
-    <main className="bg-[#F7F4EE] min-h-screen">
-      {/* Hero Section */}
-      <section className="relative bg-[#5A252E] py-20 sm:py-28">
+    <main className="bg-[#FFF5E6] min-h-screen">
+      {/* Hero Section (Luxury Burgundy Background with Champagne Detailing) */}
+      <section className="relative bg-[#6E2023] py-20 sm:py-28 text-white border-b border-[#55181A]">
         <div className="mx-auto max-w-3xl px-4 text-center">
-          <p className="mb-4 text-sm uppercase tracking-[0.2em] text-[#E9DFD1]/80">
+          <p className="mb-4 text-sm uppercase tracking-[0.2em] text-[#CBAE9B] font-semibold">
             Our Story
           </p>
-          <h1 className="font-heading text-4xl leading-tight text-white sm:text-5xl md:text-6xl">
+          <h1 className="font-heading text-4xl leading-tight text-white sm:text-5xl md:text-6xl font-medium">
             Made for Moments Worth
             <br className="hidden sm:block" /> Gathering Around
           </h1>
-          <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-[#E9DFD1]/90">
+          <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-[#CBAE9B] font-light">
             Beautifully Chosen. Thoughtfully Gifted.
           </p>
         </div>
@@ -57,10 +57,10 @@ export default function AboutPage() {
           <div className="space-y-16">
             {/* The Beginning */}
             <div>
-              <h2 className="font-heading text-3xl text-[#252522] sm:text-4xl">
+              <h2 className="font-heading text-3xl text-[#6E2023] sm:text-4xl font-medium">
                 Where It All Began
               </h2>
-              <div className="mt-6 space-y-5 text-base leading-relaxed text-[#252522]/80 sm:text-lg">
+              <div className="mt-6 space-y-5 text-base leading-relaxed text-[#252522]/85 font-light sm:text-lg">
                 <p>
                   VITRAG was born from a simple observation — the most cherished
                   moments in our lives revolve around a table. A family dinner,
@@ -85,14 +85,14 @@ export default function AboutPage() {
             </div>
 
             {/* Divider */}
-            <hr className="border-[#E7E0D6]" />
+            <hr className="border-[#EADBC8]" />
 
             {/* Our Mission */}
             <div>
-              <h2 className="font-heading text-3xl text-[#252522] sm:text-4xl">
+              <h2 className="font-heading text-3xl text-[#6E2023] sm:text-4xl font-medium">
                 Our Mission
               </h2>
-              <div className="mt-6 space-y-5 text-base leading-relaxed text-[#252522]/80 sm:text-lg">
+              <div className="mt-6 space-y-5 text-base leading-relaxed text-[#252522]/85 font-light sm:text-lg">
                 <p>
                   We exist to bring beauty to everyday dining and meaning to
                   every gift. At VITRAG, we thoughtfully curate crockery,
@@ -109,14 +109,14 @@ export default function AboutPage() {
             </div>
 
             {/* Divider */}
-            <hr className="border-[#E7E0D6]" />
+            <hr className="border-[#EADBC8]" />
 
             {/* Values Section */}
             <div>
-              <h2 className="font-heading text-3xl text-[#252522] sm:text-4xl">
+              <h2 className="font-heading text-3xl text-[#6E2023] sm:text-4xl font-medium">
                 What We Stand For
               </h2>
-              <p className="mt-4 text-base leading-relaxed text-[#252522]/80 sm:text-lg">
+              <p className="mt-4 text-base leading-relaxed text-[#84766A] sm:text-lg font-light">
                 Every piece in our collection reflects four guiding principles.
               </p>
 
@@ -141,27 +141,27 @@ export default function AboutPage() {
             </div>
 
             {/* Divider */}
-            <hr className="border-[#E7E0D6]" />
+            <hr className="border-[#EADBC8]" />
 
             {/* CTA Section */}
             <div className="text-center">
-              <h2 className="font-heading text-3xl text-[#252522] sm:text-4xl">
+              <h2 className="font-heading text-3xl text-[#6E2023] sm:text-4xl font-medium">
                 Explore Our Collections
               </h2>
-              <p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-[#252522]/80 sm:text-lg">
+              <p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-[#84766A] sm:text-lg font-light">
                 Discover tableware that elevates your dining and gifts that
                 speak from the heart. Every piece, beautifully chosen.
               </p>
               <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
                 <Link
-                  href="/collections"
-                  className="inline-block rounded-sm bg-[#5A252E] px-8 py-3.5 text-sm font-medium uppercase tracking-wider text-white transition-colors hover:bg-[#5A252E]/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5A252E] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7F4EE]"
+                  href="/shop"
+                  className="inline-block rounded-lg bg-[#6E2023] px-8 py-3.5 text-xs font-semibold uppercase tracking-wider text-white transition-colors hover:bg-[#55181A] shadow-md"
                 >
-                  Shop Collections
+                  Shop Collection
                 </Link>
                 <Link
                   href="/"
-                  className="inline-block rounded-sm border border-[#5A252E] px-8 py-3.5 text-sm font-medium uppercase tracking-wider text-[#5A252E] transition-colors hover:bg-[#5A252E] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5A252E] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7F4EE]"
+                  className="inline-block rounded-lg border border-[#6E2023] px-8 py-3.5 text-xs font-semibold uppercase tracking-wider text-[#6E2023] transition-colors hover:bg-[#6E2023] hover:text-white"
                 >
                   Back to Home
                 </Link>
@@ -182,11 +182,11 @@ function ValueCard({
   description: string;
 }) {
   return (
-    <article className="rounded-sm border border-[#E7E0D6] bg-white p-6 sm:p-8">
-      <h3 className="font-heading text-xl text-[#5A252E] sm:text-2xl">
+    <article className="rounded-2xl border border-[#EADBC8] bg-white p-6 sm:p-8 shadow-xs">
+      <h3 className="font-heading text-xl text-[#6E2023] sm:text-2xl font-medium">
         {title}
       </h3>
-      <p className="mt-3 text-sm leading-relaxed text-[#252522]/70 sm:text-base">
+      <p className="mt-3 text-sm leading-relaxed text-[#84766A] sm:text-base font-light">
         {description}
       </p>
     </article>

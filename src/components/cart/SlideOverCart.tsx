@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "@/context/CartContext";
 import { formatPrice, generateWhatsAppOrderUrl } from "@/lib/utils";
@@ -35,18 +34,18 @@ export function SlideOverCart() {
       />
 
       <div className="fixed inset-y-0 right-0 flex max-w-full pl-6 sm:pl-10">
-        <div className="w-screen max-w-md bg-[#F7F4EE] border-l border-[#E7E0D6] shadow-2xl flex flex-col">
+        <div className="w-screen max-w-md bg-[#FFF5E6] border-l border-[#EADBC8] shadow-2xl flex flex-col">
           {/* Header */}
-          <div className="p-6 border-b border-[#E7E0D6] flex items-center justify-between bg-white">
+          <div className="p-6 border-b border-[#EADBC8] flex items-center justify-between bg-white">
             <div className="flex items-center gap-3">
-              <ShoppingBag className="w-5 h-5 text-[#5A252E]" />
-              <h2 id="slide-over-title" className="font-heading text-2xl text-[#252522]">
+              <ShoppingBag className="w-5 h-5 text-[#6E2023]" />
+              <h2 id="slide-over-title" className="font-heading text-2xl text-[#6E2023] font-medium">
                 Your Shopping Bag ({items.reduce((a, b) => a + b.quantity, 0)})
               </h2>
             </div>
             <button
               onClick={closeCart}
-              className="p-2 text-[#8B8176] hover:text-[#252522] transition-colors focus:outline-none"
+              className="p-2 text-[#84766A] hover:text-[#6E2023] transition-colors focus:outline-none"
               aria-label="Close cart"
             >
               <X className="w-5 h-5" />
@@ -54,16 +53,16 @@ export function SlideOverCart() {
           </div>
 
           {/* Cart Items List */}
-          <div className="flex-1 overflow-y-auto p-6 space-y-6">
+          <div className="flex-1 overflow-y-auto p-6 space-y-4">
             {items.length === 0 ? (
               <div className="h-full flex flex-col items-center justify-center text-center py-12">
-                <div className="w-16 h-16 rounded-full bg-[#E9DFD1]/50 flex items-center justify-center mb-4">
-                  <ShoppingBag className="w-8 h-8 text-[#8B8176]" />
+                <div className="w-16 h-16 rounded-full bg-[#CBAE9B]/30 flex items-center justify-center mb-4">
+                  <ShoppingBag className="w-8 h-8 text-[#6E2023]" />
                 </div>
-                <h3 className="font-heading text-2xl text-[#252522] mb-2">
+                <h3 className="font-heading text-2xl text-[#6E2023] mb-2 font-medium">
                   Your bag is empty
                 </h3>
-                <p className="text-sm text-[#8B8176] max-w-xs mb-8">
+                <p className="text-sm text-[#84766A] max-w-xs mb-8 font-light">
                   Discover our thoughtfully curated collection of dinnerware, serving essentials, and festive gifts.
                 </p>
                 <div className="space-y-3 w-full">
@@ -89,9 +88,9 @@ export function SlideOverCart() {
               items.map((item) => (
                 <div
                   key={item.id}
-                  className="flex gap-4 p-4 bg-white border border-[#E7E0D6] rounded-xs shadow-2xs"
+                  className="flex gap-4 p-4 bg-white border border-[#EADBC8] rounded-xl shadow-2xs"
                 >
-                  <div className="relative w-20 h-20 bg-[#F7F4EE] shrink-0 overflow-hidden rounded-xs border border-[#E7E0D6]">
+                  <div className="relative w-20 h-20 bg-[#FFF5E6] shrink-0 overflow-hidden rounded-lg border border-[#EADBC8]">
                     <ProductArtwork category={item.name} name={item.name} />
                   </div>
 
@@ -101,13 +100,13 @@ export function SlideOverCart() {
                         <Link
                           href={`/product/${item.slug}`}
                           onClick={closeCart}
-                          className="font-heading text-base font-medium text-[#252522] hover:text-[#5A252E] line-clamp-1 transition-colors"
+                          className="font-heading text-base font-medium text-[#6E2023] hover:text-[#55181A] line-clamp-1 transition-colors"
                         >
                           {item.name}
                         </Link>
                         <button
                           onClick={() => removeItem(item.id)}
-                          className="text-[#8B8176] hover:text-[#5A252E] p-1 transition-colors"
+                          className="text-[#84766A] hover:text-[#6E2023] p-1 transition-colors"
                           aria-label="Remove item"
                         >
                           <Trash2 className="w-3.5 h-3.5" />
@@ -115,39 +114,39 @@ export function SlideOverCart() {
                       </div>
 
                       {item.variantName && (
-                        <p className="text-xs text-[#8B8176] mt-0.5">
+                        <p className="text-xs text-[#84766A] mt-0.5">
                           Variant: {item.variantName}
                         </p>
                       )}
 
-                      <p className="text-sm font-medium text-[#5A252E] mt-1">
+                      <p className="text-sm font-semibold text-[#6E2023] mt-1">
                         {formatPrice(item.price)}
                       </p>
                     </div>
 
-                    <div className="flex items-center justify-between mt-3 pt-2 border-t border-[#F7F4EE]">
-                      <div className="flex items-center border border-[#E7E0D6] rounded-xs bg-[#F7F4EE]">
+                    <div className="flex items-center justify-between mt-3 pt-2 border-t border-[#FFF5E6]">
+                      <div className="flex items-center border border-[#EADBC8] rounded-lg bg-[#FFF5E6] overflow-hidden">
                         <button
                           onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                          className="p-1 hover:bg-[#E9DFD1] text-[#252522] transition-colors"
+                          className="p-1 hover:bg-[#CBAE9B]/30 text-[#6E2023] transition-colors"
                           aria-label="Decrease quantity"
                         >
                           <Minus className="w-3 h-3" />
                         </button>
-                        <span className="w-8 text-center text-xs font-medium text-[#252522]">
+                        <span className="w-8 text-center text-xs font-semibold text-[#252522]">
                           {item.quantity}
                         </span>
                         <button
                           onClick={() => updateQuantity(item.id, item.quantity + 1)}
                           disabled={item.quantity >= item.maxStock}
-                          className="p-1 hover:bg-[#E9DFD1] text-[#252522] transition-colors disabled:opacity-30"
+                          className="p-1 hover:bg-[#CBAE9B]/30 text-[#6E2023] transition-colors disabled:opacity-30"
                           aria-label="Increase quantity"
                         >
                           <Plus className="w-3 h-3" />
                         </button>
                       </div>
 
-                      <span className="text-xs font-semibold text-[#252522]">
+                      <span className="text-xs font-semibold text-[#6E2023]">
                         {formatPrice(item.price * item.quantity)}
                       </span>
                     </div>
@@ -159,15 +158,15 @@ export function SlideOverCart() {
 
           {/* Footer & Actions */}
           {items.length > 0 && (
-            <div className="p-6 border-t border-[#E7E0D6] bg-white space-y-4">
+            <div className="p-6 border-t border-[#EADBC8] bg-white space-y-4">
               <div className="space-y-1.5">
-                <div className="flex justify-between text-sm text-[#8B8176]">
+                <div className="flex justify-between text-sm text-[#84766A]">
                   <span>Subtotal</span>
-                  <span className="text-[#252522] font-semibold text-base">
+                  <span className="text-[#6E2023] font-semibold text-base">
                     {formatPrice(subtotalPaise)}
                   </span>
                 </div>
-                <p className="text-xs text-[#8B8176]">
+                <p className="text-xs text-[#84766A]">
                   Taxes and local shipping calculated at confirmation.
                 </p>
               </div>
@@ -176,17 +175,17 @@ export function SlideOverCart() {
               <div>
                 <label
                   htmlFor="cart-note"
-                  className="block text-xs uppercase tracking-wider text-[#8B8176] mb-1"
+                  className="block text-xs uppercase tracking-wider text-[#6E2023] font-semibold mb-1"
                 >
                   Gift Note or Delivery Request (Optional)
                 </label>
                 <input
                   id="cart-note"
                   type="text"
-                  placeholder="e.g. Please wrap for a wedding gift"
+                  placeholder="e.g. Please wrap with luxury burgundy box & note"
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
-                  className="w-full text-xs px-3 py-2 border border-[#E7E0D6] bg-[#F7F4EE] rounded-xs focus:outline-none focus:border-[#5A252E]"
+                  className="w-full text-xs px-3 py-2 border border-[#EADBC8] bg-[#FFF5E6] rounded-lg focus:outline-none focus:border-[#6E2023]"
                 />
               </div>
 
@@ -196,17 +195,17 @@ export function SlideOverCart() {
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#25D366] hover:bg-[#20ba59] text-white text-xs uppercase tracking-widest font-semibold transition-all shadow-sm active:scale-[0.99]"
+                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#25D366] hover:bg-[#20ba59] text-white text-xs uppercase tracking-widest font-semibold transition-all rounded-lg shadow-sm active:scale-[0.99]"
                 >
                   <MessageSquare className="w-4 h-4 fill-white" />
-                  Order via WhatsApp
+                  Order via WhatsApp (6369142027)
                 </a>
 
                 <Button
                   href="/checkout"
                   onClick={closeCart}
                   variant="primary"
-                  className="w-full py-3.5"
+                  className="w-full py-3.5 shadow-md"
                   rightIcon={<ArrowRight className="w-4 h-4" />}
                 >
                   Proceed to Checkout
@@ -215,7 +214,7 @@ export function SlideOverCart() {
                 <Link
                   href="/cart"
                   onClick={closeCart}
-                  className="block text-center text-xs tracking-wider uppercase text-[#8B8176] hover:text-[#5A252E] py-1 transition-colors"
+                  className="block text-center text-xs tracking-wider uppercase text-[#84766A] hover:text-[#6E2023] py-1 transition-colors"
                 >
                   View Full Cart Details
                 </Link>

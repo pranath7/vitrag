@@ -14,7 +14,7 @@ function Breadcrumb() {
         <li>
           <Link
             href="/"
-            className="transition-colors hover:text-[#5A252E]"
+            className="transition-colors hover:text-[#6E2023]"
           >
             Home
           </Link>
@@ -51,7 +51,7 @@ function PolicySection({
 
 export default function TermsPage() {
   return (
-    <main className="bg-[#F7F4EE] min-h-screen">
+    <main className="bg-[#FFF5E6] min-h-screen">
       <div className="mx-auto max-w-3xl px-4 py-12 sm:py-20">
         <Breadcrumb />
 
@@ -88,7 +88,7 @@ export default function TermsPage() {
             </p>
           </PolicySection>
 
-          <hr className="border-[#E7E0D6]" />
+          <hr className="border-[#EADBC8]" />
 
           {/* Products */}
           <PolicySection title="2. Products">
@@ -115,7 +115,7 @@ export default function TermsPage() {
             </ul>
           </PolicySection>
 
-          <hr className="border-[#E7E0D6]" />
+          <hr className="border-[#EADBC8]" />
 
           {/* Pricing */}
           <PolicySection title="3. Pricing">
@@ -145,7 +145,7 @@ export default function TermsPage() {
             </ul>
           </PolicySection>
 
-          <hr className="border-[#E7E0D6]" />
+          <hr className="border-[#EADBC8]" />
 
           {/* Orders */}
           <PolicySection title="4. Orders">
@@ -176,7 +176,7 @@ export default function TermsPage() {
             </ul>
           </PolicySection>
 
-          <hr className="border-[#E7E0D6]" />
+          <hr className="border-[#EADBC8]" />
 
           {/* Payment */}
           <PolicySection title="5. Payment">
@@ -204,7 +204,7 @@ export default function TermsPage() {
             </p>
           </PolicySection>
 
-          <hr className="border-[#E7E0D6]" />
+          <hr className="border-[#EADBC8]" />
 
           {/* Shipping */}
           <PolicySection title="6. Shipping & Delivery">
@@ -212,7 +212,7 @@ export default function TermsPage() {
               Shipping and delivery are governed by our{" "}
               <Link
                 href="/shipping-policy"
-                className="text-[#5A252E] underline underline-offset-2 hover:text-[#5A252E]/80"
+                className="text-[#6E2023] underline underline-offset-2 hover:text-[#6E2023]/80"
               >
                 Shipping Policy
               </Link>
@@ -233,7 +233,7 @@ export default function TermsPage() {
             </ul>
           </PolicySection>
 
-          <hr className="border-[#E7E0D6]" />
+          <hr className="border-[#EADBC8]" />
 
           {/* Returns */}
           <PolicySection title="7. Returns & Refunds">
@@ -241,7 +241,7 @@ export default function TermsPage() {
               Returns and refunds are governed by our{" "}
               <Link
                 href="/returns-refunds"
-                className="text-[#5A252E] underline underline-offset-2 hover:text-[#5A252E]/80"
+                className="text-[#6E2023] underline underline-offset-2 hover:text-[#6E2023]/80"
               >
                 Returns &amp; Refunds Policy
               </Link>
@@ -250,7 +250,7 @@ export default function TermsPage() {
             </p>
           </PolicySection>
 
-          <hr className="border-[#E7E0D6]" />
+          <hr className="border-[#EADBC8]" />
 
           {/* WhatsApp Ordering */}
           <PolicySection title="8. WhatsApp Ordering">
@@ -274,7 +274,7 @@ export default function TermsPage() {
                   href="https://www.whatsapp.com/legal/privacy-policy"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#5A252E] underline underline-offset-2 hover:text-[#5A252E]/80"
+                  className="text-[#6E2023] underline underline-offset-2 hover:text-[#6E2023]/80"
                 >
                   WhatsApp&apos;s own terms and privacy policy
                 </a>
@@ -286,7 +286,7 @@ export default function TermsPage() {
             </ul>
           </PolicySection>
 
-          <hr className="border-[#E7E0D6]" />
+          <hr className="border-[#EADBC8]" />
 
           {/* Intellectual Property */}
           <PolicySection title="9. Intellectual Property">
@@ -313,7 +313,7 @@ export default function TermsPage() {
             </ul>
           </PolicySection>
 
-          <hr className="border-[#E7E0D6]" />
+          <hr className="border-[#EADBC8]" />
 
           {/* User Conduct */}
           <PolicySection title="10. User Conduct">
@@ -344,7 +344,7 @@ export default function TermsPage() {
             </ul>
           </PolicySection>
 
-          <hr className="border-[#E7E0D6]" />
+          <hr className="border-[#EADBC8]" />
 
           {/* Limitation of Liability */}
           <PolicySection title="11. Limitation of Liability">
@@ -374,7 +374,7 @@ export default function TermsPage() {
             </ul>
           </PolicySection>
 
-          <hr className="border-[#E7E0D6]" />
+          <hr className="border-[#EADBC8]" />
 
           {/* Indemnification */}
           <PolicySection title="12. Indemnification">
@@ -387,7 +387,7 @@ export default function TermsPage() {
             </p>
           </PolicySection>
 
-          <hr className="border-[#E7E0D6]" />
+          <hr className="border-[#EADBC8]" />
 
           {/* Governing Law */}
           <PolicySection title="13. Governing Law & Jurisdiction">
@@ -412,7 +412,7 @@ export default function TermsPage() {
             </p>
           </PolicySection>
 
-          <hr className="border-[#E7E0D6]" />
+          <hr className="border-[#EADBC8]" />
 
           {/* Severability */}
           <PolicySection title="14. Severability">
@@ -425,7 +425,7 @@ export default function TermsPage() {
             </p>
           </PolicySection>
 
-          <hr className="border-[#E7E0D6]" />
+          <hr className="border-[#EADBC8]" />
 
           {/* Contact */}
           <PolicySection title="15. Contact Us">
@@ -433,14 +433,14 @@ export default function TermsPage() {
               If you have any questions about these Terms and Conditions, please
               contact us:
             </p>
-            <div className="rounded-sm border border-[#E7E0D6] bg-white p-5">
+            <div className="rounded-sm border border-[#EADBC8] bg-white p-5">
               <p className="font-medium text-[#252522]">VITRAG</p>
               <ul className="mt-2 space-y-1 text-sm text-[#252522]/80">
                 <li>
                   Email:{" "}
                   <a
                     href="mailto:hello@vitrag.in"
-                    className="text-[#5A252E] underline underline-offset-2 hover:text-[#5A252E]/80"
+                    className="text-[#6E2023] underline underline-offset-2 hover:text-[#6E2023]/80"
                   >
                     hello@vitrag.in
                   </a>
@@ -455,7 +455,7 @@ export default function TermsPage() {
         <div className="mt-12">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-sm text-[#5A252E] transition-colors hover:text-[#5A252E]/80"
+            className="inline-flex items-center gap-2 text-sm text-[#6E2023] transition-colors hover:text-[#6E2023]/80"
           >
             ← Back to Home
           </Link>

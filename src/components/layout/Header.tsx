@@ -54,7 +54,7 @@ export function Header() {
     <header className="w-full z-40 sticky top-0 transition-all duration-300">
       {/* 1. Announcement Bar */}
       {siteConfig.announcement.enabled && (
-        <div className="bg-[#6E2023] text-[#FFF5E6] py-2 px-4 text-center text-[11px] sm:text-xs font-medium tracking-widest uppercase border-b border-[#55181A]">
+        <div className="bg-[#6E2023]/95 backdrop-blur-md text-[#FFF5E6] py-2 px-4 text-center text-[11px] sm:text-xs font-medium tracking-widest uppercase border-b border-[#55181A]/50">
           <div className="flex items-center justify-center gap-4">
             <span>{siteConfig.announcement.text}</span>
             <span className="hidden md:inline-block opacity-40">|</span>
@@ -69,12 +69,12 @@ export function Header() {
         </div>
       )}
 
-      {/* 2. Main Navigation Bar */}
+      {/* 2. Main Navigation Bar with Refined Glassmorphism */}
       <nav
-        className={`w-full transition-all duration-300 border-b ${
+        className={`w-full transition-all duration-300 border-b backdrop-blur-md backdrop-saturate-150 ${
           scrolled
-            ? "bg-[#FFF5E6]/95 backdrop-blur-md border-[#EADBC8] shadow-xs py-3"
-            : "bg-[#FFF5E6] border-[#EADBC8] py-4 sm:py-5"
+            ? "bg-[#FFF5E6]/90 border-[#EADBC8]/90 shadow-[0_4px_20px_-4px_rgba(110,32,35,0.07)] py-3 sm:py-3.5"
+            : "bg-[#FFF5E6]/80 border-[#EADBC8]/70 py-4 sm:py-5"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -165,37 +165,37 @@ export function Header() {
                 </button>
 
                 {giftingDropdownOpen && (
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 w-80 bg-white border border-[#EADBC8] shadow-xl p-4 mt-2 grid gap-2 z-50 rounded-xl animate-fade-in">
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 w-80 bg-[#FFF5E6]/95 backdrop-blur-xl border border-[#EADBC8]/90 shadow-[0_16px_36px_-6px_rgba(110,32,35,0.12)] p-4 mt-2 grid gap-2 z-50 rounded-xl animate-fade-in">
                     <p className="text-[10px] tracking-widest uppercase text-[#6E2023] font-semibold border-b border-[#EADBC8] pb-2 mb-1">
                       Curated Gifting Collections
                     </p>
                     <Link
                       href="/collections/gift-sets"
-                      className="block px-3 py-2 text-xs text-[#252522] hover:bg-[#FFF5E6] hover:text-[#6E2023] rounded-md transition-colors"
+                      className="block px-3 py-2 text-xs text-[#252522] hover:bg-white/80 hover:text-[#6E2023] rounded-md transition-colors"
                     >
                       Curated Gift Sets
                     </Link>
                     <Link
                       href="/collections/dry-fruit-boxes"
-                      className="block px-3 py-2 text-xs text-[#252522] hover:bg-[#FFF5E6] hover:text-[#6E2023] rounded-md transition-colors"
+                      className="block px-3 py-2 text-xs text-[#252522] hover:bg-white/80 hover:text-[#6E2023] rounded-md transition-colors"
                     >
                       Dry-Fruit Boxes
                     </Link>
                     <Link
                       href="/collections/wedding-gifts"
-                      className="block px-3 py-2 text-xs text-[#252522] hover:bg-[#FFF5E6] hover:text-[#6E2023] rounded-md transition-colors"
+                      className="block px-3 py-2 text-xs text-[#252522] hover:bg-white/80 hover:text-[#6E2023] rounded-md transition-colors"
                     >
                       Wedding Gifts & Trousseau
                     </Link>
                     <Link
                       href="/collections/corporate-gifts"
-                      className="block px-3 py-2 text-xs text-[#252522] hover:bg-[#FFF5E6] hover:text-[#6E2023] rounded-md transition-colors"
+                      className="block px-3 py-2 text-xs text-[#252522] hover:bg-white/80 hover:text-[#6E2023] rounded-md transition-colors"
                     >
                       Corporate Hampers
                     </Link>
                     <Link
                       href="/collections/cracker-sets"
-                      className="block px-3 py-2 text-xs text-[#252522] hover:bg-[#FFF5E6] hover:text-[#6E2023] rounded-md transition-colors"
+                      className="block px-3 py-2 text-xs text-[#252522] hover:bg-white/80 hover:text-[#6E2023] rounded-md transition-colors"
                     >
                       Cracker & Snack Sets
                     </Link>
@@ -269,7 +269,7 @@ export function Header() {
 
           {/* Search Dropdown / Bar */}
           {searchOpen && (
-            <div className="mt-3 pt-3 border-t border-[#EADBC8] animate-fade-in">
+            <div className="mt-3 pt-3 border-t border-[#EADBC8]/60 animate-fade-in">
               <form onSubmit={handleSearchSubmit} className="relative max-w-xl mx-auto">
                 <input
                   type="text"
@@ -277,7 +277,7 @@ export function Header() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   autoFocus
-                  className="w-full text-xs sm:text-sm pl-9 pr-24 py-2.5 bg-white border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
+                  className="w-full text-xs sm:text-sm pl-9 pr-24 py-2.5 bg-white/90 backdrop-blur-md border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023] shadow-inner"
                 />
                 <Search className="w-4 h-4 text-[#84766A] absolute left-3 top-1/2 -translate-y-1/2" />
                 <button

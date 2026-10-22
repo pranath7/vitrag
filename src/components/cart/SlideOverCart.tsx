@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useCart } from "@/context/CartContext";
 import { formatPrice, generateWhatsAppOrderUrl } from "@/lib/utils";
@@ -45,7 +46,15 @@ export function SlideOverCart() {
           {/* Header */}
           <div className="p-6 border-b border-[#EADBC8] flex items-center justify-between bg-white">
             <div className="flex items-center gap-3">
-              <ShoppingBag className="w-5 h-5 text-[#6E2023]" />
+              <div className="relative w-7 h-7 rounded-md overflow-hidden border border-[#EADBC8] shrink-0">
+                <Image
+                  src="/logo.jpg"
+                  alt="VITRAG"
+                  fill
+                  className="object-cover"
+                  sizes="28px"
+                />
+              </div>
               <h2 id="slide-over-title" className="font-heading text-2xl text-[#6E2023] font-medium">
                 Your Shopping Bag ({items.reduce((a, b) => a + b.quantity, 0)})
               </h2>

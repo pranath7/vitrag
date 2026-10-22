@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { siteConfig } from "@/lib/config";
 import { ArrowRight, CheckCircle2, Phone, Mail, MapPin } from "lucide-react";
 
@@ -22,6 +23,15 @@ export function Footer() {
         {/* Top Section: Brand Story & Newsletter */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-[#CBAE9B]/25">
           <div className="lg:col-span-5 space-y-4">
+            <div className="relative w-12 h-12 rounded-xl overflow-hidden border border-[#CBAE9B]/40 shadow-sm mb-4">
+              <Image
+                src="/logo.jpg"
+                alt="VITRAG Logo"
+                fill
+                className="object-cover"
+                sizes="48px"
+              />
+            </div>
             <span className="font-heading text-3xl sm:text-4xl tracking-[0.2em] uppercase font-light text-white block">
               {siteConfig.name}
             </span>

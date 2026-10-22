@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { siteConfig } from "@/lib/config";
 import { useCart } from "@/context/CartContext";
@@ -98,15 +99,27 @@ export function Header() {
               </button>
             </div>
 
-            {/* Brand Wordmark (Logo) */}
+            {/* Brand Logo & Wordmark */}
             <div className="flex-1 lg:flex-none text-center lg:text-left">
-              <Link href="/" className="inline-block group focus:outline-none">
-                <span className="font-heading text-2xl sm:text-3xl md:text-3xl tracking-[0.2em] uppercase font-semibold text-[#6E2023] group-hover:text-[#55181A] transition-colors">
-                  {siteConfig.name}
-                </span>
-                <span className="block text-[9px] uppercase tracking-[0.25em] text-[#84766A] -mt-0.5 font-sans">
-                  {siteConfig.descriptor}
-                </span>
+              <Link href="/" className="inline-flex items-center gap-2.5 sm:gap-3 group focus:outline-none text-left">
+                <div className="relative w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-lg overflow-hidden border border-[#EADBC8] shadow-2xs shrink-0 group-hover:scale-105 transition-transform duration-200">
+                  <Image
+                    src="/logo.jpg"
+                    alt="VITRAG Emblem"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 36px, 40px"
+                    priority
+                  />
+                </div>
+                <div>
+                  <span className="font-heading text-xl sm:text-2xl md:text-2xl tracking-[0.2em] uppercase font-semibold text-[#6E2023] group-hover:text-[#55181A] transition-colors block leading-none">
+                    {siteConfig.name}
+                  </span>
+                  <span className="block text-[8px] sm:text-[9px] uppercase tracking-[0.22em] text-[#84766A] mt-1 font-sans">
+                    {siteConfig.descriptor}
+                  </span>
+                </div>
               </Link>
             </div>
 
@@ -292,13 +305,24 @@ export function Header() {
             <div>
               {/* Drawer Header */}
               <div className="flex items-center justify-between pb-6 border-b border-[#EADBC8]">
-                <div>
-                  <span className="font-heading text-2xl tracking-[0.2em] uppercase font-semibold text-[#6E2023]">
-                    VITRAG
-                  </span>
-                  <span className="block text-[8px] uppercase tracking-[0.25em] text-[#84766A]">
-                    Tableware & Gifting
-                  </span>
+                <div className="flex items-center gap-3">
+                  <div className="relative w-9 h-9 rounded-lg overflow-hidden border border-[#EADBC8] shadow-2xs shrink-0">
+                    <Image
+                      src="/logo.jpg"
+                      alt="VITRAG Logo"
+                      fill
+                      className="object-cover"
+                      sizes="36px"
+                    />
+                  </div>
+                  <div>
+                    <span className="font-heading text-xl tracking-[0.2em] uppercase font-semibold text-[#6E2023] block leading-none">
+                      VITRAG
+                    </span>
+                    <span className="block text-[8px] uppercase tracking-[0.22em] text-[#84766A] mt-1 font-sans">
+                      Tableware & Gifting
+                    </span>
+                  </div>
                 </div>
                 <button
                   onClick={() => setMobileMenuOpen(false)}

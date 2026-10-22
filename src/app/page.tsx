@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { getFeaturedProducts, collections, products } from "@/lib/products";
 import { ProductCard } from "@/components/product/ProductCard";
 import { Button } from "@/components/ui/Button";
@@ -87,21 +88,32 @@ export default function HomePage() {
               <div className="space-y-4">
                 {/* 1. Packaging Concept Card: Luxury Burgundy Box with Champagne Detailing */}
                 <div className="bg-[#6E2023] text-white p-7 sm:p-8 rounded-2xl shadow-xl border border-[#55181A] relative overflow-hidden">
-                  <div className="space-y-4">
-                    <span className="text-[10px] uppercase tracking-[0.25em] text-[#CBAE9B] font-semibold block">
-                      Packaging Concept
-                    </span>
-                    <h3 className="font-heading text-2xl sm:text-3xl text-white">
-                      VITRAG
-                    </h3>
-                    <hr className="border-[#CBAE9B]/30" />
-                    <div className="space-y-1">
-                      <p className="text-sm font-medium text-white">
-                        Crockery & Gifting
-                      </p>
-                      <p className="text-xs text-[#CBAE9B] font-light">
-                        Luxury burgundy box with champagne detailing
-                      </p>
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="space-y-4">
+                      <span className="text-[10px] uppercase tracking-[0.25em] text-[#CBAE9B] font-semibold block">
+                        Signature Packaging
+                      </span>
+                      <h3 className="font-heading text-2xl sm:text-3xl text-white">
+                        VITRAG
+                      </h3>
+                      <hr className="border-[#CBAE9B]/30" />
+                      <div className="space-y-1">
+                        <p className="text-sm font-medium text-white">
+                          Crockery & Gifting
+                        </p>
+                        <p className="text-xs text-[#CBAE9B] font-light">
+                          Luxury burgundy box with champagne detailing
+                        </p>
+                      </div>
+                    </div>
+                    <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden border border-[#CBAE9B]/40 shadow-md shrink-0">
+                      <Image
+                        src="/logo.jpg"
+                        alt="VITRAG Logo Crest"
+                        fill
+                        className="object-cover"
+                        sizes="80px"
+                      />
                     </div>
                   </div>
                 </div>

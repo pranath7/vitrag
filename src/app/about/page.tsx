@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "About VITRAG — Our Story | Premium Tableware & Gifting",
@@ -35,8 +36,18 @@ export default function AboutPage() {
     <main className="bg-[#FFF5E6] min-h-screen">
       {/* Hero Section (Luxury Burgundy Background with Champagne Detailing) */}
       <section className="relative bg-[#6E2023] py-20 sm:py-28 text-white border-b border-[#55181A]">
-        <div className="mx-auto max-w-3xl px-4 text-center">
-          <p className="mb-4 text-sm uppercase tracking-[0.2em] text-[#CBAE9B] font-semibold">
+        <div className="mx-auto max-w-3xl px-4 text-center flex flex-col items-center">
+          <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden border border-[#CBAE9B]/50 shadow-lg mb-6">
+            <Image
+              src="/logo.jpg"
+              alt="VITRAG Brand Crest"
+              fill
+              className="object-cover"
+              sizes="80px"
+              priority
+            />
+          </div>
+          <p className="mb-3 text-sm uppercase tracking-[0.2em] text-[#CBAE9B] font-semibold">
             Our Story
           </p>
           <h1 className="font-heading text-4xl leading-tight text-white sm:text-5xl md:text-6xl font-medium">

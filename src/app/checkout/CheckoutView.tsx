@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useCart } from "@/context/CartContext";
 import { formatPrice } from "@/lib/utils";
 import { siteConfig } from "@/lib/config";
@@ -164,13 +165,24 @@ export function CheckoutView() {
 
   return (
     <div className="py-12 sm:py-16">
-      <div className="border-b border-[#EADBC8] pb-6 mb-10">
-        <span className="text-xs uppercase tracking-widest text-[#8B8176]">
-          Secure Checkout Process
-        </span>
-        <h1 className="font-heading text-3xl sm:text-4xl text-[#252522] mt-1">
-          Complete Your Order
-        </h1>
+      <div className="border-b border-[#EADBC8] pb-6 mb-10 flex items-center justify-between">
+        <div>
+          <span className="text-xs uppercase tracking-widest text-[#84766A]">
+            Secure Checkout Process
+          </span>
+          <h1 className="font-heading text-3xl sm:text-4xl text-[#6E2023] mt-1 font-medium">
+            Complete Your Order
+          </h1>
+        </div>
+        <div className="relative w-12 h-12 rounded-xl overflow-hidden border border-[#EADBC8] shadow-2xs shrink-0">
+          <Image
+            src="/logo.jpg"
+            alt="VITRAG Emblem"
+            fill
+            className="object-cover"
+            sizes="48px"
+          />
+        </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">

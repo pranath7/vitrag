@@ -63,8 +63,11 @@ export function CheckoutView() {
       message += `${index + 1}. ${item.name}${variantStr} × ${item.quantity} = ${formatPrice(item.price * item.quantity)}\n`;
     });
 
-    message += `\n*Estimated Item Subtotal:* ${formatPrice(subtotalPaise)}\n`;
-    message += `_(Please confirm delivery courier charges and share authorized UPI QR/details for payment verification)_\n`;
+    const isFreeShipping = subtotalPaise >= 400000;
+    message += `\n*Items Subtotal:* ${formatPrice(subtotalPaise)}\n`;
+    message += `*Shipping:* ${isFreeShipping ? "FREE (Order above ₹4,000)" : "Standard Delivery"}\n`;
+    message += `*Payment Destination:* UPI: 9840610405@pthdfc\n\n`;
+    message += `_(Please confirm stock and send UPI payment verification. Unboxing video policy noted.)_\n`;
 
     const url = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
     setLastWhatsAppUrl(url);
@@ -334,62 +337,51 @@ export function CheckoutView() {
             {/* 3. Payment Mode Selection */}
             <div className="bg-white p-6 sm:p-8 border border-[#EADBC8] space-y-4">
               <h2 className="font-heading text-xl text-[#252522] border-b border-[#EADBC8] pb-3">
-                3. Choose Payment Method
+                3. Payment & Direct WhatsApp Dispatch
               </h2>
 
               <div className="space-y-3">
-                {/* Mode A: WhatsApp + UPI Verification */}
-                <label className="block p-4 border border-[#6E2023] bg-[#FFF5E6] cursor-pointer">
+                {/* Direct WhatsApp + UPI Payment */}
+                <div className="p-4 border-2 border-[#6E2023] bg-[#FFF5E6] rounded-xl space-y-3">
                   <div className="flex items-start gap-3">
                     <input
                       type="radio"
                       name="paymentMode"
                       value="whatsapp"
-                      checked={paymentMode === "whatsapp"}
-                      onChange={() => setPaymentMode("whatsapp")}
+                      checked={true}
+                      readOnly
                       className="accent-[#6E2023] mt-1"
                     />
-                    <div>
-                      <div className="flex items-center gap-2">
+                    <div className="space-y-1">
+                      <div className="flex items-center gap-2 flex-wrap">
                         <span className="font-heading text-base font-medium text-[#252522]">
-                          Order via WhatsApp & Pay by UPI / Bank Transfer
+                          Direct Order to WhatsApp & UPI Transfer
                         </span>
-                        <span className="text-[10px] uppercase tracking-wider bg-[#25D366] text-white px-2 py-0.5 font-bold">
-                          Direct Concierge
+                        <span className="text-[10px] uppercase tracking-wider bg-[#25D366] text-white px-2 py-0.5 font-bold rounded">
+                          Official Store Flow
                         </span>
                       </div>
-                      <p className="text-xs text-[#8B8176] mt-1 font-light leading-relaxed">
-                        Instant direct service to <strong>{siteConfig.contact.displayPhone}</strong>. We will review your delivery address, calculate exact courier charges, verify stock, and provide direct authorized UPI QR/details for payment.
+                      <p className="text-xs text-[#8B8176] font-light leading-relaxed">
+                        Orders are confirmed directly with our showroom team on WhatsApp <strong>+91 63691 42027</strong>. Complete your payment via UPI to:
                       </p>
+                      <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-white border border-[#EADBC8] rounded-lg mt-1">
+                        <span className="text-[11px] text-[#8B8176]">UPI ID:</span>
+                        <code className="text-xs font-bold text-[#6E2023] tracking-wider select-all">
+                          9840610405@pthdfc
+                        </code>
+                      </div>
                     </div>
                   </div>
-                </label>
+                </div>
 
-                {/* Mode B: Online Gateway Adapter */}
-                <label className="block p-4 border border-[#EADBC8] bg-white opacity-75 cursor-not-allowed">
-                  <div className="flex items-start gap-3">
-                    <input
-                      type="radio"
-                      name="paymentMode"
-                      value="online"
-                      disabled
-                      className="mt-1"
-                    />
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <span className="font-heading text-base font-medium text-[#8B8176]">
-                          Credit Card / Net Banking / Payment Gateway
-                        </span>
-                        <span className="text-[10px] uppercase tracking-wider bg-[#8B8176]/20 text-[#8B8176] px-2 py-0.5">
-                          In Verification
-                        </span>
-                      </div>
-                      <p className="text-xs text-[#8B8176] mt-1 font-light leading-relaxed">
-                        Automatic gateway processing will activate as soon as merchant banking verification is completed. Currently accepting orders via WhatsApp concierge above.
-                      </p>
-                    </div>
+                {/* Unboxing Policy Advisory Box */}
+                <div className="p-4 bg-[#FFF0F0] border border-[#E8C5C8] rounded-xl flex items-start gap-3 text-xs text-[#6E2023]">
+                  <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-[#6E2023]" />
+                  <div className="leading-relaxed">
+                    <strong className="block font-semibold">Mandatory Delivery Verification:</strong>
+                    Kindly record a continuous, unedited unboxing video when receiving and unpacking your package. Replacements or refunds for transit damage will strictly be processed with this video proof.
                   </div>
-                </label>
+                </div>
               </div>
             </div>
 
@@ -401,13 +393,13 @@ export function CheckoutView() {
               className="w-full py-4 text-sm"
               leftIcon={<MessageSquare className="w-5 h-5 fill-white" />}
             >
-              Confirm Order & Send to WhatsApp (+91 63691 42027)
+              Send Order to WhatsApp (+91 63691 42027)
             </Button>
           </form>
         </div>
 
         {/* Right: Order Summary Sidebar */}
-        <div className="lg:col-span-5 bg-white border border-[#EADBC8] p-6 sm:p-8 space-y-6 sticky top-28">
+        <div className="lg:col-span-5 bg-white border border-[#EADBC8] p-6 sm:p-8 space-y-6 sticky top-28 rounded-xl shadow-xs">
           <h2 className="font-heading text-2xl text-[#252522] border-b border-[#EADBC8] pb-4">
             Items in Your Order ({items.length})
           </h2>
@@ -447,22 +439,32 @@ export function CheckoutView() {
               <span className="text-[#252522]">Included</span>
             </div>
             <div className="flex justify-between text-[#8B8176]">
-              <span>Estimated Shipping</span>
-              <span className="text-[#6E2023] font-medium">
-                Calculated by PIN Code
-              </span>
+              <span>Shipping Fee</span>
+              {subtotalPaise >= 400000 ? (
+                <span className="text-[#25D366] font-semibold">FREE (Order &gt; ₹4,000)</span>
+              ) : (
+                <span className="text-[#6E2023] font-medium">
+                  {formatPrice(19900)} <span className="text-[10px] text-[#8B8176]">(Free above ₹4,000)</span>
+                </span>
+              )}
+            </div>
+            <div className="flex justify-between text-[#8B8176]">
+              <span>Estimated Delivery</span>
+              <span className="text-[#252522] font-medium">3–5 Business Days</span>
             </div>
             <div className="border-t border-[#EADBC8] pt-3 flex justify-between text-base font-bold text-[#6E2023]">
               <span>Estimated Total</span>
-              <span>{formatPrice(subtotalPaise)}</span>
+              <span>
+                {formatPrice(subtotalPaise + (subtotalPaise >= 400000 ? 0 : 19900))}
+              </span>
             </div>
           </div>
 
-          <div className="bg-[#FFF5E6] p-4 border border-[#EADBC8] space-y-2 text-[11px] text-[#8B8176]">
-            <p className="font-medium text-[#252522]">Order Flow Guarantee:</p>
-            <p>1. Send your cart order via WhatsApp with a single tap.</p>
-            <p>2. We verify stock availability and confirm final delivery amount.</p>
-            <p>3. Pay via authorized UPI QR; order ships with live tracking.</p>
+          <div className="bg-[#FFF5E6] p-4 border border-[#EADBC8] rounded-lg space-y-2 text-[11px] text-[#8B8176]">
+            <p className="font-medium text-[#252522]">Our Commitment:</p>
+            <p>• Fast delivery within <strong>3–5 business days</strong> with professional crockery packing.</p>
+            <p>• Verified UPI payment directly to <strong>9840610405@pthdfc</strong>.</p>
+            <p>• Replacement guarantee on breakage with unboxing video verification.</p>
           </div>
         </div>
       </div>

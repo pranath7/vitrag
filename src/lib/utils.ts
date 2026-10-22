@@ -57,8 +57,10 @@ export function generateWhatsAppOrderUrl(
     message += `   Qty: ${item.quantity} × ${formatPrice(item.price)} = ${itemTotal}\n`;
   });
 
-  message += `\n*Estimated Subtotal:* ${formatPrice(subtotalPaise)}`;
-  message += `\n_(Taxes and shipping calculated based on delivery location)_\n`;
+  const isFree = subtotalPaise >= 400000;
+  message += `\n*Items Subtotal:* ${formatPrice(subtotalPaise)}`;
+  message += `\n*Delivery:* ${isFree ? "FREE Pan-India (Order > ₹4,000)" : "Standard Pan-India (3–5 Days)"}`;
+  message += `\n*UPI Payment:* 9840610405@pthdfc\n`;
 
   if (notes && notes.trim()) {
     message += `\n*Customer Note:* ${notes.trim()}\n`;

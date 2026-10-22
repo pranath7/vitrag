@@ -537,10 +537,10 @@ export default function HomePage() {
                 <ShieldCheck className="w-6 h-6 text-[#6E2023]" />
               </div>
               <h3 className="font-heading text-xl text-[#6E2023] mb-1">
-                Breakage-Safe Transit
+                Breakage Replacement
               </h3>
               <p className="text-xs text-[#84766A] font-light leading-relaxed">
-                Multi-layer air cushioned packaging. Transit breakage replaced promptly without dispute.
+                Multi-layer air cushioned packaging. Transit breakage replaced promptly upon sharing unboxing video proof.
               </p>
             </div>
 
@@ -561,10 +561,10 @@ export default function HomePage() {
                 <Truck className="w-6 h-6 text-[#6E2023]" />
               </div>
               <h3 className="font-heading text-xl text-[#6E2023] mb-1">
-                Chennai & Pan-India
+                Fast 3–5 Day Delivery
               </h3>
               <p className="text-xs text-[#84766A] font-light leading-relaxed">
-                Prompt dispatch across Tamil Nadu and reliable insured courier coverage pan-India.
+                Complimentary Pan-India shipping on orders above ₹4,000. Reliable, insured courier dispatch.
               </p>
             </div>
 

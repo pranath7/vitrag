@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { siteConfig } from "@/lib/config";
 import { ArrowRight, CheckCircle2, Phone, Mail, MapPin } from "lucide-react";
+import { InstagramIcon } from "@/components/ui/Icons";
 
 export function Footer() {
   const [email, setEmail] = useState("");
@@ -218,6 +219,17 @@ export function Footer() {
                   className="hover:text-white transition-colors"
                 >
                   {siteConfig.contact.email}
+                </a>
+              </div>
+              <div className="flex items-center gap-2">
+                <InstagramIcon className="w-4 h-4 text-[#CBAE9B] shrink-0" />
+                <a
+                  href={siteConfig.social.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors text-[#CBAE9B] font-medium"
+                >
+                  {siteConfig.social.instagramHandle}
                 </a>
               </div>
               <p className="text-[11px] text-[#CBAE9B]/80 pt-1">

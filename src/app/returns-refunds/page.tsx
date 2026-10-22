@@ -225,48 +225,45 @@ export default function ReturnsRefundsPage() {
 
           <hr className="border-[#EADBC8]" />
 
-          {/* Damaged / Defective Items */}
-          <PolicySection title="Damaged or Defective Items">
+          {/* Damaged / Defective Items & Mandatory Unboxing Video */}
+          <PolicySection title="Transit Breakage & Mandatory Unboxing Video">
+            <div className="p-4 bg-[#FFF0F0] border border-[#E8C5C8] rounded-xl text-xs text-[#6E2023] leading-relaxed mb-4">
+              <strong>Crucial Policy Notice:</strong> Because crockery and glassware are delicate items, all customers must record an unedited unboxing video from the moment the package is received and unsealed. In the rare event of transit breakage or damage, a refund or replacement will <strong>ONLY</strong> be processed if an unboxing video is provided.
+            </div>
             <p>
-              We carefully inspect and package every order, but occasionally
-              items may arrive damaged or defective. If this happens:
+              If your parcel arrives with breakage:
             </p>
             <ol className="ml-5 list-decimal space-y-3">
               <li>
-                Contact us within <strong>48 hours</strong> of delivery
+                <strong>Record a complete unboxing video</strong> showing the outer shipping label, box seal opening, and the damaged item inside.
               </li>
               <li>
-                Share clear photographs of the damage along with the outer
-                packaging
+                Contact us within <strong>48 hours</strong> of delivery via WhatsApp (<strong>+91 63691 42027</strong>) or email (<strong>pranathwork@gmail.com</strong>) with the video.
               </li>
               <li>
-                <strong>Do not discard</strong> the item or packaging until the
-                claim is resolved
+                <strong>Do not discard</strong> the item or packaging until the claim is approved.
               </li>
             </ol>
             <p>
-              For items damaged in transit, we will arrange a{" "}
-              <strong>free replacement or full refund</strong> at no additional
-              cost to you. Return shipping for damaged/defective items will be
-              covered by VITRAG.
+              Upon verification of the unboxing video, VITRAG will promptly arrange an immediate <strong>free replacement or full refund</strong> via UPI to your account. Claims without an unboxing video cannot be entertained.
             </p>
           </PolicySection>
         </div>
 
         {/* Contact & Back */}
-        <div className="mt-16 rounded-sm border border-[#EADBC8] bg-white p-6 sm:p-8">
+        <div className="mt-16 rounded-xl border border-[#EADBC8] bg-white p-6 sm:p-8">
           <h2 className="font-heading text-xl text-[#252522] sm:text-2xl">
-            Need Help with a Return?
+            Need Help with a Return or Replacement?
           </h2>
           <p className="mt-3 text-sm leading-relaxed text-[#252522]/70 sm:text-base">
-            We&apos;re here to help. Reach out to us at{" "}
+            We are here to assist you. Reach out to our Sowcarpet showroom team at{" "}
             <a
-              href="mailto:hello@vitrag.in"
-              className="text-[#6E2023] underline underline-offset-2 hover:text-[#6E2023]/80"
+              href="mailto:pranathwork@gmail.com"
+              className="text-[#6E2023] underline underline-offset-2 hover:text-[#6E2023]/80 font-medium"
             >
-              hello@vitrag.in
+              pranathwork@gmail.com
             </a>{" "}
-            or message us on WhatsApp. We aim to respond within 24 hours.
+            or message us on WhatsApp at <strong>+91 63691 42027</strong>.
           </p>
         </div>
 

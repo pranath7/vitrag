@@ -12,6 +12,7 @@ import {
   Calendar,
   Send,
 } from "lucide-react";
+import { InstagramIcon } from "@/components/ui/Icons";
 import { Button } from "@/components/ui/Button";
 
 export function ContactView() {
@@ -112,6 +113,23 @@ export function ContactView() {
                     className="hover:underline text-[#6E2023] font-medium"
                   >
                     {siteConfig.contact.email}
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <InstagramIcon className="w-5 h-5 text-[#6E2023] shrink-0 mt-0.5" />
+                <div>
+                  <strong className="block text-sm text-[#6E2023] font-medium">
+                    Instagram
+                  </strong>
+                  <a
+                    href={siteConfig.social.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline text-[#6E2023] font-medium"
+                  >
+                    {siteConfig.social.instagramHandle}
                   </a>
                 </div>
               </div>

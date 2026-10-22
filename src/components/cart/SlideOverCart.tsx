@@ -175,6 +175,27 @@ export function SlideOverCart() {
           {/* Footer & Actions */}
           {items.length > 0 && (
             <div className="p-6 border-t border-[#EADBC8] bg-white space-y-4">
+              {/* Free Delivery Bar */}
+              <div className="p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg text-xs">
+                {subtotalPaise >= 400000 ? (
+                  <p className="text-[#25D366] font-semibold flex items-center gap-1.5">
+                    <span>✓</span> You qualify for Complimentary Pan-India Delivery!
+                  </p>
+                ) : (
+                  <div className="space-y-1.5">
+                    <p className="text-[#84766A]">
+                      Add <strong className="text-[#6E2023]">{formatPrice(400000 - subtotalPaise)}</strong> more to get <strong>Free Pan-India Delivery</strong>
+                    </p>
+                    <div className="w-full bg-[#EADBC8] h-1.5 rounded-full overflow-hidden">
+                      <div
+                        className="bg-[#6E2023] h-full transition-all duration-300"
+                        style={{ width: `${Math.min(100, (subtotalPaise / 400000) * 100)}%` }}
+                      />
+                    </div>
+                  </div>
+                )}
+              </div>
+
               <div className="space-y-1.5">
                 <div className="flex justify-between text-sm text-[#84766A]">
                   <span>Subtotal</span>
@@ -182,9 +203,12 @@ export function SlideOverCart() {
                     {formatPrice(subtotalPaise)}
                   </span>
                 </div>
-                <p className="text-xs text-[#84766A]">
-                  Taxes and local shipping calculated at confirmation.
-                </p>
+                <div className="flex justify-between text-xs text-[#84766A]">
+                  <span>Delivery (3–5 Days)</span>
+                  <span className={subtotalPaise >= 400000 ? "text-[#25D366] font-semibold" : "text-[#6E2023]"}>
+                    {subtotalPaise >= 400000 ? "FREE" : "Standard Flat Rate"}
+                  </span>
+                </div>
               </div>
 
               {/* Special Instructions or Gift Note */}

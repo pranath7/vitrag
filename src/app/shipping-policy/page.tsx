@@ -118,28 +118,18 @@ export default function ShippingPolicyPage() {
                 </thead>
                 <tbody className="text-[#252522]/80">
                   <tr className="border-b border-[#EADBC8]">
-                    <td className="py-3 pr-4">Chennai (Local)</td>
-                    <td className="py-3">2–4 business days</td>
+                    <td className="py-3 pr-4">Chennai & Tamil Nadu</td>
+                    <td className="py-3 font-medium text-[#6E2023]">3–5 business days</td>
                   </tr>
                   <tr className="border-b border-[#EADBC8]">
-                    <td className="py-3 pr-4">Tamil Nadu</td>
-                    <td className="py-3">3–5 business days</td>
-                  </tr>
-                  <tr className="border-b border-[#EADBC8]">
-                    <td className="py-3 pr-4">Rest of India*</td>
-                    <td className="py-3">5–10 business days</td>
+                    <td className="py-3 pr-4">Pan-India Express</td>
+                    <td className="py-3 font-medium text-[#6E2023]">3–5 business days</td>
                   </tr>
                 </tbody>
               </table>
             </div>
             <p className="text-sm text-[#8B8176]">
-              *Pan-India shipping is being expanded. Availability may vary by
-              pin code. Please check with us for confirmation.
-            </p>
-            <p>
-              Delivery times are estimates and may vary due to logistics partner
-              schedules, weather conditions, or unforeseen circumstances. We
-              appreciate your patience.
+              All items are dispatched with fragile-cushioning and live parcel tracking numbers directly shared on WhatsApp.
             </p>
           </PolicySection>
 
@@ -148,14 +138,10 @@ export default function ShippingPolicyPage() {
           {/* Shipping Charges */}
           <PolicySection title="Shipping Charges">
             <p>
-              Shipping charges are calculated at checkout based on your delivery
-              location and the weight/size of your order. The exact shipping cost
-              will be displayed before you confirm your order.
+              • <strong>Free Shipping:</strong> All orders above <strong>₹4,000</strong> qualify for 100% complimentary delivery across India.
             </p>
             <p>
-              We occasionally offer promotional free shipping on select orders.
-              Any applicable offers will be communicated on our website, social
-              media, or WhatsApp channel.
+              • <strong>Standard Delivery:</strong> Orders below ₹4,000 incur a flat shipping charge of <strong>₹199</strong> to cover fragile ceramic handling and transit protective materials.
             </p>
           </PolicySection>
 
@@ -205,51 +191,45 @@ export default function ShippingPolicyPage() {
 
           <hr className="border-[#EADBC8]" />
 
-          {/* Damaged in Transit */}
-          <PolicySection title="Damaged in Transit">
+          {/* Damaged in Transit & Mandatory Video */}
+          <PolicySection title="Transit Breakage & Mandatory Unboxing Video">
+            <div className="p-4 bg-[#FFF0F0] border border-[#E8C5C8] rounded-xl text-xs text-[#6E2023] leading-relaxed mb-4">
+              <strong>Mandatory Policy Notice:</strong> Customers are required to record a continuous, unedited video while unboxing the delivery package. In the rare event of transit breakage or damage, a refund or replacement will ONLY be processed upon receiving this unboxing video proof.
+            </div>
             <p>
-              Despite our careful packaging, damage during transit can
-              occasionally occur. If your order arrives damaged:
+              To claim a replacement for items broken during delivery:
             </p>
             <ol className="ml-5 list-decimal space-y-2">
               <li>
-                <strong>Do not discard</strong> the item or packaging
+                <strong>Record an unboxing video</strong> showing the outer shipping label, box seal being cut open, and the inspection of the pieces.
               </li>
               <li>
-                Take clear photographs of the damaged item and the outer
-                packaging
+                Send the video and photos to our WhatsApp concierge at <strong>+91 63691 42027</strong> or email <strong>pranathwork@gmail.com</strong> within <strong>48 hours</strong> of package arrival.
               </li>
               <li>
-                Contact us within <strong>48 hours</strong> of delivery via
-                WhatsApp or email
-              </li>
-              <li>
-                We will arrange a replacement or refund after reviewing the
-                damage
+                Our team will verify the claim and immediately ship an insured replacement piece or process your refund.
               </li>
             </ol>
-            <p>
-              Please note that claims made after 48 hours of delivery may not be
-              eligible for a replacement or refund.
+            <p className="text-sm text-[#8B8176]">
+              Please note: Claims submitted without an opening/unboxing video cannot be entertained.
             </p>
           </PolicySection>
         </div>
 
         {/* Contact & Back */}
-        <div className="mt-16 rounded-sm border border-[#EADBC8] bg-white p-6 sm:p-8">
+        <div className="mt-16 rounded-xl border border-[#EADBC8] bg-white p-6 sm:p-8">
           <h2 className="font-heading text-xl text-[#252522] sm:text-2xl">
-            Have Questions?
+            Have Questions About Your Shipment?
           </h2>
           <p className="mt-3 text-sm leading-relaxed text-[#252522]/70 sm:text-base">
-            If you have any questions about our shipping policy, feel free to
-            reach out to us at{" "}
+            Reach out directly to our Sowcarpet showroom team at{" "}
             <a
-              href="mailto:hello@vitrag.in"
-              className="text-[#6E2023] underline underline-offset-2 hover:text-[#6E2023]/80"
+              href="mailto:pranathwork@gmail.com"
+              className="text-[#6E2023] underline underline-offset-2 hover:text-[#6E2023]/80 font-medium"
             >
-              hello@vitrag.in
+              pranathwork@gmail.com
             </a>{" "}
-            or message us on WhatsApp.
+            or message us on WhatsApp at <strong>+91 63691 42027</strong>.
           </p>
         </div>
 

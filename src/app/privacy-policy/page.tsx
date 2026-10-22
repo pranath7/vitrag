@@ -353,20 +353,20 @@ export default function PrivacyPolicyPage() {
               Privacy Policy or how we handle your personal information, please
               contact us:
             </p>
-            <div className="rounded-sm border border-[#EADBC8] bg-white p-5">
-              <p className="font-medium text-[#252522]">VITRAG</p>
-              <ul className="mt-2 space-y-1 text-sm text-[#252522]/80">
+            <div className="rounded-xl border border-[#EADBC8] bg-white p-5">
+              <p className="font-heading font-medium text-lg text-[#6E2023]">VITRAG Tableware &amp; Gifting</p>
+              <ul className="mt-2 space-y-1.5 text-sm text-[#252522]/80">
                 <li>
                   Email:{" "}
                   <a
-                    href="mailto:hello@vitrag.in"
-                    className="text-[#6E2023] underline underline-offset-2 hover:text-[#6E2023]/80"
+                    href="mailto:pranathwork@gmail.com"
+                    className="text-[#6E2023] underline underline-offset-2 hover:text-[#6E2023]/80 font-medium"
                   >
-                    hello@vitrag.in
+                    pranathwork@gmail.com
                   </a>
                 </li>
-                <li>WhatsApp: Available on our website</li>
-                <li>Location: Chennai, Tamil Nadu, India</li>
+                <li>WhatsApp: +91 63691 42027</li>
+                <li>Address: Patni Plaza, Shop No. 3, NSC Bose Road, Sowcarpet, Chennai, Tamil Nadu 600001</li>
               </ul>
             </div>
             <p className="text-sm text-[#8B8176]">

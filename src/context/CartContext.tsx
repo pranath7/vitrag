@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState, useEffect, useCallback } from "react";
 import type { CartItem, Product, ProductVariant } from "@/lib/types";
 
 interface CartContextType {
@@ -149,6 +149,10 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const itemCount = items.reduce((acc, item) => acc + item.quantity, 0);
   const subtotalPaise = items.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
+  const openCart = useCallback(() => setIsCartOpen(true), []);
+  const closeCart = useCallback(() => setIsCartOpen(false), []);
+  const toggleCart = useCallback(() => setIsCartOpen((prev) => !prev), []);
+
   return (
     <CartContext.Provider
       value={{
@@ -160,9 +164,9 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         itemCount,
         subtotalPaise,
         isCartOpen,
-        openCart: () => setIsCartOpen(true),
-        closeCart: () => setIsCartOpen(false),
-        toggleCart: () => setIsCartOpen((prev) => !prev),
+        openCart,
+        closeCart,
+        toggleCart,
         wishlist,
         toggleWishlist,
         isInWishlist,

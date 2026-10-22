@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useCart } from "@/context/CartContext";
 import { formatPrice, generateWhatsAppOrderUrl } from "@/lib/utils";
 import { X, Plus, Minus, Trash2, ShoppingBag, ArrowRight, MessageSquare } from "lucide-react";
@@ -19,6 +20,12 @@ export function SlideOverCart() {
   } = useCart();
 
   const [notes, setNotes] = useState("");
+  const pathname = usePathname();
+
+  // Automatically close cart when navigating to any page (e.g., checkout, cart, or product)
+  useEffect(() => {
+    closeCart();
+  }, [pathname, closeCart]);
 
   if (!isCartOpen) return null;
 

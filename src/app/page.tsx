@@ -145,6 +145,158 @@ export default function HomePage() {
       </section>
 
       {/* ========================================================
+          SIGNATURE CATEGORY: EDITORIAL POSTERS SHOWCASE (Category 1)
+         ======================================================== */}
+      <section className="py-20 sm:py-28 bg-[#FFF5E6] border-b border-[#EADBC8] relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-14">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#6E2023]/10 text-[#6E2023] text-[11px] uppercase tracking-[0.2em] font-semibold rounded-full border border-[#6E2023]/20 mb-3">
+                <Sparkles className="w-3.5 h-3.5 text-[#6E2023]" />
+                <span>Category 1 • Signature Editions</span>
+              </div>
+              <h2 className="font-heading text-3xl sm:text-5xl lg:text-6xl text-[#6E2023] font-medium tracking-tight">
+                Crafted for Cherished Moments
+              </h2>
+              <p className="text-sm sm:text-base text-[#84766A] mt-2 max-w-xl font-light">
+                Discover our signature campaign editions — from lead-free crystal barware to hand-sculpted floral ceramic centerpieces.
+              </p>
+            </div>
+            <Link
+              href="/collections/signature-editions"
+              className="mt-4 md:mt-0 inline-flex items-center gap-2 text-xs uppercase tracking-widest font-semibold text-[#6E2023] hover:text-[#55181A] transition-colors"
+            >
+              <span>Explore Signature Collection</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+
+          {/* 3 Vertical Poster Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            {/* Poster 1: Elevate Every Pour */}
+            <article className="group flex flex-col bg-white border border-[#EADBC8] rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl hover:border-[#6E2023]/40 transition-all duration-300">
+              <Link
+                href="/product/elevate-every-pour-crystal-whiskey-glass-set"
+                className="relative aspect-9/16 w-full overflow-hidden block bg-[#252522]"
+              >
+                <Image
+                  src="/images/category1vit/104534.png"
+                  alt="Elevate Every Pour — 6 Pcs Crystal Whiskey Glass Set"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+                <div className="absolute top-3 left-3 bg-[#6E2023] text-white text-[10px] uppercase tracking-widest px-3 py-1 rounded-full font-semibold shadow-md">
+                  Crystal Glassware
+                </div>
+              </Link>
+              <div className="p-5 flex-1 flex flex-col justify-between space-y-3 bg-white">
+                <div>
+                  <h3 className="font-heading text-xl text-[#6E2023] font-medium leading-snug line-clamp-1">
+                    Elevate Every Pour — 6 Pcs Set
+                  </h3>
+                  <p className="text-xs text-[#84766A] mt-1 font-light line-clamp-2">
+                    Timeless cut-crystal whiskey glasses in luxury burgundy &amp; gold gift presentation box.
+                  </p>
+                </div>
+                <div className="pt-3 border-t border-[#FFF5E6] flex items-center justify-between">
+                  <span className="text-[11px] uppercase tracking-wider font-semibold text-[#6E2023] bg-[#CBAE9B]/20 px-2 py-0.5 rounded">
+                    Price on Request
+                  </span>
+                  <Link
+                    href="/product/elevate-every-pour-crystal-whiskey-glass-set"
+                    className="text-xs font-semibold uppercase tracking-wider text-[#6E2023] hover:underline"
+                  >
+                    View Details →
+                  </Link>
+                </div>
+              </div>
+            </article>
+
+            {/* Poster 2: Serve Beautifully */}
+            <article className="group flex flex-col bg-white border border-[#EADBC8] rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl hover:border-[#6E2023]/40 transition-all duration-300">
+              <Link
+                href="/product/serve-beautifully-rose-pedestal-serving-bowl"
+                className="relative aspect-9/16 w-full overflow-hidden block bg-[#252522]"
+              >
+                <Image
+                  src="/images/category1vit/104546.png"
+                  alt="Serve Beautifully — Rose Elegance Pedestal Serving Bowl"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+                <div className="absolute top-3 left-3 bg-[#CBAE9B] text-[#6E2023] text-[10px] uppercase tracking-widest px-3 py-1 rounded-full font-bold shadow-md">
+                  Ceramic Serveware
+                </div>
+              </Link>
+              <div className="p-5 flex-1 flex flex-col justify-between space-y-3 bg-white">
+                <div>
+                  <h3 className="font-heading text-xl text-[#6E2023] font-medium leading-snug line-clamp-1">
+                    Serve Beautifully — Rose Pedestal Bowl
+                  </h3>
+                  <p className="text-xs text-[#84766A] mt-1 font-light line-clamp-2">
+                    Blush pink ceramic pedestal bowl with 24K gold rim and matching porcelain ladle.
+                  </p>
+                </div>
+                <div className="pt-3 border-t border-[#FFF5E6] flex items-center justify-between">
+                  <span className="text-[11px] uppercase tracking-wider font-semibold text-[#6E2023] bg-[#CBAE9B]/20 px-2 py-0.5 rounded">
+                    Price on Request
+                  </span>
+                  <Link
+                    href="/product/serve-beautifully-rose-pedestal-serving-bowl"
+                    className="text-xs font-semibold uppercase tracking-wider text-[#6E2023] hover:underline"
+                  >
+                    View Details →
+                  </Link>
+                </div>
+              </div>
+            </article>
+
+            {/* Poster 3: A Cup for Every Moment */}
+            <article className="group flex flex-col bg-white border border-[#EADBC8] rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl hover:border-[#6E2023]/40 transition-all duration-300">
+              <Link
+                href="/product/a-cup-for-every-moment-emerald-camellia-cup-saucer-set"
+                className="relative aspect-9/16 w-full overflow-hidden block bg-[#252522]"
+              >
+                <Image
+                  src="/images/category1vit/104547.png"
+                  alt="A Cup for Every Moment — Emerald Camellia Cup & Saucer Set"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+                <div className="absolute top-3 left-3 bg-[#6E2023] text-white text-[10px] uppercase tracking-widest px-3 py-1 rounded-full font-semibold shadow-md">
+                  Fine Teaware
+                </div>
+              </Link>
+              <div className="p-5 flex-1 flex flex-col justify-between space-y-3 bg-white">
+                <div>
+                  <h3 className="font-heading text-xl text-[#6E2023] font-medium leading-snug line-clamp-1">
+                    A Cup for Every Moment — Camellia Set
+                  </h3>
+                  <p className="text-xs text-[#84766A] mt-1 font-light line-clamp-2">
+                    Royal emerald glaze with 3D sculpted camellia flower and signature gold bead handles.
+                  </p>
+                </div>
+                <div className="pt-3 border-t border-[#FFF5E6] flex items-center justify-between">
+                  <span className="text-[11px] uppercase tracking-wider font-semibold text-[#6E2023] bg-[#CBAE9B]/20 px-2 py-0.5 rounded">
+                    Price on Request
+                  </span>
+                  <Link
+                    href="/product/a-cup-for-every-moment-emerald-camellia-cup-saucer-set"
+                    className="text-xs font-semibold uppercase tracking-wider text-[#6E2023] hover:underline"
+                  >
+                    View Details →
+                  </Link>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================
           SECTION B: SHOP BY CATEGORY
          ======================================================== */}
       <section className="py-20 sm:py-24 bg-white border-b border-[#EADBC8]">
@@ -449,77 +601,77 @@ export default function HomePage() {
       </section>
 
       {/* ========================================================
-          SECTION H: SHOP BY PRICE
+          SECTION H: CURATED BY OCCASION & RITUAL
          ======================================================== */}
       <section className="py-20 bg-[#FFF5E6] border-b border-[#EADBC8]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-xl mx-auto mb-12">
             <p className="text-xs uppercase tracking-[0.2em] text-[#6E2023] font-semibold mb-1">
-              Curated Budget Guides
+              Curated Collections
             </p>
             <h2 className="font-heading text-3xl sm:text-4xl text-[#6E2023]">
-              Shop by Gift Budget
+              Curated by Occasion &amp; Ritual
             </h2>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <Link
-              href="/shop?price=under-999"
+              href="/collections/mugs-cups"
               className="p-6 bg-white border border-[#EADBC8] rounded-xl text-center hover:border-[#6E2023] hover:shadow-lg transition-all group"
             >
               <span className="block text-[11px] uppercase tracking-wider text-[#84766A]">
-                Everyday Gestures
+                Daily Moments
               </span>
-              <span className="font-heading text-2xl text-[#6E2023] group-hover:text-[#55181A] transition-colors block mt-1">
-                Gifts Under ₹999
+              <span className="font-heading text-xl sm:text-2xl text-[#6E2023] group-hover:text-[#55181A] transition-colors block mt-1">
+                Everyday Dining
               </span>
               <span className="text-[10px] text-[#84766A] mt-2 block">
-                Mugs, Kullads & Dip Sets
+                Mugs, Cups &amp; Snack Bowls
               </span>
             </Link>
 
             <Link
-              href="/shop?price=under-1999"
+              href="/collections/platters-serving"
               className="p-6 bg-white border border-[#EADBC8] rounded-xl text-center hover:border-[#6E2023] hover:shadow-lg transition-all group"
             >
               <span className="block text-[11px] uppercase tracking-wider text-[#84766A]">
-                Popular Celebrations
+                Table Hosting
               </span>
-              <span className="font-heading text-2xl text-[#6E2023] group-hover:text-[#55181A] transition-colors block mt-1">
-                Gifts Under ₹1,999
+              <span className="font-heading text-xl sm:text-2xl text-[#6E2023] group-hover:text-[#55181A] transition-colors block mt-1">
+                Festive Hosting
               </span>
               <span className="text-[10px] text-[#84766A] mt-2 block">
-                Platters, Jars & Spice Boxes
+                Platters, Jars &amp; Serving Bowls
               </span>
             </Link>
 
             <Link
-              href="/shop?price=under-4999"
+              href="/collections/dry-fruit-boxes"
               className="p-6 bg-white border border-[#EADBC8] rounded-xl text-center hover:border-[#6E2023] hover:shadow-lg transition-all group"
             >
               <span className="block text-[11px] uppercase tracking-wider text-[#84766A]">
-                Premium Homeware
+                Thoughtful Keepsakes
               </span>
-              <span className="font-heading text-2xl text-[#6E2023] group-hover:text-[#55181A] transition-colors block mt-1">
-                ₹2,000 – ₹4,999
+              <span className="font-heading text-xl sm:text-2xl text-[#6E2023] group-hover:text-[#55181A] transition-colors block mt-1">
+                Artisan Gifting
               </span>
               <span className="text-[10px] text-[#84766A] mt-2 block">
-                Dinner Sets & Velvet Boxes
+                Dry-Fruit Boxes &amp; Hampers
               </span>
             </Link>
 
             <Link
-              href="/shop?price=wedding"
+              href="/collections/dinner-sets"
               className="p-6 bg-white border border-[#EADBC8] rounded-xl text-center hover:border-[#6E2023] hover:shadow-lg transition-all group"
             >
               <span className="block text-[11px] uppercase tracking-wider text-[#84766A]">
-                Luxury & Heirloom
+                Grand Occasions
               </span>
-              <span className="font-heading text-2xl text-[#6E2023] group-hover:text-[#55181A] transition-colors block mt-1">
-                Heirloom ₹5,000+
+              <span className="font-heading text-xl sm:text-2xl text-[#6E2023] group-hover:text-[#55181A] transition-colors block mt-1">
+                Heirloom Dinnerware
               </span>
               <span className="text-[10px] text-[#84766A] mt-2 block">
-                32 & 36-Piece Trousseau Sets
+                Complete Banquet &amp; Trousseau Sets
               </span>
             </Link>
           </div>

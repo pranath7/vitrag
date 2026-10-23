@@ -51,16 +51,12 @@ export function generateWhatsAppOrderUrl(
   let message = `Hello VITRAG Tableware & Gifting,\n\nI would like to place an order from your website:\n\n`;
   
   items.forEach((item, index) => {
-    const itemTotal = formatPrice(item.price * item.quantity);
     const variantInfo = item.variantName ? ` (${item.variantName})` : "";
-    message += `${index + 1}. *${item.name}*${variantInfo}\n`;
-    message += `   Qty: ${item.quantity} × ${formatPrice(item.price)} = ${itemTotal}\n`;
+    message += `${index + 1}. *${item.name}*${variantInfo} — Qty: ${item.quantity}\n`;
   });
 
-  const isFree = subtotalPaise >= 400000;
-  message += `\n*Items Subtotal:* ${formatPrice(subtotalPaise)}`;
-  message += `\n*Delivery:* ${isFree ? "FREE Pan-India (Order > ₹4,000)" : "Standard Pan-India (3–5 Days)"}`;
-  message += `\n*UPI Payment:* 9840610405@pthdfc\n`;
+  message += `\n*Delivery Timeline:* 3–5 Business Days\n`;
+  message += `*UPI Payment Destination:* 9840610405@pthdfc\n`;
 
   if (notes && notes.trim()) {
     message += `\n*Customer Note:* ${notes.trim()}\n`;
@@ -77,15 +73,15 @@ export function generateWhatsAppOrderUrl(
 export function generateWhatsAppProductEnquiryUrl(
   productName: string,
   sku: string,
-  pricePaise: number,
+  _pricePaise?: number,
   productUrl?: string
 ): string {
   const number = siteConfig.contact.whatsappNumber;
-  let message = `Hello VITRAG,\n\nI am interested in learning more about:\n*${productName}* (SKU: ${sku}, Price: ${formatPrice(pricePaise)})\n`;
+  let message = `Hello VITRAG,\n\nI am interested in learning more about:\n*${productName}* (SKU: ${sku})\n`;
   if (productUrl) {
     message += `Link: ${productUrl}\n`;
   }
-  message += `\nCould you please share details on availability, bulk pricing, or customisation options?`;
+  message += `\nCould you please share details on availability, pricing, or customisation options?`;
 
   return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 }

@@ -98,6 +98,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/collections/signature-editions" className="hover:text-white hover:underline transition-colors font-medium text-[#CBAE9B]">
+                  Signature Editions (Category 1)
+                </Link>
+              </li>
+              <li>
                 <Link href="/collections/dinner-sets" className="hover:text-white hover:underline transition-colors">
                   Dinner Sets
                 </Link>

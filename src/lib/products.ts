@@ -2,6 +2,26 @@ import { Product, Collection } from "./types";
 
 export const collections: Collection[] = [
   {
+    id: "signature-editions",
+    slug: "signature-editions",
+    name: "Signature Editions",
+    shortName: "Signature Series",
+    description: "Exclusive editorial masterpieces from VITRAG. Discover our crystal whiskey glasses, sculpted floral pedestal serving bowls, and emerald camellia cup sets.",
+    image: "/images/category1vit/104534.png",
+    seoTitle: "Signature Editions — Fine Tableware & Crystal Glassware | VITRAG",
+    seoDescription: "Explore VITRAG's marquee Signature Editions: Elevate Every Pour crystal barware, Serve Beautifully rose pedestal bowl, and A Cup for Every Moment tea set.",
+  },
+  {
+    id: "category1vit",
+    slug: "category1vit",
+    name: "Signature Showcase (Category 1)",
+    shortName: "Category 1",
+    description: "Featured vertical posters campaign: Elevate Every Pour whiskey set, Serve Beautifully rose pedestal bowl, and A Cup for Every Moment camellia set.",
+    image: "/images/category1vit/104534.png",
+    seoTitle: "Category 1 — Signature Vitrag Showcase | VITRAG",
+    seoDescription: "Featured vertical poster collection featuring luxury tableware and barware.",
+  },
+  {
     id: "dinner-sets",
     slug: "dinner-sets",
     name: "Dinner Sets",
@@ -94,6 +114,102 @@ export const collections: Collection[] = [
 ];
 
 export const products: Product[] = [
+  // --- SIGNATURE EDITIONS (CATEGORY 1 - FEATURED POSTERS) ---
+  {
+    id: "elevate-every-pour-whiskey-set",
+    slug: "elevate-every-pour-crystal-whiskey-glass-set",
+    name: "Elevate Every Pour — 6-Piece Crystal Whiskey Glass Set",
+    shortDescription: "Timeless cut-crystal whiskey glasses in luxury burgundy & gold gift box.",
+    description: "Elevate Every Pour: crafted with timeless precision, this 6-piece premium crystal glass set combines brilliant clarity with a deep geometric cut base. Designed for fine single malts, classic cocktails, and festive celebrations. Presented in VITRAG's signature gold-lined burgundy presentation box, ready for luxury gifting.",
+    category: "Barware & Glassware",
+    collectionIds: ["signature-editions", "category1vit", "gift-sets", "corporate-gifts"],
+    sku: "VIT-SIG-01-WHS",
+    price: 249900, // ₹2,499
+    compareAtPrice: 299900,
+    currency: "INR",
+    images: [
+      { src: "/images/category1vit/104534.png", alt: "Elevate Every Pour — 6-Piece Crystal Whiskey Glass Gift Set in Luxury Presentation Box" },
+    ],
+    variants: [
+      { id: "whiskey-6pc-box", name: "6-Piece Gift Box Set", price: 249900, sku: "VIT-SIG-01-WHS-6", stockQuantity: 24, availability: "in-stock" },
+    ],
+    material: "Lead-Free Crystal Glass with Diamond Facet Cut Base",
+    dimensions: "6 Glasses (310 ml each, Height: 9.5cm, Diameter: 8.2cm)",
+    weight: "2.1 kg (with luxury presentation box)",
+    careInstructions: "Hand wash with mild detergent or dishwashing sponge. Avoid abrasive metallic scrubbers to maintain pristine glass clarity.",
+    tags: ["Signature Edition", "Crystal Glass", "Whiskey Glasses", "Barware", "Gifting Box", "Festive", "Bestseller"],
+    featured: true,
+    bestseller: true,
+    newArrival: true,
+    stockQuantity: 24,
+    availability: "in-stock",
+    seoTitle: "Elevate Every Pour — 6 Pcs Crystal Whiskey Glass Set | VITRAG",
+    seoDescription: "Shop luxury 6-piece crystal cut whiskey glasses in burgundy & gold presentation gift box. Perfect for cocktails and wedding gifting.",
+  },
+  {
+    id: "serve-beautifully-rose-pedestal-bowl",
+    slug: "serve-beautifully-rose-pedestal-serving-bowl",
+    name: "Serve Beautifully — Rose Pedestal Ceramic Serving Bowl with Ladle",
+    shortDescription: "Blush ceramic pedestal bowl with hand-painted gold rim and sculpted rose detail.",
+    description: "Little Details Make Special Moments: an exquisite centerpiece serving bowl standing gracefully on an elevated pedestal base. Hand-finished in a delicate blush glaze with sculpted rose petals, 24K gold accented rim, and an accompanying ceramic serving ladle. Perfect for festive halwa, kheer, fruit salads, dry fruits, or artisan dips.",
+    category: "Platters & Serving",
+    collectionIds: ["signature-editions", "category1vit", "platters-serving", "gift-sets"],
+    sku: "VIT-SIG-02-ROSE",
+    price: 169900, // ₹1,699
+    compareAtPrice: 199900,
+    currency: "INR",
+    images: [
+      { src: "/images/category1vit/104546.png", alt: "Serve Beautifully — Rose Elegance Pedestal Serving Bowl with Gold Rim and Ladle" },
+    ],
+    variants: [
+      { id: "rose-pedestal-pink", name: "Blush Pink & Gold", price: 169900, sku: "VIT-SIG-02-ROSE-PK", stockQuantity: 18, availability: "in-stock" },
+    ],
+    material: "Food-Grade Glazed Ceramic with 24K Gold Lined Rim",
+    dimensions: "Pedestal Bowl (Diameter: 18cm, Height: 12cm) + Porcelain Serving Spoon",
+    weight: "850 grams",
+    careInstructions: "Hand wash gently with mild soap and soft sponge. Not suitable for microwave due to metallic gold rim.",
+    tags: ["Signature Edition", "Pedestal Bowl", "Serveware", "Gold Trim", "Blush Pink", "Handmade"],
+    featured: true,
+    bestseller: true,
+    newArrival: true,
+    stockQuantity: 18,
+    availability: "in-stock",
+    seoTitle: "Serve Beautifully — Rose Elegance Pedestal Serving Bowl | VITRAG",
+    seoDescription: "Exquisite blush pink ceramic pedestal serving bowl with sculpted rose and porcelain ladle. High-fired food safe tableware.",
+  },
+  {
+    id: "a-cup-for-every-moment-camellia-tea-set",
+    slug: "a-cup-for-every-moment-emerald-camellia-cup-saucer-set",
+    name: "A Cup for Every Moment — Emerald & Pearl Camellia Cup & Saucer Set",
+    shortDescription: "Artisan emerald ceramic cups with sculpted 3D camellia blossom and gold bead handle.",
+    description: "A Cup for Every Moment: where royal emerald glaze meets sculpted ceramic artistry. Each cup features an embossed multi-layered camellia blossom with gold stamens, paired with a rippled wave-edge saucer and a distinctive spherical gold bead on the ergonomic handle. Crafted for slow morning coffees, evening teas, and cherished conversations.",
+    category: "Mugs & Cups",
+    collectionIds: ["signature-editions", "category1vit", "mugs-cups", "gift-sets"],
+    sku: "VIT-SIG-03-CAM",
+    price: 219900, // ₹2,199
+    compareAtPrice: 259900,
+    currency: "INR",
+    images: [
+      { src: "/images/category1vit/104547.png", alt: "A Cup for Every Moment — Emerald Camellia Cup and Saucer Set with Gold Bead Handles" },
+    ],
+    variants: [
+      { id: "camellia-2pc-set", name: "Set of 2 Cups & Saucers", price: 219900, sku: "VIT-SIG-03-CAM-02", stockQuantity: 20, availability: "in-stock" },
+      { id: "camellia-6pc-set", name: "Set of 6 Cups & Saucers", price: 549900, sku: "VIT-SIG-03-CAM-06", stockQuantity: 10, availability: "in-stock" },
+    ],
+    material: "Fine Stoneware Ceramic with Reactive Emerald & Ivory Glaze",
+    dimensions: "Cups: 220 ml (Height: 8.5cm), Saucers: 15.5cm Diameter",
+    weight: "1.4 kg (2-cup set)",
+    careInstructions: "Hand wash with soft sponge to preserve hand-painted gold lustre and sculpted flower petals.",
+    tags: ["Signature Edition", "Cup and Saucer", "Emerald", "Gold Accent", "Camellia Rose", "Teaware"],
+    featured: true,
+    bestseller: true,
+    newArrival: true,
+    stockQuantity: 20,
+    availability: "in-stock",
+    seoTitle: "A Cup for Every Moment — Emerald Camellia Cup & Saucer Set | VITRAG",
+    seoDescription: "Artisanal emerald ceramic cup and saucer set with 3D camellia blossom and gold bead handle. Premium teaware for gifting.",
+  },
+
   // --- DINNER SETS ---
   {
     id: "royal-heritage-dinner-set",

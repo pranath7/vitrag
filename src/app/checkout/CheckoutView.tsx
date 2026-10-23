@@ -60,14 +60,12 @@ export function CheckoutView() {
     message += `\n*Ordered Items (${items.reduce((a, b) => a + b.quantity, 0)} pieces):*\n`;
     items.forEach((item, index) => {
       const variantStr = item.variantName ? ` (${item.variantName})` : "";
-      message += `${index + 1}. ${item.name}${variantStr} × ${item.quantity} = ${formatPrice(item.price * item.quantity)}\n`;
+      message += `${index + 1}. *${item.name}*${variantStr} — Qty: ${item.quantity}\n`;
     });
 
-    const isFreeShipping = subtotalPaise >= 400000;
-    message += `\n*Items Subtotal:* ${formatPrice(subtotalPaise)}\n`;
-    message += `*Shipping:* ${isFreeShipping ? "FREE (Order above ₹4,000)" : "Standard Delivery"}\n`;
-    message += `*Payment Destination:* UPI: 9840610405@pthdfc\n\n`;
-    message += `_(Please confirm stock and send UPI payment verification. Unboxing video policy noted.)_\n`;
+    message += `\n*Delivery Location:* ${formData.city}, ${formData.state} (PIN: ${formData.pinCode})\n`;
+    message += `*Payment Destination:* UPI to 9840610405@pthdfc\n\n`;
+    message += `_(Please confirm stock availability, order total, and delivery courier charges. Unboxing video policy noted.)_\n`;
 
     const url = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
     setLastWhatsAppUrl(url);
@@ -412,7 +410,7 @@ export function CheckoutView() {
                     {item.name}
                   </span>
                   <span className="text-[#8B8176]">
-                    Qty: {item.quantity} × {formatPrice(item.price)}
+                    Qty: {item.quantity} {item.quantity === 1 ? "piece" : "pieces"}
                   </span>
                   {item.variantName && (
                     <span className="text-[#8B8176] block">
@@ -420,8 +418,8 @@ export function CheckoutView() {
                     </span>
                   )}
                 </div>
-                <span className="font-semibold text-[#252522] shrink-0">
-                  {formatPrice(item.price * item.quantity)}
+                <span className="text-[11px] uppercase tracking-wider font-semibold text-[#6E2023] bg-[#CBAE9B]/20 px-2 py-0.5 rounded self-start">
+                  Price on Request
                 </span>
               </div>
             ))}
@@ -429,34 +427,22 @@ export function CheckoutView() {
 
           <div className="border-t border-[#EADBC8] pt-4 space-y-2 text-xs">
             <div className="flex justify-between text-[#8B8176]">
-              <span>Subtotal</span>
+              <span>Total Selected Items</span>
               <span className="text-sm font-semibold text-[#252522]">
-                {formatPrice(subtotalPaise)}
+                {items.reduce((a, b) => a + b.quantity, 0)} pieces
               </span>
             </div>
             <div className="flex justify-between text-[#8B8176]">
-              <span>Taxes</span>
-              <span className="text-[#252522]">Included</span>
-            </div>
-            <div className="flex justify-between text-[#8B8176]">
-              <span>Shipping Fee</span>
-              {subtotalPaise >= 400000 ? (
-                <span className="text-[#25D366] font-semibold">FREE (Order &gt; ₹4,000)</span>
-              ) : (
-                <span className="text-[#6E2023] font-medium">
-                  {formatPrice(19900)} <span className="text-[10px] text-[#8B8176]">(Free above ₹4,000)</span>
-                </span>
-              )}
-            </div>
-            <div className="flex justify-between text-[#8B8176]">
-              <span>Estimated Delivery</span>
+              <span>Delivery Timeline</span>
               <span className="text-[#252522] font-medium">3–5 Business Days</span>
             </div>
+            <div className="flex justify-between text-[#8B8176]">
+              <span>Pricing &amp; Shipping</span>
+              <span className="text-[#6E2023] font-medium">Confirmed on WhatsApp</span>
+            </div>
             <div className="border-t border-[#EADBC8] pt-3 flex justify-between text-base font-bold text-[#6E2023]">
-              <span>Estimated Total</span>
-              <span>
-                {formatPrice(subtotalPaise + (subtotalPaise >= 400000 ? 0 : 19900))}
-              </span>
+              <span>Payment Mode</span>
+              <span>Direct UPI ({siteConfig.contact.upiId})</span>
             </div>
           </div>
 

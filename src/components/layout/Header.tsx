@@ -134,6 +134,14 @@ export function Header() {
                 Shop All
               </Link>
               <Link
+                href="/collections/signature-editions"
+                className={`hover:text-[#6E2023] transition-colors py-1 font-semibold ${
+                  pathname === "/collections/signature-editions" ? "text-[#6E2023] border-b-2 border-[#6E2023]" : ""
+                }`}
+              >
+                Signature Editions
+              </Link>
+              <Link
                 href="/collections/dinner-sets"
                 className={`hover:text-[#6E2023] transition-colors py-1 ${
                   pathname === "/collections/dinner-sets" ? "text-[#6E2023] border-b-2 border-[#6E2023]" : ""
@@ -169,6 +177,12 @@ export function Header() {
                     <p className="text-[10px] tracking-widest uppercase text-[#6E2023] font-semibold border-b border-[#EADBC8] pb-2 mb-1">
                       Curated Gifting Collections
                     </p>
+                    <Link
+                      href="/collections/signature-editions"
+                      className="block px-3 py-2 text-xs font-semibold text-[#6E2023] bg-[#CBAE9B]/20 hover:bg-[#CBAE9B]/35 rounded-md transition-colors"
+                    >
+                      ✨ Signature Editions (New Series)
+                    </Link>
                     <Link
                       href="/collections/gift-sets"
                       className="block px-3 py-2 text-xs text-[#252522] hover:bg-white/80 hover:text-[#6E2023] rounded-md transition-colors"

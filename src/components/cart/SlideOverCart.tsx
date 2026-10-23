@@ -107,7 +107,11 @@ export function SlideOverCart() {
                   className="flex gap-4 p-4 bg-white border border-[#EADBC8] rounded-xl shadow-2xs"
                 >
                   <div className="relative w-20 h-20 bg-[#FFF5E6] shrink-0 overflow-hidden rounded-lg border border-[#EADBC8]">
-                    <ProductArtwork category={item.name} name={item.name} />
+                    {item.image && item.image.startsWith("/images/category1vit/") ? (
+                      <Image src={item.image} alt={item.name} fill className="object-cover" sizes="80px" />
+                    ) : (
+                      <ProductArtwork category={item.name} name={item.name} />
+                    )}
                   </div>
 
                   <div className="flex-1 flex flex-col justify-between">
@@ -135,9 +139,9 @@ export function SlideOverCart() {
                         </p>
                       )}
 
-                      <p className="text-sm font-semibold text-[#6E2023] mt-1">
-                        {formatPrice(item.price)}
-                      </p>
+                      <span className="inline-block text-[10px] uppercase tracking-wider font-semibold text-[#6E2023] bg-[#CBAE9B]/20 px-2 py-0.5 rounded mt-1.5">
+                        Price on Request
+                      </span>
                     </div>
 
                     <div className="flex items-center justify-between mt-3 pt-2 border-t border-[#FFF5E6]">
@@ -162,8 +166,8 @@ export function SlideOverCart() {
                         </button>
                       </div>
 
-                      <span className="text-xs font-semibold text-[#6E2023]">
-                        {formatPrice(item.price * item.quantity)}
+                      <span className="text-xs text-[#84766A]">
+                        {item.quantity} {item.quantity === 1 ? "piece" : "pieces"}
                       </span>
                     </div>
                   </div>
@@ -175,39 +179,26 @@ export function SlideOverCart() {
           {/* Footer & Actions */}
           {items.length > 0 && (
             <div className="p-6 border-t border-[#EADBC8] bg-white space-y-4">
-              {/* Free Delivery Bar */}
-              <div className="p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg text-xs">
-                {subtotalPaise >= 400000 ? (
-                  <p className="text-[#25D366] font-semibold flex items-center gap-1.5">
-                    <span>✓</span> You qualify for Complimentary Pan-India Delivery!
-                  </p>
-                ) : (
-                  <div className="space-y-1.5">
-                    <p className="text-[#84766A]">
-                      Add <strong className="text-[#6E2023]">{formatPrice(400000 - subtotalPaise)}</strong> more to get <strong>Free Pan-India Delivery</strong>
-                    </p>
-                    <div className="w-full bg-[#EADBC8] h-1.5 rounded-full overflow-hidden">
-                      <div
-                        className="bg-[#6E2023] h-full transition-all duration-300"
-                        style={{ width: `${Math.min(100, (subtotalPaise / 400000) * 100)}%` }}
-                      />
-                    </div>
-                  </div>
-                )}
+              {/* Service Notice */}
+              <div className="p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg text-xs space-y-1">
+                <p className="text-[#6E2023] font-semibold flex items-center gap-1.5">
+                  <span>✓</span> Direct Showroom Concierge &amp; Order Dispatch
+                </p>
+                <p className="text-[11px] text-[#84766A]">
+                  Pricing and courier details confirmed directly with our showroom team on WhatsApp.
+                </p>
               </div>
 
               <div className="space-y-1.5">
                 <div className="flex justify-between text-sm text-[#84766A]">
-                  <span>Subtotal</span>
+                  <span>Items Selected</span>
                   <span className="text-[#6E2023] font-semibold text-base">
-                    {formatPrice(subtotalPaise)}
+                    {items.reduce((a, b) => a + b.quantity, 0)} pieces
                   </span>
                 </div>
                 <div className="flex justify-between text-xs text-[#84766A]">
-                  <span>Delivery (3–5 Days)</span>
-                  <span className={subtotalPaise >= 400000 ? "text-[#25D366] font-semibold" : "text-[#6E2023]"}>
-                    {subtotalPaise >= 400000 ? "FREE" : "Standard Flat Rate"}
-                  </span>
+                  <span>Delivery Estimate</span>
+                  <span className="text-[#25D366] font-semibold">3–5 Business Days</span>
                 </div>
               </div>
 

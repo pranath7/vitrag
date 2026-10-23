@@ -29,14 +29,17 @@ export interface Product {
   variants: ProductVariant[];
   material?: string;
   dimensions?: string;
+  weight?: string;
   pieceCount?: number;
   careInstructions?: string;
   stockQuantity: number;
   availability: 'in-stock' | 'out-of-stock' | 'made-to-order' | 'enquiry-only';
   featured: boolean;
+  bestseller?: boolean;
+  newArrival?: boolean;
   tags: string[];
-  createdAt: string;
-  updatedAt: string;
+  createdAt?: string;
+  updatedAt?: string;
   seoTitle: string;
   seoDescription: string;
 }

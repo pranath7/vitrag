@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Product, ProductVariant } from "@/lib/types";
 import { formatPrice, generateWhatsAppProductEnquiryUrl } from "@/lib/utils";
 import { useCart } from "@/context/CartContext";
@@ -76,12 +77,25 @@ export function ProductDetailView({
         <div className="lg:col-span-7 space-y-4">
           {/* Main Visual Display */}
           <div className="relative aspect-4/5 w-full bg-[#FFF5E6] border border-[#EADBC8] rounded-2xl overflow-hidden flex flex-col items-center justify-center shadow-sm">
-            <ProductArtwork
-              category={product.category}
-              name={product.name}
-              className="w-full h-full"
-              hasGold={product.tags.includes("24K Gold") || product.name.toLowerCase().includes("gold")}
-            />
+            {product.images[activeImageIndex]?.src && product.images[activeImageIndex].src.startsWith("/images/category1vit/") ? (
+              <div className="w-full h-full relative">
+                <Image
+                  src={product.images[activeImageIndex].src}
+                  alt={product.images[activeImageIndex].alt || product.name}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 55vw"
+                  priority
+                />
+              </div>
+            ) : (
+              <ProductArtwork
+                category={product.category}
+                name={product.name}
+                className="w-full h-full"
+                hasGold={product.tags.includes("24K Gold") || product.name.toLowerCase().includes("gold")}
+              />
+            )}
 
             {/* Badges */}
             <div className="absolute top-4 left-4 flex flex-col gap-2">
@@ -147,19 +161,17 @@ export function ProductDetailView({
               {product.shortDescription}
             </p>
 
-            {/* Price Box */}
-            <div className="mt-4 pt-4 border-t border-[#EADBC8] flex items-baseline gap-3">
-              <span className="text-2xl sm:text-3xl font-semibold text-[#6E2023]">
-                {formatPrice(currentPrice)}
-              </span>
-              {currentCompareAtPrice && (
-                <span className="text-base text-[#84766A] line-through">
-                  {formatPrice(currentCompareAtPrice)}
+            {/* Price on Request Notice */}
+            <div className="mt-4 pt-4 border-t border-[#EADBC8] space-y-1">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-[#CBAE9B]/25 text-[#6E2023] rounded-lg border border-[#CBAE9B]/50">
+                <span className="text-xs uppercase tracking-widest font-semibold">
+                  Price on Request
                 </span>
-              )}
-              <span className="text-xs text-[#84766A] font-light">
-                (Inclusive of all taxes)
-              </span>
+                <span className="text-[10px] text-[#6E2023]/70">• Direct Showroom Quote</span>
+              </div>
+              <p className="text-xs text-[#84766A] font-light pt-1">
+                Enquire via WhatsApp for custom piece counts, personalization, and verified pricing.
+              </p>
             </div>
           </div>
 

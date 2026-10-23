@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Product } from "@/lib/types";
 import { formatPrice } from "@/lib/utils";
 import { useCart } from "@/context/CartContext";
@@ -28,22 +29,33 @@ export function ProductCard({ product }: ProductCardProps) {
     <article className="group relative flex flex-col bg-white border border-[#EADBC8] rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-[#6E2023]/40">
       {/* 1. Image Container */}
       <div className="relative aspect-4/5 w-full overflow-hidden bg-[#FFF5E6]">
-        {/* Artwork Presentation */}
+        {/* Artwork or Poster Presentation */}
         <Link
           href={`/product/${product.slug}`}
           className="w-full h-full block relative transition-transform duration-500 group-hover:scale-105"
         >
-          <ProductArtwork
-            category={product.category}
-            name={product.name}
-            hasGold={product.tags.includes("24K Gold") || product.name.toLowerCase().includes("gold")}
-          />
+          {product.images[0]?.src && product.images[0].src.startsWith("/images/category1vit/") ? (
+            <div className="w-full h-full relative">
+              <Image
+                src={product.images[0].src}
+                alt={product.images[0].alt || product.name}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
+              />
+            </div>
+          ) : (
+            <ProductArtwork
+              category={product.category}
+              name={product.name}
+              hasGold={product.tags.includes("24K Gold") || product.name.toLowerCase().includes("gold")}
+            />
+          )}
         </Link>
 
         {/* Badges Overlay */}
         <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10 pointer-events-none">
           {product.featured && <Badge variant="burgundy">Curated</Badge>}
-          {discountPercent && <Badge variant="champagne">Save {discountPercent}%</Badge>}
           {product.tags.includes("24K Gold") && (
             <Badge variant="rose">24K Gold</Badge>
           )}
@@ -99,25 +111,18 @@ export function ProductCard({ product }: ProductCardProps) {
           </p>
         </div>
 
-        {/* Pricing & Mobile Action */}
+        {/* Price on Request & Action */}
         <div className="mt-4 pt-3 border-t border-[#FFF5E6] flex items-center justify-between">
-          <div className="flex items-baseline gap-2">
-            <span className="text-sm sm:text-base font-semibold text-[#6E2023]">
-              {formatPrice(product.price)}
-            </span>
-            {product.compareAtPrice && (
-              <span className="text-xs text-[#84766A] line-through">
-                {formatPrice(product.compareAtPrice)}
-              </span>
-            )}
-          </div>
+          <span className="text-[11px] uppercase tracking-wider font-semibold text-[#6E2023] bg-[#CBAE9B]/20 px-2 py-0.5 rounded">
+            Price on Request
+          </span>
 
           {/* Mobile Quick Add Button */}
           <button
             type="button"
             onClick={() => addItem(product, 1)}
             className="lg:hidden p-2 text-[#6E2023] hover:bg-[#FFF5E6] border border-[#EADBC8] rounded-lg transition-colors"
-            aria-label="Add to bag"
+            aria-label="Add to enquiry list"
           >
             <ShoppingBag className="w-4 h-4" />
           </button>

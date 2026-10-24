@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { siteConfig } from "@/lib/config";
 import {
   ArrowRight,
@@ -16,6 +17,7 @@ import {
 import { InstagramIcon } from "@/components/ui/Icons";
 
 export function Footer() {
+  const pathname = usePathname();
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
@@ -35,6 +37,10 @@ export function Footer() {
     setErrorMsg("");
     setSubscribed(true);
   };
+
+  if (pathname?.startsWith("/admin")) {
+    return null;
+  }
 
   return (
     <footer className="bg-[#6E2023] text-[#FFF5E6] pt-16 sm:pt-20 pb-12 border-t border-[#55181A]">
@@ -319,9 +325,16 @@ export function Footer() {
         {/* Bottom Section: Copyright & Disclaimer */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-[#CBAE9B] gap-4">
           <p>© {new Date().getFullYear()} VITRAG Tableware &amp; Gifting. All rights reserved.</p>
-          <div className="flex items-center gap-6 text-[#FFF5E6]/75">
+          <div className="flex flex-wrap items-center gap-6 text-[#FFF5E6]/75">
             <span>Chennai • Pan-India Insured Shipping</span>
             <span>Handcrafted Ceramics &amp; Fine Dinnerware</span>
+            <Link
+              href="/admin"
+              className="text-[#CBAE9B]/50 hover:text-white transition-colors underline decoration-[#CBAE9B]/20"
+              title="Store Owner & Staff Administration Console"
+            >
+              Merchant Console
+            </Link>
           </div>
         </div>
       </div>

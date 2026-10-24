@@ -19,6 +19,8 @@ import {
   Mail,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { saveAdminBulkInquiry } from "@/lib/adminStorage";
+import type { AdminBulkInquiry } from "@/lib/adminTypes";
 
 export function BulkOrdersView() {
   const [formData, setFormData] = useState<BulkEnquiry>({
@@ -58,6 +60,29 @@ export function BulkOrdersView() {
       return;
     }
     setErrorMsg("");
+
+    try {
+      const bulkId = `VIT-BULK-${Math.floor(200 + Math.random() * 800)}`;
+      const newBulkInquiry: AdminBulkInquiry = {
+        id: bulkId,
+        createdAt: new Date().toISOString(),
+        name: formData.name,
+        company: formData.company || undefined,
+        phone: formData.phone,
+        email: formData.email || undefined,
+        productInterest: formData.productInterest,
+        quantity: formData.quantity,
+        budgetPerGift: formData.budgetPerGift,
+        deliveryDate: formData.deliveryDate || undefined,
+        pinCode: formData.pinCode,
+        notes: formData.notes || undefined,
+        status: "new",
+      };
+      saveAdminBulkInquiry(newBulkInquiry);
+    } catch (saveErr) {
+      console.warn("Could not save bulk inquiry to admin storage:", saveErr);
+    }
+
     // Generate WhatsApp direct link
     const url = generateWhatsAppBulkEnquiryUrl(formData);
     window.open(url, "_blank");

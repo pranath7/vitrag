@@ -18,6 +18,8 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { saveAdminOrder } from "@/lib/adminStorage";
+import type { AdminOrder } from "@/lib/adminTypes";
 
 export function CheckoutView() {
   const { items, subtotalPaise, clearCart } = useCart();
@@ -93,6 +95,37 @@ export function CheckoutView() {
     const url = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
     setLastWhatsAppUrl(url);
     setOrderSent(true);
+
+    try {
+      const orderId = `VIT-ORD-${Math.floor(1000 + Math.random() * 9000)}`;
+      const newAdminOrder: AdminOrder = {
+        id: orderId,
+        createdAt: new Date().toISOString(),
+        customerName: formData.fullName,
+        customerPhone: formData.phone,
+        customerEmail: formData.email || undefined,
+        shippingAddress: formData.address,
+        city: formData.city,
+        state: formData.state,
+        pinCode: formData.pinCode,
+        giftNote: formData.giftNote || undefined,
+        items: items.map((i) => ({
+          productId: i.productId,
+          name: i.name,
+          variantName: i.variantName,
+          quantity: i.quantity,
+          pricePaise: i.price,
+          image: i.image,
+        })),
+        status: "new",
+        totalEstimatedPaise: subtotalPaise,
+        paymentMode: "whatsapp",
+        source: "Website Checkout",
+      };
+      saveAdminOrder(newAdminOrder);
+    } catch (saveErr) {
+      console.warn("Could not save to admin order history:", saveErr);
+    }
 
     try {
       window.open(url, "_blank");

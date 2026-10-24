@@ -28,7 +28,7 @@ export function SlideOverCart() {
     closeCart();
   }, [pathname, closeCart]);
 
-  if (!isCartOpen) return null;
+  if (!isCartOpen || pathname?.startsWith("/admin")) return null;
 
   const whatsappUrl = generateWhatsAppOrderUrl(items, subtotalPaise, notes);
 

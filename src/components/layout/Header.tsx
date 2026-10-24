@@ -51,6 +51,10 @@ export function Header() {
     }
   };
 
+  if (pathname?.startsWith("/admin")) {
+    return null;
+  }
+
   return (
     <header className="w-full z-40 sticky top-0 transition-all duration-300">
       {/* 1. Announcement Bar */}

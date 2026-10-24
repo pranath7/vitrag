@@ -112,27 +112,44 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Right Visual: High-Resolution Stock Architectural Arch Cutout with Diwali 6-Piece Feature */}
+            {/* Right Visual: High-Resolution Diwali 6-Piece Feature Display Card (No Cropping) */}
             <div className="lg:col-span-7 relative flex items-center justify-center lg:justify-end py-4">
-              <div className="relative">
-                {/* 1. Architectural Arched Frame with Real Stock Tableware Photo */}
-                <div className="relative w-[290px] sm:w-[400px] lg:w-[450px] aspect-[4/5] rounded-t-[180px] sm:rounded-t-[240px] rounded-b-3xl overflow-hidden shadow-[0_30px_70px_-20px_rgba(90,18,24,0.25)] border-[5px] border-[#CBAE9B]/70 bg-[#2A1417] group">
+              <div className="relative w-full max-w-[340px] sm:max-w-[480px] lg:max-w-[560px]">
+                {/* 1. Luxury Framed Poster Container matching 1024x853 exact aspect ratio */}
+                <Link
+                  href="/product/diwali-meaningful-moments-6pc-crystal-server-tray"
+                  className="relative aspect-[1024/853] w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_25px_65px_-15px_rgba(90,18,24,0.22)] border-[4px] border-[#CBAE9B] bg-[#2A1417] group block"
+                  title="Click to view 6-Piece Crystal Knobs Server Tray"
+                >
                   <Image
                     src="https://res.cloudinary.com/pmip0yum/image/upload/v1792859135/vitrag/diwali_sale/fsb3z2rvcifain5ejhzf.jpg"
                     alt="Designed for Meaningful Moments — Vitrag 6-Piece Crystal Knobs Dry Fruit Server Tray"
                     fill
                     className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                    sizes="(max-width: 640px) 290px, (max-width: 1024px) 400px, 450px"
+                    sizes="(max-width: 640px) 340px, (max-width: 1024px) 480px, 560px"
                     priority
                   />
-                  <div className="absolute inset-0 ring-1 ring-inset ring-[#CBAE9B]/50 rounded-t-[180px] sm:rounded-t-[240px] rounded-b-3xl pointer-events-none" />
-                </div>
+                  <div className="absolute inset-0 ring-1 ring-inset ring-[#CBAE9B]/50 rounded-2xl sm:rounded-3xl pointer-events-none" />
 
-                {/* 2. Rotating Luxury Seal Badge (from mockup) */}
-                <div className="absolute -top-6 -right-6 sm:-top-8 sm:-right-8 w-24 h-24 sm:w-28 sm:h-28 z-20 pointer-events-none select-none">
+                  {/* Subtle Floating Price Tag */}
+                  <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 bg-white/95 backdrop-blur-md border border-[#CBAE9B] px-3 py-1.5 rounded-xl shadow-md flex items-center gap-2 pointer-events-none">
+                    <span className="text-[10px] sm:text-xs font-bold text-[#6E2023] uppercase tracking-wider">
+                      Diwali Sale: ₹6,999
+                    </span>
+                    <span className="text-[9px] sm:text-[10px] text-[#84766A] line-through">
+                      ₹12,999
+                    </span>
+                    <span className="bg-[#2D6A4F] text-white text-[8px] sm:text-[9px] font-bold px-1.5 py-0.5 rounded-full">
+                      46% OFF
+                    </span>
+                  </div>
+                </Link>
+
+                {/* 2. Rotating Luxury Seal Badge with Clean Text Circumference */}
+                <div className="absolute -top-4 -right-4 sm:-top-6 sm:-right-6 w-20 h-20 sm:w-24 sm:h-24 z-20 pointer-events-none select-none">
                   {/* Rotating Circular Text */}
                   <svg
-                    className="w-full h-full animate-[spin_24s_linear_infinite]"
+                    className="w-full h-full animate-[spin_20s_linear_infinite]"
                     viewBox="0 0 120 120"
                   >
                     <path
@@ -140,24 +157,24 @@ export default function HomePage() {
                       d="M 60, 60 m -44, 0 a 44,44 0 1,1 88,0 a 44,44 0 1,1 -88,0"
                       fill="none"
                     />
-                    <text className="text-[9.5px] uppercase tracking-[0.24em] fill-[#8C6D58] font-semibold font-serif">
+                    <text className="text-[9px] uppercase tracking-[0.22em] fill-[#8C6D58] font-bold font-serif">
                       <textPath href="#sealCircle" startOffset="0%">
-                        • DIWALI FESTIVE SALE • UP TO 50% OFF •
+                        • DIWALI SALE • 50% OFF •
                       </textPath>
                     </text>
                   </svg>
                   {/* Center Star / Crest */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-8 h-8 rounded-full bg-[#FAF3E7] border border-[#CBAE9B] shadow-xs flex items-center justify-center">
-                      <span className="text-sm">🪔</span>
+                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#FAF3E7] border border-[#CBAE9B] shadow-xs flex items-center justify-center">
+                      <span className="text-xs sm:text-sm">🪔</span>
                     </div>
                   </div>
                 </div>
 
-                {/* 3. Scroll Down Indicator (from mockup) */}
+                {/* 3. Scroll Down Indicator */}
                 <a
                   href="#diwali-exclusives"
-                  className="hidden xl:flex flex-col items-center gap-2 absolute -right-12 bottom-6 text-[#84766A] hover:text-[#5A1218] transition-colors group cursor-pointer"
+                  className="hidden xl:flex flex-col items-center gap-2 absolute -right-12 bottom-4 text-[#84766A] hover:text-[#5A1218] transition-colors group cursor-pointer"
                   aria-label="Scroll to collection"
                 >
                   <span className="text-[10px] uppercase tracking-[0.25em] [writing-mode:vertical-lr] font-medium text-[#8C6D58]">

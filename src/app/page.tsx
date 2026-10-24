@@ -1,4 +1,5 @@
 import React from "react";
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { getFeaturedProducts, collections, products } from "@/lib/products";
@@ -16,6 +17,19 @@ import {
   Compass,
 } from "lucide-react";
 import { siteConfig } from "@/lib/config";
+
+export const metadata: Metadata = {
+  title: "VITRAG — Fine Tableware & Curated Gifting | Chennai, India",
+  description:
+    "Rooted in tradition and designed for modern gatherings. Discover handcrafted ceramic dinner sets, luxury platters, dry-fruit gift boxes, and bespoke festive hampers.",
+  openGraph: {
+    title: "VITRAG — Fine Living | Tableware & Curated Gifting",
+    description:
+      "Rooted in tradition and designed for modern gatherings. Handcrafted dinnerware and curated gifts from Chennai, India.",
+    url: siteConfig.url,
+    siteName: "VITRAG",
+  },
+};
 
 export default function HomePage() {
   const featuredProducts = getFeaturedProducts(8);

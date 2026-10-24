@@ -618,7 +618,7 @@ export function BillingDashboardView() {
         </div>
 
         <div className="overflow-x-auto border border-[#EADBC8] rounded-2xl">
-          <table className="w-full text-left text-xs sm:text-sm">
+          <table className="w-full min-w-[560px] text-left text-xs sm:text-sm">
             <thead>
               <tr className="bg-[#FAF3E7] border-b border-[#EADBC8] text-[#84766A] text-[11px] uppercase tracking-wider font-semibold">
                 <th className="py-3.5 px-4 sm:px-6">Invoice #</th>

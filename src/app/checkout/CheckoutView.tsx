@@ -39,17 +39,37 @@ export function CheckoutView() {
   const [lastWhatsAppUrl, setLastWhatsAppUrl] = useState("");
   const [promoCode, setPromoCode] = useState("");
   const [promoApplied, setPromoApplied] = useState<string | null>(null);
+  const [checkoutError, setCheckoutError] = useState("");
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    if (checkoutError) setCheckoutError("");
   };
 
   const handleWhatsAppOrder = (e: React.FormEvent) => {
     e.preventDefault();
 
+    if (!formData.fullName.trim()) {
+      setCheckoutError("Please enter your full delivery name.");
+      return;
+    }
+    if (!formData.phone.trim() || formData.phone.trim().length < 8) {
+      setCheckoutError("Please enter a valid phone or WhatsApp number.");
+      return;
+    }
+    if (!formData.address.trim()) {
+      setCheckoutError("Please enter your street delivery address.");
+      return;
+    }
+    if (!formData.pinCode.trim()) {
+      setCheckoutError("Please enter your 6-digit postal PIN code.");
+      return;
+    }
+
+    setCheckoutError("");
     const number = siteConfig.contact.whatsappNumber;
     let message = `*NEW ORDER REQUEST — VITRAG Tableware & Gifting*\n\n`;
     message += `*Customer Details:*\n`;
@@ -193,6 +213,13 @@ export function CheckoutView() {
         {/* Left: Shipping & Delivery Form */}
         <div className="lg:col-span-7 space-y-8">
           <form id="checkout-form" onSubmit={handleWhatsAppOrder} className="space-y-6">
+            {checkoutError && (
+              <div className="flex items-center gap-2.5 p-3.5 bg-red-50 border border-red-200 text-red-700 text-xs rounded-xl animate-in fade-in">
+                <AlertCircle className="w-4 h-4 shrink-0 text-red-600" />
+                <span>{checkoutError}</span>
+              </div>
+            )}
+
             {/* 1. Contact Information */}
             <div className="bg-white p-6 sm:p-8 border border-[#EADBC8] space-y-4">
               <h2 className="font-heading text-xl text-[#252522] border-b border-[#EADBC8] pb-3 flex items-center justify-between">

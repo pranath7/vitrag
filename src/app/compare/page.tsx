@@ -104,7 +104,7 @@ export default function ComparePage() {
           </div>
 
           <div className="overflow-x-auto border border-[#EADBC8] rounded-2xl shadow-sm bg-white">
-            <table className="w-full text-left text-xs sm:text-sm border-collapse">
+            <table className="w-full min-w-[580px] text-left text-xs sm:text-sm border-collapse">
               <thead>
                 <tr className="bg-[#FAF3E7] border-b border-[#EADBC8]">
                   <th className="py-4 px-4 sm:px-6 font-semibold uppercase tracking-wider text-[11px] text-[#84766A] w-2/5">

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
@@ -6,6 +6,13 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { SlideOverCart } from "@/components/cart/SlideOverCart";
 import { siteConfig } from "@/lib/config";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#6E2023",
+};
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -76,12 +83,12 @@ export default function RootLayout({
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={`${cormorant.variable} ${inter.variable} h-full antialiased`}
+      className={`${cormorant.variable} ${inter.variable} h-full antialiased overflow-x-hidden`}
     >
-      <body className="min-h-full flex flex-col bg-[#FFF5E6] text-[#252522] font-body selection:bg-[#6E2023] selection:text-white">
+      <body className="min-h-full flex flex-col bg-[#FFF5E6] text-[#252522] font-body selection:bg-[#6E2023] selection:text-white overflow-x-hidden max-w-full">
         <CartProvider>
           <Header />
-          <div className="flex-1">{children}</div>
+          <div className="flex-1 w-full max-w-full overflow-x-hidden">{children}</div>
           <SlideOverCart />
           <Footer />
         </CartProvider>

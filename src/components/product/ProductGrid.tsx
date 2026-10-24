@@ -267,35 +267,79 @@ export function ProductGrid({
             className="fixed inset-0 bg-[#252522]/60 backdrop-blur-xs"
             onClick={() => setMobileFilterOpen(false)}
           />
-          <div className="fixed inset-y-0 right-0 max-w-xs w-full bg-white p-6 shadow-2xl flex flex-col justify-between">
+          <div className="fixed inset-y-0 right-0 max-w-xs w-full bg-white p-6 shadow-2xl flex flex-col justify-between overflow-y-auto">
             <div className="space-y-6">
               <div className="flex items-center justify-between pb-4 border-b border-[#EADBC8]">
-                <h3 className="font-heading text-xl text-[#252522]">
+                <h3 className="font-heading text-xl text-[#6E2023]">
                   Filter Catalogue
                 </h3>
                 <button
                   onClick={() => setMobileFilterOpen(false)}
-                  className="p-1 text-[#8B8176]"
+                  className="p-1 text-[#8B8176] hover:text-[#6E2023]"
+                  aria-label="Close filters"
                 >
                   <X className="w-5 h-5" />
                 </button>
               </div>
 
+              {/* Mobile Collection Filter */}
+              <div className="space-y-3">
+                <h4 className="text-xs uppercase tracking-widest text-[#6E2023] font-semibold">
+                  Collections
+                </h4>
+                <div className="space-y-2.5 text-xs text-[#252522]">
+                  <label className="flex items-center gap-2.5 cursor-pointer py-1">
+                    <input
+                      type="radio"
+                      name="mobile-category"
+                      checked={selectedCategory === "all"}
+                      onChange={() => setSelectedCategory("all")}
+                      className="accent-[#6E2023]"
+                    />
+                    <span className="font-medium">All Collections</span>
+                  </label>
+                  {collections.map((col) => (
+                    <label key={col.id} className="flex items-center gap-2.5 cursor-pointer py-1">
+                      <input
+                        type="radio"
+                        name="mobile-category"
+                        checked={selectedCategory === col.id}
+                        onChange={() => setSelectedCategory(col.id)}
+                        className="accent-[#6E2023]"
+                      />
+                      <span>{col.name}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              {/* Mobile Wishlist Quick Toggle */}
+              <div className="pt-4 border-t border-[#EADBC8]">
+                <label className="flex items-center gap-2.5 cursor-pointer text-xs font-medium text-[#6E2023]">
+                  <input
+                    type="checkbox"
+                    checked={onlyWishlist}
+                    onChange={(e) => setOnlyWishlist(e.target.checked)}
+                    className="accent-[#6E2023]"
+                  />
+                  <span>Show Wishlisted Only ({wishlist.length})</span>
+                </label>
+              </div>
             </div>
 
-            <div className="pt-6 border-t border-[#EADBC8] space-y-2">
+            <div className="pt-6 border-t border-[#EADBC8] space-y-2 mt-6">
               <Button
                 onClick={() => setMobileFilterOpen(false)}
                 variant="primary"
-                className="w-full"
+                className="w-full py-3"
               >
-                Apply Filters
+                Apply Filters ({filteredProducts.length} Results)
               </Button>
               <button
                 onClick={resetFilters}
-                className="w-full text-center text-xs uppercase tracking-wider text-[#8B8176] py-2"
+                className="w-full text-center text-xs uppercase tracking-wider text-[#8B8176] hover:text-[#6E2023] py-2 font-medium"
               >
-                Reset All
+                Reset All Filters
               </button>
             </div>
           </div>

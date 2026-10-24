@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { generateWhatsAppBulkEnquiryUrl } from "@/lib/utils";
+import { siteConfig } from "@/lib/config";
 import type { BulkEnquiry } from "@/lib/types";
 import {
   MessageSquare,
@@ -9,10 +10,13 @@ import {
   Building2,
   Calendar,
   CheckCircle2,
+  AlertCircle,
   Sparkles,
   Truck,
   Layers,
   ArrowRight,
+  Phone,
+  Mail,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
@@ -31,6 +35,7 @@ export function BulkOrdersView() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -39,10 +44,20 @@ export function BulkOrdersView() {
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    if (errorMsg) setErrorMsg("");
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!formData.name.trim()) {
+      setErrorMsg("Please enter your name.");
+      return;
+    }
+    if (!formData.phone.trim() || formData.phone.trim().length < 8) {
+      setErrorMsg("Please enter a valid telephone or WhatsApp contact number.");
+      return;
+    }
+    setErrorMsg("");
     // Generate WhatsApp direct link
     const url = generateWhatsAppBulkEnquiryUrl(formData);
     window.open(url, "_blank");
@@ -98,6 +113,13 @@ export function BulkOrdersView() {
                   Fill in your requirements below to instantly connect with our Chennai gifting concierge on WhatsApp.
                 </p>
               </div>
+
+              {errorMsg && (
+                <div className="flex items-center gap-2 p-3 bg-red-50 border border-red-200 text-red-700 text-xs rounded-lg animate-in fade-in">
+                  <AlertCircle className="w-4 h-4 shrink-0 text-red-600" />
+                  <span>{errorMsg}</span>
+                </div>
+              )}
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
@@ -315,6 +337,31 @@ export function BulkOrdersView() {
                   </strong>
                   Visit our studio in T. Nagar, Chennai to inspect physical samples, weight, and glazes prior to confirming large runs.
                 </div>
+              </div>
+            </div>
+
+            {/* Clickable Corporate Concierge Contact */}
+            <div className="pt-4 border-t border-[#bfa08c] space-y-2 text-xs text-[#6E2023]">
+              <p className="font-semibold uppercase tracking-wider text-[11px]">
+                Immediate Corporate Desk Inquiries:
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 pt-1">
+                <a
+                  href={`tel:${siteConfig.contact.phone.replace(/[^0-9+]/g, "")}`}
+                  className="inline-flex items-center gap-1.5 font-bold hover:underline"
+                  title="Call Corporate Desk"
+                >
+                  <Phone className="w-3.5 h-3.5" />
+                  <span>Call: {siteConfig.contact.displayPhone}</span>
+                </a>
+                <a
+                  href={`mailto:${siteConfig.contact.email}`}
+                  className="inline-flex items-center gap-1.5 font-bold hover:underline"
+                  title="Email Corporate Desk"
+                >
+                  <Mail className="w-3.5 h-3.5" />
+                  <span>{siteConfig.contact.email}</span>
+                </a>
               </div>
             </div>
           </div>

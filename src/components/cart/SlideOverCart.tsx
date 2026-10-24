@@ -45,20 +45,25 @@ export function SlideOverCart() {
         <div className="w-screen max-w-md bg-[#FFF5E6] border-l border-[#EADBC8] shadow-2xl flex flex-col">
           {/* Header */}
           <div className="p-6 border-b border-[#EADBC8] flex items-center justify-between bg-white">
-            <div className="flex items-center gap-3">
-              <div className="relative w-7 h-7 rounded-md overflow-hidden border border-[#EADBC8] shrink-0">
+            <Link
+              href="/"
+              onClick={closeCart}
+              aria-label="VITRAG Tableware & Gifting Home"
+              className="flex items-center gap-3 group focus:outline-none"
+            >
+              <div className="relative w-8 h-8 rounded-lg overflow-hidden border border-[#EADBC8] shrink-0 group-hover:scale-105 transition-transform duration-200">
                 <Image
                   src="/logo.jpg"
                   alt="VITRAG"
                   fill
                   className="object-cover"
-                  sizes="28px"
+                  sizes="32px"
                 />
               </div>
-              <h2 id="slide-over-title" className="font-heading text-2xl text-[#6E2023] font-medium">
+              <h2 id="slide-over-title" className="font-heading text-2xl text-[#6E2023] font-medium group-hover:text-[#55181A] transition-colors">
                 Your Shopping Bag ({items.reduce((a, b) => a + b.quantity, 0)})
               </h2>
-            </div>
+            </Link>
             <button
               onClick={closeCart}
               className="p-2 text-[#84766A] hover:text-[#6E2023] transition-colors focus:outline-none"

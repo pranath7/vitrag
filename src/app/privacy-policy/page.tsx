@@ -365,7 +365,18 @@ export default function PrivacyPolicyPage() {
                     pranathwork@gmail.com
                   </a>
                 </li>
-                <li>WhatsApp: +91 63691 42027</li>
+                <li>
+                  WhatsApp / Phone:{" "}
+                  <a
+                    href="https://wa.me/916369142027"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#6E2023] underline underline-offset-2 hover:text-[#6E2023]/80 font-medium"
+                  >
+                    +91 63691 42027
+                  </a>
+                  {" "}(<a href="tel:+916369142027" className="text-[#6E2023] underline hover:text-[#6E2023]/80">Call</a>)
+                </li>
                 <li>Address: Patni Plaza, Shop No. 3, NSC Bose Road, Sowcarpet, Chennai, Tamil Nadu 600001</li>
               </ul>
             </div>

@@ -11,6 +11,7 @@ import {
   CheckCircle2,
   Calendar,
   Send,
+  AlertCircle,
 } from "lucide-react";
 import { InstagramIcon } from "@/components/ui/Icons";
 import { Button } from "@/components/ui/Button";
@@ -25,9 +26,24 @@ export function ContactView() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!formData.name.trim()) {
+      setErrorMsg("Please enter your name.");
+      return;
+    }
+    if (!formData.phone.trim() || formData.phone.trim().length < 8) {
+      setErrorMsg("Please enter a valid phone or WhatsApp number.");
+      return;
+    }
+    if (!formData.message.trim()) {
+      setErrorMsg("Please enter your message or question.");
+      return;
+    }
+
+    setErrorMsg("");
     const number = siteConfig.contact.whatsappNumber;
     let text = `Hello VITRAG Team,\n\nI would like to get in touch:\n\n`;
     text += `*Name:* ${formData.name}\n`;
@@ -91,14 +107,27 @@ export function ContactView() {
                 <Phone className="w-5 h-5 text-[#6E2023] shrink-0 mt-0.5" />
                 <div>
                   <strong className="block text-sm text-[#6E2023] font-medium">
-                    Telephone & WhatsApp
+                    Telephone &amp; WhatsApp
                   </strong>
-                  <a
-                    href={`https://wa.me/${siteConfig.contact.whatsappNumber}`}
-                    className="hover:underline text-[#6E2023] font-semibold"
-                  >
-                    {siteConfig.contact.displayPhone}
-                  </a>
+                  <div className="flex items-center gap-2 mt-0.5">
+                    <a
+                      href={`tel:${siteConfig.contact.phone.replace(/[^0-9+]/g, "")}`}
+                      className="hover:underline text-[#6E2023] font-semibold"
+                      title="Direct Phone Call"
+                    >
+                      {siteConfig.contact.displayPhone}
+                    </a>
+                    <span className="text-[#84766A]">•</span>
+                    <a
+                      href={`https://wa.me/${siteConfig.contact.whatsappNumber}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#25D366] hover:underline font-semibold inline-flex items-center gap-1"
+                    >
+                      <MessageSquare className="w-3.5 h-3.5 fill-[#25D366]" />
+                      WhatsApp
+                    </a>
+                  </div>
                 </div>
               </div>
 
@@ -180,6 +209,13 @@ export function ContactView() {
                   Have a question regarding custom dinner sets, packaging, or store visits? Reach out below.
                 </p>
               </div>
+
+              {errorMsg && (
+                <div className="flex items-center gap-2 p-3 bg-red-50 border border-red-200 text-red-700 text-xs rounded-lg animate-in fade-in">
+                  <AlertCircle className="w-4 h-4 shrink-0 text-red-600" />
+                  <span>{errorMsg}</span>
+                </div>
+              )}
 
               <div>
                 <label className="block text-xs uppercase tracking-wider text-[#6E2023] font-semibold mb-1">

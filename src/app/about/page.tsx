@@ -102,7 +102,13 @@ export default function AboutPage() {
                 <div className="hidden sm:block h-6 w-px bg-[#CBAE9B]/30" />
                 <div>
                   <span className="block font-semibold text-white">Showroom &amp; Concierge</span>
-                  <span>+91 63691 42027</span>
+                  <a
+                    href="tel:+916369142027"
+                    className="hover:text-white underline decoration-[#CBAE9B]/50 transition-colors"
+                    title="Call Showroom Concierge"
+                  >
+                    +91 63691 42027
+                  </a>
                 </div>
               </div>
             </div>

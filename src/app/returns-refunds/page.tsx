@@ -238,7 +238,23 @@ export default function ReturnsRefundsPage() {
                 <strong>Record a complete unboxing video</strong> showing the outer shipping label, box seal opening, and the damaged item inside.
               </li>
               <li>
-                Contact us within <strong>48 hours</strong> of delivery via WhatsApp (<strong>+91 63691 42027</strong>) or email (<strong>pranathwork@gmail.com</strong>) with the video.
+                Contact us within <strong>48 hours</strong> of delivery via WhatsApp (
+                <a
+                  href="https://wa.me/916369142027"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#6E2023] underline font-medium hover:text-[#55181A]"
+                >
+                  +91 63691 42027
+                </a>
+                ) or email (
+                <a
+                  href="mailto:pranathwork@gmail.com"
+                  className="text-[#6E2023] underline font-medium hover:text-[#55181A]"
+                >
+                  pranathwork@gmail.com
+                </a>
+                ) with the video.
               </li>
               <li>
                 <strong>Do not discard</strong> the item or packaging until the claim is approved.
@@ -263,7 +279,15 @@ export default function ReturnsRefundsPage() {
             >
               pranathwork@gmail.com
             </a>{" "}
-            or message us on WhatsApp at <strong>+91 63691 42027</strong>.
+            or message us on WhatsApp at{" "}
+            <a
+              href="https://wa.me/916369142027"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#6E2023] underline font-semibold hover:text-[#55181A]"
+            >
+              +91 63691 42027
+            </a>.
           </p>
         </div>
 

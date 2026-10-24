@@ -11,6 +11,7 @@ export const siteConfig = {
   currencySymbol: "₹",
 
   contact: {
+    phone: "+916369142027",
     whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "916369142027",
     displayPhone: "+91 63691 42027",
     email: "pranathwork@gmail.com",

@@ -14,6 +14,7 @@ import {
   ChevronDown,
   Heart,
   Phone,
+  Mail,
   ArrowRight,
   User,
 } from "lucide-react";
@@ -159,6 +160,7 @@ export function Header() {
               >
                 <button
                   type="button"
+                  onClick={() => setGiftingDropdownOpen((prev) => !prev)}
                   className="flex items-center gap-1 hover:text-[#6E2023] transition-colors focus:outline-none uppercase tracking-[0.16em] text-xs font-medium"
                 >
                   Gifting
@@ -310,12 +312,17 @@ export function Header() {
             aria-hidden="true"
           />
 
-          <div className="fixed inset-y-0 left-0 w-full max-w-xs bg-[#FFF5E6] border-r border-[#EADBC8] shadow-xl flex flex-col justify-between p-6">
+          <div className="fixed inset-y-0 left-0 w-full max-w-xs bg-[#FFF5E6] border-r border-[#EADBC8] shadow-xl flex flex-col justify-between p-6 overflow-y-auto">
             <div>
-              {/* Drawer Header */}
+              {/* Drawer Header with Clickable Logo */}
               <div className="flex items-center justify-between pb-6 border-b border-[#EADBC8]">
-                <div className="flex items-center gap-3">
-                  <div className="relative w-9 h-9 rounded-lg overflow-hidden border border-[#EADBC8] shadow-2xs shrink-0">
+                <Link
+                  href="/"
+                  onClick={() => setMobileMenuOpen(false)}
+                  aria-label="VITRAG Tableware & Gifting Home"
+                  className="flex items-center gap-3 group focus:outline-none"
+                >
+                  <div className="relative w-9 h-9 rounded-lg overflow-hidden border border-[#EADBC8] shadow-2xs shrink-0 group-hover:scale-105 transition-transform duration-200">
                     <Image
                       src="/logo.jpg"
                       alt="VITRAG Logo"
@@ -325,14 +332,14 @@ export function Header() {
                     />
                   </div>
                   <div>
-                    <span className="font-heading text-xl tracking-[0.2em] uppercase font-semibold text-[#6E2023] block leading-none">
+                    <span className="font-heading text-xl tracking-[0.2em] uppercase font-semibold text-[#6E2023] block leading-none group-hover:text-[#55181A] transition-colors">
                       VITRAG
                     </span>
                     <span className="block text-[8px] uppercase tracking-[0.22em] text-[#84766A] mt-1 font-sans">
-                      Tableware & Gifting
+                      Tableware &amp; Gifting
                     </span>
                   </div>
-                </div>
+                </Link>
                 <button
                   onClick={() => setMobileMenuOpen(false)}
                   className="p-1 text-[#84766A] hover:text-[#6E2023]"
@@ -344,14 +351,14 @@ export function Header() {
 
               {/* Mobile Links */}
               <div className="py-6 space-y-4 text-sm uppercase tracking-widest font-medium text-[#252522]">
-                {/* Pillar 4: Mobile Drawer Cart Link */}
+                {/* Mobile Drawer Cart Link */}
                 <button
                   type="button"
                   onClick={() => {
                     setMobileMenuOpen(false);
                     openCart();
                   }}
-                  className="w-full flex items-center justify-between p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-xl text-left"
+                  className="w-full flex items-center justify-between p-3 bg-white border border-[#EADBC8] rounded-xl text-left shadow-2xs hover:border-[#6E2023] transition-colors"
                 >
                   <div className="flex items-center gap-2.5">
                     <ShoppingBag className="w-4 h-4 text-[#6E2023]" />
@@ -371,9 +378,10 @@ export function Header() {
                 >
                   Shop All Products
                 </Link>
+
                 <div className="pt-2 pb-1">
                   <span className="text-[10px] text-[#6E2023] tracking-widest uppercase font-semibold">
-                    Collections
+                    Core Collections
                   </span>
                 </div>
                 {collections.slice(0, 6).map((col) => (
@@ -393,7 +401,21 @@ export function Header() {
                     onClick={() => setMobileMenuOpen(false)}
                     className="block text-xs uppercase tracking-widest text-[#6E2023] font-semibold py-1"
                   >
-                    Corporate & Bulk Gifting
+                    Corporate &amp; Bulk Gifting
+                  </Link>
+                  <Link
+                    href="/compare"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block text-xs uppercase tracking-widest hover:text-[#6E2023] py-1 text-[#252522]"
+                  >
+                    Why VITRAG vs Others
+                  </Link>
+                  <Link
+                    href="/billing"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block text-xs uppercase tracking-widest hover:text-[#6E2023] py-1 text-[#252522]"
+                  >
+                    Billing &amp; Invoices
                   </Link>
                   <Link
                     href="/about"
@@ -407,25 +429,45 @@ export function Header() {
                     onClick={() => setMobileMenuOpen(false)}
                     className="block text-xs uppercase tracking-widest hover:text-[#6E2023] py-1 text-[#252522]"
                   >
-                    Showroom & Contact
+                    Showroom &amp; Contact
                   </Link>
                 </div>
               </div>
             </div>
 
-            {/* Mobile Drawer Footer */}
-            <div className="pt-6 border-t border-[#EADBC8] space-y-3">
+            {/* Mobile Drawer Footer with Clickable Phone & Email */}
+            <div className="pt-6 border-t border-[#EADBC8] space-y-2.5">
+              <a
+                href={`tel:${siteConfig.contact.phone.replace(/[^0-9+]/g, "")}`}
+                className="flex items-center gap-2 text-xs tracking-wider text-[#6E2023] hover:text-[#55181A] font-medium"
+                title="Call Showroom Concierge"
+              >
+                <Phone className="w-3.5 h-3.5 text-[#6E2023]" />
+                <span>Call: {siteConfig.contact.displayPhone}</span>
+              </a>
+
               <a
                 href={`https://wa.me/${siteConfig.contact.whatsappNumber}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-xs tracking-wider text-[#6E2023] font-medium"
+                className="flex items-center gap-2 text-xs tracking-wider text-[#25D366] hover:text-[#20ba59] font-medium"
+                title="Chat on WhatsApp"
               >
                 <Phone className="w-3.5 h-3.5 text-[#25D366]" />
                 <span>WhatsApp: {siteConfig.contact.displayPhone}</span>
               </a>
-              <p className="text-[11px] text-[#84766A]">
-                Chennai, Tamil Nadu, India
+
+              <a
+                href={`mailto:${siteConfig.contact.email}`}
+                className="flex items-center gap-2 text-xs tracking-wider text-[#84766A] hover:text-[#6E2023]"
+                title="Email Concierge"
+              >
+                <Mail className="w-3.5 h-3.5 text-[#84766A]" />
+                <span>{siteConfig.contact.email}</span>
+              </a>
+
+              <p className="text-[10px] text-[#84766A]/80 pt-1">
+                Chennai, Tamil Nadu, India • Pan-India Delivery
               </p>
             </div>
           </div>

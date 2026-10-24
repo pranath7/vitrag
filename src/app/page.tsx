@@ -284,15 +284,15 @@ export default function HomePage() {
       {/* ========================================================
           SECTION B: SHOP BY CATEGORY
          ======================================================== */}
-      <section className="py-20 sm:py-24 bg-white border-b border-[#EADBC8]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
+      <section className="py-14 sm:py-20 bg-white border-b border-[#EADBC8]">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-10">
             <div>
               <p className="text-xs uppercase tracking-[0.2em] text-[#6E2023] font-semibold mb-2">
                 Explore Categories
               </p>
-              <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-[#6E2023]">
-                Curated by Ritual & Use
+              <h2 className="font-heading text-2xl sm:text-4xl lg:text-5xl text-[#6E2023]">
+                Curated by Ritual &amp; Use
               </h2>
             </div>
             <Link
@@ -304,23 +304,58 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
-            {collections.slice(0, 6).map((col) => (
+          {/* 4 Core Featured Categories */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+            {[
+              {
+                id: "signature-editions",
+                name: "Signature Editions",
+                shortName: "Signature Series",
+                slug: "signature-editions",
+                image: "/images/categories/signature-editions.png",
+              },
+              {
+                id: "dinner-sets",
+                name: "Dinner Sets",
+                shortName: "Dinnerware",
+                slug: "dinner-sets",
+                image: "/images/categories/dinner-sets.jpg",
+              },
+              {
+                id: "platters-serving",
+                name: "Platter & Serving",
+                shortName: "Serveware",
+                slug: "platters-serving",
+                image: "/images/categories/platter-and-serving.jpg",
+              },
+              {
+                id: "dry-fruit-boxes",
+                name: "Dry Fruit Boxes",
+                shortName: "Gift Box Sets",
+                slug: "dry-fruit-boxes",
+                image: "/images/categories/dry-fruit-boxes.jpg",
+              },
+            ].map((col) => (
               <Link
                 key={col.id}
                 href={`/collections/${col.slug}`}
-                className="group flex flex-col bg-[#FFF5E6] border border-[#EADBC8] p-5 sm:p-6 rounded-xl transition-all duration-300 hover:shadow-lg hover:border-[#6E2023]/50 hover:-translate-y-1 text-center"
+                className="group flex flex-col items-center bg-[#FFF5E6] border border-[#EADBC8] p-4 sm:p-6 rounded-2xl transition-all duration-300 hover:shadow-xl hover:border-[#6E2023]/50 hover:-translate-y-1.5 text-center"
               >
-                <div className="aspect-square w-full rounded-full bg-[#CBAE9B]/30 border border-[#CBAE9B]/60 mx-auto flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-105">
-                  <span className="font-heading text-sm text-[#6E2023] font-bold tracking-wider uppercase">
-                    {col.name.slice(0, 2)}
-                  </span>
+                {/* Circular Profile Image (Medallion) */}
+                <div className="relative aspect-square w-full max-w-[140px] sm:max-w-[170px] rounded-full overflow-hidden border-2 border-[#CBAE9B]/70 shadow-md mb-4 transition-transform duration-500 group-hover:scale-105 group-hover:border-[#6E2023] bg-[#590A14]">
+                  <Image
+                    src={col.image}
+                    alt={col.name}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 140px, 170px"
+                  />
                 </div>
-                <h3 className="font-heading text-base sm:text-lg text-[#6E2023] group-hover:text-[#55181A] transition-colors line-clamp-1 font-medium">
+                <h3 className="font-heading text-base sm:text-lg text-[#6E2023] group-hover:text-[#55181A] transition-colors font-medium">
                   {col.name}
                 </h3>
-                <p className="text-[11px] text-[#84766A] mt-1 font-light line-clamp-1">
-                  {col.shortName || "Collection"}
+                <p className="text-[11px] text-[#84766A] mt-1 font-light">
+                  {col.shortName}
                 </p>
               </Link>
             ))}

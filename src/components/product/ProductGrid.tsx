@@ -160,8 +160,6 @@ export function ProductGrid({
                 className="appearance-none bg-white border border-[#EADBC8] text-xs uppercase tracking-wider font-medium text-[#252522] pl-3 pr-8 py-1.5 rounded-none focus:outline-none focus:border-[#6E2023]"
               >
                 <option value="featured">Curated (Featured)</option>
-                <option value="price-asc">Price: Low to High</option>
-                <option value="price-desc">Price: High to Low</option>
                 <option value="name-asc">Alphabetical: A to Z</option>
               </select>
               <ArrowUpDown className="w-3 h-3 text-[#8B8176] absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
@@ -223,65 +221,6 @@ export function ProductGrid({
               </div>
             )}
 
-            {/* Price Filter */}
-            <div className="space-y-3 pt-4 border-t border-[#EADBC8]">
-              <h4 className="text-xs uppercase tracking-widest text-[#8B8176] font-semibold">
-                Price (INR)
-              </h4>
-              <div className="space-y-2 text-xs">
-                <label className="flex items-center gap-2 cursor-pointer">
-                  <input
-                    type="radio"
-                    name="price"
-                    checked={priceRange === "all"}
-                    onChange={() => setPriceRange("all")}
-                    className="accent-[#6E2023]"
-                  />
-                  <span>All Prices</span>
-                </label>
-                <label className="flex items-center gap-2 cursor-pointer">
-                  <input
-                    type="radio"
-                    name="price"
-                    checked={priceRange === "under-999"}
-                    onChange={() => setPriceRange("under-999")}
-                    className="accent-[#6E2023]"
-                  />
-                  <span>Under ₹999</span>
-                </label>
-                <label className="flex items-center gap-2 cursor-pointer">
-                  <input
-                    type="radio"
-                    name="price"
-                    checked={priceRange === "under-1999"}
-                    onChange={() => setPriceRange("under-1999")}
-                    className="accent-[#6E2023]"
-                  />
-                  <span>₹1,000 – ₹1,999</span>
-                </label>
-                <label className="flex items-center gap-2 cursor-pointer">
-                  <input
-                    type="radio"
-                    name="price"
-                    checked={priceRange === "2000-4999"}
-                    onChange={() => setPriceRange("2000-4999")}
-                    className="accent-[#6E2023]"
-                  />
-                  <span>₹2,000 – ₹4,999</span>
-                </label>
-                <label className="flex items-center gap-2 cursor-pointer">
-                  <input
-                    type="radio"
-                    name="price"
-                    checked={priceRange === "5000-above"}
-                    onChange={() => setPriceRange("5000-above")}
-                    className="accent-[#6E2023]"
-                  />
-                  <span>₹5,000 & Above</span>
-                </label>
-              </div>
-            </div>
-
             {/* Wishlist Quick Toggle */}
             <div className="pt-4 border-t border-[#EADBC8]">
               <label className="flex items-center gap-2 cursor-pointer text-xs">
@@ -342,64 +281,6 @@ export function ProductGrid({
                 </button>
               </div>
 
-              {/* Price filter in mobile */}
-              <div className="space-y-3">
-                <h4 className="text-xs uppercase tracking-widest text-[#8B8176] font-semibold">
-                  Price (INR)
-                </h4>
-                <div className="space-y-2 text-xs">
-                  <label className="flex items-center gap-2 cursor-pointer">
-                    <input
-                      type="radio"
-                      name="mobilePrice"
-                      checked={priceRange === "all"}
-                      onChange={() => setPriceRange("all")}
-                      className="accent-[#6E2023]"
-                    />
-                    <span>All Prices</span>
-                  </label>
-                  <label className="flex items-center gap-2 cursor-pointer">
-                    <input
-                      type="radio"
-                      name="mobilePrice"
-                      checked={priceRange === "under-999"}
-                      onChange={() => setPriceRange("under-999")}
-                      className="accent-[#6E2023]"
-                    />
-                    <span>Under ₹999</span>
-                  </label>
-                  <label className="flex items-center gap-2 cursor-pointer">
-                    <input
-                      type="radio"
-                      name="mobilePrice"
-                      checked={priceRange === "under-1999"}
-                      onChange={() => setPriceRange("under-1999")}
-                      className="accent-[#6E2023]"
-                    />
-                    <span>₹1,000 – ₹1,999</span>
-                  </label>
-                  <label className="flex items-center gap-2 cursor-pointer">
-                    <input
-                      type="radio"
-                      name="mobilePrice"
-                      checked={priceRange === "2000-4999"}
-                      onChange={() => setPriceRange("2000-4999")}
-                      className="accent-[#6E2023]"
-                    />
-                    <span>₹2,000 – ₹4,999</span>
-                  </label>
-                  <label className="flex items-center gap-2 cursor-pointer">
-                    <input
-                      type="radio"
-                      name="mobilePrice"
-                      checked={priceRange === "5000-above"}
-                      onChange={() => setPriceRange("5000-above")}
-                      className="accent-[#6E2023]"
-                    />
-                    <span>₹5,000 & Above</span>
-                  </label>
-                </div>
-              </div>
             </div>
 
             <div className="pt-6 border-t border-[#EADBC8] space-y-2">

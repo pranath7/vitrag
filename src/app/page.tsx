@@ -147,34 +147,34 @@ export default function HomePage() {
       {/* ========================================================
           SIGNATURE CATEGORY: EDITORIAL POSTERS SHOWCASE (Category 1)
          ======================================================== */}
-      <section className="py-20 sm:py-28 bg-[#FFF5E6] border-b border-[#EADBC8] relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-14">
+      <section className="py-8 sm:py-12 bg-[#FFF5E6] border-b border-[#EADBC8] relative overflow-hidden">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-6 sm:mb-8">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#6E2023]/10 text-[#6E2023] text-[11px] uppercase tracking-[0.2em] font-semibold rounded-full border border-[#6E2023]/20 mb-3">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#6E2023]/10 text-[#6E2023] text-[11px] uppercase tracking-[0.2em] font-semibold rounded-full border border-[#6E2023]/20 mb-2">
                 <Sparkles className="w-3.5 h-3.5 text-[#6E2023]" />
                 <span>Category 1 • Signature Editions</span>
               </div>
-              <h2 className="font-heading text-3xl sm:text-5xl lg:text-6xl text-[#6E2023] font-medium tracking-tight">
+              <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl text-[#6E2023] font-medium tracking-tight">
                 Crafted for Cherished Moments
               </h2>
-              <p className="text-sm sm:text-base text-[#84766A] mt-2 max-w-xl font-light">
-                Discover our signature campaign editions — from lead-free crystal barware to hand-sculpted floral ceramic centerpieces.
+              <p className="text-xs sm:text-sm text-[#84766A] mt-1 max-w-xl font-light">
+                Discover our signature campaign editions — fine lead-free crystal barware and artisan floral ceramics.
               </p>
             </div>
             <Link
               href="/collections/signature-editions"
-              className="mt-4 md:mt-0 inline-flex items-center gap-2 text-xs uppercase tracking-widest font-semibold text-[#6E2023] hover:text-[#55181A] transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest font-semibold text-[#6E2023] hover:text-[#55181A] transition-colors shrink-0"
             >
-              <span>Explore Signature Collection</span>
-              <ArrowRight className="w-4 h-4" />
+              <span>Explore Collection</span>
+              <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
 
-          {/* 3 Vertical Poster Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          {/* 3 Compact Vertical Poster Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6 justify-items-center">
             {/* Poster 1: Elevate Every Pour */}
-            <article className="group flex flex-col bg-white border border-[#EADBC8] rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl hover:border-[#6E2023]/40 transition-all duration-300">
+            <article className="group flex flex-col bg-white border border-[#EADBC8] rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:border-[#6E2023]/40 transition-all duration-300 w-full max-w-[220px] sm:max-w-[235px]">
               <Link
                 href="/product/elevate-every-pour-crystal-whiskey-glass-set"
                 className="relative aspect-9/16 w-full overflow-hidden block bg-[#252522]"
@@ -184,37 +184,32 @@ export default function HomePage() {
                   alt="Elevate Every Pour — 6 Pcs Crystal Whiskey Glass Set"
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  sizes="(max-width: 640px) 220px, 235px"
                 />
-                <div className="absolute top-3 left-3 bg-[#6E2023] text-white text-[10px] uppercase tracking-widest px-3 py-1 rounded-full font-semibold shadow-md">
-                  Crystal Glassware
-                </div>
               </Link>
-              <div className="p-5 flex-1 flex flex-col justify-between space-y-3 bg-white">
-                <div>
-                  <h3 className="font-heading text-xl text-[#6E2023] font-medium leading-snug line-clamp-1">
-                    Elevate Every Pour — 6 Pcs Set
+              <div className="p-3 bg-white flex flex-col justify-between gap-1 border-t border-[#EADBC8]/60">
+                <div className="flex items-center justify-between gap-2">
+                  <h3 className="font-heading text-sm text-[#6E2023] font-medium truncate">
+                    Elevate Every Pour
                   </h3>
-                  <p className="text-xs text-[#84766A] mt-1 font-light line-clamp-2">
-                    Timeless cut-crystal whiskey glasses in luxury burgundy &amp; gold gift presentation box.
-                  </p>
-                </div>
-                <div className="pt-3 border-t border-[#FFF5E6] flex items-center justify-between">
-                  <span className="text-[11px] uppercase tracking-wider font-semibold text-[#6E2023] bg-[#CBAE9B]/20 px-2 py-0.5 rounded">
+                  <span className="text-[10px] uppercase font-semibold text-[#6E2023] bg-[#CBAE9B]/25 px-1.5 py-0.5 rounded shrink-0">
                     Price on Request
                   </span>
+                </div>
+                <div className="flex items-center justify-between text-[11px] text-[#84766A]">
+                  <span>6 Pcs Crystal Set</span>
                   <Link
                     href="/product/elevate-every-pour-crystal-whiskey-glass-set"
-                    className="text-xs font-semibold uppercase tracking-wider text-[#6E2023] hover:underline"
+                    className="text-[#6E2023] font-semibold hover:underline"
                   >
-                    View Details →
+                    Details →
                   </Link>
                 </div>
               </div>
             </article>
 
             {/* Poster 2: Serve Beautifully */}
-            <article className="group flex flex-col bg-white border border-[#EADBC8] rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl hover:border-[#6E2023]/40 transition-all duration-300">
+            <article className="group flex flex-col bg-white border border-[#EADBC8] rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:border-[#6E2023]/40 transition-all duration-300 w-full max-w-[220px] sm:max-w-[235px]">
               <Link
                 href="/product/serve-beautifully-rose-pedestal-serving-bowl"
                 className="relative aspect-9/16 w-full overflow-hidden block bg-[#252522]"
@@ -224,37 +219,32 @@ export default function HomePage() {
                   alt="Serve Beautifully — Rose Elegance Pedestal Serving Bowl"
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  sizes="(max-width: 640px) 220px, 235px"
                 />
-                <div className="absolute top-3 left-3 bg-[#CBAE9B] text-[#6E2023] text-[10px] uppercase tracking-widest px-3 py-1 rounded-full font-bold shadow-md">
-                  Ceramic Serveware
-                </div>
               </Link>
-              <div className="p-5 flex-1 flex flex-col justify-between space-y-3 bg-white">
-                <div>
-                  <h3 className="font-heading text-xl text-[#6E2023] font-medium leading-snug line-clamp-1">
-                    Serve Beautifully — Rose Pedestal Bowl
+              <div className="p-3 bg-white flex flex-col justify-between gap-1 border-t border-[#EADBC8]/60">
+                <div className="flex items-center justify-between gap-2">
+                  <h3 className="font-heading text-sm text-[#6E2023] font-medium truncate">
+                    Serve Beautifully
                   </h3>
-                  <p className="text-xs text-[#84766A] mt-1 font-light line-clamp-2">
-                    Blush pink ceramic pedestal bowl with 24K gold rim and matching porcelain ladle.
-                  </p>
-                </div>
-                <div className="pt-3 border-t border-[#FFF5E6] flex items-center justify-between">
-                  <span className="text-[11px] uppercase tracking-wider font-semibold text-[#6E2023] bg-[#CBAE9B]/20 px-2 py-0.5 rounded">
+                  <span className="text-[10px] uppercase font-semibold text-[#6E2023] bg-[#CBAE9B]/25 px-1.5 py-0.5 rounded shrink-0">
                     Price on Request
                   </span>
+                </div>
+                <div className="flex items-center justify-between text-[11px] text-[#84766A]">
+                  <span>Rose Pedestal Bowl</span>
                   <Link
                     href="/product/serve-beautifully-rose-pedestal-serving-bowl"
-                    className="text-xs font-semibold uppercase tracking-wider text-[#6E2023] hover:underline"
+                    className="text-[#6E2023] font-semibold hover:underline"
                   >
-                    View Details →
+                    Details →
                   </Link>
                 </div>
               </div>
             </article>
 
             {/* Poster 3: A Cup for Every Moment */}
-            <article className="group flex flex-col bg-white border border-[#EADBC8] rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl hover:border-[#6E2023]/40 transition-all duration-300">
+            <article className="group flex flex-col bg-white border border-[#EADBC8] rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:border-[#6E2023]/40 transition-all duration-300 w-full max-w-[220px] sm:max-w-[235px]">
               <Link
                 href="/product/a-cup-for-every-moment-emerald-camellia-cup-saucer-set"
                 className="relative aspect-9/16 w-full overflow-hidden block bg-[#252522]"
@@ -264,30 +254,25 @@ export default function HomePage() {
                   alt="A Cup for Every Moment — Emerald Camellia Cup & Saucer Set"
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  sizes="(max-width: 640px) 220px, 235px"
                 />
-                <div className="absolute top-3 left-3 bg-[#6E2023] text-white text-[10px] uppercase tracking-widest px-3 py-1 rounded-full font-semibold shadow-md">
-                  Fine Teaware
-                </div>
               </Link>
-              <div className="p-5 flex-1 flex flex-col justify-between space-y-3 bg-white">
-                <div>
-                  <h3 className="font-heading text-xl text-[#6E2023] font-medium leading-snug line-clamp-1">
-                    A Cup for Every Moment — Camellia Set
+              <div className="p-3 bg-white flex flex-col justify-between gap-1 border-t border-[#EADBC8]/60">
+                <div className="flex items-center justify-between gap-2">
+                  <h3 className="font-heading text-sm text-[#6E2023] font-medium truncate">
+                    A Cup for Every Moment
                   </h3>
-                  <p className="text-xs text-[#84766A] mt-1 font-light line-clamp-2">
-                    Royal emerald glaze with 3D sculpted camellia flower and signature gold bead handles.
-                  </p>
-                </div>
-                <div className="pt-3 border-t border-[#FFF5E6] flex items-center justify-between">
-                  <span className="text-[11px] uppercase tracking-wider font-semibold text-[#6E2023] bg-[#CBAE9B]/20 px-2 py-0.5 rounded">
+                  <span className="text-[10px] uppercase font-semibold text-[#6E2023] bg-[#CBAE9B]/25 px-1.5 py-0.5 rounded shrink-0">
                     Price on Request
                   </span>
+                </div>
+                <div className="flex items-center justify-between text-[11px] text-[#84766A]">
+                  <span>Emerald Camellia Set</span>
                   <Link
                     href="/product/a-cup-for-every-moment-emerald-camellia-cup-saucer-set"
-                    className="text-xs font-semibold uppercase tracking-wider text-[#6E2023] hover:underline"
+                    className="text-[#6E2023] font-semibold hover:underline"
                   >
-                    View Details →
+                    Details →
                   </Link>
                 </div>
               </div>

@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Product, ProductVariant } from "@/lib/types";
 import { formatPrice, generateWhatsAppProductEnquiryUrl } from "@/lib/utils";
 import { useCart } from "@/context/CartContext";
+import { isProductDeleted } from "@/lib/adminStorage";
 import {
   ShoppingBag,
   Heart,
@@ -80,6 +81,45 @@ export function ProductDetailView({
     currentPrice,
     typeof window !== "undefined" ? window.location.href : undefined
   );
+
+  const [isDeleted, setIsDeleted] = useState(false);
+
+  useEffect(() => {
+    if (isProductDeleted(product.id)) {
+      setIsDeleted(true);
+    }
+    const handleDeleted = (e: any) => {
+      if (e.detail?.id === product.id) {
+        setIsDeleted(true);
+      }
+    };
+    window.addEventListener("vitrag:product_deleted", handleDeleted);
+    return () => window.removeEventListener("vitrag:product_deleted", handleDeleted);
+  }, [product.id]);
+
+  if (isDeleted) {
+    return (
+      <div className="py-20 text-center max-w-lg mx-auto space-y-4">
+        <div className="w-16 h-16 rounded-full bg-[#FFF5E6] border border-[#EADBC8] flex items-center justify-center mx-auto text-[#6E2023]">
+          <ShoppingBag className="w-8 h-8 opacity-40" />
+        </div>
+        <h2 className="font-heading text-3xl text-[#6E2023] font-medium">
+          Piece Archived
+        </h2>
+        <p className="text-xs text-[#84766A] leading-relaxed font-light">
+          This product has been removed from the current catalog by our showroom curation desk.
+        </p>
+        <div className="pt-2">
+          <Link
+            href="/shop"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-[#6E2023] text-white text-xs uppercase tracking-widest font-semibold rounded-lg hover:bg-[#55181A] transition-colors"
+          >
+            Explore Active Collection →
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="py-8 sm:py-12 pb-24 lg:pb-12">

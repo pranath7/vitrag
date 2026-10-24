@@ -21,7 +21,9 @@ import {
   deleteAdminAbandonedCart,
   getAdminSettings,
   saveAdminSettings,
+  syncLocalWithFirestoreProducts,
 } from "@/lib/adminStorage";
+import { subscribeToFirestoreProducts } from "@/lib/firestoreService";
 import { Product } from "@/lib/types";
 import {
   AdminOrder,
@@ -90,6 +92,18 @@ export default function AdminPage() {
       refreshAllData();
     }
   }, [refreshAllData]);
+
+  // Real-time Firestore synchronizer for admin console
+  useEffect(() => {
+    if (!isAuthenticated) return;
+    const unsubscribe = subscribeToFirestoreProducts((firestoreProducts) => {
+      if (firestoreProducts && firestoreProducts.length > 0) {
+        syncLocalWithFirestoreProducts(firestoreProducts);
+        setProducts(getAdminProducts());
+      }
+    });
+    return () => unsubscribe();
+  }, [isAuthenticated]);
 
   const handleLoginSuccess = () => {
     setIsAuthenticated(true);

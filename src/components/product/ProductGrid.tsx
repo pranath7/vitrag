@@ -8,6 +8,8 @@ import { collections } from "@/lib/products";
 import { useCart } from "@/context/CartContext";
 import { Filter, X, ArrowUpDown, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { subscribeToFirestoreProducts } from "@/lib/firestoreService";
+import { getDeletedProductIds } from "@/lib/adminStorage";
 
 interface ProductGridProps {
   initialProducts: Product[];
@@ -38,6 +40,69 @@ export function ProductGrid({
   const [onlyWishlist, setOnlyWishlist] = useState<boolean>(urlFilter === "wishlist");
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
 
+  // Live synchronized product list (combines static, Firestore, and instant Admin deletions)
+  const [liveProducts, setLiveProducts] = useState<Product[]>(() => {
+    const deleted = getDeletedProductIds();
+    return initialProducts.filter((p) => !deleted.includes(p.id));
+  });
+
+  // Sync with Firestore & Admin real-time events
+  useEffect(() => {
+    const filterActive = (prods: Product[]) => {
+      const deleted = getDeletedProductIds();
+      return prods.filter((p) => !deleted.includes(p.id));
+    };
+
+    setLiveProducts(filterActive(initialProducts));
+
+    // Listen to live Cloud Firestore changes
+    const unsubscribe = subscribeToFirestoreProducts((firestoreProds) => {
+      if (firestoreProds && firestoreProds.length > 0) {
+        if (currentCollectionId) {
+          const colFiltered = firestoreProds.filter((p) =>
+            p.collectionIds.includes(currentCollectionId)
+          );
+          setLiveProducts(filterActive(colFiltered));
+        } else {
+          setLiveProducts(filterActive(firestoreProds));
+        }
+      }
+    });
+
+    // Instant local cross-tab / Admin deletion listener (0ms delay)
+    const handleDeleted = (e: any) => {
+      const deletedId = e.detail?.id;
+      if (deletedId) {
+        setLiveProducts((prev) => prev.filter((p) => p.id !== deletedId));
+      }
+    };
+
+    const handleSaved = (e: any) => {
+      const savedProd: Product | undefined = e.detail?.product;
+      if (savedProd) {
+        setLiveProducts((prev) => {
+          const exists = prev.some((p) => p.id === savedProd.id);
+          if (exists) {
+            return prev.map((p) => (p.id === savedProd.id ? savedProd : p));
+          }
+          return [savedProd, ...prev];
+        });
+      }
+    };
+
+    window.addEventListener("vitrag:product_deleted", handleDeleted);
+    window.addEventListener("vitrag:product_saved", handleSaved);
+    window.addEventListener("storage", () => {
+      setLiveProducts((prev) => filterActive(prev));
+    });
+
+    return () => {
+      unsubscribe();
+      window.removeEventListener("vitrag:product_deleted", handleDeleted);
+      window.removeEventListener("vitrag:product_saved", handleSaved);
+    };
+  }, [initialProducts, currentCollectionId]);
+
   // Sync with URL parameters if user navigated from homepage price guide or wishlist icon
   useEffect(() => {
     if (urlFilter === "wishlist") {
@@ -56,7 +121,7 @@ export function ProductGrid({
 
   // Filter & Sort Logic
   const filteredProducts = useMemo(() => {
-    let result = [...initialProducts];
+    let result = [...liveProducts];
 
     // Filter by Wishlist
     if (onlyWishlist) {

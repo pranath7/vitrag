@@ -75,6 +75,32 @@ export async function deleteProductFromFirestore(id: string): Promise<void> {
   }
 }
 
+export function subscribeToFirestoreProducts(
+  callback: (products: Product[]) => void
+): () => void {
+  if (!isFirebaseConfigured() || !db) return () => {};
+  try {
+    const colRef = collection(db, "products");
+    const unsubscribe = onSnapshot(
+      colRef,
+      (snapshot) => {
+        const prods: Product[] = [];
+        snapshot.forEach((docSnap) => {
+          prods.push(docSnap.data() as Product);
+        });
+        callback(prods);
+      },
+      (error) => {
+        console.warn("Firestore products onSnapshot error:", error);
+      }
+    );
+    return unsubscribe;
+  } catch (err) {
+    console.warn("Firestore subscribeToProducts error:", err);
+    return () => {};
+  }
+}
+
 // ------------------------------------------------------------------
 // Orders Sync
 // ------------------------------------------------------------------

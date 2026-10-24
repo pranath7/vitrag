@@ -31,6 +31,7 @@ import {
 // Versioned storage keys - clean start with no fake data
 const STORAGE_KEYS = {
   PRODUCTS: "vitrag_admin_products_v2",
+  DELETED_IDS: "vitrag_admin_deleted_ids",
   ORDERS: "vitrag_admin_orders_v2",
   BULK_INQUIRIES: "vitrag_admin_bulk_inquiries_v2",
   ABANDONED_CARTS: "vitrag_admin_abandoned_carts_v2",
@@ -76,20 +77,66 @@ function cleanupLegacyV1Storage(): void {
 }
 
 // ----------------------------------------------------
-// PRODUCT CRUD
+// PRODUCT CRUD & INSTANT REAL-TIME STOREFRONT SYNC
 // ----------------------------------------------------
+
+export function getDeletedProductIds(): string[] {
+  if (!isBrowser()) return [];
+  try {
+    const raw = localStorage.getItem(STORAGE_KEYS.DELETED_IDS);
+    return raw ? JSON.parse(raw) : [];
+  } catch {
+    return [];
+  }
+}
+
+export function isProductDeleted(id: string): boolean {
+  return getDeletedProductIds().includes(id);
+}
+
 export function getAdminProducts(): Product[] {
   if (!isBrowser()) return defaultProducts;
   cleanupLegacyV1Storage();
   try {
+    const deletedIds = getDeletedProductIds();
     const raw = localStorage.getItem(STORAGE_KEYS.PRODUCTS);
-    if (!raw) {
-      // First time initialization with real catalog products
-      localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(defaultProducts));
-      return defaultProducts;
+    let currentMap = new Map<string, Product>();
+
+    if (raw) {
+      try {
+        const parsed: Product[] = JSON.parse(raw);
+        if (Array.isArray(parsed)) {
+          parsed.forEach((p) => {
+            if (p?.id && !deletedIds.includes(p.id)) {
+              currentMap.set(p.id, p);
+            }
+          });
+        }
+      } catch (e) {
+        console.warn("Failed to parse local admin products:", e);
+      }
     }
-    const parsed = JSON.parse(raw);
-    return Array.isArray(parsed) && parsed.length > 0 ? parsed : defaultProducts;
+
+    // AUTOMATIC SYNC: If new products were added through code/agent in defaultProducts,
+    // merge them immediately so they are visible in Admin without requiring a manual reset!
+    for (const def of defaultProducts) {
+      if (deletedIds.includes(def.id)) continue;
+      if (!currentMap.has(def.id)) {
+        currentMap.set(def.id, def);
+      } else {
+        // Keep prices, images, and description updated from code while preserving merchant stock edits
+        const existing = currentMap.get(def.id)!;
+        currentMap.set(def.id, {
+          ...def,
+          stockQuantity: existing.stockQuantity ?? def.stockQuantity,
+          availability: existing.availability ?? def.availability,
+        });
+      }
+    }
+
+    const mergedList = Array.from(currentMap.values());
+    localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(mergedList));
+    return mergedList;
   } catch (err) {
     console.error("Error reading admin products from storage:", err);
     return defaultProducts;
@@ -110,8 +157,17 @@ export function saveAdminProduct(product: Product): Product[] {
   }
 
   try {
+    // If saving/re-adding, unmark from deleted IDs
+    const deletedIds = getDeletedProductIds().filter((id) => id !== product.id);
+    localStorage.setItem(STORAGE_KEYS.DELETED_IDS, JSON.stringify(deletedIds));
+
     localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(updated));
     syncProductToFirestore(product);
+
+    // Broadcast update to all storefront tabs
+    window.dispatchEvent(
+      new CustomEvent("vitrag:product_saved", { detail: { product } })
+    );
   } catch (err) {
     console.error("Error saving product to storage:", err);
   }
@@ -123,12 +179,45 @@ export function deleteAdminProduct(id: string): Product[] {
   const current = getAdminProducts();
   const updated = current.filter((p) => p.id !== id);
   try {
+    // 1. Save updated list in localStorage
     localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(updated));
+
+    // 2. Permanently record deletion in deleted IDs so it never re-appears
+    const deletedIds = getDeletedProductIds();
+    if (!deletedIds.includes(id)) {
+      deletedIds.push(id);
+      localStorage.setItem(STORAGE_KEYS.DELETED_IDS, JSON.stringify(deletedIds));
+    }
+
+    // 3. Delete from Cloud Firestore in real time
     deleteProductFromFirestore(id);
+
+    // 4. Instantly broadcast cross-tab deletion event to remove from storefront with 0 delay
+    window.dispatchEvent(
+      new CustomEvent("vitrag:product_deleted", { detail: { id } })
+    );
   } catch (err) {
     console.error("Error deleting product from storage:", err);
   }
   return updated;
+}
+
+export function syncLocalWithFirestoreProducts(firestoreProducts: Product[]): void {
+  if (!isBrowser() || !Array.isArray(firestoreProducts)) return;
+  try {
+    const deletedIds = getDeletedProductIds();
+    const activeFromFirestore = firestoreProducts.filter(
+      (p) => p?.id && !deletedIds.includes(p.id)
+    );
+    if (activeFromFirestore.length > 0) {
+      localStorage.setItem(
+        STORAGE_KEYS.PRODUCTS,
+        JSON.stringify(activeFromFirestore)
+      );
+    }
+  } catch (err) {
+    console.warn("syncLocalWithFirestoreProducts error:", err);
+  }
 }
 
 export function updateProductStock(

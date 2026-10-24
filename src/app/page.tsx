@@ -6,6 +6,7 @@ import { ProductCard } from "@/components/product/ProductCard";
 import { Button } from "@/components/ui/Button";
 import {
   ArrowRight,
+  ArrowDown,
   Sparkles,
   ShieldCheck,
   Gift,
@@ -87,17 +88,65 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Right Visual: Architectural Arch Cutout from Mockup */}
-            <div className="lg:col-span-7 relative flex items-center justify-center lg:justify-end">
-              <div className="relative w-full max-w-[660px] aspect-[664/525]">
-                <Image
-                  src="/images/hero/hero-arch.png"
-                  alt="Designed for Modern Gatherings — Vitrag Luxury Tableware Collection"
-                  fill
-                  className="object-contain object-center lg:object-right"
-                  sizes="(max-width: 1024px) 100vw, 660px"
-                  priority
-                />
+            {/* Right Visual: High-Resolution Stock Architectural Arch Cutout */}
+            <div className="lg:col-span-7 relative flex items-center justify-center lg:justify-end py-4">
+              <div className="relative">
+                {/* 1. Architectural Arched Frame with Real Stock Tableware Photo */}
+                <div className="relative w-[290px] sm:w-[400px] lg:w-[450px] aspect-[4/5] rounded-t-[180px] sm:rounded-t-[240px] rounded-b-3xl overflow-hidden shadow-[0_30px_70px_-20px_rgba(90,18,24,0.25)] border-[5px] border-[#CBAE9B]/70 bg-[#2A1417] group">
+                  <Image
+                    src="/images/hero/hero-stock.jpg"
+                    alt="Designed for Modern Gatherings — Vitrag Luxury Tableware Collection"
+                    fill
+                    className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 640px) 290px, (max-width: 1024px) 400px, 450px"
+                    priority
+                  />
+                  <div className="absolute inset-0 ring-1 ring-inset ring-[#CBAE9B]/50 rounded-t-[180px] sm:rounded-t-[240px] rounded-b-3xl pointer-events-none" />
+                </div>
+
+                {/* 2. Rotating Luxury Seal Badge (from mockup) */}
+                <div className="absolute -top-6 -right-6 sm:-top-8 sm:-right-8 w-24 h-24 sm:w-28 sm:h-28 z-20 pointer-events-none select-none">
+                  {/* Rotating Circular Text */}
+                  <svg
+                    className="w-full h-full animate-[spin_24s_linear_infinite]"
+                    viewBox="0 0 120 120"
+                  >
+                    <path
+                      id="sealCircle"
+                      d="M 60, 60 m -44, 0 a 44,44 0 1,1 88,0 a 44,44 0 1,1 -88,0"
+                      fill="none"
+                    />
+                    <text className="text-[9.5px] uppercase tracking-[0.24em] fill-[#8C6D58] font-semibold font-serif">
+                      <textPath href="#sealCircle" startOffset="0%">
+                        • A NEW CHAPTER IN FINE LIVING •
+                      </textPath>
+                    </text>
+                  </svg>
+                  {/* Center Star / Crest */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-8 h-8 rounded-full bg-[#FAF3E7] border border-[#CBAE9B] shadow-xs flex items-center justify-center">
+                      <svg
+                        className="w-4 h-4 text-[#5A1218]"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                      >
+                        <path d="M12 2C11 7 7 11 2 12C7 13 11 17 12 22C13 17 17 13 22 12C17 11 13 7 12 2Z" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 3. Scroll Down Indicator (from mockup) */}
+                <a
+                  href="#signature-editions"
+                  className="hidden xl:flex flex-col items-center gap-2 absolute -right-12 bottom-6 text-[#84766A] hover:text-[#5A1218] transition-colors group cursor-pointer"
+                  aria-label="Scroll to collection"
+                >
+                  <span className="text-[10px] uppercase tracking-[0.25em] [writing-mode:vertical-lr] font-medium text-[#8C6D58]">
+                    Scroll
+                  </span>
+                  <ArrowDown className="w-3.5 h-3.5 text-[#5A1218] transition-transform duration-300 group-hover:translate-y-1" />
+                </a>
               </div>
             </div>
           </div>
@@ -107,7 +156,7 @@ export default function HomePage() {
       {/* ========================================================
           SIGNATURE CATEGORY: EDITORIAL POSTERS SHOWCASE (Category 1)
          ======================================================== */}
-      <section className="py-8 sm:py-12 bg-[#FFF5E6] border-b border-[#EADBC8] relative overflow-hidden">
+      <section id="signature-editions" className="py-8 sm:py-12 bg-[#FFF5E6] border-b border-[#EADBC8] relative overflow-hidden scroll-mt-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-6 sm:mb-8">
             <div>

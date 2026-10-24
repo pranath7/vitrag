@@ -10,8 +10,17 @@ import {
   CheckCircle2,
   AlertTriangle,
   Database,
+  CloudUpload,
+  Loader2,
 } from "lucide-react";
-import { exportDataAsJSON, exportOrdersCSV, resetAdminProducts } from "@/lib/adminStorage";
+import {
+  exportDataAsJSON,
+  exportOrdersCSV,
+  resetAdminProducts,
+  getAdminProducts,
+} from "@/lib/adminStorage";
+import { seedAllProductsToFirestore } from "@/lib/firestoreService";
+import { isFirebaseConfigured } from "@/lib/firebase";
 
 interface AdminBackupTabProps {
   onRefreshAllData: () => void;
@@ -22,6 +31,41 @@ export function AdminBackupTab({ onRefreshAllData }: AdminBackupTabProps) {
     type: "success" | "error";
     text: string;
   } | null>(null);
+  const [syncingFirestore, setSyncingFirestore] = useState(false);
+
+  const handleSyncFirestore = async () => {
+    if (!isFirebaseConfigured()) {
+      setStatusMessage({
+        type: "error",
+        text: "Firebase is not configured. Please ensure NEXT_PUBLIC_FIREBASE_PROJECT_ID and API key are set.",
+      });
+      return;
+    }
+
+    try {
+      setSyncingFirestore(true);
+      const prods = getAdminProducts();
+      const success = await seedAllProductsToFirestore(prods);
+      if (success) {
+        setStatusMessage({
+          type: "success",
+          text: `Successfully synced all ${prods.length} real tableware products directly to your Cloud Firestore database!`,
+        });
+      } else {
+        setStatusMessage({
+          type: "error",
+          text: "Could not sync products to Firestore. Check Firebase Console Rules tab to ensure write permissions are published.",
+        });
+      }
+    } catch (err: any) {
+      setStatusMessage({
+        type: "error",
+        text: "Error syncing to Firestore: " + (err?.message || String(err)),
+      });
+    } finally {
+      setSyncingFirestore(false);
+    }
+  };
 
   const handleDownloadJSON = () => {
     try {
@@ -78,16 +122,19 @@ export function AdminBackupTab({ onRefreshAllData }: AdminBackupTabProps) {
         const parsed = JSON.parse(content);
 
         if (parsed.products && Array.isArray(parsed.products)) {
-          localStorage.setItem("vitrag_admin_products_v1", JSON.stringify(parsed.products));
+          localStorage.setItem("vitrag_admin_products_v2", JSON.stringify(parsed.products));
         }
         if (parsed.orders && Array.isArray(parsed.orders)) {
-          localStorage.setItem("vitrag_admin_orders_v1", JSON.stringify(parsed.orders));
+          localStorage.setItem("vitrag_admin_orders_v2", JSON.stringify(parsed.orders));
         }
         if (parsed.bulkInquiries && Array.isArray(parsed.bulkInquiries)) {
-          localStorage.setItem("vitrag_admin_bulk_inquiries_v1", JSON.stringify(parsed.bulkInquiries));
+          localStorage.setItem("vitrag_admin_bulk_inquiries_v2", JSON.stringify(parsed.bulkInquiries));
+        }
+        if (parsed.abandonedCarts && Array.isArray(parsed.abandonedCarts)) {
+          localStorage.setItem("vitrag_admin_abandoned_carts_v2", JSON.stringify(parsed.abandonedCarts));
         }
         if (parsed.settings) {
-          localStorage.setItem("vitrag_admin_settings_v1", JSON.stringify(parsed.settings));
+          localStorage.setItem("vitrag_admin_settings_v2", JSON.stringify(parsed.settings));
         }
 
         onRefreshAllData();
@@ -115,7 +162,7 @@ export function AdminBackupTab({ onRefreshAllData }: AdminBackupTabProps) {
       onRefreshAllData();
       setStatusMessage({
         type: "success",
-        text: "Catalog restored to default 38 products from codebase.",
+        text: "Catalog restored to default 10 authentic products from codebase.",
       });
     }
   };
@@ -149,26 +196,26 @@ export function AdminBackupTab({ onRefreshAllData }: AdminBackupTabProps) {
         </div>
       )}
 
-      {/* Export Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+      {/* Export & Cloud Sync Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {/* CSV Orders Export */}
-        <div className="bg-white p-6 rounded-xl border border-[#EADBC8] shadow-xs space-y-4 flex flex-col justify-between">
+        <div className="bg-white p-5 rounded-xl border border-[#EADBC8] shadow-xs space-y-4 flex flex-col justify-between">
           <div className="space-y-2">
             <div className="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center">
               <FileSpreadsheet className="w-5 h-5" />
             </div>
-            <h3 className="font-heading text-lg font-semibold text-[#252522]">
+            <h3 className="font-heading text-base font-semibold text-[#252522]">
               Export Orders to CSV
             </h3>
             <p className="text-xs text-[#84766A] leading-relaxed">
-              Download all customer WhatsApp orders, addresses, phone numbers, total amounts, and tracking codes formatted for Microsoft Excel and Google Sheets.
+              Download customer orders, delivery addresses, phone numbers, and courier tracking formatted for Excel.
             </p>
           </div>
 
           <button
             type="button"
             onClick={handleDownloadCSV}
-            className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-xs font-semibold shadow-xs transition-colors"
+            className="w-full inline-flex items-center justify-center gap-2 py-2 px-3 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-xs font-semibold shadow-xs transition-colors"
           >
             <FileSpreadsheet className="w-4 h-4" />
             <span>Download Orders.csv</span>
@@ -176,26 +223,60 @@ export function AdminBackupTab({ onRefreshAllData }: AdminBackupTabProps) {
         </div>
 
         {/* JSON Full Backup */}
-        <div className="bg-white p-6 rounded-xl border border-[#EADBC8] shadow-xs space-y-4 flex flex-col justify-between">
+        <div className="bg-white p-5 rounded-xl border border-[#EADBC8] shadow-xs space-y-4 flex flex-col justify-between">
           <div className="space-y-2">
             <div className="w-10 h-10 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center">
               <FileCode className="w-5 h-5" />
             </div>
-            <h3 className="font-heading text-lg font-semibold text-[#252522]">
-              Download Full Store Snapshot
+            <h3 className="font-heading text-base font-semibold text-[#252522]">
+              Store JSON Snapshot
             </h3>
             <p className="text-xs text-[#84766A] leading-relaxed">
-              Export an exhaustive JSON snapshot including all 38 products, stock levels, orders, corporate inquiries, and showroom settings.
+              Export an exhaustive JSON snapshot of all products, stock levels, orders, inquiries, and settings.
             </p>
           </div>
 
           <button
             type="button"
             onClick={handleDownloadJSON}
-            className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 bg-[#6E2023] hover:bg-[#55181A] text-[#FFF5E6] rounded-lg text-xs font-semibold shadow-xs transition-colors"
+            className="w-full inline-flex items-center justify-center gap-2 py-2 px-3 bg-[#6E2023] hover:bg-[#55181A] text-[#FFF5E6] rounded-lg text-xs font-semibold shadow-xs transition-colors"
           >
             <HardDriveDownload className="w-4 h-4" />
             <span>Download vitrag-backup.json</span>
+          </button>
+        </div>
+
+        {/* Cloud Firestore Live Sync */}
+        <div className="bg-white p-5 rounded-xl border border-[#EADBC8] shadow-xs space-y-4 flex flex-col justify-between">
+          <div className="space-y-2">
+            <div className="w-10 h-10 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center">
+              <CloudUpload className="w-5 h-5" />
+            </div>
+            <h3 className="font-heading text-base font-semibold text-[#252522]">
+              Sync Products to Firestore
+            </h3>
+            <p className="text-xs text-[#84766A] leading-relaxed">
+              Push your authentic tableware catalog directly into your newly configured Cloud Firestore database.
+            </p>
+          </div>
+
+          <button
+            type="button"
+            onClick={handleSyncFirestore}
+            disabled={syncingFirestore}
+            className="w-full inline-flex items-center justify-center gap-2 py-2 px-3 bg-amber-600 hover:bg-amber-700 disabled:opacity-50 text-white rounded-lg text-xs font-semibold shadow-xs transition-colors cursor-pointer"
+          >
+            {syncingFirestore ? (
+              <>
+                <Loader2 className="w-4 h-4 animate-spin" />
+                <span>Syncing Catalog...</span>
+              </>
+            ) : (
+              <>
+                <CloudUpload className="w-4 h-4" />
+                <span>Seed Firestore Products</span>
+              </>
+            )}
           </button>
         </div>
       </div>

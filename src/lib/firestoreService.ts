@@ -48,6 +48,20 @@ export async function syncProductToFirestore(product: Product): Promise<void> {
   }
 }
 
+export async function seedAllProductsToFirestore(products: Product[]): Promise<boolean> {
+  if (!isFirebaseConfigured() || !db) return false;
+  try {
+    for (const prod of products) {
+      const docRef = doc(db, "products", prod.id);
+      await setDoc(docRef, { ...prod, updatedAt: new Date().toISOString() }, { merge: true });
+    }
+    return true;
+  } catch (err) {
+    console.error("Firestore seed error:", err);
+    return false;
+  }
+}
+
 export async function deleteProductFromFirestore(id: string): Promise<void> {
   if (!isFirebaseConfigured() || !db) return;
   try {

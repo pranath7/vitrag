@@ -16,6 +16,7 @@ import {
   CheckCircle2,
   AlertCircle,
   ExternalLink,
+  Gift,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { saveAdminOrder, saveAdminAbandonedCart, markCartRecovered } from "@/lib/adminStorage";
@@ -150,14 +151,23 @@ export function CheckoutView() {
         state: formData.state,
         pinCode: formData.pinCode,
         giftNote: formData.giftNote || undefined,
-        items: items.map((i) => ({
-          productId: i.productId,
-          name: i.name,
-          variantName: i.variantName,
-          quantity: i.quantity,
-          pricePaise: i.price,
-          image: i.image,
-        })),
+        items: [
+          ...items.map((i) => ({
+            productId: i.productId,
+            name: i.name,
+            variantName: i.variantName,
+            quantity: i.quantity,
+            pricePaise: i.price,
+            image: i.image,
+          })),
+          {
+            productId: "complimentary-6pc-glasses",
+            name: "🎁 Complimentary 6-Piece Luxury Crystal Glassware Set (Diwali Festive Gift)",
+            quantity: 1,
+            pricePaise: 0,
+            image: items[0]?.image || "",
+          },
+        ],
         status: "new",
         totalEstimatedPaise: subtotalPaise,
         paymentMode: "whatsapp",
@@ -508,6 +518,27 @@ export function CheckoutView() {
           </h2>
 
           <div className="divide-y divide-[#EADBC8] max-h-80 overflow-y-auto pr-2 space-y-3">
+            {/* 🎁 Complimentary 6-Pc Glasses Gift */}
+            <div className="pt-3 p-3 bg-gradient-to-r from-[#FFF5E6] to-white border border-[#FFD700]/70 rounded-lg flex justify-between gap-3 text-xs shadow-2xs">
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-md bg-[#6E2023] text-[#FFD700] flex items-center justify-center shrink-0">
+                  <Gift className="w-4 h-4" />
+                </div>
+                <div>
+                  <span className="font-semibold text-[#6E2023] block">
+                    6-Piece Luxury Crystal Glasses Set
+                  </span>
+                  <span className="text-[10px] text-[#2D6A4F] font-semibold block">
+                    Complimentary Diwali Festive Gift (Qty: 1)
+                  </span>
+                </div>
+              </div>
+              <div className="text-right">
+                <span className="text-[10px] text-[#8B8176] line-through block">₹2,999</span>
+                <span className="text-xs font-bold text-[#2D6A4F]">FREE (₹0)</span>
+              </div>
+            </div>
+
             {items.map((item) => (
               <div key={item.id} className="pt-3 flex justify-between gap-3 text-xs">
                 <div>
@@ -523,27 +554,47 @@ export function CheckoutView() {
                     </span>
                   )}
                 </div>
-                <span className="text-[11px] uppercase tracking-wider font-semibold text-[#6E2023] bg-[#CBAE9B]/20 px-2 py-0.5 rounded self-start">
-                  Price on Request
-                </span>
+                {item.price > 0 ? (
+                  <span className="text-xs font-heading font-bold text-[#6E2023] self-start">
+                    ₹{((item.price * item.quantity) / 100).toLocaleString("en-IN")}
+                  </span>
+                ) : (
+                  <span className="text-[11px] uppercase tracking-wider font-semibold text-[#6E2023] bg-[#CBAE9B]/20 px-2 py-0.5 rounded self-start">
+                    Showroom Quote
+                  </span>
+                )}
               </div>
             ))}
           </div>
 
           <div className="border-t border-[#EADBC8] pt-4 space-y-2 text-xs">
+            {subtotalPaise > 0 && (
+              <div className="flex justify-between text-[#8B8176] text-sm">
+                <span>Estimated Subtotal</span>
+                <span className="text-base font-heading font-bold text-[#6E2023]">
+                  ₹{(subtotalPaise / 100).toLocaleString("en-IN")}
+                </span>
+              </div>
+            )}
+            <div className="flex justify-between text-[#8B8176]">
+              <span>Diwali Festive Bonus</span>
+              <span className="text-xs font-bold text-[#2D6A4F]">
+                6-Pc Glasses Free (₹0)
+              </span>
+            </div>
             <div className="flex justify-between text-[#8B8176]">
               <span>Total Selected Items</span>
               <span className="text-sm font-semibold text-[#252522]">
-                {items.reduce((a, b) => a + b.quantity, 0)} pieces
+                {items.reduce((a, b) => a + b.quantity, 0)} pieces + 6 Glasses (Free)
               </span>
             </div>
             <div className="flex justify-between text-[#8B8176]">
               <span>Delivery Timeline</span>
-              <span className="text-[#252522] font-medium">3–5 Business Days</span>
+              <span className="text-[#252522] font-medium">3–5 Business Days (Insured)</span>
             </div>
             <div className="flex justify-between text-[#8B8176]">
               <span>Pricing &amp; Shipping</span>
-              <span className="text-[#6E2023] font-medium">Confirmed on WhatsApp</span>
+              <span className="text-[#2D6A4F] font-semibold">Free Pan-India Delivery</span>
             </div>
             <div className="border-t border-[#EADBC8] pt-3 flex justify-between text-base font-bold text-[#6E2023]">
               <span>Payment Mode</span>

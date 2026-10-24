@@ -134,35 +134,42 @@ export function ProductCard({ product }: ProductCardProps) {
         </div>
 
         {/* Price & Action */}
-        <div className="mt-3 pt-2.5 border-t border-[#FFF5E6] flex items-center justify-between">
-          <div className="flex items-baseline gap-1.5">
-            <span className="font-heading text-sm sm:text-base font-bold text-[#6E2023]">
-              {formatPrice(product.price)}
-            </span>
-            {product.compareAtPrice && product.compareAtPrice > product.price && (
-              <span className="text-[10px] text-[#84766A] line-through">
-                {formatPrice(product.compareAtPrice)}
+        <div className="mt-3 pt-2.5 border-t border-[#FFF5E6]">
+          <div className="flex items-center justify-between">
+            <div className="flex items-baseline gap-1.5">
+              <span className="font-heading text-sm sm:text-base font-bold text-[#6E2023]">
+                {formatPrice(product.price)}
               </span>
-            )}
+              {product.compareAtPrice && product.compareAtPrice > product.price && (
+                <span className="text-[10px] text-[#84766A] line-through">
+                  {formatPrice(product.compareAtPrice)}
+                </span>
+              )}
+            </div>
+
+            {/* Mobile Quick Add Button with enhanced tap target */}
+            <button
+              type="button"
+              onClick={handleQuickAdd}
+              className={`lg:hidden p-2 min-w-[38px] min-h-[38px] flex items-center justify-center border rounded-lg transition-all active:scale-95 ${
+                isAdded
+                  ? "bg-[#2D6A4F] text-white border-[#2D6A4F]"
+                  : "text-[#6E2023] bg-[#FFF5E6]/40 hover:bg-[#FFF5E6] border-[#EADBC8]"
+              }`}
+              aria-label={isAdded ? "Added to shopping bag" : "Add to shopping bag"}
+            >
+              {isAdded ? (
+                <Check className="w-4 h-4 stroke-[2.5]" />
+              ) : (
+                <ShoppingBag className="w-4 h-4" />
+              )}
+            </button>
           </div>
 
-          {/* Mobile Quick Add Button with enhanced tap target */}
-          <button
-            type="button"
-            onClick={handleQuickAdd}
-            className={`lg:hidden p-2 min-w-[38px] min-h-[38px] flex items-center justify-center border rounded-lg transition-all active:scale-95 ${
-              isAdded
-                ? "bg-[#2D6A4F] text-white border-[#2D6A4F]"
-                : "text-[#6E2023] bg-[#FFF5E6]/40 hover:bg-[#FFF5E6] border-[#EADBC8]"
-            }`}
-            aria-label={isAdded ? "Added to shopping bag" : "Add to shopping bag"}
-          >
-            {isAdded ? (
-              <Check className="w-4 h-4 stroke-[2.5]" />
-            ) : (
-              <ShoppingBag className="w-4 h-4" />
-            )}
-          </button>
+          <div className="mt-1 flex items-center gap-1 text-[10px] text-[#2D6A4F] font-semibold">
+            <span>🎁</span>
+            <span>+ Free 6-Pc Glasses (Worth ₹2,999)</span>
+          </div>
         </div>
       </div>
     </article>

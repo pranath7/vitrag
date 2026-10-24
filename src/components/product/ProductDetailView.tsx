@@ -20,6 +20,7 @@ import {
   ChevronDown,
   Check,
   X,
+  Gift,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
@@ -258,6 +259,31 @@ export function ProductDetailView({
                   </p>
                 </div>
               )}
+            </div>
+
+            {/* 🎁 FESTIVE SALE & BUNDLE OFFER: FREE 6-PCS GLASSES */}
+            <div className="mt-4 p-4 rounded-xl bg-gradient-to-r from-[#FFF5E6] via-[#FFF9F2] to-[#FFF5E6] border-2 border-[#FFD700]/70 shadow-xs relative overflow-hidden">
+              <div className="flex items-start gap-3.5">
+                <div className="w-10 h-10 rounded-xl bg-[#6E2023] text-[#FFD700] flex items-center justify-center shrink-0 shadow-md">
+                  <Gift className="w-5 h-5" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] uppercase font-bold tracking-widest bg-[#6E2023] text-white px-2 py-0.5 rounded-full shadow-xs">
+                      Diwali Bundle Offer
+                    </span>
+                    <span className="text-[11px] font-bold text-[#2D6A4F] uppercase tracking-wide">
+                      100% Free Gift Included
+                    </span>
+                  </div>
+                  <h4 className="text-sm font-heading font-bold text-[#6E2023] mt-1">
+                    Free 6-Piece Luxury Crystal Glass Set (Worth ₹2,999)
+                  </h4>
+                  <p className="text-xs text-[#84766A] font-light mt-0.5 leading-relaxed">
+                    Purchase this item today and receive a complimentary 6-piece crystal drinking glasses set automatically packed with your order!
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
 

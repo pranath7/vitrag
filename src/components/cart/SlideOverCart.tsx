@@ -6,7 +6,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useCart } from "@/context/CartContext";
 import { formatPrice, generateWhatsAppOrderUrl } from "@/lib/utils";
-import { X, Plus, Minus, Trash2, ShoppingBag, ArrowRight, MessageSquare } from "lucide-react";
+import { X, Plus, Minus, Trash2, ShoppingBag, ArrowRight, MessageSquare, Gift } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { ProductArtwork } from "@/components/product/ProductArtwork";
 
@@ -106,78 +106,110 @@ export function SlideOverCart() {
                 </div>
               </div>
             ) : (
-              items.map((item) => (
-                <div
-                  key={item.id}
-                  className="flex gap-4 p-4 bg-white border border-[#EADBC8] rounded-xl shadow-2xs"
-                >
-                  <div className="relative w-20 h-20 bg-[#FFF5E6] shrink-0 overflow-hidden rounded-lg border border-[#EADBC8]">
-                    {item.image ? (
-                      <Image src={item.image} alt={item.name} fill className="object-cover" sizes="80px" />
-                    ) : (
-                      <ProductArtwork category={item.name} name={item.name} />
-                    )}
+              <>
+                {/* 🎁 UNLOCKED COMPLIMENTARY 6-PIECE GLASSES GIFT */}
+                <div className="p-3.5 bg-gradient-to-r from-[#FFF5E6] via-[#FFF9F2] to-[#FFF5E6] border-2 border-[#FFD700]/70 rounded-xl flex items-center gap-3.5 shadow-2xs">
+                  <div className="w-12 h-12 rounded-lg bg-[#6E2023] text-[#FFD700] flex items-center justify-center shrink-0 shadow-xs">
+                    <Gift className="w-6 h-6 animate-pulse" />
                   </div>
-
-                  <div className="flex-1 flex flex-col justify-between">
-                    <div>
-                      <div className="flex justify-between items-start">
-                        <Link
-                          href={`/product/${item.slug}`}
-                          onClick={closeCart}
-                          className="font-heading text-base font-medium text-[#6E2023] hover:text-[#55181A] line-clamp-1 transition-colors"
-                        >
-                          {item.name}
-                        </Link>
-                        <button
-                          onClick={() => removeItem(item.id)}
-                          className="text-[#84766A] hover:text-[#6E2023] p-1 transition-colors"
-                          aria-label="Remove item"
-                        >
-                          <Trash2 className="w-3.5 h-3.5" />
-                        </button>
-                      </div>
-
-                      {item.variantName && (
-                        <p className="text-xs text-[#84766A] mt-0.5">
-                          Variant: {item.variantName}
-                        </p>
-                      )}
-
-                      <span className="inline-block text-[10px] uppercase tracking-wider font-semibold text-[#6E2023] bg-[#CBAE9B]/20 px-2 py-0.5 rounded mt-1.5">
-                        Price on Request
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-[9px] uppercase font-bold px-1.5 py-0.5 bg-[#2D6A4F] text-white rounded shadow-2xs">
+                        UNLOCKED GIFT
+                      </span>
+                      <span className="text-xs font-bold text-[#6E2023] truncate">
+                        6-Piece Crystal Glasses Set
                       </span>
                     </div>
-
-                    <div className="flex items-center justify-between mt-3 pt-2 border-t border-[#FFF5E6]">
-                      <div className="flex items-center border border-[#EADBC8] rounded-lg bg-[#FFF5E6] overflow-hidden">
-                        <button
-                          onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                          className="p-1 hover:bg-[#CBAE9B]/30 text-[#6E2023] transition-colors"
-                          aria-label="Decrease quantity"
-                        >
-                          <Minus className="w-3 h-3" />
-                        </button>
-                        <span className="w-8 text-center text-xs font-semibold text-[#252522]">
-                          {item.quantity}
-                        </span>
-                        <button
-                          onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                          disabled={item.quantity >= item.maxStock}
-                          className="p-1 hover:bg-[#CBAE9B]/30 text-[#6E2023] transition-colors disabled:opacity-30"
-                          aria-label="Increase quantity"
-                        >
-                          <Plus className="w-3 h-3" />
-                        </button>
-                      </div>
-
-                      <span className="text-xs text-[#84766A]">
-                        {item.quantity} {item.quantity === 1 ? "piece" : "pieces"}
-                      </span>
-                    </div>
+                    <p className="text-[11px] text-[#84766A] mt-0.5 font-light">
+                      Complimentary Diwali Festive Gift (Qty: 1)
+                    </p>
+                  </div>
+                  <div className="text-right shrink-0">
+                    <span className="text-xs text-[#84766A] line-through block">₹2,999</span>
+                    <span className="text-xs font-bold text-[#2D6A4F]">FREE</span>
                   </div>
                 </div>
-              ))
+
+                {items.map((item) => (
+                  <div
+                    key={item.id}
+                    className="flex gap-4 p-4 bg-white border border-[#EADBC8] rounded-xl shadow-2xs"
+                  >
+                    <div className="relative w-20 h-20 bg-[#FFF5E6] shrink-0 overflow-hidden rounded-lg border border-[#EADBC8]">
+                      {item.image ? (
+                        <Image src={item.image} alt={item.name} fill className="object-cover" sizes="80px" />
+                      ) : (
+                        <ProductArtwork category={item.name} name={item.name} />
+                      )}
+                    </div>
+
+                    <div className="flex-1 flex flex-col justify-between">
+                      <div>
+                        <div className="flex justify-between items-start">
+                          <Link
+                            href={`/product/${item.slug}`}
+                            onClick={closeCart}
+                            className="font-heading text-base font-medium text-[#6E2023] hover:text-[#55181A] line-clamp-1 transition-colors"
+                          >
+                            {item.name}
+                          </Link>
+                          <button
+                            onClick={() => removeItem(item.id)}
+                            className="text-[#84766A] hover:text-[#6E2023] p-1 transition-colors"
+                            aria-label="Remove item"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+
+                        {item.variantName && (
+                          <p className="text-xs text-[#84766A] mt-0.5">
+                            Variant: {item.variantName}
+                          </p>
+                        )}
+
+                        {item.price > 0 ? (
+                          <span className="inline-block text-xs font-heading font-bold text-[#6E2023] mt-1.5">
+                            ₹{(item.price / 100).toLocaleString("en-IN")}
+                          </span>
+                        ) : (
+                          <span className="inline-block text-[10px] uppercase tracking-wider font-semibold text-[#6E2023] bg-[#CBAE9B]/20 px-2 py-0.5 rounded mt-1.5">
+                            Price on Request
+                          </span>
+                        )}
+                      </div>
+
+                      <div className="flex items-center justify-between mt-3 pt-2 border-t border-[#FFF5E6]">
+                        <div className="flex items-center border border-[#EADBC8] rounded-lg bg-[#FFF5E6] overflow-hidden">
+                          <button
+                            onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                            className="p-1 hover:bg-[#CBAE9B]/30 text-[#6E2023] transition-colors"
+                            aria-label="Decrease quantity"
+                          >
+                            <Minus className="w-3 h-3" />
+                          </button>
+                          <span className="w-8 text-center text-xs font-semibold text-[#252522]">
+                            {item.quantity}
+                          </span>
+                          <button
+                            onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                            disabled={item.quantity >= item.maxStock}
+                            className="p-1 hover:bg-[#CBAE9B]/30 text-[#6E2023] transition-colors disabled:opacity-30"
+                            aria-label="Increase quantity"
+                          >
+                            <Plus className="w-3 h-3" />
+                          </button>
+                        </div>
+
+                        <span className="text-xs text-[#84766A]">
+                          {item.quantity} {item.quantity === 1 ? "piece" : "pieces"}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </>
             )}
           </div>
 
@@ -195,15 +227,25 @@ export function SlideOverCart() {
               </div>
 
               <div className="space-y-1.5">
-                <div className="flex justify-between text-sm text-[#84766A]">
+                {subtotalPaise > 0 && (
+                  <div className="flex justify-between text-base font-heading font-bold text-[#6E2023] border-b border-[#EADBC8]/70 pb-2">
+                    <span>Order Subtotal</span>
+                    <span>₹{(subtotalPaise / 100).toLocaleString("en-IN")}</span>
+                  </div>
+                )}
+                <div className="flex justify-between text-xs text-[#84766A]">
                   <span>Items Selected</span>
-                  <span className="text-[#6E2023] font-semibold text-base">
-                    {items.reduce((a, b) => a + b.quantity, 0)} pieces
+                  <span className="text-[#6E2023] font-semibold">
+                    {items.reduce((a, b) => a + b.quantity, 0)} pieces + 6-Pc Glasses (Free)
                   </span>
                 </div>
                 <div className="flex justify-between text-xs text-[#84766A]">
+                  <span>Festive Bundle Bonus</span>
+                  <span className="text-[#2D6A4F] font-bold">6-Pc Glasses Free (₹0)</span>
+                </div>
+                <div className="flex justify-between text-xs text-[#84766A]">
                   <span>Delivery Estimate</span>
-                  <span className="text-[#25D366] font-semibold">3–5 Business Days</span>
+                  <span className="text-[#25D366] font-semibold">3–5 Business Days (Insured)</span>
                 </div>
               </div>
 

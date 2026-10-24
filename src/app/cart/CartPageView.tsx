@@ -15,6 +15,7 @@ import {
   ShieldCheck,
   Truck,
   RotateCcw,
+  Gift,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { ProductArtwork } from "@/components/product/ProductArtwork";
@@ -85,6 +86,45 @@ export function CartPageView() {
           </div>
 
           <div className="divide-y divide-[#EADBC8]">
+            {/* 🎁 UNLOCKED FREE GIFT ITEM ROW */}
+            <div className="py-4 px-4 bg-gradient-to-r from-[#FFF5E6] via-[#FFF9F2] to-[#FFF5E6] border-2 border-[#FFD700]/70 rounded-xl flex flex-col sm:grid sm:grid-cols-12 gap-4 items-center shadow-2xs mb-4">
+              <div className="w-full sm:col-span-6 flex gap-4 items-center">
+                <div className="w-16 h-16 bg-[#6E2023] text-[#FFD700] rounded-lg flex items-center justify-center shrink-0 shadow-xs">
+                  <Gift className="w-7 h-7" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-[9px] uppercase font-bold px-1.5 py-0.5 bg-[#2D6A4F] text-white rounded shadow-2xs">
+                      UNLOCKED BONUS
+                    </span>
+                    <span className="text-xs font-bold text-[#6E2023]">
+                      Diwali Bundle Gift
+                    </span>
+                  </div>
+                  <h4 className="font-heading text-sm sm:text-base font-semibold text-[#6E2023] mt-0.5">
+                    6-Piece Luxury Crystal Glassware Set
+                  </h4>
+                  <p className="text-[11px] text-[#84766A]">
+                    Lead-free crystal drinking glasses • Included with every order
+                  </p>
+                </div>
+              </div>
+              <div className="w-full sm:col-span-2 flex items-center justify-between sm:justify-center">
+                <span className="sm:hidden text-xs text-[#84766A]">Quantity:</span>
+                <span className="text-xs font-semibold px-2.5 py-1 bg-white border border-[#EADBC8] rounded-md">
+                  1 Set (6 Pcs)
+                </span>
+              </div>
+              <div className="w-full sm:col-span-2 flex items-center justify-between sm:justify-end text-xs text-[#84766A] line-through">
+                <span className="sm:hidden">MRP:</span>
+                <span>₹2,999</span>
+              </div>
+              <div className="w-full sm:col-span-2 flex items-center justify-between sm:justify-end font-bold text-xs sm:text-sm text-[#2D6A4F]">
+                <span className="sm:hidden">Total:</span>
+                <span>FREE (₹0)</span>
+              </div>
+            </div>
+
             {items.map((item) => (
               <div
                 key={item.id}
@@ -204,9 +244,15 @@ export function CartPageView() {
               <span className="text-[#252522] font-medium">Included</span>
             </div>
             <div className="flex justify-between text-[#84766A]">
+              <span>Diwali Festive Bonus</span>
+              <span className="text-xs text-[#2D6A4F] font-bold">
+                6-Pc Glasses Free (₹0)
+              </span>
+            </div>
+            <div className="flex justify-between text-[#84766A]">
               <span>Shipping</span>
               <span className="text-xs text-[#6E2023] font-semibold">
-                Calculated on Delivery PIN
+                Free Pan-India Insured
               </span>
             </div>
             <div className="border-t border-[#EADBC8] pt-3 flex justify-between font-bold text-lg text-[#6E2023]">

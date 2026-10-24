@@ -55,6 +55,10 @@ export function generateWhatsAppOrderUrl(
     message += `${index + 1}. *${item.name}*${variantInfo} — Qty: ${item.quantity}\n`;
   });
 
+  if (items.length > 0) {
+    message += `\n🎁 *Complimentary Festive Gift Unlocked:* 6-Piece Luxury Crystal Glassware Set (Worth ₹2,999) — FREE (₹0)\n`;
+  }
+
   message += `\n*Delivery Timeline:* 3–5 Business Days\n`;
   message += `*UPI Payment Destination:* 9840610405@pthdfc\n`;
 

@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Gift } from "lucide-react";
 import { getDeletedProductIds } from "@/lib/adminStorage";
 import { subscribeToFirestoreProducts } from "@/lib/firestoreService";
 import { Product } from "@/lib/types";
@@ -85,6 +85,37 @@ export function DiwaliHomeShowcase({ initialProducts }: DiwaliHomeShowcaseProps)
           </Link>
         </div>
 
+        {/* 🎁 GRAND DIWALI BUNDLE BANNER */}
+        <div className="mb-8 p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-[#6E2023] via-[#85272B] to-[#6E2023] text-white border-2 border-[#FFD700]/50 shadow-lg flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-xl bg-[#FFF5E6] text-[#6E2023] flex items-center justify-center shrink-0 shadow-md">
+              <Gift className="w-6 h-6 animate-pulse" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-[10px] uppercase font-bold tracking-widest bg-[#FFD700] text-[#6E2023] px-2 py-0.5 rounded-full shadow-2xs">
+                  Diwali Sale &amp; Bundle Offer
+                </span>
+                <span className="text-xs text-[#FFD700] font-semibold">
+                  Storewide Special
+                </span>
+              </div>
+              <h3 className="font-heading text-lg sm:text-xl font-medium text-[#FFF5E6] mt-0.5">
+                Buy Any Item from the Store — Get a 6-Piece Luxury Crystal Glass Set FREE!
+              </h3>
+              <p className="text-xs text-[#FFF5E6]/80 font-light mt-0.5">
+                Worth ₹2,999 • Free Pan-India insured delivery • Automatically included in your order at ₹0
+              </p>
+            </div>
+          </div>
+          <Link
+            href="/shop"
+            className="shrink-0 px-5 py-2.5 bg-[#FFD700] hover:bg-[#F3CA00] text-[#6E2023] text-xs font-bold uppercase tracking-wider rounded-xl transition-all shadow-md active:scale-95"
+          >
+            Claim Free Glass Set →
+          </Link>
+        </div>
+
         {/* Dynamic Cards: Automatically updates/removes if admin deletes any */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {activeProducts.map((prod) => {
@@ -120,6 +151,10 @@ export function DiwaliHomeShowcase({ initialProducts }: DiwaliHomeShowcaseProps)
                   <div className="absolute top-3 left-3 bg-[#6E2023] text-white text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-full shadow-md flex items-center gap-1">
                     <span>🪔</span>
                     <span>Diwali Special • {discountPercent}% OFF</span>
+                  </div>
+                  <div className="absolute bottom-3 left-3 bg-white/95 text-[#2D6A4F] text-[10px] font-bold px-2 py-0.5 rounded-md shadow-sm border border-[#2D6A4F]/20 flex items-center gap-1">
+                    <span>🎁</span>
+                    <span>+ Free 6-Pc Glasses Included</span>
                   </div>
                 </Link>
 

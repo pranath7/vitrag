@@ -38,7 +38,7 @@ export const siteConfig = {
   },
 
   announcement: {
-    text: "🪔 GRAND DIWALI FESTIVE SALE — UP TO 50% OFF FESTIVE DRY FRUIT SETS & TABLEWARE • DIRECT WHATSAPP ORDERING 🪔",
+    text: "🪔 DIWALI BUNDLE OFFER: BUY ANY ITEM & GET 6-PCS LUXURY CRYSTAL GLASSES FREE (WORTH ₹2,999)! ✨",
     enabled: true,
   },
 

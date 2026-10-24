@@ -119,18 +119,11 @@ export function getAdminProducts(): Product[] {
 
     // AUTOMATIC SYNC: If new products were added through code/agent in defaultProducts,
     // merge them immediately so they are visible in Admin without requiring a manual reset!
+    // NEVER overwrite an existing product in storage so merchant edits are permanently preserved.
     for (const def of defaultProducts) {
       if (deletedIds.includes(def.id)) continue;
       if (!currentMap.has(def.id)) {
         currentMap.set(def.id, def);
-      } else {
-        // Keep prices, images, and description updated from code while preserving merchant stock edits
-        const existing = currentMap.get(def.id)!;
-        currentMap.set(def.id, {
-          ...def,
-          stockQuantity: existing.stockQuantity ?? def.stockQuantity,
-          availability: existing.availability ?? def.availability,
-        });
       }
     }
 
@@ -210,9 +203,17 @@ export function syncLocalWithFirestoreProducts(firestoreProducts: Product[]): vo
       (p) => p?.id && !deletedIds.includes(p.id)
     );
     if (activeFromFirestore.length > 0) {
+      const current = getAdminProducts();
+      const map = new Map<string, Product>();
+      current.forEach((p) => {
+        if (!deletedIds.includes(p.id)) map.set(p.id, p);
+      });
+      activeFromFirestore.forEach((p) => {
+        if (!deletedIds.includes(p.id)) map.set(p.id, p);
+      });
       localStorage.setItem(
         STORAGE_KEYS.PRODUCTS,
-        JSON.stringify(activeFromFirestore)
+        JSON.stringify(Array.from(map.values()))
       );
     }
   } catch (err) {

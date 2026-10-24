@@ -6,7 +6,7 @@ import Image from "next/image";
 import { Product, ProductVariant } from "@/lib/types";
 import { formatPrice, generateWhatsAppProductEnquiryUrl } from "@/lib/utils";
 import { useCart } from "@/context/CartContext";
-import { isProductDeleted } from "@/lib/adminStorage";
+import { isProductDeleted, getAdminProducts } from "@/lib/adminStorage";
 import {
   ShoppingBag,
   Heart,
@@ -33,10 +33,23 @@ interface ProductDetailViewProps {
 }
 
 export function ProductDetailView({
-  product,
+  product: initialProduct,
   relatedProducts,
 }: ProductDetailViewProps) {
   const { addItem, toggleWishlist, isInWishlist, openCart } = useCart();
+
+  // Real-time reactive product state (reflects edits made in Admin Console instantly)
+  const [product, setProduct] = useState<Product>(() => {
+    if (typeof window === "undefined") return initialProduct;
+    try {
+      const all = getAdminProducts();
+      const match = all.find((p) => p.id === initialProduct.id);
+      return match || initialProduct;
+    } catch {
+      return initialProduct;
+    }
+  });
+
   const isWishlisted = isInWishlist(product.id);
 
   // Variant & purchase state
@@ -93,8 +106,22 @@ export function ProductDetailView({
         setIsDeleted(true);
       }
     };
+    const handleSaved = (e: any) => {
+      const savedProd: Product | undefined = e.detail?.product;
+      if (savedProd && savedProd.id === product.id) {
+        setProduct(savedProd);
+        if (savedProd.variants && savedProd.variants.length > 0) {
+          setSelectedVariant(savedProd.variants[0]);
+        }
+      }
+    };
+
     window.addEventListener("vitrag:product_deleted", handleDeleted);
-    return () => window.removeEventListener("vitrag:product_deleted", handleDeleted);
+    window.addEventListener("vitrag:product_saved", handleSaved);
+    return () => {
+      window.removeEventListener("vitrag:product_deleted", handleDeleted);
+      window.removeEventListener("vitrag:product_saved", handleSaved);
+    };
   }, [product.id]);
 
   if (isDeleted) {

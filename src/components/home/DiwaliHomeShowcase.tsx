@@ -47,7 +47,17 @@ export function DiwaliHomeShowcase({ initialProducts }: DiwaliHomeShowcaseProps)
       }
     };
 
+    const handleSaved = (e: any) => {
+      const savedProd: Product | undefined = e.detail?.product;
+      if (savedProd) {
+        setActiveProducts((prev) =>
+          prev.map((p) => (p.id === savedProd.id ? savedProd : p))
+        );
+      }
+    };
+
     window.addEventListener("vitrag:product_deleted", handleDeleted);
+    window.addEventListener("vitrag:product_saved", handleSaved);
     window.addEventListener("storage", () => {
       setActiveProducts((prev) => filterActive(prev));
     });
@@ -55,6 +65,7 @@ export function DiwaliHomeShowcase({ initialProducts }: DiwaliHomeShowcaseProps)
     return () => {
       unsubscribe();
       window.removeEventListener("vitrag:product_deleted", handleDeleted);
+      window.removeEventListener("vitrag:product_saved", handleSaved);
     };
   }, [initialProducts]);
 

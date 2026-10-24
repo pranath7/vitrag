@@ -156,15 +156,33 @@ export function AdminProductsTab({
       .map((t) => t.trim())
       .filter(Boolean);
 
+    // If product has variants, sync variant price & compareAtPrice with edited values
+    const updatedVariants = (formData.variants && formData.variants.length > 0)
+      ? formData.variants.map((v, i) =>
+          i === 0
+            ? {
+                ...v,
+                price: formData.price,
+                compareAtPrice: formData.compareAtPrice ?? v.compareAtPrice,
+                stockQuantity: formData.stockQuantity ?? v.stockQuantity,
+                availability: formData.availability ?? v.availability,
+              }
+            : v
+        )
+      : formData.variants;
+
     const productToSave: Product = {
       ...formData,
+      id: formData.id || editingProduct?.id || slug || `vit-${Date.now()}`,
       slug,
+      variants: updatedVariants,
       tags: parsedTags.length > 0 ? parsedTags : formData.tags,
       seoTitle: formData.seoTitle || `${formData.name} | VITRAG Tableware`,
       seoDescription:
         formData.seoDescription ||
         formData.shortDescription ||
         `Handcrafted ${formData.name} from VITRAG Chennai.`,
+      updatedAt: new Date().toISOString(),
     };
 
     onSaveProduct(productToSave);
@@ -601,22 +619,41 @@ export function AdminProductsTab({
                 </div>
               </div>
 
-              {/* Internal Price, Stock & Availability */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {/* Selling Price, MRP, Stock & Availability */}
+              <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
                 <div className="space-y-1">
                   <label className="font-semibold text-[#252522]">
-                    Internal Price (₹)
+                    Selling Price (₹) *
                   </label>
                   <input
                     type="number"
-                    value={formData.price / 100}
+                    required
+                    value={formData.price ? formData.price / 100 : ""}
                     onChange={(e) =>
                       setFormData({
                         ...formData,
                         price: Math.max(0, Math.round(parseFloat(e.target.value || "0") * 100)),
                       })
                     }
-                    placeholder="e.g. 4500"
+                    placeholder="e.g. 6999"
+                    className="w-full p-2.5 bg-[#FFF5E6]/30 border border-[#D9D0C1] rounded-lg text-xs"
+                  />
+                </div>
+
+                <div className="space-y-1">
+                  <label className="font-semibold text-[#252522]">
+                    MRP / Compare At (₹)
+                  </label>
+                  <input
+                    type="number"
+                    value={formData.compareAtPrice ? formData.compareAtPrice / 100 : ""}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        compareAtPrice: Math.max(0, Math.round(parseFloat(e.target.value || "0") * 100)),
+                      })
+                    }
+                    placeholder="e.g. 12999"
                     className="w-full p-2.5 bg-[#FFF5E6]/30 border border-[#D9D0C1] rounded-lg text-xs"
                   />
                 </div>

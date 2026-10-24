@@ -44,7 +44,7 @@ export default function AboutPage() {
             <div className="lg:col-span-5 flex flex-col items-center lg:items-start space-y-3">
               <div className="relative w-full aspect-[4/3] sm:aspect-[16/11] max-w-md rounded-2xl overflow-hidden border-2 border-[#CBAE9B]/50 shadow-2xl bg-[#252522]">
                 <Image
-                  src="/images/founder.png"
+                  src="https://res.cloudinary.com/pmip0yum/image/upload/v1792840541/vitrag/brand/komkceug9s5rkftc4bco.png"
                   alt="Pranath — Founder of VITRAG"
                   fill
                   className="object-cover object-top"
@@ -71,7 +71,7 @@ export default function AboutPage() {
             <div className="lg:col-span-7 flex flex-col justify-center space-y-4 sm:space-y-5 text-left">
               <div className="flex items-center gap-3">
                 <div className="relative w-7 h-7 rounded-lg overflow-hidden border border-[#CBAE9B]/40 shrink-0">
-                  <Image src="/logo.jpg" alt="VITRAG Logo" fill className="object-cover" sizes="28px" />
+                  <Image src="https://res.cloudinary.com/pmip0yum/image/upload/v1792840542/vitrag/brand/exhajxg7yjclbfvqm1yb.jpg" alt="VITRAG Logo" fill className="object-cover" sizes="28px" />
                 </div>
                 <span className="text-[11px] uppercase tracking-[0.25em] text-[#CBAE9B] font-semibold">
                   Founder&apos;s Vision &amp; Leadership

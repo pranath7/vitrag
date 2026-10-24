@@ -8,7 +8,7 @@ export const collections: Collection[] = [
     shortName: "Signature Series",
     description:
       "Exclusive editorial masterpieces from VITRAG. Discover our cut-crystal whiskey glasses, sculpted floral pedestal serving bowls, and emerald camellia tea sets.",
-    image: "/images/categories/signature-editions.png",
+    image: "https://res.cloudinary.com/pmip0yum/image/upload/v1792840537/vitrag/categories/q87rhawi0rlfsfl0lhgl.png",
     seoTitle: "Signature Editions — Fine Tableware & Crystal Glassware | VITRAG",
     seoDescription:
       "Explore VITRAG's marquee Signature Editions: Elevate Every Pour crystal barware, Serve Beautifully rose pedestal bowl, and A Cup for Every Moment tea set.",
@@ -20,7 +20,7 @@ export const collections: Collection[] = [
     shortName: "Dinnerware",
     description:
       "Handcrafted ceramic and fine porcelain dinner services tailored for festive Indian celebrations, wedding banquets, and daily dining elegance.",
-    image: "/images/categories/dinner-sets.jpg",
+    image: "https://res.cloudinary.com/pmip0yum/image/upload/v1792840534/vitrag/categories/flvbxuosczgcuepmxcmn.jpg",
     seoTitle: "Premium Dinner Sets & Dinnerware Collections | VITRAG",
     seoDescription:
       "Explore luxury handcrafted ceramic, bone china, and porcelain dinner sets in Chennai. Available for pan-India shipping and bespoke gifting.",
@@ -32,7 +32,7 @@ export const collections: Collection[] = [
     shortName: "Serveware",
     description:
       "Sculptural serving platters, chip-and-dip centerpieces, and dessert bowls designed to elevate culinary presentation.",
-    image: "/images/categories/platter-and-serving.jpg",
+    image: "https://res.cloudinary.com/pmip0yum/image/upload/v1792840536/vitrag/categories/sm3piv7tv3v21rwcl1gy.jpg",
     seoTitle: "Artisanal Serving Platters & Table Bowls | VITRAG",
     seoDescription:
       "Discover luxury ceramic serving platters, chip and dip sets, and appetizer boards for refined hosting.",
@@ -44,7 +44,7 @@ export const collections: Collection[] = [
     shortName: "Dry-Fruit Boxes",
     description:
       "Ornamental handcrafted dry-fruit gift boxes crafted in solid sheesham timber with polished brass repoussé inlays and velvet-lined compartments.",
-    image: "/images/categories/dry-fruit-boxes.jpg",
+    image: "https://res.cloudinary.com/pmip0yum/image/upload/v1792840536/vitrag/categories/u108qh4mrzwmk5frkpwx.jpg",
     seoTitle: "Handcrafted Dry-Fruit Gift Boxes | Festive & Wedding Gifting | VITRAG",
     seoDescription:
       "Exquisite dry-fruit gift boxes crafted in solid wood, brass, and enamel. Ideal for Diwali, weddings, and corporate gifting.",
@@ -68,7 +68,7 @@ export const products: Product[] = [
     currency: "INR",
     images: [
       {
-        src: "/images/category1vit/104534.png",
+        src: "https://res.cloudinary.com/pmip0yum/image/upload/v1792840531/vitrag/products/nfcut030ltu9iza7ded8.png",
         alt: "Elevate Every Pour — 6-Piece Crystal Whiskey Glass Gift Set in Luxury Presentation Box",
       },
     ],
@@ -113,7 +113,7 @@ export const products: Product[] = [
     currency: "INR",
     images: [
       {
-        src: "/images/category1vit/104546.png",
+        src: "https://res.cloudinary.com/pmip0yum/image/upload/v1792840532/vitrag/products/b68vbkwcapraqbr1fqrv.png",
         alt: "Serve Beautifully — Rose Elegance Pedestal Serving Bowl with Gold Rim and Ladle",
       },
     ],
@@ -158,7 +158,7 @@ export const products: Product[] = [
     currency: "INR",
     images: [
       {
-        src: "/images/category1vit/104547.png",
+        src: "https://res.cloudinary.com/pmip0yum/image/upload/v1792840533/vitrag/products/n5hycyxmhehrdwjdmtbw.png",
         alt: "A Cup for Every Moment — Emerald Camellia Cup and Saucer Set with Gold Bead Handles",
       },
     ],
@@ -205,7 +205,7 @@ export const products: Product[] = [
     currency: "INR",
     images: [
       {
-        src: "/images/categories/dinner-sets.jpg",
+        src: "https://res.cloudinary.com/pmip0yum/image/upload/v1792840534/vitrag/categories/flvbxuosczgcuepmxcmn.jpg",
         alt: "Royal Heritage 24-piece porcelain dinner set displayed on banquet table",
       },
     ],
@@ -248,7 +248,7 @@ export const products: Product[] = [
     currency: "INR",
     images: [
       {
-        src: "/images/hero/hero-stock.jpg",
+        src: "https://res.cloudinary.com/pmip0yum/image/upload/v1792840538/vitrag/hero/ldiysrt5vo0onozwfrln.jpg",
         alt: "Imperial Banquet 32-piece grand dinnerware collection with fluted edges",
       },
     ],
@@ -289,7 +289,7 @@ export const products: Product[] = [
     currency: "INR",
     images: [
       {
-        src: "/images/hero/unsplash-tableware-1.jpg",
+        src: "https://res.cloudinary.com/pmip0yum/image/upload/v1792840539/vitrag/hero/fxga513p4taxonuyoi1y.jpg",
         alt: "Artisanal scalloped ceramic dinnerware in soft warm ivory glaze",
       },
     ],
@@ -331,7 +331,7 @@ export const products: Product[] = [
     currency: "INR",
     images: [
       {
-        src: "/images/categories/platter-and-serving.jpg",
+        src: "https://res.cloudinary.com/pmip0yum/image/upload/v1792840536/vitrag/categories/sm3piv7tv3v21rwcl1gy.jpg",
         alt: "Grand Centerpiece Ceramic Serving Platter styled on dining table",
       },
     ],
@@ -370,7 +370,7 @@ export const products: Product[] = [
     currency: "INR",
     images: [
       {
-        src: "/images/hero/unsplash-tableware-2.jpg",
+        src: "https://res.cloudinary.com/pmip0yum/image/upload/v1792840540/vitrag/hero/tjfh9qncztgkvjykejui.jpg",
         alt: "Lotus bloom fluted ceramic platter and condiment bowl set",
       },
     ],
@@ -412,7 +412,7 @@ export const products: Product[] = [
     currency: "INR",
     images: [
       {
-        src: "/images/categories/dry-fruit-boxes.jpg",
+        src: "https://res.cloudinary.com/pmip0yum/image/upload/v1792840536/vitrag/categories/u108qh4mrzwmk5frkpwx.jpg",
         alt: "Handcrafted Sheesham wood and brass inlay dry fruit gift box with canisters",
       },
     ],
@@ -454,7 +454,7 @@ export const products: Product[] = [
     currency: "INR",
     images: [
       {
-        src: "/images/categories/dry-fruit-boxes.jpg",
+        src: "https://res.cloudinary.com/pmip0yum/image/upload/v1792840536/vitrag/categories/u108qh4mrzwmk5frkpwx.jpg",
         alt: "Luxury velvet-lined dry fruit gift caddy with airtight glass canisters",
       },
     ],

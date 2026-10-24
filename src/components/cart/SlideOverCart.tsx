@@ -112,7 +112,7 @@ export function SlideOverCart() {
                   className="flex gap-4 p-4 bg-white border border-[#EADBC8] rounded-xl shadow-2xs"
                 >
                   <div className="relative w-20 h-20 bg-[#FFF5E6] shrink-0 overflow-hidden rounded-lg border border-[#EADBC8]">
-                    {item.image && item.image.startsWith("/images/category1vit/") ? (
+                    {item.image ? (
                       <Image src={item.image} alt={item.name} fill className="object-cover" sizes="80px" />
                     ) : (
                       <ProductArtwork category={item.name} name={item.name} />

@@ -108,7 +108,7 @@ export default function HomePage() {
                 {/* 1. Architectural Arched Frame with Real Stock Tableware Photo */}
                 <div className="relative w-[290px] sm:w-[400px] lg:w-[450px] aspect-[4/5] rounded-t-[180px] sm:rounded-t-[240px] rounded-b-3xl overflow-hidden shadow-[0_30px_70px_-20px_rgba(90,18,24,0.25)] border-[5px] border-[#CBAE9B]/70 bg-[#2A1417] group">
                   <Image
-                    src="/images/hero/hero-stock.jpg"
+                    src="https://res.cloudinary.com/pmip0yum/image/upload/v1792840538/vitrag/hero/ldiysrt5vo0onozwfrln.jpg"
                     alt="Designed for Modern Gatherings — Vitrag Luxury Tableware Collection"
                     fill
                     className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
@@ -203,7 +203,7 @@ export default function HomePage() {
                 className="relative aspect-9/16 w-full overflow-hidden block bg-[#252522]"
               >
                 <Image
-                  src="/images/category1vit/104534.png"
+                  src="https://res.cloudinary.com/pmip0yum/image/upload/v1792840531/vitrag/products/nfcut030ltu9iza7ded8.png"
                   alt="Elevate Every Pour — 6 Pcs Crystal Whiskey Glass Set"
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -238,7 +238,7 @@ export default function HomePage() {
                 className="relative aspect-9/16 w-full overflow-hidden block bg-[#252522]"
               >
                 <Image
-                  src="/images/category1vit/104546.png"
+                  src="https://res.cloudinary.com/pmip0yum/image/upload/v1792840532/vitrag/products/b68vbkwcapraqbr1fqrv.png"
                   alt="Serve Beautifully — Rose Elegance Pedestal Serving Bowl"
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -273,7 +273,7 @@ export default function HomePage() {
                 className="relative aspect-9/16 w-full overflow-hidden block bg-[#252522]"
               >
                 <Image
-                  src="/images/category1vit/104547.png"
+                  src="https://res.cloudinary.com/pmip0yum/image/upload/v1792840533/vitrag/products/n5hycyxmhehrdwjdmtbw.png"
                   alt="A Cup for Every Moment — Emerald Camellia Cup & Saucer Set"
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -335,28 +335,28 @@ export default function HomePage() {
                 name: "Signature Editions",
                 shortName: "Signature Series",
                 slug: "signature-editions",
-                image: "/images/categories/signature-editions.png",
+                image: "https://res.cloudinary.com/pmip0yum/image/upload/v1792840537/vitrag/categories/q87rhawi0rlfsfl0lhgl.png",
               },
               {
                 id: "dinner-sets",
                 name: "Dinner Sets",
                 shortName: "Dinnerware",
                 slug: "dinner-sets",
-                image: "/images/categories/dinner-sets.jpg",
+                image: "https://res.cloudinary.com/pmip0yum/image/upload/v1792840534/vitrag/categories/flvbxuosczgcuepmxcmn.jpg",
               },
               {
                 id: "platters-serving",
                 name: "Platter & Serving",
                 shortName: "Serveware",
                 slug: "platters-serving",
-                image: "/images/categories/platter-and-serving.jpg",
+                image: "https://res.cloudinary.com/pmip0yum/image/upload/v1792840536/vitrag/categories/sm3piv7tv3v21rwcl1gy.jpg",
               },
               {
                 id: "dry-fruit-boxes",
                 name: "Dry Fruit Boxes",
                 shortName: "Gift Box Sets",
                 slug: "dry-fruit-boxes",
-                image: "/images/categories/dry-fruit-boxes.jpg",
+                image: "https://res.cloudinary.com/pmip0yum/image/upload/v1792840536/vitrag/categories/u108qh4mrzwmk5frkpwx.jpg",
               },
             ].map((col) => (
               <Link

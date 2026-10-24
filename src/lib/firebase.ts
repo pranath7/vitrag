@@ -1,5 +1,6 @@
 import { initializeApp, getApps, getApp, FirebaseApp } from "firebase/app";
 import { getFirestore, Firestore } from "firebase/firestore";
+import type { Analytics } from "firebase/analytics";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -8,6 +9,7 @@ const firebaseConfig = {
   storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
 export function isFirebaseConfigured(): boolean {
@@ -19,14 +21,29 @@ export function isFirebaseConfigured(): boolean {
 
 let app: FirebaseApp | null = null;
 let db: Firestore | null = null;
+let analytics: Analytics | null = null;
 
 if (typeof window !== "undefined" && isFirebaseConfigured()) {
   try {
     app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
     db = getFirestore(app);
+
+    if (process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID) {
+      import("firebase/analytics")
+        .then(({ getAnalytics, isSupported }) => {
+          isSupported().then((supported) => {
+            if (supported && app) {
+              analytics = getAnalytics(app);
+            }
+          });
+        })
+        .catch(() => {
+          // Analytics is optional in certain browser environments
+        });
+    }
   } catch (err) {
     console.warn("Failed to initialize Firebase app:", err);
   }
 }
 
-export { app, db };
+export { app, db, analytics };

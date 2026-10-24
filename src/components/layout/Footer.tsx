@@ -214,11 +214,6 @@ export function Footer() {
             </h4>
             <ul className="space-y-2.5 text-[#FFF5E6]/80 font-light">
               <li>
-                <Link href="/billing" className="hover:text-white text-[#CBAE9B] hover:underline transition-colors font-medium">
-                  Billing &amp; Invoices
-                </Link>
-              </li>
-              <li>
                 <Link href="/compare" className="hover:text-white text-[#CBAE9B] hover:underline transition-colors font-medium">
                   Why VITRAG vs Others
                 </Link>

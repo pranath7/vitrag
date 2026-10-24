@@ -16,7 +16,6 @@ import {
   Phone,
   Mail,
   ArrowRight,
-  User,
 } from "lucide-react";
 import { collections } from "@/lib/products";
 
@@ -240,16 +239,6 @@ export function Header() {
                 )}
               </Link>
 
-              {/* Client Billing & Account Link */}
-              <Link
-                href="/billing"
-                className="p-1.5 text-[#252522] hover:text-[#6E2023] transition-colors"
-                aria-label="Billing & Invoices"
-                title="Billing & Invoices"
-              >
-                <User className="w-4 h-4 text-[#6E2023]" />
-              </Link>
-
               {/* Pillar 4: Cart Button & Bag Link */}
               <button
                 type="button"
@@ -409,13 +398,6 @@ export function Header() {
                     className="block text-xs uppercase tracking-widest hover:text-[#6E2023] py-1 text-[#252522]"
                   >
                     Why VITRAG vs Others
-                  </Link>
-                  <Link
-                    href="/billing"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="block text-xs uppercase tracking-widest hover:text-[#6E2023] py-1 text-[#252522]"
-                  >
-                    Billing &amp; Invoices
                   </Link>
                   <Link
                     href="/about"

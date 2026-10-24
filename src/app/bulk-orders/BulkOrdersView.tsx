@@ -172,7 +172,7 @@ export function BulkOrdersView() {
                     placeholder="e.g. Zoho Corp / Personal Event"
                     value={formData.company}
                     onChange={handleChange}
-                    className="w-full text-xs p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
+                    className="w-full text-[16px] sm:text-xs p-3.5 sm:p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
                   />
                 </div>
 
@@ -187,7 +187,7 @@ export function BulkOrdersView() {
                     placeholder="+91 98400 54321"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full text-xs p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
+                    className="w-full text-[16px] sm:text-xs p-3.5 sm:p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
                   />
                 </div>
 
@@ -201,7 +201,7 @@ export function BulkOrdersView() {
                     placeholder="ramesh@company.com"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full text-xs p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
+                    className="w-full text-[16px] sm:text-xs p-3.5 sm:p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
                   />
                 </div>
 
@@ -213,7 +213,7 @@ export function BulkOrdersView() {
                     name="productInterest"
                     value={formData.productInterest}
                     onChange={handleChange}
-                    className="w-full text-xs p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
+                    className="w-full text-[16px] sm:text-xs p-3.5 sm:p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
                   >
                     <option value="Curated Gift Sets">Curated Tableware Gift Sets</option>
                     <option value="Dry-Fruit Boxes">Handcrafted Dry-Fruit Boxes</option>
@@ -232,7 +232,7 @@ export function BulkOrdersView() {
                     name="quantity"
                     value={formData.quantity}
                     onChange={handleChange}
-                    className="w-full text-xs p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
+                    className="w-full text-[16px] sm:text-xs p-3.5 sm:p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
                   >
                     <option value="10 – 25 units">10 – 25 units</option>
                     <option value="25 – 50 units">25 – 50 units</option>
@@ -250,7 +250,7 @@ export function BulkOrdersView() {
                     name="budgetPerGift"
                     value={formData.budgetPerGift}
                     onChange={handleChange}
-                    className="w-full text-xs p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
+                    className="w-full text-[16px] sm:text-xs p-3.5 sm:p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
                   >
                     <option value="Under ₹1,000">Under ₹1,000</option>
                     <option value="₹1,000 – ₹2,000">₹1,000 – ₹2,000</option>
@@ -271,7 +271,7 @@ export function BulkOrdersView() {
                     placeholder="e.g. 600017"
                     value={formData.pinCode}
                     onChange={handleChange}
-                    className="w-full text-xs p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
+                    className="w-full text-[16px] sm:text-xs p-3.5 sm:p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
                   />
                 </div>
               </div>
@@ -285,7 +285,7 @@ export function BulkOrdersView() {
                   name="deliveryDate"
                   value={formData.deliveryDate}
                   onChange={handleChange}
-                  className="w-full text-xs p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
+                  className="w-full text-[16px] sm:text-xs p-3.5 sm:p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
                 />
               </div>
 
@@ -299,7 +299,7 @@ export function BulkOrdersView() {
                   placeholder="Specify custom box branding, personalized message cards, or specific event themes..."
                   value={formData.notes}
                   onChange={handleChange}
-                  className="w-full text-xs p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
+                  className="w-full text-[16px] sm:text-xs p-3.5 sm:p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
                 />
               </div>
 

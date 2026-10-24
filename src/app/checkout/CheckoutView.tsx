@@ -316,7 +316,7 @@ export function CheckoutView() {
                     placeholder="e.g. Priya Sundaram"
                     value={formData.fullName}
                     onChange={handleInputChange}
-                    className="w-full text-xs p-3 bg-[#FFF5E6] border border-[#EADBC8] focus:outline-none focus:border-[#6E2023]"
+                    className="w-full text-[16px] sm:text-xs p-3.5 sm:p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
                   />
                 </div>
 
@@ -331,7 +331,7 @@ export function CheckoutView() {
                     placeholder="+91 98400 12345"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full text-xs p-3 bg-[#FFF5E6] border border-[#EADBC8] focus:outline-none focus:border-[#6E2023]"
+                    className="w-full text-[16px] sm:text-xs p-3.5 sm:p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
                   />
                 </div>
 
@@ -345,7 +345,7 @@ export function CheckoutView() {
                     placeholder="priya@example.com"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full text-xs p-3 bg-[#FFF5E6] border border-[#EADBC8] focus:outline-none focus:border-[#6E2023]"
+                    className="w-full text-[16px] sm:text-xs p-3.5 sm:p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
                   />
                 </div>
               </div>
@@ -372,7 +372,7 @@ export function CheckoutView() {
                     placeholder="No. 14, 2nd Cross Street, Alwarpet"
                     value={formData.address}
                     onChange={handleInputChange}
-                    className="w-full text-xs p-3 bg-[#FFF5E6] border border-[#EADBC8] focus:outline-none focus:border-[#6E2023]"
+                    className="w-full text-[16px] sm:text-xs p-3.5 sm:p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
                   />
                 </div>
 
@@ -387,7 +387,7 @@ export function CheckoutView() {
                       required
                       value={formData.city}
                       onChange={handleInputChange}
-                      className="w-full text-xs p-3 bg-[#FFF5E6] border border-[#EADBC8] focus:outline-none focus:border-[#6E2023]"
+                      className="w-full text-[16px] sm:text-xs p-3.5 sm:p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
                     />
                   </div>
 
@@ -401,7 +401,7 @@ export function CheckoutView() {
                       required
                       value={formData.state}
                       onChange={handleInputChange}
-                      className="w-full text-xs p-3 bg-[#FFF5E6] border border-[#EADBC8] focus:outline-none focus:border-[#6E2023]"
+                      className="w-full text-[16px] sm:text-xs p-3.5 sm:p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
                     />
                   </div>
 
@@ -416,7 +416,7 @@ export function CheckoutView() {
                       placeholder="600018"
                       value={formData.pinCode}
                       onChange={handleInputChange}
-                      className="w-full text-xs p-3 bg-[#FFF5E6] border border-[#EADBC8] focus:outline-none focus:border-[#6E2023]"
+                      className="w-full text-[16px] sm:text-xs p-3.5 sm:p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
                     />
                   </div>
                 </div>
@@ -431,7 +431,7 @@ export function CheckoutView() {
                     placeholder="e.g. Please add a handwritten card wishing Happy Anniversary..."
                     value={formData.giftNote}
                     onChange={handleInputChange}
-                    className="w-full text-xs p-3 bg-[#FFF5E6] border border-[#EADBC8] focus:outline-none focus:border-[#6E2023]"
+                    className="w-full text-[16px] sm:text-xs p-3.5 sm:p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
                   />
                 </div>
               </div>

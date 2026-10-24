@@ -228,7 +228,7 @@ export function ContactView() {
                   placeholder="Your Name"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full text-xs p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
+                  className="w-full text-[16px] sm:text-xs p-3.5 sm:p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
                 />
               </div>
 
@@ -244,7 +244,7 @@ export function ContactView() {
                     placeholder="+91 98400 12345"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full text-xs p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
+                    className="w-full text-[16px] sm:text-xs p-3.5 sm:p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
                   />
                 </div>
 
@@ -258,7 +258,7 @@ export function ContactView() {
                     placeholder="name@example.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full text-xs p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
+                    className="w-full text-[16px] sm:text-xs p-3.5 sm:p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
                   />
                 </div>
               </div>
@@ -271,7 +271,7 @@ export function ContactView() {
                   name="subject"
                   value={formData.subject}
                   onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                  className="w-full text-xs p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
+                  className="w-full text-[16px] sm:text-xs p-3.5 sm:p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
                 >
                   <option value="Showroom Visit Appointment">Showroom Visit Appointment</option>
                   <option value="Custom Dinner Set Request">Custom Dinner Set Request</option>
@@ -293,7 +293,7 @@ export function ContactView() {
                   placeholder="How can our tableware team assist you?"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full text-xs p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
+                  className="w-full text-[16px] sm:text-xs p-3.5 sm:p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023]"
                 />
               </div>
 

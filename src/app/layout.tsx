@@ -4,6 +4,7 @@ import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { MobileBottomNav } from "@/components/layout/MobileBottomNav";
 import { SlideOverCart } from "@/components/cart/SlideOverCart";
 import { siteConfig } from "@/lib/config";
 
@@ -88,9 +89,10 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-[#FFF5E6] text-[#252522] font-body selection:bg-[#6E2023] selection:text-white overflow-x-hidden max-w-full">
         <CartProvider>
           <Header />
-          <div className="flex-1 w-full max-w-full overflow-x-hidden">{children}</div>
+          <div className="flex-1 w-full max-w-full overflow-x-hidden pb-16 lg:pb-0">{children}</div>
           <SlideOverCart />
           <Footer />
+          <MobileBottomNav />
         </CartProvider>
       </body>
     </html>

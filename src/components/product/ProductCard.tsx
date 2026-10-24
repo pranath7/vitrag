@@ -133,20 +133,27 @@ export function ProductCard({ product }: ProductCardProps) {
           </p>
         </div>
 
-        {/* Price on Request & Action */}
-        <div className="mt-4 pt-3 border-t border-[#FFF5E6] flex items-center justify-between">
-          <span className="text-[11px] uppercase tracking-wider font-semibold text-[#6E2023] bg-[#CBAE9B]/20 px-2 py-0.5 rounded">
-            Price on Request
-          </span>
+        {/* Price & Action */}
+        <div className="mt-3 pt-2.5 border-t border-[#FFF5E6] flex items-center justify-between">
+          <div className="flex items-baseline gap-1.5">
+            <span className="font-heading text-sm sm:text-base font-bold text-[#6E2023]">
+              {formatPrice(product.price)}
+            </span>
+            {product.compareAtPrice && product.compareAtPrice > product.price && (
+              <span className="text-[10px] text-[#84766A] line-through">
+                {formatPrice(product.compareAtPrice)}
+              </span>
+            )}
+          </div>
 
-          {/* Mobile Quick Add Button */}
+          {/* Mobile Quick Add Button with enhanced tap target */}
           <button
             type="button"
             onClick={handleQuickAdd}
-            className={`lg:hidden p-2 border rounded-lg transition-all ${
+            className={`lg:hidden p-2 min-w-[38px] min-h-[38px] flex items-center justify-center border rounded-lg transition-all active:scale-95 ${
               isAdded
                 ? "bg-[#2D6A4F] text-white border-[#2D6A4F]"
-                : "text-[#6E2023] hover:bg-[#FFF5E6] border-[#EADBC8]"
+                : "text-[#6E2023] bg-[#FFF5E6]/40 hover:bg-[#FFF5E6] border-[#EADBC8]"
             }`}
             aria-label={isAdded ? "Added to shopping bag" : "Add to shopping bag"}
           >

@@ -157,7 +157,7 @@ export function ProductGrid({
                 id="sort-select"
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="appearance-none bg-white border border-[#EADBC8] text-xs uppercase tracking-wider font-medium text-[#252522] pl-3 pr-8 py-1.5 rounded-none focus:outline-none focus:border-[#6E2023]"
+                className="appearance-none bg-white border border-[#EADBC8] text-[16px] sm:text-xs uppercase tracking-wider font-medium text-[#252522] pl-3 pr-8 py-2 sm:py-1.5 rounded-none focus:outline-none focus:border-[#6E2023]"
               >
                 <option value="featured">Curated (Featured)</option>
                 <option value="name-asc">Alphabetical: A to Z</option>
@@ -250,7 +250,7 @@ export function ProductGrid({
                 </Button>
               </div>
             ) : (
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-6">
                 {filteredProducts.map((product) => (
                   <ProductCard key={product.id} product={product} />
                 ))}

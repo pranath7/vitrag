@@ -41,8 +41,8 @@ export function SlideOverCart() {
         aria-hidden="true"
       />
 
-      <div className="fixed inset-y-0 right-0 flex max-w-full pl-6 sm:pl-10">
-        <div className="w-screen max-w-md bg-[#FFF5E6] border-l border-[#EADBC8] shadow-2xl flex flex-col">
+      <div className="fixed inset-y-0 right-0 flex max-w-full pl-0 sm:pl-10 w-full sm:w-auto">
+        <div className="w-full sm:max-w-md bg-[#FFF5E6] border-l border-[#EADBC8] shadow-2xl flex flex-col">
           {/* Header */}
           <div className="p-6 border-b border-[#EADBC8] flex items-center justify-between bg-white">
             <Link

@@ -89,7 +89,7 @@ export function AdminLoginView({ onSuccess }: AdminLoginViewProps) {
                     if (error) setError("");
                   }}
                   placeholder="Enter passcode"
-                  className="block w-full pl-10 pr-10 py-3 bg-[#FFF5E6]/40 border border-[#D9D0C1] rounded-lg text-[#252522] placeholder-[#84766A]/60 focus:outline-none focus:ring-2 focus:ring-[#6E2023] focus:border-transparent text-sm transition-all"
+                  className="block w-full pl-10 pr-10 py-3 bg-[#FFF5E6]/40 border border-[#D9D0C1] rounded-lg text-[#252522] placeholder-[#84766A]/60 focus:outline-none focus:ring-2 focus:ring-[#6E2023] focus:border-transparent text-[16px] sm:text-sm transition-all"
                   autoFocus
                 />
                 <button

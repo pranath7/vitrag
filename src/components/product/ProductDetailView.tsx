@@ -548,7 +548,7 @@ export function ProductDetailView({
 
           <div className="py-2.5 flex items-center gap-3">
             <div className="relative w-12 h-12 rounded-lg overflow-hidden bg-[#FFF5E6] border border-[#EADBC8] shrink-0">
-              {product.images[0]?.src && product.images[0].src.startsWith("/images/category1vit/") ? (
+              {product.images[0]?.src ? (
                 <Image
                   src={product.images[0].src}
                   alt={product.name}
@@ -591,7 +591,7 @@ export function ProductDetailView({
       )}
 
       {/* Pillar 2: Mobile Sticky Add-to-Cart Bar */}
-      <div className="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur-md border-t border-[#EADBC8] p-3 shadow-2xl flex items-center justify-between gap-3">
+      <div className="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur-md border-t border-[#EADBC8] px-4 pt-3 pb-[max(env(safe-area-inset-bottom),12px)] shadow-2xl flex items-center justify-between gap-3">
         <div className="min-w-0 flex-1">
           <p className="text-xs font-bold text-[#6E2023] truncate leading-tight">
             {product.name}

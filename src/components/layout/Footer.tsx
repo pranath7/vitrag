@@ -114,11 +114,11 @@ export function Footer() {
                         setEmail(e.target.value);
                         if (errorMsg) setErrorMsg("");
                       }}
-                      className="flex-1 bg-[#6E2023] border border-[#CBAE9B]/40 px-4 py-3 text-xs text-white placeholder-[#CBAE9B]/60 rounded-xl focus:outline-none focus:border-[#CBAE9B]"
+                      className="flex-1 bg-[#6E2023] border border-[#CBAE9B]/40 px-4 py-3 text-[16px] sm:text-xs text-white placeholder-[#CBAE9B]/60 rounded-xl focus:outline-none focus:border-[#CBAE9B]"
                     />
                     <button
                       type="submit"
-                      className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#CBAE9B] hover:bg-[#bfa08c] text-[#6E2023] text-xs uppercase tracking-widest font-semibold transition-colors rounded-xl shadow-sm active:scale-95"
+                      className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#CBAE9B] hover:bg-[#bfa08c] text-[#6E2023] text-xs uppercase tracking-widest font-semibold transition-colors rounded-xl shadow-sm active:scale-95 min-h-[44px]"
                     >
                       <span>Subscribe</span>
                       <ArrowRight className="w-3.5 h-3.5" />

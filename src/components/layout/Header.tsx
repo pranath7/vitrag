@@ -275,7 +275,7 @@ export function Header() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   autoFocus
-                  className="w-full text-xs sm:text-sm pl-9 pr-24 py-2.5 bg-white/90 backdrop-blur-md border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023] shadow-inner"
+                  className="w-full text-[16px] sm:text-sm pl-9 pr-24 py-2.5 bg-white/90 backdrop-blur-md border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023] shadow-inner"
                 />
                 <Search className="w-4 h-4 text-[#84766A] absolute left-3 top-1/2 -translate-y-1/2" />
                 <button

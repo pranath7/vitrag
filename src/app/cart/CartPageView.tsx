@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useCart } from "@/context/CartContext";
 import { formatPrice, generateWhatsAppOrderUrl } from "@/lib/utils";
 import {
@@ -91,8 +92,18 @@ export function CartPageView() {
               >
                 {/* Product Info */}
                 <div className="w-full sm:col-span-6 flex gap-4 items-center">
-                  <div className="w-20 h-20 bg-white border border-[#EADBC8] rounded-lg flex items-center justify-center shrink-0 overflow-hidden">
-                    <ProductArtwork category={item.name} name={item.name} />
+                  <div className="relative w-20 h-20 bg-white border border-[#EADBC8] rounded-lg flex items-center justify-center shrink-0 overflow-hidden">
+                    {item.image ? (
+                      <Image
+                        src={item.image}
+                        alt={item.name}
+                        fill
+                        className="object-cover"
+                        sizes="80px"
+                      />
+                    ) : (
+                      <ProductArtwork category={item.name} name={item.name} />
+                    )}
                   </div>
                   <div>
                     <Link

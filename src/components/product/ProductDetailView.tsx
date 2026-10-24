@@ -46,8 +46,7 @@ export function ProductDetailView({
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [isAdded, setIsAdded] = useState(false);
   const [showToast, setShowToast] = useState(false);
-  // Feedback intrusion style: Option 1 (Toast) vs Option 2 (Drawer)
-  const [feedbackOption, setFeedbackOption] = useState<"toast" | "drawer">("toast");
+  const [feedbackOption] = useState<"toast" | "drawer">("drawer");
 
   // Accordion state
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({
@@ -62,7 +61,7 @@ export function ProductDetailView({
   };
 
   const currentPrice = selectedVariant ? selectedVariant.price : product.price;
-  const currentCompareAtPrice = product.compareAtPrice;
+  const currentCompareAtPrice = selectedVariant?.compareAtPrice ?? product.compareAtPrice;
   const maxStock = selectedVariant ? selectedVariant.stockQuantity : product.stockQuantity;
 
   const handleAddToCart = () => {
@@ -127,14 +126,14 @@ export function ProductDetailView({
         {/* Left Column: Image Gallery */}
         <div className="lg:col-span-7 space-y-4">
           {/* Main Visual Display */}
-          <div className="relative aspect-4/5 w-full bg-[#FFF5E6] border border-[#EADBC8] rounded-2xl overflow-hidden flex flex-col items-center justify-center shadow-sm">
+          <div className="relative aspect-[4/3] sm:aspect-[1024/853] w-full bg-[#181614] border border-[#EADBC8] rounded-2xl overflow-hidden flex flex-col items-center justify-center shadow-md">
             {product.images[activeImageIndex]?.src ? (
               <div className="w-full h-full relative">
                 <Image
                   src={product.images[activeImageIndex].src}
                   alt={product.images[activeImageIndex].alt || product.name}
                   fill
-                  className="object-cover"
+                  className="object-contain"
                   sizes="(max-width: 1024px) 100vw, 55vw"
                   priority
                 />
@@ -202,7 +201,7 @@ export function ProductDetailView({
               <span>SKU: {selectedVariant?.sku || product.sku}</span>
             </div>
 
-            <h1 className="font-heading text-3xl sm:text-4xl text-[#6E2023] leading-tight font-medium">
+            <h1 className="font-heading text-2xl sm:text-3xl lg:text-4xl text-[#6E2023] leading-tight font-medium">
               {product.name}
             </h1>
 
@@ -210,17 +209,55 @@ export function ProductDetailView({
               {product.shortDescription}
             </p>
 
-            {/* Price on Request Notice */}
-            <div className="mt-4 pt-4 border-t border-[#EADBC8] space-y-1">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-[#CBAE9B]/25 text-[#6E2023] rounded-lg border border-[#CBAE9B]/50">
-                <span className="text-xs uppercase tracking-widest font-semibold">
-                  Price on Request
-                </span>
-                <span className="text-[10px] text-[#6E2023]/70">• Direct Showroom Quote</span>
-              </div>
-              <p className="text-xs text-[#84766A] font-light pt-1">
-                Enquire via WhatsApp for custom piece counts, personalization, and verified pricing.
-              </p>
+            {/* Price & Offer Section */}
+            <div className="mt-4 pt-4 border-t border-[#EADBC8] space-y-2.5">
+              {currentPrice > 0 ? (
+                <>
+                  <div className="flex flex-wrap items-baseline gap-3">
+                    <span className="text-3xl sm:text-4xl font-heading font-bold text-[#6E2023]">
+                      ₹{(currentPrice / 100).toLocaleString("en-IN")}
+                    </span>
+                    {currentCompareAtPrice && currentCompareAtPrice > currentPrice && (
+                      <span className="text-base sm:text-lg text-[#84766A] line-through font-light">
+                        ₹{(currentCompareAtPrice / 100).toLocaleString("en-IN")}
+                      </span>
+                    )}
+                    {currentCompareAtPrice && currentCompareAtPrice > currentPrice && (
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#6E2023] text-[#FFF5E6] text-xs font-bold uppercase tracking-wider border border-[#FFD700]/30 shadow-xs">
+                        <span>🪔</span>
+                        <span>
+                          {Math.round(((currentCompareAtPrice - currentPrice) / currentCompareAtPrice) * 100)}% OFF
+                        </span>
+                      </span>
+                    )}
+                  </div>
+
+                  {currentCompareAtPrice && currentCompareAtPrice > currentPrice && (
+                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#2D6A4F]/10 border border-[#2D6A4F]/20 text-[#2D6A4F] text-xs font-semibold">
+                      <span>✓</span>
+                      <span>
+                        Diwali Festive Savings: Save ₹{((currentCompareAtPrice - currentPrice) / 100).toLocaleString("en-IN")}
+                      </span>
+                    </div>
+                  )}
+
+                  <p className="text-[11px] text-[#84766A] font-light">
+                    MRP includes all taxes • Free Pan-India Insured Express Delivery
+                  </p>
+                </>
+              ) : (
+                <div className="space-y-1">
+                  <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-[#CBAE9B]/25 text-[#6E2023] rounded-lg border border-[#CBAE9B]/50">
+                    <span className="text-xs uppercase tracking-widest font-semibold">
+                      Price on Request
+                    </span>
+                    <span className="text-[10px] text-[#6E2023]/70">• Direct Showroom Quote</span>
+                  </div>
+                  <p className="text-xs text-[#84766A] font-light pt-1">
+                    Enquire via WhatsApp for custom piece counts, personalization, and verified pricing.
+                  </p>
+                </div>
+              )}
             </div>
           </div>
 
@@ -239,7 +276,7 @@ export function ProductDetailView({
             </div>
 
             {product.variants.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              <div className="grid grid-cols-1 gap-2.5">
                 {product.variants.map((variant) => {
                   const isSelected = selectedVariant?.id === variant.id;
                   return (
@@ -265,25 +302,32 @@ export function ProductDetailView({
                       </div>
 
                       <div className="flex-1 min-w-0">
-                        <div className="flex items-center justify-between gap-1">
+                        <div className="flex items-center justify-between gap-2">
                           <span
-                            className={`text-xs font-semibold truncate ${
+                            className={`text-xs font-semibold leading-snug break-words ${
                               isSelected ? "text-[#6E2023]" : "text-[#252522]"
                             }`}
                           >
                             {variant.name}
                           </span>
                           {isSelected && (
-                            <span className="text-[9px] uppercase font-bold text-[#6E2023] tracking-wider shrink-0">
+                            <span className="text-[9px] uppercase font-bold text-[#6E2023] tracking-wider shrink-0 bg-white px-2 py-0.5 rounded border border-[#6E2023]/30">
                               Selected
                             </span>
                           )}
                         </div>
-                        <p className="text-[11px] text-[#84766A] mt-0.5 font-light">
-                          {variant.stockQuantity > 0
-                            ? `✓ In Stock (${variant.stockQuantity} ready)`
-                            : "Showroom Quote"}
-                        </p>
+                        <div className="flex items-center justify-between mt-1 text-[11px]">
+                          <p className="text-[#84766A] font-light">
+                            {variant.stockQuantity > 0
+                              ? `✓ In Stock (${variant.stockQuantity} ready to ship)`
+                              : "Showroom Quote"}
+                          </p>
+                          {variant.price > 0 && (
+                            <span className="font-heading font-bold text-[#6E2023]">
+                              ₹{(variant.price / 100).toLocaleString("en-IN")}
+                            </span>
+                          )}
+                        </div>
                       </div>
                     </button>
                   );
@@ -365,42 +409,11 @@ export function ProductDetailView({
               href={whatsappEnquiryUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#25D366]/10 hover:bg-[#25D366]/20 text-[#1b7e3f] border border-[#25D366]/30 text-xs uppercase tracking-widest font-semibold transition-all rounded-xl"
+              className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#25D366]/10 hover:bg-[#25D366]/20 text-[#1b7e3f] border border-[#25D366]/30 text-xs uppercase tracking-widest font-semibold transition-all rounded-xl shadow-2xs"
             >
               <MessageSquare className="w-4 h-4 text-[#25D366]" />
               Instant WhatsApp Enquiry / Showroom Order
             </a>
-
-            {/* Pillar 3: Feedback Intrusion Style Selector */}
-            <div className="pt-1 flex items-center justify-between text-[11px] text-[#84766A] bg-[#FFF5E6]/60 p-2.5 rounded-lg border border-[#EADBC8]/70">
-              <span className="font-medium text-[#6E2023]">Cart Feedback Mode:</span>
-              <div className="inline-flex rounded-lg border border-[#EADBC8] bg-white p-0.5 text-[10px]">
-                <button
-                  type="button"
-                  onClick={() => setFeedbackOption("toast")}
-                  className={`px-2.5 py-1 rounded-md font-semibold transition-colors ${
-                    feedbackOption === "toast"
-                      ? "bg-[#6E2023] text-white shadow-2xs"
-                      : "text-[#84766A] hover:text-[#252522]"
-                  }`}
-                  title="Option 1: Low Intrusion Toast Banner & button confirmation"
-                >
-                  Subtle Toast (Option 1)
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setFeedbackOption("drawer")}
-                  className={`px-2.5 py-1 rounded-md font-semibold transition-colors ${
-                    feedbackOption === "drawer"
-                      ? "bg-[#6E2023] text-white shadow-2xs"
-                      : "text-[#84766A] hover:text-[#252522]"
-                  }`}
-                  title="Option 2: High Intrusion Slide-over drawer"
-                >
-                  Slide Drawer (Option 2)
-                </button>
-              </div>
-            </div>
           </div>
 
           {/* Service Promises */}

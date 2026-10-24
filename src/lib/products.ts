@@ -68,7 +68,7 @@ export const products: Product[] = [
   {
     id: "diwali-6pc-crystal-knobs-server-tray",
     slug: "diwali-meaningful-moments-6pc-crystal-server-tray",
-    name: "Designed for Meaningful Moments — 6-Piece Crystal Knobs Dry Fruit & Snack Server Tray",
+    name: "6-Piece Crystal Knobs Dry Fruit & Snack Server Tray",
     shortDescription: "Diwali Special: 6 porcelain cube jars with faceted crystal diamond-cut knobs, sealed glass lids & clear gallery railing tray.",
     description:
       "Designed for Meaningful Moments — celebrate the Festival of Lights with VITRAG's marquee 6-piece luxury snack and dry fruit server. Featuring 6 individual pristine white porcelain jars topped with brilliant diamond-cut crystal knobs and airtight glass lids, resting within an elevated transparent acrylic gallery railing tray. Ideal for serving premium almonds, cashews, chocolate pearls, apricots, walnuts, and festive Diwali confections. Delivered in luxury presentation gift packaging.",
@@ -123,7 +123,7 @@ export const products: Product[] = [
   {
     id: "diwali-6pc-petal-ceramic-server-gold-handle",
     slug: "diwali-elevate-6pc-petal-ceramic-server-tray",
-    name: "Elevate Everyday Living — 6-Piece Petal Ceramic Dry Fruit Server with Scalloped Tray",
+    name: "6-Piece Petal Ceramic Dry Fruit Server with Gold Handle",
     shortDescription: "Diwali Special: 6 droplet petal ceramic bowls with luxury gold center handle and scalloped organizer tray.",
     description:
       "Elevate Everyday Living — bringing refined festive warmth to your Diwali gathering. This 6-piece set features sculpted droplet petal-shaped porcelain bowls nestled into a custom scalloped white acrylic tray, accented by an ergonomic polished gold center handle. Created for slow festive conversations and serving dry fruits, berries, roasted nuts, and Diwali sweets in unmatched elegance.",
@@ -178,7 +178,7 @@ export const products: Product[] = [
   {
     id: "diwali-4pc-glass-serving-platter-gold-handles",
     slug: "diwali-elevate-4pc-glass-serving-platter-gold-handles",
-    name: "Elevate Everyday Living — 4-Piece Glass Serving Platter with Chevron Gold Handles",
+    name: "4-Piece Glass Serving Platter with Chevron Gold Handles",
     shortDescription: "Diwali Special: 4 high-clarity rectangular glass bowls with lids on a white platter with chevron gold handles.",
     description:
       "Elevate Everyday Living — a contemporary festive centerpiece for celebratory Diwali banquets. Crafted with 4 high-clarity tempered rectangular glass dishes with ergonomic cylindrical handles, arranged along an elongated white porcelain platter framed by dual chevron-angled 24K gold handles. Perfect for festive mithai, dips, warm appetizers, nuts, and savories.",

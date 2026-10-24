@@ -48,17 +48,21 @@ export async function syncProductToFirestore(product: Product): Promise<void> {
   }
 }
 
-export async function seedAllProductsToFirestore(products: Product[]): Promise<boolean> {
-  if (!isFirebaseConfigured() || !db) return false;
+export async function seedAllProductsToFirestore(
+  products: Product[]
+): Promise<{ success: boolean; error?: string }> {
+  if (!isFirebaseConfigured() || !db) {
+    return { success: false, error: "Firebase credentials not configured." };
+  }
   try {
     for (const prod of products) {
       const docRef = doc(db, "products", prod.id);
       await setDoc(docRef, { ...prod, updatedAt: new Date().toISOString() }, { merge: true });
     }
-    return true;
-  } catch (err) {
+    return { success: true };
+  } catch (err: any) {
     console.error("Firestore seed error:", err);
-    return false;
+    return { success: false, error: err?.message || String(err) };
   }
 }
 

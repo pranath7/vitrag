@@ -45,8 +45,8 @@ export function AdminBackupTab({ onRefreshAllData }: AdminBackupTabProps) {
     try {
       setSyncingFirestore(true);
       const prods = getAdminProducts();
-      const success = await seedAllProductsToFirestore(prods);
-      if (success) {
+      const res = await seedAllProductsToFirestore(prods);
+      if (res.success) {
         setStatusMessage({
           type: "success",
           text: `Successfully synced all ${prods.length} real tableware products directly to your Cloud Firestore database!`,
@@ -54,7 +54,7 @@ export function AdminBackupTab({ onRefreshAllData }: AdminBackupTabProps) {
       } else {
         setStatusMessage({
           type: "error",
-          text: "Could not sync products to Firestore. Check Firebase Console Rules tab to ensure write permissions are published.",
+          text: `Firestore sync failed: ${res.error || "Permission denied. Check that rules are published in Firebase Console."}`,
         });
       }
     } catch (err: any) {

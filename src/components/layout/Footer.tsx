@@ -140,20 +140,20 @@ export function Footer() {
 
         {/* Middle Section: Navigation Columns */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-14 border-b border-[#CBAE9B]/25 text-xs">
-          {/* Col 1: Shop */}
+          {/* Col 1: Core Collections */}
           <div className="space-y-4">
             <h4 className="font-heading text-lg text-white tracking-wider uppercase font-medium">
-              Tableware
+              Curated Collections
             </h4>
             <ul className="space-y-2.5 text-[#FFF5E6]/80 font-light">
               <li>
-                <Link href="/shop" className="hover:text-white hover:underline transition-colors">
+                <Link href="/shop" className="hover:text-white hover:underline transition-colors font-medium">
                   All Collections
                 </Link>
               </li>
               <li>
                 <Link href="/collections/signature-editions" className="hover:text-white hover:underline transition-colors font-medium text-[#CBAE9B]">
-                  Signature Editions
+                  ✨ Signature Editions
                 </Link>
               </li>
               <li>
@@ -167,47 +167,53 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/collections/mugs-cups" className="hover:text-white hover:underline transition-colors">
-                  Mugs &amp; Teaware
-                </Link>
-              </li>
-              <li>
-                <Link href="/collections/kitchenware" className="hover:text-white hover:underline transition-colors">
-                  Artisan Kitchenware
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Col 2: Gifting */}
-          <div className="space-y-4">
-            <h4 className="font-heading text-lg text-white tracking-wider uppercase font-medium">
-              Gifting
-            </h4>
-            <ul className="space-y-2.5 text-[#FFF5E6]/80 font-light">
-              <li>
-                <Link href="/collections/gift-sets" className="hover:text-white hover:underline transition-colors">
-                  Curated Gift Sets
-                </Link>
-              </li>
-              <li>
                 <Link href="/collections/dry-fruit-boxes" className="hover:text-white hover:underline transition-colors">
                   Dry-Fruit Boxes
                 </Link>
               </li>
               <li>
-                <Link href="/collections/cracker-sets" className="hover:text-white hover:underline transition-colors">
-                  Cracker Sets
-                </Link>
-              </li>
-              <li>
-                <Link href="/collections/wedding-gifts" className="hover:text-white hover:underline transition-colors">
-                  Wedding &amp; Trousseau
-                </Link>
-              </li>
-              <li>
                 <Link href="/bulk-orders" className="hover:text-white text-[#CBAE9B] transition-colors font-medium">
-                  Corporate &amp; Bulk Orders
+                  Corporate &amp; Wedding Bulk
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Col 2: Showroom & Ordering */}
+          <div className="space-y-4">
+            <h4 className="font-heading text-lg text-white tracking-wider uppercase font-medium">
+              Direct Ordering
+            </h4>
+            <ul className="space-y-2.5 text-[#FFF5E6]/80 font-light">
+              <li>
+                <a
+                  href={`https://wa.me/${siteConfig.contact.whatsappNumber}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white text-[#25D366] transition-colors font-medium inline-flex items-center gap-1.5"
+                >
+                  <MessageSquare className="w-3.5 h-3.5 fill-[#25D366]" />
+                  <span>WhatsApp Concierge</span>
+                </a>
+              </li>
+              <li>
+                <Link href="/cart" className="hover:text-white hover:underline transition-colors">
+                  Shopping Bag
+                </Link>
+              </li>
+              <li>
+                <Link href="/checkout" className="hover:text-white hover:underline transition-colors">
+                  Checkout &amp; UPI
+                </Link>
+              </li>
+              <li>
+                <Link href="/bulk-orders" className="hover:text-white hover:underline transition-colors">
+                  Bulk &amp; Custom Hampers
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-white hover:underline transition-colors">
+                  Sowcarpet Showroom
                 </Link>
               </li>
             </ul>

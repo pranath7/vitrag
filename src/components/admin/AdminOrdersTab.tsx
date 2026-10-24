@@ -125,11 +125,11 @@ export function AdminOrdersTab({
       giftNote: manualForm.giftNote || undefined,
       items: [
         {
-          productId: prod?.id || "p1",
-          name: prod?.name || "Tableware Item",
+          productId: prod?.id || products[0]?.id || "vit-01",
+          name: prod?.name || "Handcrafted Tableware Item",
           quantity: manualForm.quantity,
-          pricePaise: prod?.price || 450000,
-          image: prod?.images?.[0]?.src || "/images/hero/hero-stock.jpg",
+          pricePaise: prod?.price || 249900,
+          image: prod?.images?.[0]?.src || "/images/categories/dinner-sets.jpg",
         },
       ],
       status: "paid",

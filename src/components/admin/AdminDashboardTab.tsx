@@ -302,98 +302,118 @@ export function AdminDashboardTab({
           </div>
 
           <div className="divide-y divide-[#EADBC8]/60">
-            {orders.slice(0, 4).map((order) => {
-              const statusColors: Record<AdminOrder["status"], string> = {
-                new: "bg-amber-100 text-amber-800 border-amber-200",
-                quoted: "bg-blue-100 text-blue-800 border-blue-200",
-                paid: "bg-emerald-100 text-emerald-800 border-emerald-200",
-                processing: "bg-indigo-100 text-indigo-800 border-indigo-200",
-                dispatched: "bg-purple-100 text-purple-800 border-purple-200",
-                delivered: "bg-green-100 text-green-800 border-green-200",
-                cancelled: "bg-rose-100 text-rose-800 border-rose-200",
-              };
-
-              const whatsappUrl = `https://wa.me/${order.customerPhone.replace(
-                /[^\d]/g,
-                ""
-              )}?text=${encodeURIComponent(
-                `Hello ${order.customerName}, this is VITRAG Tableware regarding your order #${order.id}.`
-              )}`;
-
-              return (
-                <div
-                  key={order.id}
-                  className="p-4 hover:bg-[#FFF5E6]/30 transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-3"
-                >
-                  <div className="space-y-1">
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs font-mono font-bold text-[#6E2023]">
-                        {order.id}
-                      </span>
-                      <span
-                        className={`text-[10px] uppercase font-bold px-2 py-0.5 rounded-full border ${
-                          statusColors[order.status]
-                        }`}
-                      >
-                        {order.status}
-                      </span>
-                      <span className="text-[11px] text-[#84766A]">
-                        {new Date(order.createdAt).toLocaleDateString("en-IN", {
-                          month: "short",
-                          day: "numeric",
-                        })}
-                      </span>
-                    </div>
-
-                    <div className="font-medium text-sm text-[#252522]">
-                      {order.customerName}{" "}
-                      <span className="text-xs text-[#84766A] font-normal">
-                        ({order.city})
-                      </span>
-                    </div>
-
-                    <div className="text-xs text-[#84766A] line-clamp-1">
-                      {order.items.map((i) => `${i.name} (×${i.quantity})`).join(", ")}
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-2 self-end sm:self-center">
-                    <span className="text-xs font-bold text-[#252522] mr-1">
-                      ₹{(order.totalEstimatedPaise / 100).toLocaleString("en-IN")}
-                    </span>
-
-                    <a
-                      href={whatsappUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 bg-[#25D366]/10 hover:bg-[#25D366]/20 text-[#25D366] rounded-lg transition-colors"
-                      title="Direct Chat on WhatsApp"
-                    >
-                      <MessageSquare className="w-4 h-4 fill-[#25D366]" />
-                    </a>
-
-                    <select
-                      value={order.status}
-                      onChange={(e) =>
-                        onUpdateOrderStatus(
-                          order.id,
-                          e.target.value as AdminOrder["status"]
-                        )
-                      }
-                      className="text-xs py-1 px-2 bg-white border border-[#D9D0C1] rounded-md text-[#252522] focus:outline-none focus:ring-1 focus:ring-[#6E2023]"
-                    >
-                      <option value="new">New</option>
-                      <option value="quoted">Quoted</option>
-                      <option value="paid">Paid</option>
-                      <option value="processing">Processing</option>
-                      <option value="dispatched">Dispatched</option>
-                      <option value="delivered">Delivered</option>
-                      <option value="cancelled">Cancelled</option>
-                    </select>
-                  </div>
+            {orders.length === 0 ? (
+              <div className="p-8 text-center text-xs text-[#84766A] space-y-3">
+                <ShoppingBag className="w-8 h-8 text-[#CBAE9B] mx-auto" />
+                <div>
+                  <p className="font-semibold text-[#252522]">No Customer Orders Yet</p>
+                  <p className="text-[11px] mt-0.5">
+                    Real orders placed via WhatsApp checkout or showroom walk-ins will appear here.
+                  </p>
                 </div>
-              );
-            })}
+                <button
+                  type="button"
+                  onClick={onOpenAddOrder}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#6E2023] hover:bg-[#55181A] text-white rounded-lg text-xs font-medium transition-colors"
+                >
+                  <Plus className="w-3.5 h-3.5" />
+                  <span>Record Walk-in Order</span>
+                </button>
+              </div>
+            ) : (
+              orders.slice(0, 4).map((order) => {
+                const statusColors: Record<AdminOrder["status"], string> = {
+                  new: "bg-amber-100 text-amber-800 border-amber-200",
+                  quoted: "bg-blue-100 text-blue-800 border-blue-200",
+                  paid: "bg-emerald-100 text-emerald-800 border-emerald-200",
+                  processing: "bg-indigo-100 text-indigo-800 border-indigo-200",
+                  dispatched: "bg-purple-100 text-purple-800 border-purple-200",
+                  delivered: "bg-green-100 text-green-800 border-green-200",
+                  cancelled: "bg-rose-100 text-rose-800 border-rose-200",
+                };
+
+                const whatsappUrl = `https://wa.me/${order.customerPhone.replace(
+                  /[^\d]/g,
+                  ""
+                )}?text=${encodeURIComponent(
+                  `Hello ${order.customerName}, this is VITRAG Tableware regarding your order #${order.id}.`
+                )}`;
+
+                return (
+                  <div
+                    key={order.id}
+                    className="p-4 hover:bg-[#FFF5E6]/30 transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-3"
+                  >
+                    <div className="space-y-1">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-mono font-bold text-[#6E2023]">
+                          {order.id}
+                        </span>
+                        <span
+                          className={`text-[10px] uppercase font-bold px-2 py-0.5 rounded-full border ${
+                            statusColors[order.status]
+                          }`}
+                        >
+                          {order.status}
+                        </span>
+                        <span className="text-[11px] text-[#84766A]">
+                          {new Date(order.createdAt).toLocaleDateString("en-IN", {
+                            month: "short",
+                            day: "numeric",
+                          })}
+                        </span>
+                      </div>
+
+                      <div className="font-medium text-sm text-[#252522]">
+                        {order.customerName}{" "}
+                        <span className="text-xs text-[#84766A] font-normal">
+                          ({order.city})
+                        </span>
+                      </div>
+
+                      <div className="text-xs text-[#84766A] line-clamp-1">
+                        {order.items.map((i) => `${i.name} (×${i.quantity})`).join(", ")}
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-2 self-end sm:self-center">
+                      <span className="text-xs font-bold text-[#252522] mr-1">
+                        ₹{(order.totalEstimatedPaise / 100).toLocaleString("en-IN")}
+                      </span>
+
+                      <a
+                        href={whatsappUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 bg-[#25D366]/10 hover:bg-[#25D366]/20 text-[#25D366] rounded-lg transition-colors"
+                        title="Direct Chat on WhatsApp"
+                      >
+                        <MessageSquare className="w-4 h-4 fill-[#25D366]" />
+                      </a>
+
+                      <select
+                        value={order.status}
+                        onChange={(e) =>
+                          onUpdateOrderStatus(
+                            order.id,
+                            e.target.value as AdminOrder["status"]
+                          )
+                        }
+                        className="text-xs py-1 px-2 bg-white border border-[#D9D0C1] rounded-md text-[#252522] focus:outline-none focus:ring-1 focus:ring-[#6E2023]"
+                      >
+                        <option value="new">New</option>
+                        <option value="quoted">Quoted</option>
+                        <option value="paid">Paid</option>
+                        <option value="processing">Processing</option>
+                        <option value="dispatched">Dispatched</option>
+                        <option value="delivered">Delivered</option>
+                        <option value="cancelled">Cancelled</option>
+                      </select>
+                    </div>
+                  </div>
+                );
+              })
+            )}
           </div>
         </div>
 
@@ -493,7 +513,16 @@ export function AdminDashboardTab({
         </div>
 
         <div className="divide-y divide-[#EADBC8]/60">
-          {bulkInquiries.slice(0, 3).map((lead) => (
+          {bulkInquiries.length === 0 ? (
+            <div className="p-8 text-center text-xs text-[#84766A] space-y-2">
+              <Gift className="w-8 h-8 text-[#CBAE9B] mx-auto" />
+              <p className="font-semibold text-[#252522]">No Corporate &amp; Wedding Leads Yet</p>
+              <p className="text-[11px]">
+                Inquiries submitted by clients on the /bulk-orders page will automatically log here.
+              </p>
+            </div>
+          ) : (
+            bulkInquiries.slice(0, 3).map((lead) => (
             <div
               key={lead.id}
               className="p-4 hover:bg-[#FFF5E6]/30 transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-3"
@@ -532,7 +561,8 @@ export function AdminDashboardTab({
                 </a>
               </div>
             </div>
-          ))}
+            ))
+          )}
         </div>
       </div>
     </div>

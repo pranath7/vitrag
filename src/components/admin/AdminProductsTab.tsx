@@ -55,12 +55,12 @@ export function AdminProductsTab({
     name: "",
     shortDescription: "",
     description: "",
-    category: "Dinnerware",
+    category: "Dinner Sets",
     collectionIds: ["dinner-sets"],
     sku: `VIT-${Math.floor(100 + Math.random() * 900)}`,
-    price: 450000, // ₹4,500
+    price: 349900, // ₹3,499
     currency: "INR",
-    images: [{ src: "/images/hero/hero-stock.jpg", alt: "Tableware product" }],
+    images: [{ src: "/images/categories/dinner-sets.jpg", alt: "Tableware product" }],
     variants: [],
     material: "Fine Porcelain Ceramic",
     dimensions: "Standard dinner plate & bowl sizing",
@@ -539,13 +539,10 @@ export function AdminProductsTab({
                     onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                     className="w-full p-2.5 bg-[#FFF5E6]/30 border border-[#D9D0C1] rounded-lg text-xs"
                   >
-                    <option value="Dinnerware">Dinnerware</option>
-                    <option value="Serveware">Serveware &amp; Platters</option>
-                    <option value="Drinkware">Drinkware &amp; Glassware</option>
-                    <option value="Gifting">Gifting &amp; Dry Fruit Boxes</option>
-                    <option value="Bowls & Katoris">Bowls &amp; Katoris</option>
-                    <option value="Tea & Coffee">Tea &amp; Coffee</option>
-                    <option value="Decor & Accents">Decor &amp; Accents</option>
+                    <option value="Signature Editions">Signature Editions</option>
+                    <option value="Dinner Sets">Dinner Sets</option>
+                    <option value="Platter & Serving">Platter &amp; Serving</option>
+                    <option value="Dry Fruit Boxes">Dry Fruit Boxes</option>
                   </select>
                 </div>
 

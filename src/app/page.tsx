@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   const featuredProducts = getFeaturedProducts(8);
-  const giftingProducts = products.filter((p) => p.collectionIds.includes("gift-sets") || p.collectionIds.includes("dry-fruit-boxes")).slice(0, 4);
+  const giftingProducts = products.filter((p) => p.collectionIds.includes("dry-fruit-boxes")).slice(0, 4);
 
   return (
     <main className="bg-[#FFF5E6] min-h-screen">
@@ -416,7 +416,7 @@ export default function HomePage() {
               size="lg"
               rightIcon={<ArrowRight className="w-4 h-4" />}
             >
-              Browse Complete Catalogue (30+ Pieces)
+              Browse Complete Catalogue
             </Button>
           </div>
         </div>

@@ -183,21 +183,15 @@ export function Header() {
                     </Link>
                     <Link
                       href="/collections/dry-fruit-boxes"
-                      className="block px-3 py-2 text-xs text-[#252522] hover:bg-white/80 hover:text-[#6E2023] rounded-md transition-colors"
+                      className="block px-3 py-2 text-xs text-[#252522] hover:bg-white/80 hover:text-[#6E2023] rounded-md transition-colors font-medium"
                     >
                       Dry-Fruit Box Sets
                     </Link>
                     <Link
-                      href="/collections/gift-sets"
-                      className="block px-3 py-2 text-xs text-[#252522] hover:bg-white/80 hover:text-[#6E2023] rounded-md transition-colors"
-                    >
-                      Curated Gift Sets
-                    </Link>
-                    <Link
                       href="/bulk-orders"
-                      className="block px-3 py-2 text-xs text-[#252522] hover:bg-white/80 hover:text-[#6E2023] rounded-md transition-colors"
+                      className="block px-3 py-2 text-xs text-[#252522] hover:bg-white/80 hover:text-[#6E2023] rounded-md transition-colors font-medium"
                     >
-                      Corporate &amp; Bulk Hampers
+                      Corporate &amp; Wedding Bulk Hampers
                     </Link>
                   </div>
                 )}

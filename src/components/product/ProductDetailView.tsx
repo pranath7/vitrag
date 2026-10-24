@@ -88,7 +88,7 @@ export function ProductDetailView({
         <div className="lg:col-span-7 space-y-4">
           {/* Main Visual Display */}
           <div className="relative aspect-4/5 w-full bg-[#FFF5E6] border border-[#EADBC8] rounded-2xl overflow-hidden flex flex-col items-center justify-center shadow-sm">
-            {product.images[activeImageIndex]?.src && product.images[activeImageIndex].src.startsWith("/images/category1vit/") ? (
+            {product.images[activeImageIndex]?.src ? (
               <div className="w-full h-full relative">
                 <Image
                   src={product.images[activeImageIndex].src}
@@ -140,15 +140,13 @@ export function ProductDetailView({
                   key={idx}
                   type="button"
                   onClick={() => setActiveImageIndex(idx)}
-                  className={`w-20 h-20 shrink-0 rounded-xl border p-2 flex flex-col items-center justify-center bg-white transition-all ${
+                  className={`relative w-20 h-20 shrink-0 rounded-xl border overflow-hidden bg-white transition-all ${
                     activeImageIndex === idx
                       ? "border-[#6E2023] ring-2 ring-[#6E2023]"
                       : "border-[#EADBC8] opacity-70 hover:opacity-100"
                   }`}
                 >
-                  <span className="text-[10px] uppercase font-serif text-[#6E2023] font-medium">
-                    View {idx + 1}
-                  </span>
+                  <Image src={img.src} alt={img.alt || product.name} fill className="object-cover" sizes="80px" />
                 </button>
               ))}
             </div>

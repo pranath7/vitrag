@@ -43,7 +43,7 @@ export function ProductCard({ product }: ProductCardProps) {
           href={`/product/${product.slug}`}
           className="w-full h-full block relative transition-transform duration-500 group-hover:scale-105"
         >
-          {product.images[0]?.src && product.images[0].src.startsWith("/images/category1vit/") ? (
+          {product.images[0]?.src ? (
             <div className="w-full h-full relative">
               <Image
                 src={product.images[0].src}

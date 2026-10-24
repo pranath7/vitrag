@@ -15,6 +15,7 @@ import {
   Heart,
   Phone,
   ArrowRight,
+  User,
 } from "lucide-react";
 import { collections } from "@/lib/products";
 
@@ -235,6 +236,16 @@ export function Header() {
                     {wishlist.length}
                   </span>
                 )}
+              </Link>
+
+              {/* Client Billing & Account Link */}
+              <Link
+                href="/billing"
+                className="p-1.5 text-[#252522] hover:text-[#6E2023] transition-colors"
+                aria-label="Billing & Invoices"
+                title="Billing & Invoices"
+              >
+                <User className="w-4 h-4 text-[#6E2023]" />
               </Link>
 
               {/* Cart Button */}

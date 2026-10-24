@@ -37,6 +37,8 @@ export function CheckoutView() {
   const [paymentMode, setPaymentMode] = useState<"whatsapp" | "online">("whatsapp");
   const [orderSent, setOrderSent] = useState(false);
   const [lastWhatsAppUrl, setLastWhatsAppUrl] = useState("");
+  const [promoCode, setPromoCode] = useState("");
+  const [promoApplied, setPromoApplied] = useState<string | null>(null);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -56,6 +58,7 @@ export function CheckoutView() {
     if (formData.email) message += `• Email: ${formData.email}\n`;
     message += `• Delivery Address: ${formData.address}, ${formData.city}, ${formData.state} - ${formData.pinCode}\n`;
     if (formData.giftNote) message += `• Gift/Order Note: ${formData.giftNote}\n`;
+    if (promoApplied) message += `• Applied Promo Code: ${promoApplied} (Discount Applied)\n`;
 
     message += `\n*Ordered Items (${items.reduce((a, b) => a + b.quantity, 0)} pieces):*\n`;
     items.forEach((item, index) => {
@@ -444,6 +447,51 @@ export function CheckoutView() {
               <span>Payment Mode</span>
               <span>Direct UPI ({siteConfig.contact.upiId})</span>
             </div>
+          </div>
+
+          {/* Promo / Discount Code Box */}
+          <div className="pt-3 border-t border-[#EADBC8]">
+            <label className="block text-[11px] uppercase tracking-wider text-[#8B8176] font-semibold mb-1.5">
+              Promo or Voucher Code
+            </label>
+            <div className="flex gap-2">
+              <input
+                type="text"
+                placeholder="e.g. VITRAGVIP"
+                value={promoCode}
+                onChange={(e) => setPromoCode(e.target.value.toUpperCase())}
+                className="flex-1 text-xs uppercase tracking-wider p-2.5 bg-[#FFF5E6] border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023] font-medium"
+              />
+              <button
+                type="button"
+                onClick={() => {
+                  if (promoCode.trim()) {
+                    setPromoApplied(promoCode.trim());
+                  }
+                }}
+                className="text-xs uppercase tracking-wider font-semibold bg-[#6E2023] hover:bg-[#55181A] text-white px-3.5 py-2.5 rounded-lg transition-colors shrink-0 shadow-2xs"
+              >
+                Apply
+              </button>
+            </div>
+            {promoApplied && (
+              <div className="flex items-center justify-between text-[11px] text-emerald-800 bg-emerald-50 border border-emerald-200 px-2.5 py-1.5 rounded-md mt-2">
+                <span className="flex items-center gap-1 font-medium">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                  Code &ldquo;{promoApplied}&rdquo; applied
+                </span>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setPromoApplied(null);
+                    setPromoCode("");
+                  }}
+                  className="text-emerald-950 underline hover:font-bold"
+                >
+                  Remove
+                </button>
+              </div>
+            )}
           </div>
 
           <div className="bg-[#FFF5E6] p-4 border border-[#EADBC8] rounded-lg space-y-2 text-[11px] text-[#8B8176]">

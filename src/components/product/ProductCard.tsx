@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Product } from "@/lib/types";
 import { formatPrice } from "@/lib/utils";
 import { useCart } from "@/context/CartContext";
+import { isProductDeleted, getAdminProducts } from "@/lib/adminStorage";
 import { Heart, ShoppingBag, Eye, Check } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
 import { ProductArtwork } from "@/components/product/ProductArtwork";
@@ -15,10 +16,55 @@ interface ProductCardProps {
   priority?: boolean;
 }
 
-export function ProductCard({ product }: ProductCardProps) {
+export function ProductCard({ product: initialProduct }: ProductCardProps) {
   const { addItem, toggleWishlist, isInWishlist } = useCart();
+
+  // Reactive product state (reflects edits and deletes made in Admin Console instantly)
+  const [product, setProduct] = useState<Product>(() => {
+    if (typeof window === "undefined") return initialProduct;
+    try {
+      const all = getAdminProducts();
+      const match = all.find((p) => p.id === initialProduct.id);
+      return match || initialProduct;
+    } catch {
+      return initialProduct;
+    }
+  });
+
+  const [isDeleted, setIsDeleted] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return isProductDeleted(initialProduct.id);
+  });
+
   const isWishlisted = isInWishlist(product.id);
   const [isAdded, setIsAdded] = useState(false);
+
+  useEffect(() => {
+    if (isProductDeleted(initialProduct.id)) {
+      setIsDeleted(true);
+    }
+    const handleDeleted = (e: any) => {
+      if (e.detail?.id === initialProduct.id) {
+        setIsDeleted(true);
+      }
+    };
+    const handleSaved = (e: any) => {
+      const savedProd: Product | undefined = e.detail?.product;
+      if (savedProd && savedProd.id === initialProduct.id) {
+        setProduct(savedProd);
+        setIsDeleted(false);
+      }
+    };
+
+    window.addEventListener("vitrag:product_deleted", handleDeleted);
+    window.addEventListener("vitrag:product_saved", handleSaved);
+    return () => {
+      window.removeEventListener("vitrag:product_deleted", handleDeleted);
+      window.removeEventListener("vitrag:product_saved", handleSaved);
+    };
+  }, [initialProduct.id]);
+
+  if (isDeleted) return null;
 
   const handleQuickAdd = () => {
     addItem(product, 1);

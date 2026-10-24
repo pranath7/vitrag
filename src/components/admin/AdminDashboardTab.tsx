@@ -17,6 +17,7 @@ import {
   Clock,
   Sparkles,
   Phone,
+  BarChart3,
 } from "lucide-react";
 import { Product } from "@/lib/types";
 import { AdminOrder, AdminBulkInquiry } from "@/lib/adminTypes";
@@ -76,6 +77,15 @@ export function AdminDashboardTab({
         </div>
 
         <div className="flex flex-wrap items-center gap-2.5">
+          <button
+            type="button"
+            onClick={() => onNavigateTab("analytics")}
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-[#FFF5E6] hover:bg-[#EADBC8]/60 text-[#6E2023] border border-[#EADBC8] rounded-lg text-xs font-semibold shadow-xs transition-colors"
+          >
+            <BarChart3 className="w-4 h-4 text-[#6E2023]" />
+            <span>Store Analytics</span>
+          </button>
+
           <button
             type="button"
             onClick={onOpenAddOrder}

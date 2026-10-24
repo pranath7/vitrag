@@ -31,6 +31,7 @@ import { AdminLoginView } from "@/components/admin/AdminLoginView";
 import { AdminHeader } from "@/components/admin/AdminHeader";
 import { AdminSidebar, AdminTab } from "@/components/admin/AdminSidebar";
 import { AdminDashboardTab } from "@/components/admin/AdminDashboardTab";
+import { AdminAnalyticsTab } from "@/components/admin/AdminAnalyticsTab";
 import { AdminProductsTab } from "@/components/admin/AdminProductsTab";
 import { AdminOrdersTab } from "@/components/admin/AdminOrdersTab";
 import { AdminBulkTab } from "@/components/admin/AdminBulkTab";
@@ -233,6 +234,14 @@ export default function AdminPage() {
                 }}
                 onUpdateStock={handleUpdateStock}
                 onUpdateOrderStatus={(id, st) => handleUpdateOrderStatus(id, st)}
+              />
+            )}
+
+            {currentTab === "analytics" && (
+              <AdminAnalyticsTab
+                products={products}
+                orders={orders}
+                bulkInquiries={bulkInquiries}
               />
             )}
 

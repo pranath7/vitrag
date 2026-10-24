@@ -3,6 +3,7 @@
 import React from "react";
 import {
   LayoutDashboard,
+  BarChart3,
   Package,
   ShoppingBag,
   Gift,
@@ -16,6 +17,7 @@ import {
 
 export type AdminTab =
   | "dashboard"
+  | "analytics"
   | "products"
   | "orders"
   | "bulk"
@@ -53,6 +55,11 @@ export function AdminSidebar({
       id: "dashboard",
       label: "Overview",
       icon: LayoutDashboard,
+    },
+    {
+      id: "analytics",
+      label: "Analytics & Trends",
+      icon: BarChart3,
     },
     {
       id: "products",

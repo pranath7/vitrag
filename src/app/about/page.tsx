@@ -36,65 +36,53 @@ export default function AboutPage() {
     <main className="bg-[#FFF5E6] min-h-screen">
       <Breadcrumb />
 
-      {/* Hero & Founder's Vision Section */}
-      <section className="relative bg-[#6E2023] py-14 sm:py-20 text-white border-b border-[#55181A] overflow-hidden">
+      {/* Hero: Founder's Vision & Leadership (Above the Fold) */}
+      <section className="relative bg-[#6E2023] pt-6 sm:pt-8 pb-12 sm:pb-16 text-white border-b border-[#55181A] overflow-hidden">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          {/* Top Brand Header */}
-          <div className="text-center mb-10 sm:mb-12 flex flex-col items-center">
-            <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl overflow-hidden border border-[#CBAE9B]/50 shadow-lg mb-4">
-              <Image
-                src="/logo.jpg"
-                alt="VITRAG Brand Crest"
-                fill
-                className="object-cover"
-                sizes="64px"
-                priority
-              />
-            </div>
-            <p className="text-xs uppercase tracking-[0.25em] text-[#CBAE9B] font-semibold">
-              Our Story &amp; Leadership
-            </p>
-            <h1 className="font-heading text-3xl sm:text-5xl lg:text-6xl text-white mt-2 font-medium tracking-tight">
-              The Founder&apos;s Vision
-            </h1>
-            <p className="mt-2 text-sm sm:text-base text-[#CBAE9B] font-light max-w-xl mx-auto italic">
-              &ldquo;Beautifully Chosen. Thoughtfully Gifted.&rdquo;
-            </p>
-          </div>
-
-          {/* Founder Feature Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center bg-[#55181A] border border-[#8A2B2F] rounded-3xl p-6 sm:p-10 shadow-2xl">
-            {/* Left: Founder's Portrait */}
-            <div className="lg:col-span-5 relative space-y-3">
-              <div className="relative aspect-4/3 sm:aspect-16/11 w-full rounded-2xl overflow-hidden border-2 border-[#CBAE9B]/40 shadow-xl bg-[#252522]">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center bg-[#55181A] border border-[#8A2B2F] rounded-3xl p-6 sm:p-8 lg:p-10 shadow-2xl">
+            {/* Left: Founder's Portrait & Byline */}
+            <div className="lg:col-span-5 flex flex-col items-center lg:items-start space-y-3">
+              <div className="relative w-full aspect-[4/3] sm:aspect-[16/11] max-w-md rounded-2xl overflow-hidden border-2 border-[#CBAE9B]/50 shadow-2xl bg-[#252522]">
                 <Image
                   src="/images/founder.png"
-                  alt="Founder of VITRAG"
+                  alt="Pranath — Founder of VITRAG"
                   fill
                   className="object-cover object-top"
-                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  sizes="(max-width: 1024px) 100vw, 420px"
                   priority
                 />
               </div>
               <div className="text-center lg:text-left pt-1">
-                <p className="font-heading text-2xl text-white font-medium">Pranath</p>
-                <p className="text-xs text-[#CBAE9B] uppercase tracking-wider font-sans mt-0.5">
+                <div className="flex items-center justify-center lg:justify-start gap-2">
+                  <h2 className="font-heading text-2xl text-[#FFF5E6] font-medium leading-none">
+                    Pranath
+                  </h2>
+                  <span className="text-[10px] uppercase tracking-wider bg-[#CBAE9B]/25 text-[#CBAE9B] px-2 py-0.5 rounded font-semibold">
+                    Founder
+                  </span>
+                </div>
+                <p className="text-xs text-[#CBAE9B] uppercase tracking-widest font-sans mt-1">
                   Founder &amp; Creative Director, VITRAG
                 </p>
               </div>
             </div>
 
             {/* Right: Founder's Vision Statement */}
-            <div className="lg:col-span-7 space-y-5 text-left">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-[#6E2023] text-[#CBAE9B] text-[10px] uppercase tracking-[0.2em] font-semibold rounded-full border border-[#CBAE9B]/30">
-                <span>Founder&apos;s Mission</span>
+            <div className="lg:col-span-7 flex flex-col justify-center space-y-4 sm:space-y-5 text-left">
+              <div className="flex items-center gap-3">
+                <div className="relative w-7 h-7 rounded-lg overflow-hidden border border-[#CBAE9B]/40 shrink-0">
+                  <Image src="/logo.jpg" alt="VITRAG Logo" fill className="object-cover" sizes="28px" />
+                </div>
+                <span className="text-[11px] uppercase tracking-[0.25em] text-[#CBAE9B] font-semibold">
+                  Founder&apos;s Vision &amp; Leadership
+                </span>
               </div>
 
-              <h2 className="font-heading text-2xl sm:text-3xl text-white font-medium leading-snug">
+              <h1 className="font-heading text-2xl sm:text-3xl lg:text-4xl text-[#FFF5E6] font-medium leading-tight">
                 &ldquo;Every gathering begins with a table, but it endures through the moments and memories we create around it.&rdquo;
-              </h2>
+              </h1>
 
-              <div className="space-y-4 text-sm sm:text-base text-[#FFF5E6]/90 font-light leading-relaxed">
+              <div className="space-y-3.5 text-xs sm:text-sm lg:text-base text-[#FFF5E6]/90 font-light leading-relaxed">
                 <p>
                   VITRAG was conceived with a clear conviction: tableware is not merely functional crockery — it is the centerpiece of hospitality, the soul of family celebrations, and an intimate expression of gratitude when gifted.
                 </p>
@@ -106,7 +94,7 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-[#CBAE9B]/25 flex flex-wrap items-center gap-6 text-xs text-[#CBAE9B]">
+              <div className="pt-3 border-t border-[#CBAE9B]/25 flex flex-wrap items-center gap-6 text-xs text-[#CBAE9B]">
                 <div>
                   <span className="block font-semibold text-white">Patni Plaza, Sowcarpet</span>
                   <span>Chennai, Tamil Nadu 600001</span>

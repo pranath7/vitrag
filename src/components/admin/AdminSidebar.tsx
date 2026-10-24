@@ -6,6 +6,7 @@ import {
   BarChart3,
   Package,
   ShoppingBag,
+  ShoppingCart,
   Gift,
   FolderKanban,
   Settings,
@@ -20,6 +21,7 @@ export type AdminTab =
   | "analytics"
   | "products"
   | "orders"
+  | "abandoned"
   | "bulk"
   | "collections"
   | "settings"
@@ -33,6 +35,7 @@ interface AdminSidebarProps {
   newOrdersCount: number;
   newBulkCount: number;
   lowStockCount: number;
+  abandonedCount?: number;
 }
 
 export function AdminSidebar({
@@ -43,6 +46,7 @@ export function AdminSidebar({
   newOrdersCount,
   newBulkCount,
   lowStockCount,
+  abandonedCount = 0,
 }: AdminSidebarProps) {
   const navItems: {
     id: AdminTab;
@@ -74,6 +78,13 @@ export function AdminSidebar({
       icon: ShoppingBag,
       badge: newOrdersCount > 0 ? newOrdersCount : undefined,
       badgeColor: "bg-amber-100 text-amber-800 border-amber-200",
+    },
+    {
+      id: "abandoned",
+      label: "Abandoned Carts",
+      icon: ShoppingCart,
+      badge: abandonedCount > 0 ? abandonedCount : undefined,
+      badgeColor: "bg-rose-100 text-rose-800 border-rose-200",
     },
     {
       id: "bulk",

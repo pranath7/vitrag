@@ -17,9 +17,13 @@ import {
   Sparkles,
   RefreshCw,
   ExternalLink,
+  UploadCloud,
+  Loader2,
+  ImageIcon,
 } from "lucide-react";
 import { Product, Collection } from "@/lib/types";
 import { collections } from "@/lib/products";
+import { uploadToCloudinary, isCloudinaryConfigured } from "@/lib/cloudinary";
 
 interface AdminProductsTabProps {
   products: Product[];
@@ -76,6 +80,39 @@ export function AdminProductsTab({
 
   const [formData, setFormData] = useState<Product>(emptyForm);
   const [tagsInput, setTagsInput] = useState("");
+  const [uploadingImage, setUploadingImage] = useState(false);
+  const [uploadStatus, setUploadStatus] = useState<string | null>(null);
+
+  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (!isCloudinaryConfigured()) {
+      setUploadStatus(
+        "Cloudinary credentials are not set in .env.local. You can still paste an image URL or local path directly."
+      );
+      return;
+    }
+
+    try {
+      setUploadingImage(true);
+      setUploadStatus(null);
+      const res = await uploadToCloudinary(file, "vitrag/products");
+      if (res?.url) {
+        setFormData((prev) => ({
+          ...prev,
+          images: [{ src: res.url, alt: prev.name || "VITRAG tableware" }],
+        }));
+        setUploadStatus("Photo uploaded successfully to Cloudinary!");
+      }
+    } catch (err: any) {
+      setUploadStatus(
+        err?.message || "Failed to upload photo. Check Cloudinary settings."
+      );
+    } finally {
+      setUploadingImage(false);
+    }
+  };
 
   const handleOpenAdd = () => {
     const freshId = `prod-${Date.now()}`;
@@ -649,21 +686,84 @@ export function AdminProductsTab({
                 </div>
               </div>
 
-              {/* Image URL */}
-              <div className="space-y-1">
-                <label className="font-semibold text-[#252522]">Image URL / Path</label>
-                <input
-                  type="text"
-                  value={formData.images?.[0]?.src || ""}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      images: [{ src: e.target.value, alt: formData.name }],
-                    })
-                  }
-                  placeholder="/images/hero/hero-stock.jpg"
-                  className="w-full p-2.5 bg-[#FFF5E6]/30 border border-[#D9D0C1] rounded-lg text-xs font-mono"
-                />
+              {/* Product Photograph with Cloudinary Upload */}
+              <div className="space-y-2 p-3.5 bg-stone-50/70 border border-[#D9D0C1] rounded-xl">
+                <div className="flex items-center justify-between">
+                  <label className="font-semibold text-[#252522] flex items-center gap-1.5 text-xs">
+                    <ImageIcon className="w-4 h-4 text-[#6E2023]" />
+                    Product Photograph
+                  </label>
+                  <span className="text-[10px] text-[#8B8176]">Cloudinary CDN / URL</span>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
+                  {/* Image Preview Thumbnail */}
+                  <div className="relative w-16 h-16 rounded-lg overflow-hidden bg-white border border-[#D9D0C1] flex-shrink-0 flex items-center justify-center">
+                    {formData.images?.[0]?.src ? (
+                      <Image
+                        src={formData.images[0].src}
+                        alt="Preview"
+                        fill
+                        className="object-cover"
+                        sizes="64px"
+                      />
+                    ) : (
+                      <ImageIcon className="w-6 h-6 text-stone-300" />
+                    )}
+                  </div>
+
+                  {/* Upload Controls & URL input */}
+                  <div className="flex-1 w-full space-y-2">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <label className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#6E2023] hover:bg-[#581a1c] text-white rounded-lg text-xs font-semibold cursor-pointer shadow-sm transition-colors">
+                        {uploadingImage ? (
+                          <>
+                            <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                            Uploading to Cloudinary...
+                          </>
+                        ) : (
+                          <>
+                            <UploadCloud className="w-3.5 h-3.5" />
+                            Upload Photo to Cloudinary
+                          </>
+                        )}
+                        <input
+                          type="file"
+                          accept="image/*"
+                          onChange={handleFileUpload}
+                          disabled={uploadingImage}
+                          className="hidden"
+                        />
+                      </label>
+                      <span className="text-[11px] text-[#8B8176]">or paste image URL below</span>
+                    </div>
+
+                    <input
+                      type="text"
+                      value={formData.images?.[0]?.src || ""}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          images: [{ src: e.target.value, alt: formData.name }],
+                        })
+                      }
+                      placeholder="https://res.cloudinary.com/... or /images/hero/hero-stock.jpg"
+                      className="w-full p-2 bg-white border border-[#D9D0C1] rounded-lg text-xs font-mono text-[#252522]"
+                    />
+                  </div>
+                </div>
+
+                {uploadStatus && (
+                  <p
+                    className={`text-[11px] leading-relaxed ${
+                      uploadStatus.includes("successfully")
+                        ? "text-emerald-700 font-medium"
+                        : "text-amber-800"
+                    }`}
+                  >
+                    {uploadStatus}
+                  </p>
+                )}
               </div>
 
               {/* Short & Long Description */}

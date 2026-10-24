@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useCart } from "@/context/CartContext";
@@ -18,11 +18,24 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
-import { saveAdminOrder } from "@/lib/adminStorage";
+import { saveAdminOrder, saveAdminAbandonedCart, markCartRecovered } from "@/lib/adminStorage";
 import type { AdminOrder } from "@/lib/adminTypes";
 
 export function CheckoutView() {
   const { items, subtotalPaise, clearCart } = useCart();
+
+  // Unique session identifier for cart tracking
+  const [cartSessionId] = useState(() => {
+    if (typeof window !== "undefined") {
+      let existing = sessionStorage.getItem("vitrag_active_cart_id");
+      if (!existing) {
+        existing = `CART-${Date.now().toString(36)}-${Math.random().toString(36).substring(2, 6)}`.toUpperCase();
+        sessionStorage.setItem("vitrag_active_cart_id", existing);
+      }
+      return existing;
+    }
+    return `CART-${Date.now()}`;
+  });
 
   // Customer Delivery Information Form
   const [formData, setFormData] = useState({
@@ -42,6 +55,34 @@ export function CheckoutView() {
   const [promoCode, setPromoCode] = useState("");
   const [promoApplied, setPromoApplied] = useState<string | null>(null);
   const [checkoutError, setCheckoutError] = useState("");
+
+  // Track Leftout / Abandoned Carts in real time (debounced)
+  useEffect(() => {
+    if (items.length === 0 || orderSent) return;
+    if (formData.phone.trim().length >= 4 || formData.fullName.trim().length >= 2) {
+      const timer = setTimeout(() => {
+        saveAdminAbandonedCart({
+          id: cartSessionId,
+          customerName: formData.fullName.trim() || undefined,
+          customerPhone: formData.phone.trim() || undefined,
+          customerEmail: formData.email.trim() || undefined,
+          items: items.map((i) => ({
+            productId: i.productId,
+            name: i.name,
+            variantName: i.variantName,
+            quantity: i.quantity,
+            pricePaise: i.price,
+            image: i.image,
+          })),
+          totalEstimatedPaise: subtotalPaise,
+          lastActive: new Date().toISOString(),
+          recovered: false,
+        });
+      }, 1200);
+
+      return () => clearTimeout(timer);
+    }
+  }, [formData.fullName, formData.phone, formData.email, items, subtotalPaise, orderSent, cartSessionId]);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -123,6 +164,7 @@ export function CheckoutView() {
         source: "Website Checkout",
       };
       saveAdminOrder(newAdminOrder);
+      markCartRecovered(cartSessionId);
     } catch (saveErr) {
       console.warn("Could not save to admin order history:", saveErr);
     }

@@ -9,13 +9,31 @@ import {
   AdminStoreSettings,
   OrderStatus,
   BulkInquiryStatus,
+  AbandonedCart,
 } from "./adminTypes";
+import {
+  syncProductToFirestore,
+  deleteProductFromFirestore,
+  syncOrderToFirestore,
+  deleteOrderFromFirestore,
+  syncBulkInquiryToFirestore,
+  syncAbandonedCartToFirestore,
+  markAbandonedCartRecovered,
+  deleteAbandonedCartFromFirestore,
+  syncSettingsToFirestore,
+  fetchFirestoreProducts,
+  fetchFirestoreOrders,
+  fetchFirestoreBulkInquiries,
+  fetchFirestoreAbandonedCarts,
+  fetchFirestoreSettings,
+} from "./firestoreService";
 
 // Versioned storage keys - clean start with no fake data
 const STORAGE_KEYS = {
   PRODUCTS: "vitrag_admin_products_v2",
   ORDERS: "vitrag_admin_orders_v2",
   BULK_INQUIRIES: "vitrag_admin_bulk_inquiries_v2",
+  ABANDONED_CARTS: "vitrag_admin_abandoned_carts_v2",
   SETTINGS: "vitrag_admin_settings_v2",
   AUTH: "vitrag_admin_auth_v2",
 };
@@ -93,6 +111,7 @@ export function saveAdminProduct(product: Product): Product[] {
 
   try {
     localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(updated));
+    syncProductToFirestore(product);
   } catch (err) {
     console.error("Error saving product to storage:", err);
   }
@@ -105,6 +124,7 @@ export function deleteAdminProduct(id: string): Product[] {
   const updated = current.filter((p) => p.id !== id);
   try {
     localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(updated));
+    deleteProductFromFirestore(id);
   } catch (err) {
     console.error("Error deleting product from storage:", err);
   }
@@ -118,6 +138,8 @@ export function updateProductStock(
 ): Product[] {
   if (!isBrowser()) return [];
   const current = getAdminProducts();
+  let updatedProduct: Product | undefined;
+
   const updated = current.map((p) => {
     if (p.id === id) {
       let nextAvail = availability;
@@ -125,18 +147,22 @@ export function updateProductStock(
         if (stockQuantity <= 0) nextAvail = "out-of-stock";
         else nextAvail = "in-stock";
       }
-      return {
+      updatedProduct = {
         ...p,
         stockQuantity,
         availability: nextAvail,
         updatedAt: new Date().toISOString(),
       };
+      return updatedProduct;
     }
     return p;
   });
 
   try {
     localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(updated));
+    if (updatedProduct) {
+      syncProductToFirestore(updatedProduct);
+    }
   } catch (err) {
     console.error("Error updating stock in storage:", err);
   }
@@ -188,6 +214,7 @@ export function saveAdminOrder(order: AdminOrder): AdminOrder[] {
 
   try {
     localStorage.setItem(STORAGE_KEYS.ORDERS, JSON.stringify(updated));
+    syncOrderToFirestore(order);
   } catch (err) {
     console.error("Error saving admin order:", err);
   }
@@ -200,6 +227,7 @@ export function deleteAdminOrder(id: string): AdminOrder[] {
   const updated = current.filter((o) => o.id !== id);
   try {
     localStorage.setItem(STORAGE_KEYS.ORDERS, JSON.stringify(updated));
+    deleteOrderFromFirestore(id);
   } catch (err) {
     console.error("Error deleting order:", err);
   }
@@ -213,9 +241,11 @@ export function updateOrderStatus(
 ): AdminOrder[] {
   if (!isBrowser()) return [];
   const current = getAdminOrders();
+  let updatedOrder: AdminOrder | undefined;
+
   const updated = current.map((order) => {
     if (order.id === id) {
-      return {
+      updatedOrder = {
         ...order,
         status,
         ...(extra?.trackingNumber ? { trackingNumber: extra.trackingNumber } : {}),
@@ -225,12 +255,16 @@ export function updateOrderStatus(
           ? { dispatchDate: new Date().toISOString() }
           : {}),
       };
+      return updatedOrder;
     }
     return order;
   });
 
   try {
     localStorage.setItem(STORAGE_KEYS.ORDERS, JSON.stringify(updated));
+    if (updatedOrder) {
+      syncOrderToFirestore(updatedOrder);
+    }
   } catch (err) {
     console.error("Error updating order status:", err);
   }
@@ -272,6 +306,7 @@ export function saveAdminBulkInquiry(inquiry: AdminBulkInquiry): AdminBulkInquir
 
   try {
     localStorage.setItem(STORAGE_KEYS.BULK_INQUIRIES, JSON.stringify(updated));
+    syncBulkInquiryToFirestore(inquiry);
   } catch (err) {
     console.error("Error saving bulk inquiry:", err);
   }
@@ -285,21 +320,91 @@ export function updateBulkInquiryStatus(
 ): AdminBulkInquiry[] {
   if (!isBrowser()) return [];
   const current = getAdminBulkInquiries();
+  let updatedInquiry: AdminBulkInquiry | undefined;
+
   const updated = current.map((item) => {
     if (item.id === id) {
-      return {
+      updatedInquiry = {
         ...item,
         status,
         ...(internalNotes !== undefined ? { internalNotes } : {}),
       };
+      return updatedInquiry;
     }
     return item;
   });
 
   try {
     localStorage.setItem(STORAGE_KEYS.BULK_INQUIRIES, JSON.stringify(updated));
+    if (updatedInquiry) {
+      syncBulkInquiryToFirestore(updatedInquiry);
+    }
   } catch (err) {
     console.error("Error updating bulk inquiry status:", err);
+  }
+  return updated;
+}
+
+// ----------------------------------------------------
+// ABANDONED / LEFTOUT CARTS
+// ----------------------------------------------------
+export function getAdminAbandonedCarts(): AbandonedCart[] {
+  if (!isBrowser()) return [];
+  cleanupLegacyV1Storage();
+  try {
+    const raw = localStorage.getItem(STORAGE_KEYS.ABANDONED_CARTS);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
+export function saveAdminAbandonedCart(cart: AbandonedCart): AbandonedCart[] {
+  if (!isBrowser()) return [cart];
+  const current = getAdminAbandonedCarts();
+  const index = current.findIndex((c) => c.id === cart.id);
+  let updated: AbandonedCart[];
+
+  if (index >= 0) {
+    updated = [...current];
+    updated[index] = cart;
+  } else {
+    updated = [cart, ...current];
+  }
+
+  try {
+    localStorage.setItem(STORAGE_KEYS.ABANDONED_CARTS, JSON.stringify(updated));
+    syncAbandonedCartToFirestore(cart);
+  } catch (err) {
+    console.error("Error saving abandoned cart:", err);
+  }
+  return updated;
+}
+
+export function markCartRecovered(id: string): AbandonedCart[] {
+  if (!isBrowser()) return [];
+  const current = getAdminAbandonedCarts();
+  const updated = current.map((c) =>
+    c.id === id ? { ...c, recovered: true, recoveryMessageSent: true } : c
+  );
+  try {
+    localStorage.setItem(STORAGE_KEYS.ABANDONED_CARTS, JSON.stringify(updated));
+    markAbandonedCartRecovered(id);
+  } catch {}
+  return updated;
+}
+
+export function deleteAdminAbandonedCart(id: string): AbandonedCart[] {
+  if (!isBrowser()) return [];
+  const current = getAdminAbandonedCarts();
+  const updated = current.filter((c) => c.id !== id);
+  try {
+    localStorage.setItem(STORAGE_KEYS.ABANDONED_CARTS, JSON.stringify(updated));
+    deleteAbandonedCartFromFirestore(id);
+  } catch (err) {
+    console.error("Error deleting abandoned cart:", err);
   }
   return updated;
 }
@@ -329,6 +434,7 @@ export function saveAdminSettings(settings: Partial<AdminStoreSettings>): AdminS
   const updated = { ...current, ...settings };
   try {
     localStorage.setItem(STORAGE_KEYS.SETTINGS, JSON.stringify(updated));
+    syncSettingsToFirestore(updated);
   } catch (err) {
     console.error("Error saving admin settings:", err);
   }
@@ -390,6 +496,7 @@ export function exportDataAsJSON(): string {
     products: getAdminProducts(),
     orders: getAdminOrders(),
     bulkInquiries: getAdminBulkInquiries(),
+    abandonedCarts: getAdminAbandonedCarts(),
     settings: getAdminSettings(),
   };
   return JSON.stringify(data, null, 2);

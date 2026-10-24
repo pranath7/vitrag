@@ -80,3 +80,16 @@ export interface AdminStoreSettings {
   adminPasscode: string;
   storeCurrency: string;
 }
+
+export interface AbandonedCart {
+  id: string;
+  customerName?: string;
+  customerPhone?: string;
+  customerEmail?: string;
+  items: AdminOrderItem[];
+  totalEstimatedPaise: number;
+  lastActive: string;
+  recovered: boolean;
+  recoveryMessageSent?: boolean;
+  notes?: string;
+}

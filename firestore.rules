@@ -1,0 +1,533 @@
+rules_version = '2';
+
+// ===============================================================
+// Assumed Data Model & Architecture
+// ===============================================================
+//
+// Project: VITRAG Tableware & Gifting (E-commerce & Admin Console)
+// Platform: Next.js + Cloud Firestore
+//
+// 1. Collection: /products/{productId}
+//    Document ID: string (e.g. 'dinner-set-6pc', 'p1', 1-64 chars)
+//    Description: Luxury crockery, dinnerware, and homeware catalog.
+//    Fields:
+//      - id: string (required, 1-64 chars, immutable on update)
+//      - name: string (required, 1-200 chars)
+//      - price: number (required, >= 0, in paise)
+//      - availability: string (required, in ['in-stock', 'out-of-stock', 'made-to-order', 'enquiry-only'])
+//      - slug: string (optional, 1-150 chars)
+//      - shortDescription: string (optional, 0-500 chars)
+//      - description: string (optional, 0-5000 chars)
+//      - category: string (optional, 1-100 chars)
+//      - collectionIds: list of strings (optional, <= 20 items)
+//      - sku: string (optional, 0-64 chars)
+//      - compareAtPrice: number (optional, >= 0)
+//      - currency: string (optional, <= 10 chars, typically 'INR')
+//      - images: list of maps (optional, <= 20 items)
+//      - variants: list of maps (optional, <= 30 items)
+//      - material: string (optional, 0-100 chars)
+//      - dimensions: string (optional, 0-100 chars)
+//      - weight: string (optional, 0-100 chars)
+//      - pieceCount: int (optional, >= 0)
+//      - careInstructions: string (optional, 0-1000 chars)
+//      - stockQuantity: int (optional, >= 0)
+//      - featured: bool (optional)
+//      - bestseller: bool (optional)
+//      - newArrival: bool (optional)
+//      - tags: list of strings (optional, <= 30 items)
+//      - createdAt: timestamp or ISO string (optional, <= 50 chars)
+//      - updatedAt: timestamp or ISO string (optional, <= 50 chars)
+//      - seoTitle: string (optional, 0-200 chars)
+//      - seoDescription: string (optional, 0-500 chars)
+//
+// 2. Collection: /orders/{orderId}
+//    Document ID: string (e.g. 'VIT-ORD-1042', 1-64 chars)
+//    Description: Customer orders placed via checkout. Contains sensitive PII.
+//    Fields:
+//      - customerName: string (required, 1-100 chars)
+//      - customerPhone: string (required, 8-20 chars)
+//      - items: list (required, 1-50 items)
+//      - totalEstimatedPaise: int (required, >= 0)
+//      - status: string (required, in ['new', 'quoted', 'paid', 'processing', 'dispatched', 'delivered', 'cancelled'])
+//      - id: string (optional, 1-64 chars, immutable on update)
+//      - createdAt: timestamp or ISO string (optional, immutable on update)
+//      - customerEmail: string (optional, valid email, <= 120 chars)
+//      - shippingAddress: string (optional, 0-500 chars)
+//      - city: string (optional, 0-100 chars)
+//      - state: string (optional, 0-100 chars)
+//      - pinCode: string (optional, 0-12 chars)
+//      - giftNote: string (optional, 0-500 chars)
+//      - paymentMode: string (optional, in ['whatsapp', 'upi', 'cod', 'bank_transfer'])
+//      - paymentReference: string (optional, 0-100 chars)
+//      - courierName: string (optional, 0-100 chars)
+//      - trackingNumber: string (optional, 0-100 chars)
+//      - dispatchDate: timestamp or ISO string (optional, <= 50 chars)
+//      - internalNotes: string (optional, 0-2000 chars)
+//      - source: string (optional, in ['Website Checkout', 'WhatsApp Direct', 'Showroom Walk-in', 'Phone Order'])
+//
+// 3. Collection: /abandoned_carts/{cartId}
+//    Document ID: string (e.g. 'cart-xxxx', 1-64 chars)
+//    Description: Leftout carts captured for checkout recovery.
+//    Fields:
+//      - id: string (required, 1-64 chars, immutable on update)
+//      - items: list (required, 0-50 items)
+//      - totalEstimatedPaise: int (required, >= 0)
+//      - lastActive: timestamp or ISO string (required, <= 50 chars)
+//      - recovered: bool (required, false on customer create/update)
+//      - customerName: string (optional, 0-100 chars)
+//      - customerPhone: string (optional, 0-20 chars)
+//      - customerEmail: string (optional, valid email, <= 120 chars)
+//      - recoveryMessageSent: bool (optional, admin only)
+//      - notes: string (optional, 0-1000 chars)
+//
+// 4. Collection: /bulk_inquiries/{inquiryId}
+//    Document ID: string (e.g. 'VIT-BULK-345', 1-64 chars)
+//    Description: Corporate gifting and wedding trousseau lead submissions.
+//    Fields:
+//      - name: string (required, 1-100 chars)
+//      - phone: string (required, 8-20 chars)
+//      - productInterest: string (required, 1-200 chars)
+//      - pinCode: string (required, 1-12 chars)
+//      - status: string (required, in ['new', 'contacted', 'sample_sent', 'quote_shared', 'converted', 'closed'])
+//      - id: string (optional, 1-64 chars, immutable on update)
+//      - createdAt: timestamp or ISO string (optional, immutable on update)
+//      - company: string (optional, 0-120 chars)
+//      - email: string (optional, valid email, <= 120 chars)
+//      - quantity: string (optional, 0-50 chars)
+//      - budgetPerGift: string (optional, 0-50 chars)
+//      - deliveryDate: string (optional, 0-50 chars)
+//      - notes: string (optional, 0-2000 chars)
+//      - estimatedValuePaise: int (optional, >= 0, admin only)
+//      - internalNotes: string (optional, 0-2000 chars, admin only)
+//
+// 5. Collection: /store_settings/{settingsDoc}
+//    Document ID: 'general'
+//    Description: Merchant announcement banners, delivery fees, and contact numbers.
+//    Fields:
+//      - whatsappNumber: string (required, 8-20 chars)
+//      - displayPhone: string (required, 1-30 chars)
+//      - email: string (required, 5-100 chars, valid email)
+//      - upiId: string (required, 3-60 chars)
+//      - address: string (required, 5-300 chars)
+//      - announcementText: string (required, 0-300 chars)
+//      - announcementEnabled: bool (required)
+//      - freeShippingThresholdPaise: int (required, >= 0)
+//      - standardDeliveryFeePaise: int (required, >= 0)
+//      - storeCurrency: string (required, 1-10 chars)
+//      - adminPasscode: string (optional, 0-100 chars)
+//
+// ===============================================================
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // -----------------------------------------------------------
+    // Helper Functions
+    // -----------------------------------------------------------
+
+    // Authenticated state check
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Role-Based Access Control: Derives admin privilege from
+    // trusted Firebase Auth custom claims or verified bootstrap merchant email.
+    function isAdmin() {
+      return isAuthenticated() && (
+        request.auth.token.get('admin', false) == true ||
+        request.auth.token.get('role', '') == 'admin' ||
+        (
+          request.auth.token.email in [
+            'pranathwork@gmail.com',
+            'admin@vitrag.in',
+            'admin@vitragtableware.com'
+          ] &&
+          request.auth.token.email_verified == true
+        )
+      );
+    }
+
+    // Required fields check
+    function hasRequiredFields(data, fields) {
+      return data.keys().hasAll(fields);
+    }
+
+    // Strict schema enforcement (No arbitrary extra fields)
+    function hasOnlyAllowedFields(data, allowedFields) {
+      return data.keys().hasOnly(allowedFields);
+    }
+
+    // Immutable field protection on update
+    function areImmutableFieldsUnchanged(fields) {
+      return !request.resource.data.diff(resource.data).affectedKeys().hasAny(fields);
+    }
+
+    // String length validation (DoS / Resource exhaustion defense)
+    function isValidString(val, minLen, maxLen) {
+      return val is string && val.size() >= minLen && val.size() <= maxLen;
+    }
+
+    // Optional string validation
+    function isValidOptionalString(data, field, minLen, maxLen) {
+      return !(field in data) || (
+        data[field] is string &&
+        data[field].size() >= minLen &&
+        data[field].size() <= maxLen
+      );
+    }
+
+    // Email format validation
+    function isValidEmail(email) {
+      return email is string &&
+        email.size() <= 120 &&
+        email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
+    }
+
+    // Optional email validation
+    function isValidOptionalEmail(data, field) {
+      return !(field in data) || isValidEmail(data[field]);
+    }
+
+    // Flexible timestamp or ISO string format (produced by JS toISOString())
+    function isValidTimestampOrString(val) {
+      return val is timestamp || (val is string && val.size() <= 50);
+    }
+
+    // Optional timestamp or ISO string validation
+    function isValidOptionalTimestamp(data, field) {
+      return !(field in data) || isValidTimestampOrString(data[field]);
+    }
+
+    // List validation with bounds
+    function isValidList(val, minSize, maxSize) {
+      return val is list && val.size() >= minSize && val.size() <= maxSize;
+    }
+
+    // Optional list validation
+    function isValidOptionalList(data, field, maxSize) {
+      return !(field in data) || (data[field] is list && data[field].size() <= maxSize);
+    }
+
+    // Numeric range validation
+    function isValidNonNegativeNumber(val) {
+      return (val is int || val is float) && val >= 0;
+    }
+
+    // Optional non-negative number validation
+    function isValidOptionalNonNegativeNumber(data, field) {
+      return !(field in data) || isValidNonNegativeNumber(data[field]);
+    }
+
+    // Optional boolean validation
+    function isValidOptionalBool(data, field) {
+      return !(field in data) || data[field] is bool;
+    }
+
+    // -----------------------------------------------------------
+    // Domain Validators (Applied across both create and update)
+    // -----------------------------------------------------------
+
+    // Product Validator
+    function isValidProduct(data) {
+      let requiredFields = ['id', 'name', 'price', 'availability'];
+      let allowedFields = [
+        'id', 'slug', 'name', 'shortDescription', 'description', 'category',
+        'collectionIds', 'sku', 'price', 'compareAtPrice', 'currency', 'images',
+        'variants', 'material', 'dimensions', 'weight', 'pieceCount',
+        'careInstructions', 'stockQuantity', 'availability', 'featured',
+        'bestseller', 'newArrival', 'tags', 'createdAt', 'updatedAt',
+        'seoTitle', 'seoDescription'
+      ];
+
+      return hasRequiredFields(data, requiredFields) &&
+        hasOnlyAllowedFields(data, allowedFields) &&
+        isValidString(data.id, 1, 64) &&
+        isValidString(data.name, 1, 200) &&
+        isValidNonNegativeNumber(data.price) &&
+        data.availability in ['in-stock', 'out-of-stock', 'made-to-order', 'enquiry-only'] &&
+        isValidOptionalString(data, 'slug', 1, 150) &&
+        isValidOptionalString(data, 'shortDescription', 0, 500) &&
+        isValidOptionalString(data, 'description', 0, 5000) &&
+        isValidOptionalString(data, 'category', 1, 100) &&
+        isValidOptionalList(data, 'collectionIds', 20) &&
+        isValidOptionalString(data, 'sku', 0, 64) &&
+        isValidOptionalNonNegativeNumber(data, 'compareAtPrice') &&
+        isValidOptionalString(data, 'currency', 1, 10) &&
+        isValidOptionalList(data, 'images', 20) &&
+        isValidOptionalList(data, 'variants', 30) &&
+        isValidOptionalString(data, 'material', 0, 100) &&
+        isValidOptionalString(data, 'dimensions', 0, 100) &&
+        isValidOptionalString(data, 'weight', 0, 100) &&
+        (!( 'pieceCount' in data) || (data.pieceCount is int && data.pieceCount >= 0)) &&
+        isValidOptionalString(data, 'careInstructions', 0, 1000) &&
+        (!( 'stockQuantity' in data) || (data.stockQuantity is int && data.stockQuantity >= 0)) &&
+        isValidOptionalBool(data, 'featured') &&
+        isValidOptionalBool(data, 'bestseller') &&
+        isValidOptionalBool(data, 'newArrival') &&
+        isValidOptionalList(data, 'tags', 30) &&
+        isValidOptionalTimestamp(data, 'createdAt') &&
+        isValidOptionalTimestamp(data, 'updatedAt') &&
+        isValidOptionalString(data, 'seoTitle', 0, 200) &&
+        isValidOptionalString(data, 'seoDescription', 0, 500);
+    }
+
+    // Order Validator (Core schema & types)
+    function isValidOrder(data) {
+      let requiredFields = ['customerName', 'customerPhone', 'items', 'totalEstimatedPaise', 'status'];
+      let allowedFields = [
+        'id', 'createdAt', 'customerName', 'customerPhone', 'customerEmail',
+        'shippingAddress', 'city', 'state', 'pinCode', 'giftNote', 'items',
+        'status', 'totalEstimatedPaise', 'paymentMode', 'paymentReference',
+        'courierName', 'trackingNumber', 'dispatchDate', 'internalNotes', 'source'
+      ];
+
+      return hasRequiredFields(data, requiredFields) &&
+        hasOnlyAllowedFields(data, allowedFields) &&
+        isValidString(data.customerName, 1, 100) &&
+        isValidString(data.customerPhone, 8, 20) &&
+        isValidList(data.items, 1, 50) &&
+        data.totalEstimatedPaise is int && data.totalEstimatedPaise >= 0 &&
+        data.status in ['new', 'quoted', 'paid', 'processing', 'dispatched', 'delivered', 'cancelled'] &&
+        isValidOptionalString(data, 'id', 1, 64) &&
+        isValidOptionalTimestamp(data, 'createdAt') &&
+        isValidOptionalEmail(data, 'customerEmail') &&
+        isValidOptionalString(data, 'shippingAddress', 0, 500) &&
+        isValidOptionalString(data, 'city', 0, 100) &&
+        isValidOptionalString(data, 'state', 0, 100) &&
+        isValidOptionalString(data, 'pinCode', 0, 12) &&
+        isValidOptionalString(data, 'giftNote', 0, 500) &&
+        (!( 'paymentMode' in data) || data.paymentMode in ['whatsapp', 'upi', 'cod', 'bank_transfer']) &&
+        isValidOptionalString(data, 'paymentReference', 0, 100) &&
+        isValidOptionalString(data, 'courierName', 0, 100) &&
+        isValidOptionalString(data, 'trackingNumber', 0, 100) &&
+        isValidOptionalTimestamp(data, 'dispatchDate') &&
+        isValidOptionalString(data, 'internalNotes', 0, 2000) &&
+        (!( 'source' in data) || data.source in ['Website Checkout', 'WhatsApp Direct', 'Showroom Walk-in', 'Phone Order']);
+    }
+
+    // Strict New Order Validator (For guest checkout creation)
+    function isValidNewOrder(data) {
+      return isValidOrder(data) &&
+        data.status == 'new' &&
+        !( 'internalNotes' in data) &&
+        !( 'courierName' in data) &&
+        !( 'trackingNumber' in data) &&
+        !( 'dispatchDate' in data);
+    }
+
+    // Abandoned Cart Validator
+    function isValidAbandonedCart(data) {
+      let requiredFields = ['id', 'items', 'totalEstimatedPaise', 'lastActive', 'recovered'];
+      let allowedFields = [
+        'id', 'items', 'totalEstimatedPaise', 'lastActive', 'recovered',
+        'customerName', 'customerPhone', 'customerEmail', 'recoveryMessageSent', 'notes'
+      ];
+
+      return hasRequiredFields(data, requiredFields) &&
+        hasOnlyAllowedFields(data, allowedFields) &&
+        isValidString(data.id, 1, 64) &&
+        isValidList(data.items, 0, 50) &&
+        data.totalEstimatedPaise is int && data.totalEstimatedPaise >= 0 &&
+        isValidTimestampOrString(data.lastActive) &&
+        data.recovered is bool &&
+        isValidOptionalString(data, 'customerName', 0, 100) &&
+        isValidOptionalString(data, 'customerPhone', 0, 20) &&
+        isValidOptionalEmail(data, 'customerEmail') &&
+        isValidOptionalBool(data, 'recoveryMessageSent') &&
+        isValidOptionalString(data, 'notes', 0, 1000);
+    }
+
+    // Bulk Inquiry Validator (Core schema & types)
+    function isValidBulkInquiry(data) {
+      let requiredFields = ['name', 'phone', 'productInterest', 'pinCode', 'status'];
+      let allowedFields = [
+        'id', 'createdAt', 'name', 'phone', 'productInterest', 'pinCode', 'status',
+        'company', 'email', 'quantity', 'budgetPerGift', 'deliveryDate', 'notes',
+        'estimatedValuePaise', 'internalNotes'
+      ];
+
+      return hasRequiredFields(data, requiredFields) &&
+        hasOnlyAllowedFields(data, allowedFields) &&
+        isValidString(data.name, 1, 100) &&
+        isValidString(data.phone, 8, 20) &&
+        isValidString(data.productInterest, 1, 200) &&
+        isValidString(data.pinCode, 1, 12) &&
+        data.status in ['new', 'contacted', 'sample_sent', 'quote_shared', 'converted', 'closed'] &&
+        isValidOptionalString(data, 'id', 1, 64) &&
+        isValidOptionalTimestamp(data, 'createdAt') &&
+        isValidOptionalString(data, 'company', 0, 120) &&
+        isValidOptionalEmail(data, 'email') &&
+        isValidOptionalString(data, 'quantity', 0, 50) &&
+        isValidOptionalString(data, 'budgetPerGift', 0, 50) &&
+        isValidOptionalString(data, 'deliveryDate', 0, 50) &&
+        isValidOptionalString(data, 'notes', 0, 2000) &&
+        (!( 'estimatedValuePaise' in data) || (data.estimatedValuePaise is int && data.estimatedValuePaise >= 0)) &&
+        isValidOptionalString(data, 'internalNotes', 0, 2000);
+    }
+
+    // Strict New Bulk Inquiry Validator (For client lead submissions)
+    function isValidNewBulkInquiry(data) {
+      return isValidBulkInquiry(data) &&
+        data.status == 'new' &&
+        !( 'internalNotes' in data) &&
+        !( 'estimatedValuePaise' in data);
+    }
+
+    // Store Settings Validator
+    function isValidStoreSettings(data) {
+      let requiredFields = [
+        'whatsappNumber', 'displayPhone', 'email', 'upiId', 'address',
+        'announcementText', 'announcementEnabled', 'freeShippingThresholdPaise',
+        'standardDeliveryFeePaise', 'storeCurrency'
+      ];
+      let allowedFields = [
+        'whatsappNumber', 'displayPhone', 'email', 'upiId', 'address',
+        'announcementText', 'announcementEnabled', 'freeShippingThresholdPaise',
+        'standardDeliveryFeePaise', 'storeCurrency', 'adminPasscode'
+      ];
+
+      return hasRequiredFields(data, requiredFields) &&
+        hasOnlyAllowedFields(data, allowedFields) &&
+        isValidString(data.whatsappNumber, 8, 20) &&
+        isValidString(data.displayPhone, 1, 30) &&
+        isValidEmail(data.email) &&
+        isValidString(data.upiId, 3, 60) &&
+        isValidString(data.address, 5, 300) &&
+        isValidString(data.announcementText, 0, 300) &&
+        data.announcementEnabled is bool &&
+        data.freeShippingThresholdPaise is int && data.freeShippingThresholdPaise >= 0 &&
+        data.standardDeliveryFeePaise is int && data.standardDeliveryFeePaise >= 0 &&
+        isValidString(data.storeCurrency, 1, 10) &&
+        isValidOptionalString(data, 'adminPasscode', 0, 100);
+    }
+
+    // ===========================================================
+    // Collection Match Rules
+    // ===========================================================
+
+    // Default Deny: All paths are locked by default
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // -----------------------------------------------------------
+    // 1. PRODUCTS COLLECTION
+    // -----------------------------------------------------------
+    match /products/{productId} {
+      // Storefront visitors have read access to browse the luxury catalog
+      allow read: if true;
+
+      // Only authorized administrators can create catalog products
+      allow create: if isAdmin() &&
+                       isValidProduct(request.resource.data) &&
+                       request.resource.data.id == productId;
+
+      // Only authorized administrators can update products with schema validation
+      allow update: if isAdmin() &&
+                       isValidProduct(request.resource.data) &&
+                       request.resource.data.id == resource.data.id;
+
+      // Only authorized administrators can delete products
+      allow delete: if isAdmin();
+    }
+
+    // -----------------------------------------------------------
+    // 2. ORDERS COLLECTION
+    // -----------------------------------------------------------
+    match /orders/{orderId} {
+      // PII Protection: Orders contain customer delivery addresses, phone numbers,
+      // and financial estimates. Only authorized administrators may read orders.
+      allow read: if isAdmin();
+
+      // Guest checkout visitors can place new orders with strict validation.
+      // Must have 'new' status; cannot inject internal administrative fields.
+      allow create: if isValidNewOrder(request.resource.data) &&
+                       (
+                         !( 'id' in request.resource.data) ||
+                         request.resource.data.id == orderId
+                       );
+
+      // Order lifecycle updates (status changes, courier tracking, notes)
+      // are restricted to authorized administrators.
+      allow update: if isAdmin() &&
+                       isValidOrder(request.resource.data) &&
+                       areImmutableFieldsUnchanged(['id', 'createdAt']);
+
+      // Only administrators can delete or archive orders
+      allow delete: if isAdmin();
+    }
+
+    // -----------------------------------------------------------
+    // 3. ABANDONED CARTS COLLECTION
+    // -----------------------------------------------------------
+    match /abandoned_carts/{cartId} {
+      // PII Protection: Contains contact details and shopping lists.
+      // Read access is restricted to store administrators.
+      allow read: if isAdmin();
+
+      // Storefront shoppers can create or track an abandoned cart
+      allow create: if isValidAbandonedCart(request.resource.data) &&
+                       request.resource.data.id == cartId &&
+                       request.resource.data.recovered == false &&
+                       !( 'recoveryMessageSent' in request.resource.data);
+
+      // Updates: Either administrator managing recovery or customer updating active cart
+      allow update: if (
+        // Case A: Administrator updating recovery status or merchant notes
+        isAdmin() &&
+        isValidAbandonedCart(request.resource.data) &&
+        request.resource.data.id == resource.data.id
+      ) || (
+        // Case B: Storefront customer session updating cart contents
+        isValidAbandonedCart(request.resource.data) &&
+        request.resource.data.id == resource.data.id &&
+        resource.data.recovered == false &&
+        request.resource.data.recovered == false &&
+        !request.resource.data.diff(resource.data).affectedKeys().hasAny(['recoveryMessageSent', 'id'])
+      );
+
+      // Only administrators can delete abandoned carts
+      allow delete: if isAdmin();
+    }
+
+    // -----------------------------------------------------------
+    // 4. BULK INQUIRIES COLLECTION
+    // -----------------------------------------------------------
+    match /bulk_inquiries/{inquiryId} {
+      // PII Protection: Contains corporate leads and client phone numbers.
+      // Read access is restricted to store administrators.
+      allow read: if isAdmin();
+
+      // Corporate and wedding gift planners can submit new inquiries
+      allow create: if isValidNewBulkInquiry(request.resource.data) &&
+                       (
+                         !( 'id' in request.resource.data) ||
+                         request.resource.data.id == inquiryId
+                       );
+
+      // Only administrators can manage lead pipeline and update status
+      allow update: if isAdmin() &&
+                       isValidBulkInquiry(request.resource.data) &&
+                       areImmutableFieldsUnchanged(['id', 'createdAt']);
+
+      // Only administrators can delete bulk inquiries
+      allow delete: if isAdmin();
+    }
+
+    // -----------------------------------------------------------
+    // 5. STORE SETTINGS COLLECTION
+    // -----------------------------------------------------------
+    match /store_settings/{settingsDoc} {
+      // Publicly readable for announcement banner, contact numbers, and delivery thresholds
+      allow read: if true;
+
+      // Only administrators can configure store operational parameters
+      allow create, update: if isAdmin() &&
+                               settingsDoc == 'general' &&
+                               isValidStoreSettings(request.resource.data);
+
+      // Store settings must never be deleted
+      allow delete: if false;
+    }
+  }
+}

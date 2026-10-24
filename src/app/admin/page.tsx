@@ -16,6 +16,9 @@ import {
   getAdminBulkInquiries,
   updateBulkInquiryStatus,
   saveAdminBulkInquiry,
+  getAdminAbandonedCarts,
+  markCartRecovered,
+  deleteAdminAbandonedCart,
   getAdminSettings,
   saveAdminSettings,
 } from "@/lib/adminStorage";
@@ -24,6 +27,7 @@ import {
   AdminOrder,
   AdminBulkInquiry,
   AdminStoreSettings,
+  AbandonedCart,
   OrderStatus,
   BulkInquiryStatus,
 } from "@/lib/adminTypes";
@@ -34,6 +38,7 @@ import { AdminDashboardTab } from "@/components/admin/AdminDashboardTab";
 import { AdminAnalyticsTab } from "@/components/admin/AdminAnalyticsTab";
 import { AdminProductsTab } from "@/components/admin/AdminProductsTab";
 import { AdminOrdersTab } from "@/components/admin/AdminOrdersTab";
+import { AdminAbandonedTab } from "@/components/admin/AdminAbandonedTab";
 import { AdminBulkTab } from "@/components/admin/AdminBulkTab";
 import { AdminCollectionsTab } from "@/components/admin/AdminCollectionsTab";
 import { AdminSettingsTab } from "@/components/admin/AdminSettingsTab";
@@ -49,6 +54,7 @@ export default function AdminPage() {
   const [products, setProducts] = useState<Product[]>([]);
   const [orders, setOrders] = useState<AdminOrder[]>([]);
   const [bulkInquiries, setBulkInquiries] = useState<AdminBulkInquiry[]>([]);
+  const [abandonedCarts, setAbandonedCarts] = useState<AbandonedCart[]>([]);
   const [settings, setSettings] = useState<AdminStoreSettings | null>(null);
 
   // Modals state
@@ -67,11 +73,12 @@ export default function AdminPage() {
     }, 3500);
   }, []);
 
-  // Refresh all state from local storage
+  // Refresh all state from local storage and firestore
   const refreshAllData = useCallback(() => {
     setProducts(getAdminProducts());
     setOrders(getAdminOrders());
     setBulkInquiries(getAdminBulkInquiries());
+    setAbandonedCarts(getAdminAbandonedCarts());
     setSettings(getAdminSettings());
   }, []);
 
@@ -158,6 +165,19 @@ export default function AdminPage() {
     showToast(`Bulk inquiry #${id} status updated to "${status}".`);
   };
 
+  // Abandoned Cart Actions
+  const handleMarkCartRecovered = (id: string) => {
+    const updated = markCartRecovered(id);
+    setAbandonedCarts(updated);
+    showToast(`Cart #${id} marked as recovered!`);
+  };
+
+  const handleDeleteAbandonedCart = (id: string) => {
+    const updated = deleteAdminAbandonedCart(id);
+    setAbandonedCarts(updated);
+    showToast("Abandoned cart record removed.");
+  };
+
   // Settings Action
   const handleSaveSettings = (newSettings: Partial<AdminStoreSettings>) => {
     const updated = saveAdminSettings(newSettings);
@@ -171,6 +191,7 @@ export default function AdminPage() {
   const lowStockCount = products.filter(
     (p) => p.stockQuantity <= 3 || p.availability === "out-of-stock"
   ).length;
+  const abandonedCount = abandonedCarts.filter((c) => !c.recovered).length;
 
   // Loading screen before checking auth
   if (isAuthenticated === null) {
@@ -213,6 +234,7 @@ export default function AdminPage() {
           newOrdersCount={newOrdersCount}
           newBulkCount={newBulkCount}
           lowStockCount={lowStockCount}
+          abandonedCount={abandonedCount}
         />
 
         {/* Content Area */}
@@ -266,6 +288,15 @@ export default function AdminPage() {
                 onUpdateStatus={handleUpdateOrderStatus}
                 openAddModal={openAddOrderModal}
                 setOpenAddModal={setOpenAddOrderModal}
+              />
+            )}
+
+            {currentTab === "abandoned" && (
+              <AdminAbandonedTab
+                abandonedCarts={abandonedCarts}
+                onMarkRecovered={handleMarkCartRecovered}
+                onDeleteCart={handleDeleteAbandonedCart}
+                onRefresh={refreshAllData}
               />
             )}
 

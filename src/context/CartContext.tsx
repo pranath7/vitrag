@@ -5,7 +5,7 @@ import type { CartItem, Product, ProductVariant } from "@/lib/types";
 
 interface CartContextType {
   items: CartItem[];
-  addItem: (product: Product, quantity?: number, variant?: ProductVariant) => void;
+  addItem: (product: Product, quantity?: number, variant?: ProductVariant, openDrawer?: boolean) => void;
   removeItem: (itemId: string) => void;
   updateQuantity: (itemId: string, quantity: number) => void;
   clearCart: () => void;
@@ -70,7 +70,12 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     }
   }, [wishlist, mounted]);
 
-  const addItem = (product: Product, quantity = 1, variant?: ProductVariant) => {
+  const addItem = (
+    product: Product,
+    quantity = 1,
+    variant?: ProductVariant,
+    openDrawer = true
+  ) => {
     const variantId = variant?.id || "default";
     const itemId = `${product.id}-${variantId}`;
     const price = variant ? variant.price : product.price;
@@ -107,7 +112,9 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       }
     });
 
-    setIsCartOpen(true);
+    if (openDrawer) {
+      setIsCartOpen(true);
+    }
   };
 
   const removeItem = (itemId: string) => {

@@ -1,12 +1,12 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Product } from "@/lib/types";
 import { formatPrice } from "@/lib/utils";
 import { useCart } from "@/context/CartContext";
-import { Heart, ShoppingBag, Eye } from "lucide-react";
+import { Heart, ShoppingBag, Eye, Check } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
 import { ProductArtwork } from "@/components/product/ProductArtwork";
 
@@ -18,6 +18,15 @@ interface ProductCardProps {
 export function ProductCard({ product }: ProductCardProps) {
   const { addItem, toggleWishlist, isInWishlist } = useCart();
   const isWishlisted = isInWishlist(product.id);
+  const [isAdded, setIsAdded] = useState(false);
+
+  const handleQuickAdd = () => {
+    addItem(product, 1);
+    setIsAdded(true);
+    setTimeout(() => {
+      setIsAdded(false);
+    }, 2000);
+  };
 
   const discountPercent = product.compareAtPrice
     ? Math.round(
@@ -79,11 +88,24 @@ export function ProductCard({ product }: ProductCardProps) {
         <div className="absolute inset-x-3 bottom-3 hidden lg:flex gap-2 opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 z-10">
           <button
             type="button"
-            onClick={() => addItem(product, 1)}
-            className="flex-1 py-2.5 bg-[#6E2023] hover:bg-[#55181A] text-white text-[11px] uppercase tracking-widest font-semibold flex items-center justify-center gap-1.5 transition-colors shadow-md rounded-lg"
+            onClick={handleQuickAdd}
+            className={`flex-1 py-2.5 text-white text-[11px] uppercase tracking-widest font-semibold flex items-center justify-center gap-1.5 transition-all shadow-md rounded-lg ${
+              isAdded
+                ? "bg-[#2D6A4F] shadow-[#2D6A4F]/30"
+                : "bg-[#6E2023] hover:bg-[#55181A]"
+            }`}
           >
-            <ShoppingBag className="w-3.5 h-3.5" />
-            Quick Add
+            {isAdded ? (
+              <>
+                <Check className="w-3.5 h-3.5 stroke-[2.5]" />
+                Added!
+              </>
+            ) : (
+              <>
+                <ShoppingBag className="w-3.5 h-3.5" />
+                Quick Add
+              </>
+            )}
           </button>
           <Link
             href={`/product/${product.slug}`}
@@ -120,11 +142,19 @@ export function ProductCard({ product }: ProductCardProps) {
           {/* Mobile Quick Add Button */}
           <button
             type="button"
-            onClick={() => addItem(product, 1)}
-            className="lg:hidden p-2 text-[#6E2023] hover:bg-[#FFF5E6] border border-[#EADBC8] rounded-lg transition-colors"
-            aria-label="Add to enquiry list"
+            onClick={handleQuickAdd}
+            className={`lg:hidden p-2 border rounded-lg transition-all ${
+              isAdded
+                ? "bg-[#2D6A4F] text-white border-[#2D6A4F]"
+                : "text-[#6E2023] hover:bg-[#FFF5E6] border-[#EADBC8]"
+            }`}
+            aria-label={isAdded ? "Added to shopping bag" : "Add to shopping bag"}
           >
-            <ShoppingBag className="w-4 h-4" />
+            {isAdded ? (
+              <Check className="w-4 h-4 stroke-[2.5]" />
+            ) : (
+              <ShoppingBag className="w-4 h-4" />
+            )}
           </button>
         </div>
       </div>

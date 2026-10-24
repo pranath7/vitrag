@@ -21,7 +21,7 @@ import { collections } from "@/lib/products";
 
 export function Header() {
   const pathname = usePathname();
-  const { itemCount, openCart, wishlist } = useCart();
+  const { itemCount, openCart, wishlist, subtotalPaise } = useCart();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -248,17 +248,30 @@ export function Header() {
                 <User className="w-4 h-4 text-[#6E2023]" />
               </Link>
 
-              {/* Cart Button */}
+              {/* Pillar 4: Cart Button & Bag Link */}
               <button
                 type="button"
                 onClick={openCart}
-                className="relative flex items-center gap-1.5 p-1.5 text-[#252522] hover:text-[#6E2023] transition-colors"
+                className={`relative flex items-center gap-2 px-2.5 py-1.5 rounded-full transition-all duration-200 ${
+                  itemCount > 0
+                    ? "bg-[#6E2023]/10 hover:bg-[#6E2023]/20 border border-[#6E2023]/30 shadow-2xs"
+                    : "p-1.5 text-[#252522] hover:text-[#6E2023]"
+                }`}
                 aria-label={`Shopping Cart with ${itemCount} items`}
               >
-                <ShoppingBag className="w-4 h-4 text-[#6E2023]" />
-                <span className="bg-[#6E2023] text-white text-[10px] min-w-4 h-4 px-1 rounded-full flex items-center justify-center font-bold">
-                  {itemCount}
-                </span>
+                <div className="relative">
+                  <ShoppingBag className="w-4 h-4 text-[#6E2023]" />
+                  {itemCount > 0 && (
+                    <span className="absolute -top-1.5 -right-2 bg-[#6E2023] text-white text-[9px] min-w-3.5 h-3.5 px-1 rounded-full flex items-center justify-center font-bold shadow-2xs">
+                      {itemCount}
+                    </span>
+                  )}
+                </div>
+                {itemCount > 0 && (
+                  <span className="hidden sm:inline-block text-xs font-semibold uppercase tracking-wider text-[#6E2023]">
+                    Bag ({itemCount})
+                  </span>
+                )}
               </button>
             </div>
           </div>
@@ -331,6 +344,26 @@ export function Header() {
 
               {/* Mobile Links */}
               <div className="py-6 space-y-4 text-sm uppercase tracking-widest font-medium text-[#252522]">
+                {/* Pillar 4: Mobile Drawer Cart Link */}
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    openCart();
+                  }}
+                  className="w-full flex items-center justify-between p-3 bg-[#FFF5E6] border border-[#EADBC8] rounded-xl text-left"
+                >
+                  <div className="flex items-center gap-2.5">
+                    <ShoppingBag className="w-4 h-4 text-[#6E2023]" />
+                    <span className="text-xs font-bold text-[#6E2023] uppercase tracking-wider">
+                      Shopping Bag
+                    </span>
+                  </div>
+                  <span className="bg-[#6E2023] text-white text-xs font-bold px-2 py-0.5 rounded-full">
+                    {itemCount} {itemCount === 1 ? "item" : "items"}
+                  </span>
+                </button>
+
                 <Link
                   href="/shop"
                   onClick={() => setMobileMenuOpen(false)}

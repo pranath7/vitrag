@@ -18,6 +18,7 @@ import {
   Sparkles,
   ChevronDown,
   Check,
+  X,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
@@ -33,15 +34,19 @@ export function ProductDetailView({
   product,
   relatedProducts,
 }: ProductDetailViewProps) {
-  const { addItem, toggleWishlist, isInWishlist } = useCart();
+  const { addItem, toggleWishlist, isInWishlist, openCart } = useCart();
   const isWishlisted = isInWishlist(product.id);
 
-  // Variant state
+  // Variant & purchase state
   const [selectedVariant, setSelectedVariant] = useState<ProductVariant | undefined>(
     product.variants.length > 0 ? product.variants[0] : undefined
   );
   const [quantity, setQuantity] = useState(1);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const [isAdded, setIsAdded] = useState(false);
+  const [showToast, setShowToast] = useState(false);
+  // Feedback intrusion style: Option 1 (Toast) vs Option 2 (Drawer)
+  const [feedbackOption, setFeedbackOption] = useState<"toast" | "drawer">("toast");
 
   // Accordion state
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({
@@ -60,7 +65,13 @@ export function ProductDetailView({
   const maxStock = selectedVariant ? selectedVariant.stockQuantity : product.stockQuantity;
 
   const handleAddToCart = () => {
-    addItem(product, quantity, selectedVariant);
+    const shouldOpenDrawer = feedbackOption === "drawer";
+    addItem(product, quantity, selectedVariant, shouldOpenDrawer);
+    setIsAdded(true);
+    setShowToast(true);
+    setTimeout(() => {
+      setIsAdded(false);
+    }, 2500);
   };
 
   const whatsappEnquiryUrl = generateWhatsAppProductEnquiryUrl(
@@ -175,78 +186,183 @@ export function ProductDetailView({
             </div>
           </div>
 
-          {/* Variant Selection */}
-          {product.variants.length > 0 && (
-            <div className="space-y-3 pt-2">
-              <label className="block text-xs uppercase tracking-widest text-[#6E2023] font-semibold">
-                Finish / Variant: <span className="text-[#252522] font-bold">{selectedVariant?.name}</span>
-              </label>
-              <div className="flex flex-wrap gap-2">
-                {product.variants.map((variant) => (
-                  <button
-                    key={variant.id}
-                    type="button"
-                    onClick={() => setSelectedVariant(variant)}
-                    className={`px-4 py-2 text-xs uppercase tracking-wider font-medium rounded-lg border transition-all ${
-                      selectedVariant?.id === variant.id
-                        ? "border-[#6E2023] bg-[#6E2023] text-white shadow-sm"
-                        : "border-[#EADBC8] bg-white text-[#252522] hover:border-[#6E2023]"
-                    }`}
-                  >
-                    {variant.name}
-                  </button>
-                ))}
+          {/* 1. OUTLINE VARIANT SELECTION (Pillar 1) */}
+          <div className="p-4 sm:p-5 rounded-2xl border-2 border-[#EADBC8] bg-white/70 shadow-2xs space-y-3.5">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-[#6E2023]" />
+                <span className="text-xs uppercase tracking-widest text-[#6E2023] font-bold">
+                  Step 1: Select Specification &amp; Finish
+                </span>
               </div>
+              <span className="text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-full bg-[#FFF5E6] text-[#6E2023] border border-[#EADBC8]">
+                {product.variants.length > 0 ? "Selection Required" : "Standard Edition"}
+              </span>
             </div>
-          )}
 
-          {/* Quantity Controls & Add to Bag */}
-          <div className="space-y-4 pt-2">
-            <div className="flex items-center gap-4">
-              <div className="flex items-center border border-[#EADBC8] bg-white rounded-lg overflow-hidden">
+            {product.variants.length > 0 ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                {product.variants.map((variant) => {
+                  const isSelected = selectedVariant?.id === variant.id;
+                  return (
+                    <button
+                      key={variant.id}
+                      type="button"
+                      onClick={() => setSelectedVariant(variant)}
+                      className={`relative text-left p-3.5 rounded-xl border-2 transition-all flex items-start gap-3 ${
+                        isSelected
+                          ? "border-[#6E2023] bg-[#FFF5E6] shadow-sm ring-2 ring-[#6E2023]/20"
+                          : "border-[#EADBC8] bg-white hover:border-[#6E2023]/60 hover:bg-[#FFF5E6]/40"
+                      }`}
+                    >
+                      {/* Outlined Radio / Active Check Indicator */}
+                      <div
+                        className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5 border transition-all ${
+                          isSelected
+                            ? "bg-[#6E2023] border-[#6E2023] text-white"
+                            : "border-[#CBAE9B] bg-white text-transparent"
+                        }`}
+                      >
+                        <Check className="w-3 h-3 stroke-[3]" />
+                      </div>
+
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center justify-between gap-1">
+                          <span
+                            className={`text-xs font-semibold truncate ${
+                              isSelected ? "text-[#6E2023]" : "text-[#252522]"
+                            }`}
+                          >
+                            {variant.name}
+                          </span>
+                          {isSelected && (
+                            <span className="text-[9px] uppercase font-bold text-[#6E2023] tracking-wider shrink-0">
+                              Selected
+                            </span>
+                          )}
+                        </div>
+                        <p className="text-[11px] text-[#84766A] mt-0.5 font-light">
+                          {variant.stockQuantity > 0
+                            ? `✓ In Stock (${variant.stockQuantity} ready)`
+                            : "Showroom Quote"}
+                        </p>
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            ) : (
+              <div className="p-3.5 rounded-xl border border-[#EADBC8] bg-[#FFF5E6]/50 flex items-center justify-between text-xs text-[#252522]">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-5 h-5 rounded-full bg-[#6E2023] text-white flex items-center justify-center">
+                    <Check className="w-3 h-3 stroke-[3]" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-[#6E2023]">Standard Artisan Edition</p>
+                    <p className="text-[11px] text-[#84766A]">
+                      Full piece curation • Pan-India insured dispatch
+                    </p>
+                  </div>
+                </div>
+                <span className="text-[10px] uppercase font-bold px-2 py-0.5 bg-white text-[#6E2023] border border-[#EADBC8] rounded">
+                  In Stock
+                </span>
+              </div>
+            )}
+          </div>
+
+          {/* 2. PRIMARY ACTION: ADD TO CART (Pillar 2) */}
+          <div className="space-y-4 pt-1">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+              {/* Quantity Picker */}
+              <div className="flex items-center justify-between sm:justify-start border-2 border-[#EADBC8] bg-white rounded-xl overflow-hidden shadow-2xs">
                 <button
                   type="button"
                   onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                  className="p-3 text-[#6E2023] hover:bg-[#FFF5E6] transition-colors"
+                  className="p-3.5 text-[#6E2023] hover:bg-[#FFF5E6] transition-colors"
                   aria-label="Decrease quantity"
                 >
                   <Minus className="w-4 h-4" />
                 </button>
-                <span className="w-12 text-center text-sm font-semibold text-[#252522]">
+                <span className="w-12 text-center text-sm font-bold text-[#252522]">
                   {quantity}
                 </span>
                 <button
                   type="button"
                   onClick={() => setQuantity((q) => Math.min(maxStock, q + 1))}
                   disabled={quantity >= maxStock}
-                  className="p-3 text-[#6E2023] hover:bg-[#FFF5E6] transition-colors disabled:opacity-30"
+                  className="p-3.5 text-[#6E2023] hover:bg-[#FFF5E6] transition-colors disabled:opacity-30"
                   aria-label="Increase quantity"
                 >
                   <Plus className="w-4 h-4" />
                 </button>
               </div>
 
-              <Button
+              {/* Primary Add to Cart CTA Button */}
+              <button
+                type="button"
                 onClick={handleAddToCart}
-                variant="primary"
-                size="lg"
-                className="flex-1 py-3.5 shadow-md"
-                leftIcon={<ShoppingBag className="w-4 h-4" />}
+                className={`flex-1 py-4 px-6 rounded-xl font-heading text-sm uppercase tracking-[0.16em] font-semibold transition-all duration-300 flex items-center justify-center gap-2.5 shadow-lg active:scale-[0.99] ${
+                  isAdded
+                    ? "bg-[#2D6A4F] text-white shadow-[#2D6A4F]/30 scale-[1.01]"
+                    : "bg-[#6E2023] hover:bg-[#58181A] text-white shadow-[#6E2023]/25 hover:shadow-xl hover:-translate-y-0.5"
+                }`}
               >
-                Add to Shopping Bag
-              </Button>
+                {isAdded ? (
+                  <>
+                    <Check className="w-5 h-5 stroke-[2.5] animate-bounce" />
+                    <span>Added to Shopping Bag!</span>
+                  </>
+                ) : (
+                  <>
+                    <ShoppingBag className="w-5 h-5" />
+                    <span>Add to Shopping Bag</span>
+                  </>
+                )}
+              </button>
             </div>
 
-            {/* Direct WhatsApp Ordering */}
+            {/* Direct WhatsApp Ordering (Secondary Action) */}
             <a
               href={whatsappEnquiryUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#25D366] hover:bg-[#20ba59] text-white text-xs uppercase tracking-widest font-semibold transition-all rounded-lg shadow-sm"
+              className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#25D366]/10 hover:bg-[#25D366]/20 text-[#1b7e3f] border border-[#25D366]/30 text-xs uppercase tracking-widest font-semibold transition-all rounded-xl"
             >
-              <MessageSquare className="w-4 h-4 fill-white" />
-              Order / Enquire via WhatsApp
+              <MessageSquare className="w-4 h-4 text-[#25D366]" />
+              Instant WhatsApp Enquiry / Showroom Order
             </a>
+
+            {/* Pillar 3: Feedback Intrusion Style Selector */}
+            <div className="pt-1 flex items-center justify-between text-[11px] text-[#84766A] bg-[#FFF5E6]/60 p-2.5 rounded-lg border border-[#EADBC8]/70">
+              <span className="font-medium text-[#6E2023]">Cart Feedback Mode:</span>
+              <div className="inline-flex rounded-lg border border-[#EADBC8] bg-white p-0.5 text-[10px]">
+                <button
+                  type="button"
+                  onClick={() => setFeedbackOption("toast")}
+                  className={`px-2.5 py-1 rounded-md font-semibold transition-colors ${
+                    feedbackOption === "toast"
+                      ? "bg-[#6E2023] text-white shadow-2xs"
+                      : "text-[#84766A] hover:text-[#252522]"
+                  }`}
+                  title="Option 1: Low Intrusion Toast Banner & button confirmation"
+                >
+                  Subtle Toast (Option 1)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setFeedbackOption("drawer")}
+                  className={`px-2.5 py-1 rounded-md font-semibold transition-colors ${
+                    feedbackOption === "drawer"
+                      ? "bg-[#6E2023] text-white shadow-2xs"
+                      : "text-[#84766A] hover:text-[#252522]"
+                  }`}
+                  title="Option 2: High Intrusion Slide-over drawer"
+                >
+                  Slide Drawer (Option 2)
+                </button>
+              </div>
+            </div>
           </div>
 
           {/* Service Promises */}
@@ -404,6 +520,111 @@ export function ProductDetailView({
           </div>
         </section>
       )}
+
+      {/* Pillar 3 (Option 1): Subtle Toast Notification */}
+      {showToast && (
+        <div className="fixed top-24 right-4 sm:right-8 z-50 max-w-sm w-full bg-white/95 backdrop-blur-md border-2 border-[#6E2023] rounded-2xl shadow-2xl p-4 animate-in fade-in slide-in-from-top-4 duration-300">
+          <div className="flex items-start justify-between gap-3 pb-3 border-b border-[#EADBC8]">
+            <div className="flex items-center gap-2">
+              <div className="w-6 h-6 rounded-full bg-[#2D6A4F] text-white flex items-center justify-center shrink-0">
+                <Check className="w-3.5 h-3.5 stroke-[3]" />
+              </div>
+              <div>
+                <p className="text-xs font-bold text-[#2D6A4F] uppercase tracking-wider">
+                  Added to Shopping Bag
+                </p>
+                <p className="text-[11px] text-[#84766A]">
+                  Quantity: {quantity} • {selectedVariant ? selectedVariant.name : "Standard Edition"}
+                </p>
+              </div>
+            </div>
+            <button
+              type="button"
+              onClick={() => setShowToast(false)}
+              className="p-1 text-[#84766A] hover:text-[#6E2023] rounded-md transition-colors"
+              aria-label="Dismiss notification"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+
+          <div className="py-2.5 flex items-center gap-3">
+            <div className="relative w-12 h-12 rounded-lg overflow-hidden bg-[#FFF5E6] border border-[#EADBC8] shrink-0">
+              {product.images[0]?.src && product.images[0].src.startsWith("/images/category1vit/") ? (
+                <Image
+                  src={product.images[0].src}
+                  alt={product.name}
+                  fill
+                  className="object-cover"
+                />
+              ) : (
+                <ProductArtwork category={product.category} name={product.name} />
+              )}
+            </div>
+            <div className="min-w-0 flex-1">
+              <p className="text-xs font-semibold text-[#252522] truncate">{product.name}</p>
+              <p className="text-[10px] text-[#6E2023] font-medium uppercase tracking-wider mt-0.5">
+                Ready for Enquiry &amp; Dispatch
+              </p>
+            </div>
+          </div>
+
+          <div className="pt-2 grid grid-cols-2 gap-2">
+            <button
+              type="button"
+              onClick={() => {
+                setShowToast(false);
+                openCart();
+              }}
+              className="py-2 px-3 bg-[#FFF5E6] hover:bg-[#EADBC8]/50 text-[#6E2023] border border-[#EADBC8] text-[11px] uppercase tracking-wider font-semibold rounded-lg text-center transition-colors flex items-center justify-center gap-1.5"
+            >
+              <ShoppingBag className="w-3.5 h-3.5" />
+              View Bag
+            </button>
+            <Link
+              href="/checkout"
+              onClick={() => setShowToast(false)}
+              className="py-2 px-3 bg-[#6E2023] hover:bg-[#58181A] text-white text-[11px] uppercase tracking-wider font-semibold rounded-lg text-center transition-colors shadow-xs"
+            >
+              Checkout →
+            </Link>
+          </div>
+        </div>
+      )}
+
+      {/* Pillar 2: Mobile Sticky Add-to-Cart Bar */}
+      <div className="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur-md border-t border-[#EADBC8] p-3 shadow-2xl flex items-center justify-between gap-3">
+        <div className="min-w-0 flex-1">
+          <p className="text-xs font-bold text-[#6E2023] truncate leading-tight">
+            {product.name}
+          </p>
+          <p className="text-[10px] text-[#84766A] truncate">
+            {selectedVariant ? selectedVariant.name : "Artisan Edition"} • Qty: {quantity}
+          </p>
+        </div>
+
+        <button
+          type="button"
+          onClick={handleAddToCart}
+          className={`py-3 px-5 rounded-xl font-heading text-xs uppercase tracking-widest font-bold transition-all flex items-center gap-2 shrink-0 shadow-md ${
+            isAdded
+              ? "bg-[#2D6A4F] text-white"
+              : "bg-[#6E2023] text-white active:scale-95"
+          }`}
+        >
+          {isAdded ? (
+            <>
+              <Check className="w-4 h-4 stroke-[3]" />
+              <span>Added!</span>
+            </>
+          ) : (
+            <>
+              <ShoppingBag className="w-4 h-4" />
+              <span>Add to Bag</span>
+            </>
+          )}
+        </button>
+      </div>
     </div>
   );
 }

@@ -23,121 +23,81 @@ export default function HomePage() {
   return (
     <main className="bg-[#FFF5E6] min-h-screen">
       {/* ========================================================
-          SECTION A: HERO (Editorial Ivory Background + Burgundy Typography)
+          SECTION A: HERO (Designed for Modern Gatherings - Matching Mockup)
          ======================================================== */}
-      <section className="relative overflow-hidden bg-[#FFF5E6] border-b border-[#EADBC8] py-16 sm:py-24 lg:py-28">
+      <section className="relative overflow-hidden bg-[#FAF3E7] border-b border-[#EADBC8] pt-8 sm:pt-12 lg:pt-14 pb-10 sm:pb-14 lg:pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-            {/* Left Content */}
-            <div className="lg:col-span-7 space-y-6 sm:space-y-8 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-[#CBAE9B]/25 text-[#6E2023] text-[11px] uppercase tracking-[0.2em] font-semibold rounded-full border border-[#CBAE9B]/50">
-                <Sparkles className="w-3.5 h-3.5 text-[#6E2023]" />
-                <span>Crockery, Serveware & Thoughtful Gifting</span>
-              </div>
-
-              <h1 className="font-heading text-4xl sm:text-6xl lg:text-7xl text-[#6E2023] leading-[1.08] tracking-tight font-medium">
-                Set the Table for <br className="hidden sm:inline" />
-                <span className="italic font-normal">
-                  Something Beautiful.
-                </span>
-              </h1>
-
-              <p className="text-base sm:text-lg text-[#84766A] max-w-xl mx-auto lg:mx-0 font-light leading-relaxed">
-                Discover thoughtfully curated dinnerware, serving essentials, and heirloom gifts that bring people together across festive tables and everyday dinners.
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* Left Content: Editorial Headline & Actions */}
+            <div className="lg:col-span-5 space-y-6 sm:space-y-7 text-left">
+              {/* Pre-title */}
+              <p className="text-[11px] sm:text-xs uppercase tracking-[0.28em] font-semibold text-[#8C6D58]">
+                Rooted in Tradition
               </p>
 
-              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
-                <Button
-                  href="/shop"
-                  variant="primary"
-                  size="lg"
-                  className="w-full sm:w-auto shadow-md"
-                  rightIcon={<ArrowRight className="w-4 h-4" />}
+              {/* Main Display Headline */}
+              <h1 className="font-heading text-4xl sm:text-6xl lg:text-7xl text-[#5A1218] font-normal leading-[1.06] tracking-tight">
+                Designed <br />
+                for Modern <br />
+                Gatherings.
+              </h1>
+
+              {/* Subheading */}
+              <p className="text-sm sm:text-base lg:text-lg text-[#7A6B60] max-w-md font-light leading-relaxed">
+                Timeless tableware for everyday rituals and life&apos;s special moments.
+              </p>
+
+              {/* Call to Action Button */}
+              <div className="pt-1">
+                <Link
+                  href="/collections/dinner-sets"
+                  className="inline-flex items-center gap-3 bg-[#5A1218] hover:bg-[#430D12] text-white text-xs uppercase tracking-[0.2em] font-medium px-8 py-4 rounded-xs transition-all shadow-md hover:shadow-lg group"
                 >
-                  Shop Collection
-                </Button>
-                <Button
-                  href="/collections/gift-sets"
-                  variant="outline"
-                  size="lg"
-                  className="w-full sm:w-auto"
-                >
-                  Explore Gifting
-                </Button>
+                  <span>Shop Dinner Sets</span>
+                  <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+                </Link>
               </div>
 
-              {/* Trust Badges */}
-              <div className="grid grid-cols-3 gap-4 pt-8 border-t border-[#EADBC8] text-[#84766A]">
-                <div>
-                  <span className="block font-heading text-xl sm:text-2xl text-[#6E2023]">100%</span>
-                  <span className="text-[10px] sm:text-xs uppercase tracking-wider">Food Grade Ceramic</span>
+              {/* Trust Badges / Stats Bar */}
+              <div className="grid grid-cols-3 gap-3 sm:gap-4 pt-6 sm:pt-8 border-t border-[#EADBC8] max-w-md">
+                <div className="pr-3 sm:pr-4 border-r border-[#CBAE9B]/60">
+                  <span className="block font-heading text-2xl sm:text-3xl text-[#5A1218] font-semibold leading-none">
+                    30+
+                  </span>
+                  <span className="block text-[9px] sm:text-[10px] uppercase tracking-[0.16em] text-[#84766A] mt-1.5 font-medium leading-tight">
+                    Years of Expertise
+                  </span>
                 </div>
-                <div>
-                  <span className="block font-heading text-xl sm:text-2xl text-[#6E2023]">Pan-India</span>
-                  <span className="text-[10px] sm:text-xs uppercase tracking-wider">Transit Guarantee</span>
+                <div className="px-3 sm:px-4 border-r border-[#CBAE9B]/60">
+                  <span className="block font-heading text-sm sm:text-base text-[#5A1218] font-bold uppercase tracking-wider leading-none">
+                    Premium
+                  </span>
+                  <span className="block text-[9px] sm:text-[10px] uppercase tracking-[0.16em] text-[#84766A] mt-1.5 font-medium leading-tight">
+                    Tableware
+                  </span>
                 </div>
-                <div>
-                  <span className="block font-heading text-xl sm:text-2xl text-[#6E2023]">Custom</span>
-                  <span className="text-[10px] sm:text-xs uppercase tracking-wider">Bulk & Wedding Sets</span>
+                <div className="pl-3 sm:pl-4">
+                  <span className="block font-heading text-sm sm:text-base text-[#5A1218] font-bold uppercase tracking-wider leading-none">
+                    Thoughtful
+                  </span>
+                  <span className="block text-[9px] sm:text-[10px] uppercase tracking-[0.16em] text-[#84766A] mt-1.5 font-medium leading-tight">
+                    Gifting
+                  </span>
                 </div>
               </div>
             </div>
 
-            {/* Right Visual Composition - Dual Cards inspired by User's Spec */}
-            <div className="lg:col-span-5 relative">
-              <div className="space-y-4">
-                {/* 1. Packaging Concept Card: Luxury Burgundy Box with Champagne Detailing */}
-                <div className="bg-[#6E2023] text-white p-7 sm:p-8 rounded-2xl shadow-xl border border-[#55181A] relative overflow-hidden">
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="space-y-4">
-                      <span className="text-[10px] uppercase tracking-[0.25em] text-[#CBAE9B] font-semibold block">
-                        Signature Packaging
-                      </span>
-                      <h3 className="font-heading text-2xl sm:text-3xl text-white">
-                        VITRAG
-                      </h3>
-                      <hr className="border-[#CBAE9B]/30" />
-                      <div className="space-y-1">
-                        <p className="text-sm font-medium text-white">
-                          Crockery & Gifting
-                        </p>
-                        <p className="text-xs text-[#CBAE9B] font-light">
-                          Luxury burgundy box with champagne detailing
-                        </p>
-                      </div>
-                    </div>
-                    <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden border border-[#CBAE9B]/40 shadow-md shrink-0">
-                      <Image
-                        src="/logo.jpg"
-                        alt="VITRAG Logo Crest"
-                        fill
-                        className="object-cover"
-                        sizes="80px"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* 2. Gift Card Concept Card: Champagne Base with Burgundy Typography */}
-                <div className="bg-[#CBAE9B] text-[#6E2023] p-7 sm:p-8 rounded-2xl shadow-md border border-[#bda08d] relative">
-                  <div className="space-y-3">
-                    <span className="text-[10px] uppercase tracking-[0.25em] text-[#6E2023] font-bold block">
-                      Gift Card Concept
-                    </span>
-                    <h3 className="font-heading text-2xl text-[#6E2023]">
-                      A gift, beautifully chosen.
-                    </h3>
-                    <hr className="border-[#6E2023]/25" />
-                    <div className="space-y-1">
-                      <p className="text-xs font-serif italic text-[#6E2023]">
-                        With love, from Vitrag.
-                      </p>
-                      <p className="text-[11px] text-[#6E2023]/80 font-light">
-                        Champagne base with burgundy typography
-                      </p>
-                    </div>
-                  </div>
-                </div>
+            {/* Right Visual: Architectural Arch Cutout from Mockup */}
+            <div className="lg:col-span-7 relative flex items-center justify-center lg:justify-end">
+              <div className="relative w-full max-w-[660px] aspect-[664/525]">
+                <Image
+                  src="/images/hero/hero-arch.png"
+                  alt="Designed for Modern Gatherings — Vitrag Luxury Tableware Collection"
+                  fill
+                  className="object-contain object-center lg:object-right"
+                  sizes="(max-width: 1024px) 100vw, 660px"
+                  priority
+                />
               </div>
             </div>
           </div>

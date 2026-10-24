@@ -99,7 +99,7 @@ export function Header() {
               </button>
             </div>
 
-            {/* Brand Logo & Wordmark */}
+            {/* Brand Logo & Wordmark (Matching Mockup) */}
             <div className="flex-1 lg:flex-none text-center lg:text-left">
               <Link href="/" className="inline-flex items-center gap-2.5 sm:gap-3 group focus:outline-none text-left">
                 <div className="relative w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-lg overflow-hidden border border-[#EADBC8] shadow-2xs shrink-0 group-hover:scale-105 transition-transform duration-200">
@@ -113,33 +113,25 @@ export function Header() {
                   />
                 </div>
                 <div>
-                  <span className="font-heading text-xl sm:text-2xl md:text-2xl tracking-[0.2em] uppercase font-semibold text-[#6E2023] group-hover:text-[#55181A] transition-colors block leading-none">
-                    {siteConfig.name}
+                  <span className="font-heading text-xl sm:text-2xl md:text-2xl tracking-[0.08em] font-normal text-[#6E2023] group-hover:text-[#55181A] transition-colors block leading-none">
+                    Vitrag
                   </span>
-                  <span className="block text-[8px] sm:text-[9px] uppercase tracking-[0.22em] text-[#84766A] mt-1 font-sans">
-                    {siteConfig.descriptor}
+                  <span className="block text-[8px] sm:text-[9px] uppercase tracking-[0.28em] text-[#84766A] mt-1 font-sans font-medium">
+                    Fine Living
                   </span>
                 </div>
               </Link>
             </div>
 
-            {/* Desktop Navigation Links */}
-            <div className="hidden lg:flex items-center space-x-7 text-xs uppercase tracking-widest font-medium text-[#252522]">
+            {/* Desktop Navigation Links (5 Core Items Matching Mockup) */}
+            <div className="hidden lg:flex items-center space-x-8 text-xs uppercase tracking-[0.16em] font-medium text-[#252522]">
               <Link
                 href="/shop"
                 className={`hover:text-[#6E2023] transition-colors py-1 ${
                   pathname === "/shop" ? "text-[#6E2023] border-b-2 border-[#6E2023]" : ""
                 }`}
               >
-                Shop All
-              </Link>
-              <Link
-                href="/collections/signature-editions"
-                className={`hover:text-[#6E2023] transition-colors py-1 font-semibold ${
-                  pathname === "/collections/signature-editions" ? "text-[#6E2023] border-b-2 border-[#6E2023]" : ""
-                }`}
-              >
-                Signature Editions
+                Shop
               </Link>
               <Link
                 href="/collections/dinner-sets"
@@ -155,7 +147,7 @@ export function Header() {
                   pathname === "/collections/platters-serving" ? "text-[#6E2023] border-b-2 border-[#6E2023]" : ""
                 }`}
               >
-                Serving & Platters
+                Serving
               </Link>
 
               {/* Gifting Dropdown / Mega Menu */}
@@ -166,7 +158,7 @@ export function Header() {
               >
                 <button
                   type="button"
-                  className="flex items-center gap-1 hover:text-[#6E2023] transition-colors focus:outline-none uppercase tracking-widest text-xs font-medium"
+                  className="flex items-center gap-1 hover:text-[#6E2023] transition-colors focus:outline-none uppercase tracking-[0.16em] text-xs font-medium"
                 >
                   Gifting
                   <ChevronDown className="w-3 h-3 transition-transform duration-200" />
@@ -181,7 +173,13 @@ export function Header() {
                       href="/collections/signature-editions"
                       className="block px-3 py-2 text-xs font-semibold text-[#6E2023] bg-[#CBAE9B]/20 hover:bg-[#CBAE9B]/35 rounded-md transition-colors"
                     >
-                      ✨ Signature Editions (New Series)
+                      ✨ Signature Editions
+                    </Link>
+                    <Link
+                      href="/collections/dry-fruit-boxes"
+                      className="block px-3 py-2 text-xs text-[#252522] hover:bg-white/80 hover:text-[#6E2023] rounded-md transition-colors"
+                    >
+                      Dry-Fruit Box Sets
                     </Link>
                     <Link
                       href="/collections/gift-sets"
@@ -190,41 +188,14 @@ export function Header() {
                       Curated Gift Sets
                     </Link>
                     <Link
-                      href="/collections/dry-fruit-boxes"
+                      href="/bulk-orders"
                       className="block px-3 py-2 text-xs text-[#252522] hover:bg-white/80 hover:text-[#6E2023] rounded-md transition-colors"
                     >
-                      Dry-Fruit Boxes
-                    </Link>
-                    <Link
-                      href="/collections/wedding-gifts"
-                      className="block px-3 py-2 text-xs text-[#252522] hover:bg-white/80 hover:text-[#6E2023] rounded-md transition-colors"
-                    >
-                      Wedding Gifts & Trousseau
-                    </Link>
-                    <Link
-                      href="/collections/corporate-gifts"
-                      className="block px-3 py-2 text-xs text-[#252522] hover:bg-white/80 hover:text-[#6E2023] rounded-md transition-colors"
-                    >
-                      Corporate Hampers
-                    </Link>
-                    <Link
-                      href="/collections/cracker-sets"
-                      className="block px-3 py-2 text-xs text-[#252522] hover:bg-white/80 hover:text-[#6E2023] rounded-md transition-colors"
-                    >
-                      Cracker & Snack Sets
+                      Corporate &amp; Bulk Hampers
                     </Link>
                   </div>
                 )}
               </div>
-
-              <Link
-                href="/bulk-orders"
-                className={`hover:text-[#6E2023] transition-colors py-1 ${
-                  pathname === "/bulk-orders" ? "text-[#6E2023] border-b-2 border-[#6E2023]" : ""
-                }`}
-              >
-                Corporate Gifts
-              </Link>
 
               <Link
                 href="/about"
@@ -236,17 +207,20 @@ export function Header() {
               </Link>
             </div>
 
-            {/* Utility Actions (Search, Wishlist, Cart) */}
+            {/* Utility Actions (Divider, Search, Wishlist, Cart) */}
             <div className="flex items-center space-x-3 sm:space-x-4">
+              <span className="hidden lg:inline-block text-[#CBAE9B]/80 font-light select-none">
+                |
+              </span>
+
               {/* Desktop Search Trigger */}
               <button
                 type="button"
                 onClick={() => setSearchOpen((prev) => !prev)}
-                className="hidden lg:flex items-center gap-1.5 text-xs uppercase tracking-wider text-[#252522] hover:text-[#6E2023] transition-colors p-1"
+                className="p-1.5 text-[#252522] hover:text-[#6E2023] transition-colors"
                 aria-label="Search catalogue"
               >
                 <Search className="w-4 h-4 text-[#6E2023]" />
-                <span className="text-[11px]">Search</span>
               </button>
 
               {/* Wishlist Link */}
@@ -267,13 +241,10 @@ export function Header() {
               <button
                 type="button"
                 onClick={openCart}
-                className="relative flex items-center gap-2 p-1.5 text-[#252522] hover:text-[#6E2023] transition-colors"
+                className="relative flex items-center gap-1.5 p-1.5 text-[#252522] hover:text-[#6E2023] transition-colors"
                 aria-label={`Shopping Cart with ${itemCount} items`}
               >
                 <ShoppingBag className="w-4 h-4 text-[#6E2023]" />
-                <span className="hidden sm:inline-block text-xs uppercase tracking-wider font-medium">
-                  Bag
-                </span>
                 <span className="bg-[#6E2023] text-white text-[10px] min-w-4 h-4 px-1 rounded-full flex items-center justify-center font-bold">
                   {itemCount}
                 </span>

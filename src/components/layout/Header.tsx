@@ -64,10 +64,10 @@ export function Header() {
             <span>{siteConfig.announcement.text}</span>
             <span className="hidden md:inline-block opacity-40">|</span>
             <Link
-              href="/bulk-orders"
-              className="hidden md:inline-flex items-center gap-1 hover:underline text-[#CBAE9B]"
+              href="/collections/diwali-sale"
+              className="hidden md:inline-flex items-center gap-1.5 hover:underline text-[#FFD700] font-semibold"
             >
-              Bulk & Corporate Enquiries
+              <span>Explore Diwali Offers</span>
               <ArrowRight className="w-3 h-3" />
             </Link>
           </div>
@@ -129,7 +129,17 @@ export function Header() {
             </div>
 
             {/* Desktop Navigation Links (5 Core Items Matching Mockup) */}
-            <div className="hidden lg:flex items-center space-x-8 text-xs uppercase tracking-[0.16em] font-medium text-[#252522]">
+            <div className="hidden lg:flex items-center space-x-7 text-xs uppercase tracking-[0.16em] font-medium text-[#252522]">
+              <Link
+                href="/collections/diwali-sale"
+                className={`flex items-center gap-1.5 py-1 px-2.5 rounded-full bg-[#6E2023] text-[#FFF5E6] hover:bg-[#55181A] transition-all shadow-xs font-semibold ${
+                  pathname === "/collections/diwali-sale" ? "ring-2 ring-[#FFD700]" : ""
+                }`}
+              >
+                <span>🪔</span>
+                <span>Diwali Sale</span>
+                <span className="bg-[#FFD700] text-[#6E2023] text-[9px] px-1 py-0.2 rounded-full font-bold">50% OFF</span>
+              </Link>
               <Link
                 href="/shop"
                 className={`hover:text-[#6E2023] transition-colors py-1 ${
@@ -357,6 +367,21 @@ export function Header() {
                     {itemCount} {itemCount === 1 ? "item" : "items"}
                   </span>
                 </button>
+
+                {/* Mobile Drawer Diwali Sale Highlight */}
+                <Link
+                  href="/collections/diwali-sale"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center justify-between p-3 bg-[#6E2023] text-[#FFF5E6] rounded-xl shadow-xs font-bold text-xs uppercase tracking-wider hover:bg-[#55181A] transition-colors"
+                >
+                  <div className="flex items-center gap-2">
+                    <span>🪔</span>
+                    <span>Diwali Grand Sale</span>
+                  </div>
+                  <span className="bg-[#FFD700] text-[#6E2023] text-[10px] px-2 py-0.5 rounded-full font-bold">
+                    UP TO 50% OFF
+                  </span>
+                </Link>
 
                 <Link
                   href="/shop"

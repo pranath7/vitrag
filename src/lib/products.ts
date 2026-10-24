@@ -2,6 +2,18 @@ import { Product, Collection } from "./types";
 
 export const collections: Collection[] = [
   {
+    id: "diwali-sale",
+    slug: "diwali-sale",
+    name: "Diwali Grand Sale",
+    shortName: "Diwali Sale",
+    description:
+      "Exclusive Diwali Festive Offers — Up to 50% Off Luxury Dry Fruit Servers, Tiered Crystal Sets & Glass Platters. Ready for festive gifting.",
+    image: "https://res.cloudinary.com/pmip0yum/image/upload/v1792859135/vitrag/diwali_sale/fsb3z2rvcifain5ejhzf.jpg",
+    seoTitle: "Diwali Festive Sale — Luxury Dry Fruit Servers & Tableware | VITRAG",
+    seoDescription:
+      "Shop limited-edition 4-piece and 6-piece dry fruit trays and crystal servers on Diwali Sale starting at ₹6,499. Complimentary pan-India dispatch.",
+  },
+  {
     id: "signature-editions",
     slug: "signature-editions",
     name: "Signature Editions",
@@ -52,6 +64,172 @@ export const collections: Collection[] = [
 ];
 
 export const products: Product[] = [
+  // --- DIWALI FESTIVE SALE SPECIALS (META ADS FEATURED) ---
+  {
+    id: "diwali-6pc-crystal-knobs-server-tray",
+    slug: "diwali-meaningful-moments-6pc-crystal-server-tray",
+    name: "Designed for Meaningful Moments — 6-Piece Crystal Knobs Dry Fruit & Snack Server Tray",
+    shortDescription: "Diwali Special: 6 porcelain cube jars with faceted crystal diamond-cut knobs, sealed glass lids & clear gallery railing tray.",
+    description:
+      "Designed for Meaningful Moments — celebrate the Festival of Lights with VITRAG's marquee 6-piece luxury snack and dry fruit server. Featuring 6 individual pristine white porcelain jars topped with brilliant diamond-cut crystal knobs and airtight glass lids, resting within an elevated transparent acrylic gallery railing tray. Ideal for serving premium almonds, cashews, chocolate pearls, apricots, walnuts, and festive Diwali confections. Delivered in luxury presentation gift packaging.",
+    category: "Dry Fruit Boxes",
+    collectionIds: ["diwali-sale", "dry-fruit-boxes", "signature-editions"],
+    sku: "VIT-DWL-01-CRY6",
+    price: 699900, // ₹6,999 (Discounted Diwali Price)
+    compareAtPrice: 1299900, // ₹12,999 (MRP)
+    currency: "INR",
+    images: [
+      {
+        src: "https://res.cloudinary.com/pmip0yum/image/upload/v1792859135/vitrag/diwali_sale/fsb3z2rvcifain5ejhzf.jpg",
+        alt: "VITRAG Designed for Meaningful Moments 6-Piece Crystal Knobs Dry Fruit and Snack Server Tray",
+      },
+    ],
+    variants: [
+      {
+        id: "dwl-crystal-6pc-box",
+        name: "6-Piece Tiered Crystal Server Tray (Festive Gift Box)",
+        price: 699900,
+        compareAtPrice: 1299900,
+        sku: "VIT-DWL-01-CRY6-SET",
+        stockQuantity: 35,
+        availability: "in-stock",
+      },
+    ],
+    material: "High-Grade Glazed Ceramic, Faceted Crystal Diamond Knobs, Tempered Glass Lids & Luxury Clear Acrylic Railing Tray",
+    dimensions: "Acrylic Tray: 34cm x 24cm x 12cm; 6 Removable Porcelain Cube Jars with Airtight Lids",
+    weight: "2.8 kg (with signature festive presentation gift packaging)",
+    pieceCount: 6,
+    careInstructions:
+      "Wipe acrylic tray with a soft microfiber cloth. Ceramic bowls and glass lids are dishwasher safe. Handle crystal knobs with gentle care.",
+    tags: [
+      "Diwali Sale",
+      "Diwali Special",
+      "6-Piece Set",
+      "Crystal Knobs",
+      "Dry Fruit Box",
+      "Festive Gifting",
+      "Bestseller",
+      "46% Off",
+    ],
+    featured: true,
+    bestseller: true,
+    newArrival: true,
+    stockQuantity: 35,
+    availability: "in-stock",
+    seoTitle: "6 Pcs Crystal Knobs Dry Fruit & Snack Server Tray | Diwali Sale | VITRAG",
+    seoDescription:
+      "Shop the marquee VITRAG 6-piece crystal knobs dry fruit & snack server tray on Diwali sale for ₹6,999 (MRP ₹12,999). Luxury festive packaging and pan-India delivery.",
+  },
+  {
+    id: "diwali-6pc-petal-ceramic-server-gold-handle",
+    slug: "diwali-elevate-6pc-petal-ceramic-server-tray",
+    name: "Elevate Everyday Living — 6-Piece Petal Ceramic Dry Fruit Server with Scalloped Tray",
+    shortDescription: "Diwali Special: 6 droplet petal ceramic bowls with luxury gold center handle and scalloped organizer tray.",
+    description:
+      "Elevate Everyday Living — bringing refined festive warmth to your Diwali gathering. This 6-piece set features sculpted droplet petal-shaped porcelain bowls nestled into a custom scalloped white acrylic tray, accented by an ergonomic polished gold center handle. Created for slow festive conversations and serving dry fruits, berries, roasted nuts, and Diwali sweets in unmatched elegance.",
+    category: "Dry Fruit Boxes",
+    collectionIds: ["diwali-sale", "dry-fruit-boxes", "signature-editions"],
+    sku: "VIT-DWL-02-PTL6",
+    price: 699900, // ₹6,999 (Discounted Diwali Price)
+    compareAtPrice: 1299900, // ₹12,999 (MRP)
+    currency: "INR",
+    images: [
+      {
+        src: "https://res.cloudinary.com/pmip0yum/image/upload/v1792859137/vitrag/diwali_sale/swmzszvftfbneu6g3nmb.jpg",
+        alt: "VITRAG Elevate Everyday Living 6-Piece Petal Ceramic Dry Fruit Server with Gold Handle and Scalloped Tray",
+      },
+    ],
+    variants: [
+      {
+        id: "dwl-petal-6pc-set",
+        name: "6-Piece Petal Bowl Set with Gold Handle Tray",
+        price: 699900,
+        compareAtPrice: 1299900,
+        sku: "VIT-DWL-02-PTL6-SET",
+        stockQuantity: 40,
+        availability: "in-stock",
+      },
+    ],
+    material: "Fine Vitrified Porcelain Bowls, Polished Brass Gold Center Handle & Wave-Scalloped Clear Acrylic Tray",
+    dimensions: "Tray: 32cm x 26cm x 8cm; 6 Ergonomic Drop-Shaped Porcelain Serving Bowls",
+    weight: "2.4 kg (with signature festive presentation gift packaging)",
+    pieceCount: 6,
+    careInstructions:
+      "Porcelain bowls are dishwasher and microwave safe. Clean gold handle and acrylic tray with a soft damp cloth.",
+    tags: [
+      "Diwali Sale",
+      "Diwali Special",
+      "6-Piece Set",
+      "Petal Bowls",
+      "Gold Handle",
+      "Festive Gifting",
+      "Trending",
+      "46% Off",
+    ],
+    featured: true,
+    bestseller: true,
+    newArrival: true,
+    stockQuantity: 40,
+    availability: "in-stock",
+    seoTitle: "6 Pcs Petal Ceramic Dry Fruit Server Tray | Diwali Sale | VITRAG",
+    seoDescription:
+      "Diwali festive offer: 6-piece petal ceramic dry fruit server with gold handle tray for ₹6,999 (MRP ₹12,999). Elegant festive table decor and wedding gifting.",
+  },
+  {
+    id: "diwali-4pc-glass-serving-platter-gold-handles",
+    slug: "diwali-elevate-4pc-glass-serving-platter-gold-handles",
+    name: "Elevate Everyday Living — 4-Piece Glass Serving Platter with Chevron Gold Handles",
+    shortDescription: "Diwali Special: 4 high-clarity rectangular glass bowls with lids on a white platter with chevron gold handles.",
+    description:
+      "Elevate Everyday Living — a contemporary festive centerpiece for celebratory Diwali banquets. Crafted with 4 high-clarity tempered rectangular glass dishes with ergonomic cylindrical handles, arranged along an elongated white porcelain platter framed by dual chevron-angled 24K gold handles. Perfect for festive mithai, dips, warm appetizers, nuts, and savories.",
+    category: "Platter & Serving",
+    collectionIds: ["diwali-sale", "platters-serving", "signature-editions"],
+    sku: "VIT-DWL-03-GLS4",
+    price: 649900, // ₹6,499 (Discounted Diwali Price)
+    compareAtPrice: 1099900, // ₹10,999 (MRP)
+    currency: "INR",
+    images: [
+      {
+        src: "https://res.cloudinary.com/pmip0yum/image/upload/v1792859138/vitrag/diwali_sale/jtdjlo1lbxobu24uwmrp.jpg",
+        alt: "VITRAG Elevate Everyday Living 4-Piece Glass Serving Platter with Chevron Gold Handles",
+      },
+    ],
+    variants: [
+      {
+        id: "dwl-glass-4pc-platter",
+        name: "4-Piece Glass Bowls with Chevron Gold Handle Platter",
+        price: 649900,
+        compareAtPrice: 1099900,
+        sku: "VIT-DWL-03-GLS4-SET",
+        stockQuantity: 30,
+        availability: "in-stock",
+      },
+    ],
+    material: "Tempered High-Clarity Glass Bowls with Lids, Premium Glazed Ceramic Platter & Sculpted Chevron Gold Handles",
+    dimensions: "Platter: 48cm x 16cm x 6cm; 4 Individual Rectangular Covered Glass Bowls",
+    weight: "2.6 kg (with signature festive presentation gift packaging)",
+    pieceCount: 4,
+    careInstructions:
+      "Glass bowls and covers are 100% food safe, thermal shock resistant and dishwasher safe. Hand wash platter with soft sponge to preserve gold handles.",
+    tags: [
+      "Diwali Sale",
+      "Diwali Special",
+      "4-Piece Set",
+      "Glass Bowls",
+      "Gold Handles",
+      "Serving Platter",
+      "Festive Gifting",
+      "41% Off",
+    ],
+    featured: true,
+    bestseller: true,
+    newArrival: true,
+    stockQuantity: 30,
+    availability: "in-stock",
+    seoTitle: "4 Pcs Glass Serving Platter with Chevron Gold Handles | Diwali Sale | VITRAG",
+    seoDescription:
+      "Exclusive Diwali price: 4-piece glass serving platter with chevron gold handles for ₹6,499 (MRP ₹10,999). Save ₹4,500 with complimentary delivery across India.",
+  },
   // --- SIGNATURE EDITIONS ---
   {
     id: "elevate-every-pour-whiskey-set",

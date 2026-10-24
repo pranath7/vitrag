@@ -38,7 +38,7 @@ export const siteConfig = {
   },
 
   announcement: {
-    text: "Complimentary Pan-India Delivery on orders above ₹4,000 • Direct WhatsApp Ordering",
+    text: "🪔 GRAND DIWALI FESTIVE SALE — UP TO 50% OFF FESTIVE DRY FRUIT SETS & TABLEWARE • DIRECT WHATSAPP ORDERING 🪔",
     enabled: true,
   },
 

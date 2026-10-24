@@ -45,31 +45,41 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left Content: Editorial Headline & Actions */}
             <div className="lg:col-span-5 space-y-6 sm:space-y-7 text-left">
-              {/* Pre-title */}
-              <p className="text-[11px] sm:text-xs uppercase tracking-[0.28em] font-semibold text-[#8C6D58]">
-                Rooted in Tradition
-              </p>
+              {/* Pre-title with Festive Diwali Badge */}
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#6E2023] text-[#FFF5E6] rounded-full text-[11px] uppercase tracking-[0.22em] font-semibold shadow-xs">
+                <span>🪔</span>
+                <span>Diwali Grand Festive Sale</span>
+                <span className="bg-[#FFD700] text-[#6E2023] text-[9px] px-1.5 py-0.2 rounded-full font-bold">
+                  Up to 46% Off
+                </span>
+              </div>
 
               {/* Main Display Headline */}
               <h1 className="font-heading text-4xl sm:text-6xl lg:text-7xl text-[#5A1218] font-normal leading-[1.06] tracking-tight">
                 Designed <br />
-                for Modern <br />
-                Gatherings.
+                for Meaningful <br />
+                Moments.
               </h1>
 
               {/* Subheading */}
               <p className="text-sm sm:text-base lg:text-lg text-[#7A6B60] max-w-md font-light leading-relaxed">
-                Timeless tableware for everyday rituals and life&apos;s special moments.
+                Serve snacks, dry fruits or festive treats in unmatched style. Handcrafted luxury sets starting from <strong className="text-[#6E2023] font-semibold">₹6,499</strong> with complimentary pan-India delivery.
               </p>
 
-              {/* Call to Action Button */}
-              <div className="pt-1">
+              {/* Call to Action Buttons */}
+              <div className="pt-1 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                 <Link
-                  href="/collections/dinner-sets"
-                  className="inline-flex items-center gap-3 bg-[#5A1218] hover:bg-[#430D12] text-white text-xs uppercase tracking-[0.2em] font-medium px-8 py-4 rounded-xs transition-all shadow-md hover:shadow-lg group"
+                  href="/collections/diwali-sale"
+                  className="inline-flex items-center justify-center gap-3 bg-[#5A1218] hover:bg-[#430D12] text-white text-xs uppercase tracking-[0.2em] font-medium px-7 py-4 rounded-xs transition-all shadow-md hover:shadow-lg group"
                 >
-                  <span>Shop Dinner Sets</span>
+                  <span>Shop Diwali Sale</span>
                   <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+                </Link>
+                <Link
+                  href="/product/diwali-meaningful-moments-6pc-crystal-server-tray"
+                  className="inline-flex items-center justify-center gap-2 bg-white/90 hover:bg-white text-[#5A1218] border border-[#CBAE9B] text-xs uppercase tracking-[0.16em] font-medium px-6 py-4 rounded-xs transition-all shadow-xs"
+                >
+                  <span>6-Pc Crystal Set (₹6,999)</span>
                 </Link>
               </div>
 
@@ -77,39 +87,39 @@ export default function HomePage() {
               <div className="grid grid-cols-3 gap-3 sm:gap-4 pt-6 sm:pt-8 border-t border-[#EADBC8] max-w-md">
                 <div className="pr-3 sm:pr-4 border-r border-[#CBAE9B]/60">
                   <span className="block font-heading text-2xl sm:text-3xl text-[#5A1218] font-semibold leading-none">
-                    30+
+                    46%
                   </span>
                   <span className="block text-[9px] sm:text-[10px] uppercase tracking-[0.16em] text-[#84766A] mt-1.5 font-medium leading-tight">
-                    Years of Expertise
+                    Festive Savings
                   </span>
                 </div>
                 <div className="px-3 sm:px-4 border-r border-[#CBAE9B]/60">
                   <span className="block font-heading text-sm sm:text-base text-[#5A1218] font-bold uppercase tracking-wider leading-none">
-                    Premium
+                    Diwali
                   </span>
                   <span className="block text-[9px] sm:text-[10px] uppercase tracking-[0.16em] text-[#84766A] mt-1.5 font-medium leading-tight">
-                    Tableware
+                    Gift Boxes
                   </span>
                 </div>
                 <div className="pl-3 sm:pl-4">
                   <span className="block font-heading text-sm sm:text-base text-[#5A1218] font-bold uppercase tracking-wider leading-none">
-                    Thoughtful
+                    Free
                   </span>
                   <span className="block text-[9px] sm:text-[10px] uppercase tracking-[0.16em] text-[#84766A] mt-1.5 font-medium leading-tight">
-                    Gifting
+                    Pan-India Delivery
                   </span>
                 </div>
               </div>
             </div>
 
-            {/* Right Visual: High-Resolution Stock Architectural Arch Cutout */}
+            {/* Right Visual: High-Resolution Stock Architectural Arch Cutout with Diwali 6-Piece Feature */}
             <div className="lg:col-span-7 relative flex items-center justify-center lg:justify-end py-4">
               <div className="relative">
                 {/* 1. Architectural Arched Frame with Real Stock Tableware Photo */}
                 <div className="relative w-[290px] sm:w-[400px] lg:w-[450px] aspect-[4/5] rounded-t-[180px] sm:rounded-t-[240px] rounded-b-3xl overflow-hidden shadow-[0_30px_70px_-20px_rgba(90,18,24,0.25)] border-[5px] border-[#CBAE9B]/70 bg-[#2A1417] group">
                   <Image
-                    src="https://res.cloudinary.com/pmip0yum/image/upload/v1792840538/vitrag/hero/ldiysrt5vo0onozwfrln.jpg"
-                    alt="Designed for Modern Gatherings — Vitrag Luxury Tableware Collection"
+                    src="https://res.cloudinary.com/pmip0yum/image/upload/v1792859135/vitrag/diwali_sale/fsb3z2rvcifain5ejhzf.jpg"
+                    alt="Designed for Meaningful Moments — Vitrag 6-Piece Crystal Knobs Dry Fruit Server Tray"
                     fill
                     className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
                     sizes="(max-width: 640px) 290px, (max-width: 1024px) 400px, 450px"
@@ -132,35 +142,244 @@ export default function HomePage() {
                     />
                     <text className="text-[9.5px] uppercase tracking-[0.24em] fill-[#8C6D58] font-semibold font-serif">
                       <textPath href="#sealCircle" startOffset="0%">
-                        • A NEW CHAPTER IN FINE LIVING •
+                        • DIWALI FESTIVE SALE • UP TO 50% OFF •
                       </textPath>
                     </text>
                   </svg>
                   {/* Center Star / Crest */}
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="w-8 h-8 rounded-full bg-[#FAF3E7] border border-[#CBAE9B] shadow-xs flex items-center justify-center">
-                      <svg
-                        className="w-4 h-4 text-[#5A1218]"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                      >
-                        <path d="M12 2C11 7 7 11 2 12C7 13 11 17 12 22C13 17 17 13 22 12C17 11 13 7 12 2Z" />
-                      </svg>
+                      <span className="text-sm">🪔</span>
                     </div>
                   </div>
                 </div>
 
                 {/* 3. Scroll Down Indicator (from mockup) */}
                 <a
-                  href="#signature-editions"
+                  href="#diwali-exclusives"
                   className="hidden xl:flex flex-col items-center gap-2 absolute -right-12 bottom-6 text-[#84766A] hover:text-[#5A1218] transition-colors group cursor-pointer"
                   aria-label="Scroll to collection"
                 >
                   <span className="text-[10px] uppercase tracking-[0.25em] [writing-mode:vertical-lr] font-medium text-[#8C6D58]">
-                    Scroll
+                    Diwali Offers
                   </span>
                   <ArrowDown className="w-3.5 h-3.5 text-[#5A1218] transition-transform duration-300 group-hover:translate-y-1" />
                 </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================
+          DIWALI GRAND FESTIVE SALE SPOTLIGHT (META ADS SPECIAL)
+         ======================================================== */}
+      <section id="diwali-exclusives" className="py-12 sm:py-16 bg-[#FFF5E6] border-b border-[#EADBC8] relative overflow-hidden scroll-mt-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 sm:mb-12">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#6E2023] text-[#FFF5E6] text-[11px] uppercase tracking-[0.22em] font-semibold rounded-full border border-[#FFD700]/30 shadow-xs mb-3">
+                <span>🪔</span>
+                <span>Diwali Festive Flash Sale • Limited Editions</span>
+              </div>
+              <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-[#6E2023] font-medium tracking-tight">
+                Diwali Marquee Gifting Exclusives
+              </h2>
+              <p className="text-sm sm:text-base text-[#84766A] mt-2 max-w-2xl font-light">
+                Curated especially for the Festival of Lights. Featuring 4-piece and 6-piece luxury dry-fruit servers, tiered crystal diamond knobs, and polished gold chevron platters at special festive prices.
+              </p>
+            </div>
+            <Link
+              href="/collections/diwali-sale"
+              className="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-semibold bg-[#6E2023] hover:bg-[#55181A] text-white px-5 py-3 rounded-xl transition-all shadow-md shrink-0"
+            >
+              <span>View All Diwali Offers</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+
+          {/* 3 Featured Meta Ads Campaign Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            {/* Card 1: 6-Pc Crystal Knobs Set */}
+            <div className="group bg-white border-2 border-[#EADBC8] hover:border-[#6E2023] rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col">
+              <Link
+                href="/product/diwali-meaningful-moments-6pc-crystal-server-tray"
+                className="relative aspect-4/3 w-full overflow-hidden block bg-[#252522]"
+              >
+                <Image
+                  src="https://res.cloudinary.com/pmip0yum/image/upload/v1792859135/vitrag/diwali_sale/fsb3z2rvcifain5ejhzf.jpg"
+                  alt="Designed for Meaningful Moments — 6-Piece Crystal Knobs Dry Fruit & Snack Server Tray"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+                <div className="absolute top-3 left-3 bg-[#6E2023] text-white text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-full shadow-md flex items-center gap-1">
+                  <span>🪔</span>
+                  <span>Diwali Special • 46% OFF</span>
+                </div>
+              </Link>
+              <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
+                <div>
+                  <div className="flex items-center justify-between text-[11px] text-[#84766A] uppercase tracking-wider font-medium mb-1">
+                    <span>6-Piece Tiered Server</span>
+                    <span className="text-[#2D6A4F] font-bold">In Stock</span>
+                  </div>
+                  <h3 className="font-heading text-lg text-[#6E2023] font-medium leading-snug line-clamp-2">
+                    <Link
+                      href="/product/diwali-meaningful-moments-6pc-crystal-server-tray"
+                      className="hover:underline"
+                    >
+                      Designed for Meaningful Moments — 6-Piece Crystal Knobs Server Tray
+                    </Link>
+                  </h3>
+                  <p className="text-xs text-[#84766A] mt-1.5 font-light line-clamp-2">
+                    Porcelain cube jars with faceted diamond-cut crystal knobs, sealed glass lids & clear gallery railing tray.
+                  </p>
+                </div>
+
+                <div className="pt-3 border-t border-[#EADBC8] flex items-center justify-between">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-xl font-heading font-bold text-[#6E2023]">
+                        ₹6,999
+                      </span>
+                      <span className="text-xs text-[#84766A] line-through">
+                        ₹12,999
+                      </span>
+                    </div>
+                    <span className="text-[10px] text-[#2D6A4F] font-semibold">
+                      Save ₹6,000 (46% Discount)
+                    </span>
+                  </div>
+                  <Link
+                    href="/product/diwali-meaningful-moments-6pc-crystal-server-tray"
+                    className="py-2.5 px-4 bg-[#6E2023] hover:bg-[#55181A] text-white text-xs uppercase tracking-wider font-semibold rounded-lg transition-all shadow-xs"
+                  >
+                    View &amp; Buy →
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 2: 6-Pc Petal Ceramic Set */}
+            <div className="group bg-white border-2 border-[#EADBC8] hover:border-[#6E2023] rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col">
+              <Link
+                href="/product/diwali-elevate-6pc-petal-ceramic-server-tray"
+                className="relative aspect-4/3 w-full overflow-hidden block bg-[#252522]"
+              >
+                <Image
+                  src="https://res.cloudinary.com/pmip0yum/image/upload/v1792859137/vitrag/diwali_sale/swmzszvftfbneu6g3nmb.jpg"
+                  alt="Elevate Everyday Living — 6-Piece Petal Ceramic Dry Fruit Server with Gold Handle"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+                <div className="absolute top-3 left-3 bg-[#6E2023] text-white text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-full shadow-md flex items-center gap-1">
+                  <span>🪔</span>
+                  <span>Diwali Special • 46% OFF</span>
+                </div>
+              </Link>
+              <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
+                <div>
+                  <div className="flex items-center justify-between text-[11px] text-[#84766A] uppercase tracking-wider font-medium mb-1">
+                    <span>6-Piece Petal Set</span>
+                    <span className="text-[#2D6A4F] font-bold">In Stock</span>
+                  </div>
+                  <h3 className="font-heading text-lg text-[#6E2023] font-medium leading-snug line-clamp-2">
+                    <Link
+                      href="/product/diwali-elevate-6pc-petal-ceramic-server-tray"
+                      className="hover:underline"
+                    >
+                      Elevate Everyday Living — 6-Piece Petal Server with Gold Handle
+                    </Link>
+                  </h3>
+                  <p className="text-xs text-[#84766A] mt-1.5 font-light line-clamp-2">
+                    Droplet petal-shaped ceramic bowls in a scalloped organizer tray with luxury polished gold center handle.
+                  </p>
+                </div>
+
+                <div className="pt-3 border-t border-[#EADBC8] flex items-center justify-between">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-xl font-heading font-bold text-[#6E2023]">
+                        ₹6,999
+                      </span>
+                      <span className="text-xs text-[#84766A] line-through">
+                        ₹12,999
+                      </span>
+                    </div>
+                    <span className="text-[10px] text-[#2D6A4F] font-semibold">
+                      Save ₹6,000 (46% Discount)
+                    </span>
+                  </div>
+                  <Link
+                    href="/product/diwali-elevate-6pc-petal-ceramic-server-tray"
+                    className="py-2.5 px-4 bg-[#6E2023] hover:bg-[#55181A] text-white text-xs uppercase tracking-wider font-semibold rounded-lg transition-all shadow-xs"
+                  >
+                    View &amp; Buy →
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 3: 4-Pc Glass Platter Set */}
+            <div className="group bg-white border-2 border-[#EADBC8] hover:border-[#6E2023] rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col">
+              <Link
+                href="/product/diwali-elevate-4pc-glass-serving-platter-gold-handles"
+                className="relative aspect-4/3 w-full overflow-hidden block bg-[#252522]"
+              >
+                <Image
+                  src="https://res.cloudinary.com/pmip0yum/image/upload/v1792859138/vitrag/diwali_sale/jtdjlo1lbxobu24uwmrp.jpg"
+                  alt="Elevate Everyday Living — 4-Piece Glass Serving Platter with Chevron Gold Handles"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+                <div className="absolute top-3 left-3 bg-[#6E2023] text-white text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-full shadow-md flex items-center gap-1">
+                  <span>🪔</span>
+                  <span>Diwali Special • 41% OFF</span>
+                </div>
+              </Link>
+              <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
+                <div>
+                  <div className="flex items-center justify-between text-[11px] text-[#84766A] uppercase tracking-wider font-medium mb-1">
+                    <span>4-Piece Covered Platter</span>
+                    <span className="text-[#2D6A4F] font-bold">In Stock</span>
+                  </div>
+                  <h3 className="font-heading text-lg text-[#6E2023] font-medium leading-snug line-clamp-2">
+                    <Link
+                      href="/product/diwali-elevate-4pc-glass-serving-platter-gold-handles"
+                      className="hover:underline"
+                    >
+                      Elevate Everyday Living — 4-Piece Glass Platter with Chevron Gold Handles
+                    </Link>
+                  </h3>
+                  <p className="text-xs text-[#84766A] mt-1.5 font-light line-clamp-2">
+                    High-clarity rectangular covered glass dishes arranged along an elongated platter with chevron gold handles.
+                  </p>
+                </div>
+
+                <div className="pt-3 border-t border-[#EADBC8] flex items-center justify-between">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-xl font-heading font-bold text-[#6E2023]">
+                        ₹6,499
+                      </span>
+                      <span className="text-xs text-[#84766A] line-through">
+                        ₹10,999
+                      </span>
+                    </div>
+                    <span className="text-[10px] text-[#2D6A4F] font-semibold">
+                      Save ₹4,500 (41% Discount)
+                    </span>
+                  </div>
+                  <Link
+                    href="/product/diwali-elevate-4pc-glass-serving-platter-gold-handles"
+                    className="py-2.5 px-4 bg-[#6E2023] hover:bg-[#55181A] text-white text-xs uppercase tracking-wider font-semibold rounded-lg transition-all shadow-xs"
+                  >
+                    View &amp; Buy →
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

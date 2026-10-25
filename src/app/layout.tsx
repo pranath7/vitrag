@@ -88,6 +88,9 @@ export default function RootLayout({
       className={`${cormorant.variable} ${inter.variable} h-full antialiased overflow-x-hidden`}
     >
       <head>
+        {/* Preconnect to critical image CDN for fast mobile LCP */}
+        <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://res.cloudinary.com" />
         {/* Google Tag Manager */}
         <Script
           id="google-tag-manager"

@@ -66,7 +66,7 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
       </Container>
       <Suspense
         fallback={
-          <div className="py-20 text-center text-xs uppercase tracking-widest text-[#8B8176]">
+          <div className="py-20 text-center text-xs uppercase tracking-widest text-[#54483E]">
             Loading {collection.name}...
           </div>
         }

@@ -15,7 +15,7 @@ export function Badge({
     burgundy: "bg-[#6E2023] text-white",
     champagne: "bg-[#CBAE9B] text-[#6E2023] font-semibold",
     rose: "bg-[#E8C5C8] text-[#6E2023] font-semibold",
-    outline: "border border-[#EADBC8] text-[#84766A] bg-white/80",
+    outline: "border border-[#EADBC8] text-[#54483E] bg-white/80",
     charcoal: "bg-[#252522] text-white",
   };
 

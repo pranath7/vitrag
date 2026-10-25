@@ -121,7 +121,7 @@ export function Header() {
                   <span className="font-heading text-xl sm:text-2xl md:text-2xl tracking-[0.08em] font-normal text-[#6E2023] group-hover:text-[#55181A] transition-colors block leading-none">
                     Vitrag
                   </span>
-                  <span className="block text-[8px] sm:text-[9px] uppercase tracking-[0.28em] text-[#84766A] mt-1 font-sans font-medium">
+                  <span className="block text-[8px] sm:text-[9px] uppercase tracking-[0.28em] text-[#54483E] mt-1 font-sans font-medium">
                     Fine Living
                   </span>
                 </div>
@@ -138,7 +138,7 @@ export function Header() {
               >
                 <span>🪔</span>
                 <span>Diwali Sale</span>
-                <span className="bg-[#FFD700] text-[#6E2023] text-[9px] px-1 py-0.2 rounded-full font-bold">50% OFF</span>
+                <span className="bg-[#FFD700] text-[#6E2023] text-[9px] px-1 py-0.2 rounded-full font-bold">70% OFF</span>
               </Link>
               <Link
                 href="/shop"
@@ -287,7 +287,7 @@ export function Header() {
                   autoFocus
                   className="w-full text-[16px] sm:text-sm pl-9 pr-24 py-2.5 bg-white/90 backdrop-blur-md border border-[#EADBC8] rounded-lg focus:outline-none focus:border-[#6E2023] shadow-inner"
                 />
-                <Search className="w-4 h-4 text-[#84766A] absolute left-3 top-1/2 -translate-y-1/2" />
+                <Search className="w-4 h-4 text-[#54483E] absolute left-3 top-1/2 -translate-y-1/2" />
                 <button
                   type="submit"
                   className="absolute right-1.5 top-1/2 -translate-y-1/2 text-xs uppercase tracking-wider bg-[#6E2023] text-white px-3.5 py-1.5 font-medium rounded-md hover:bg-[#55181A]"
@@ -332,14 +332,14 @@ export function Header() {
                     <span className="font-heading text-xl tracking-[0.2em] uppercase font-semibold text-[#6E2023] block leading-none group-hover:text-[#55181A] transition-colors">
                       VITRAG
                     </span>
-                    <span className="block text-[8px] uppercase tracking-[0.22em] text-[#84766A] mt-1 font-sans">
+                    <span className="block text-[8px] uppercase tracking-[0.22em] text-[#54483E] mt-1 font-sans">
                       Tableware &amp; Gifting
                     </span>
                   </div>
                 </Link>
                 <button
                   onClick={() => setMobileMenuOpen(false)}
-                  className="p-1 text-[#84766A] hover:text-[#6E2023]"
+                  className="p-1 text-[#54483E] hover:text-[#6E2023]"
                   aria-label="Close menu"
                 >
                   <X className="w-5 h-5" />
@@ -379,7 +379,7 @@ export function Header() {
                     <span>Diwali Grand Sale</span>
                   </div>
                   <span className="bg-[#FFD700] text-[#6E2023] text-[10px] px-2 py-0.5 rounded-full font-bold">
-                    UP TO 50% OFF
+                    UP TO 70% OFF
                   </span>
                 </Link>
 
@@ -464,14 +464,14 @@ export function Header() {
 
               <a
                 href={`mailto:${siteConfig.contact.email}`}
-                className="flex items-center gap-2 text-xs tracking-wider text-[#84766A] hover:text-[#6E2023]"
+                className="flex items-center gap-2 text-xs tracking-wider text-[#54483E] hover:text-[#6E2023]"
                 title="Email Concierge"
               >
-                <Mail className="w-3.5 h-3.5 text-[#84766A]" />
+                <Mail className="w-3.5 h-3.5 text-[#54483E]" />
                 <span>{siteConfig.contact.email}</span>
               </a>
 
-              <p className="text-[10px] text-[#84766A]/80 pt-1">
+              <p className="text-[10px] text-[#54483E] pt-1 font-medium">
                 Chennai, Tamil Nadu, India • Pan-India Delivery
               </p>
             </div>

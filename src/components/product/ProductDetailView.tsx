@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Product, ProductVariant } from "@/lib/types";
 import { formatPrice, generateWhatsAppProductEnquiryUrl } from "@/lib/utils";
+import { siteConfig } from "@/lib/config";
 import { useCart } from "@/context/CartContext";
 import { isProductDeleted, getAdminProducts } from "@/lib/adminStorage";
 import {
@@ -92,7 +93,8 @@ export function ProductDetailView({
     product.name,
     product.sku,
     currentPrice,
-    typeof window !== "undefined" ? window.location.href : undefined
+    typeof window !== "undefined" ? window.location.href : undefined,
+    selectedVariant?.name
   );
 
   const [isDeleted, setIsDeleted] = useState(false);
@@ -133,7 +135,7 @@ export function ProductDetailView({
         <h2 className="font-heading text-3xl text-[#6E2023] font-medium">
           Piece Archived
         </h2>
-        <p className="text-xs text-[#84766A] leading-relaxed font-light">
+        <p className="text-xs text-[#54483E] leading-relaxed font-light">
           This product has been removed from the current catalog by our showroom curation desk.
         </p>
         <div className="pt-2">
@@ -163,7 +165,8 @@ export function ProductDetailView({
                   fill
                   className="object-contain"
                   sizes="(max-width: 1024px) 100vw, 55vw"
-                  priority
+                  priority={activeImageIndex === 0}
+                  fetchPriority={activeImageIndex === 0 ? "high" : "auto"}
                 />
               </div>
             ) : (
@@ -223,7 +226,7 @@ export function ProductDetailView({
         {/* Right Column: Purchasing & Specifications */}
         <div className="lg:col-span-5 flex flex-col justify-start space-y-6">
           <div>
-            <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-[#84766A] mb-2 font-medium">
+            <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-[#54483E] mb-2 font-medium">
               <span>{product.category}</span>
               <span>•</span>
               <span>SKU: {selectedVariant?.sku || product.sku}</span>
@@ -233,7 +236,7 @@ export function ProductDetailView({
               {product.name}
             </h1>
 
-            <p className="text-sm text-[#84766A] mt-2 font-light leading-relaxed">
+            <p className="text-sm text-[#54483E] mt-2 font-light leading-relaxed">
               {product.shortDescription}
             </p>
 
@@ -246,7 +249,7 @@ export function ProductDetailView({
                       ₹{(currentPrice / 100).toLocaleString("en-IN")}
                     </span>
                     {currentCompareAtPrice && currentCompareAtPrice > currentPrice && (
-                      <span className="text-base sm:text-lg text-[#84766A] line-through font-light">
+                      <span className="text-base sm:text-lg text-[#54483E] line-through font-light">
                         ₹{(currentCompareAtPrice / 100).toLocaleString("en-IN")}
                       </span>
                     )}
@@ -269,8 +272,8 @@ export function ProductDetailView({
                     </div>
                   )}
 
-                  <p className="text-[11px] text-[#84766A] font-light">
-                    MRP includes all taxes • Free Pan-India Insured Express Delivery
+                  <p className="text-[11px] text-[#54483E] font-medium">
+                    MRP includes all taxes • {siteConfig.shipping.deliveryPromiseNeutral}
                   </p>
                 </>
               ) : (
@@ -281,7 +284,7 @@ export function ProductDetailView({
                     </span>
                     <span className="text-[10px] text-[#6E2023]/70">• Direct Showroom Quote</span>
                   </div>
-                  <p className="text-xs text-[#84766A] font-light pt-1">
+                  <p className="text-xs text-[#54483E] font-light pt-1">
                     Enquire via WhatsApp for custom piece counts, personalization, and verified pricing.
                   </p>
                 </div>
@@ -306,7 +309,7 @@ export function ProductDetailView({
                   <h4 className="text-sm font-heading font-bold text-[#6E2023] mt-1">
                     Free 6-Piece Luxury Crystal Glass Set (Worth ₹2,999)
                   </h4>
-                  <p className="text-xs text-[#84766A] font-light mt-0.5 leading-relaxed">
+                  <p className="text-xs text-[#54483E] font-light mt-0.5 leading-relaxed">
                     Purchase this item today and receive a complimentary 6-piece crystal drinking glasses set automatically packed with your order!
                   </p>
                 </div>
@@ -370,7 +373,7 @@ export function ProductDetailView({
                           )}
                         </div>
                         <div className="flex items-center justify-between mt-1 text-[11px]">
-                          <p className="text-[#84766A] font-light">
+                          <p className="text-[#54483E] font-medium">
                             {variant.stockQuantity > 0
                               ? `✓ In Stock (${variant.stockQuantity} ready to ship)`
                               : "Showroom Quote"}
@@ -394,8 +397,8 @@ export function ProductDetailView({
                   </div>
                   <div>
                     <p className="font-semibold text-[#6E2023]">Standard Artisan Edition</p>
-                    <p className="text-[11px] text-[#84766A]">
-                      Full piece curation • Pan-India insured dispatch
+                    <p className="text-[11px] text-[#54483E]">
+                      Full piece curation • {siteConfig.shipping.deliveryPromiseNeutral}
                     </p>
                   </div>
                 </div>
@@ -470,14 +473,14 @@ export function ProductDetailView({
           </div>
 
           {/* Service Promises */}
-          <div className="p-4 bg-white border border-[#EADBC8] rounded-xl space-y-2.5 text-xs text-[#84766A]">
+          <div className="p-4 bg-white border border-[#EADBC8] rounded-xl space-y-2.5 text-xs text-[#54483E]">
             <div className="flex items-center gap-2.5">
               <ShieldCheck className="w-4 h-4 text-[#6E2023] shrink-0" />
               <span>Transit Breakage Guarantee: Free immediate replacement if damaged.</span>
             </div>
             <div className="flex items-center gap-2.5">
               <Truck className="w-4 h-4 text-[#6E2023] shrink-0" />
-              <span>Pan-India insured shipping with tracking. Local Chennai dispatch in 24h.</span>
+              <span>{siteConfig.shipping.deliveryTimelineEstimate}. {siteConfig.shipping.deliveryChennai}.</span>
             </div>
             <div className="flex items-center gap-2.5">
               <Sparkles className="w-4 h-4 text-[#6E2023] shrink-0" />
@@ -530,19 +533,19 @@ export function ProductDetailView({
                 <div className="mt-3 space-y-2 text-xs text-[#252522]/85 font-light">
                   {product.pieceCount && (
                     <div className="flex justify-between py-1 border-b border-[#FFF5E6]">
-                      <span className="text-[#84766A]">Total Pieces:</span>
+                      <span className="text-[#54483E]">Total Pieces:</span>
                       <span className="font-medium">{product.pieceCount} Piece Set</span>
                     </div>
                   )}
                   {product.material && (
                     <div className="flex justify-between py-1 border-b border-[#FFF5E6]">
-                      <span className="text-[#84766A]">Material & Finish:</span>
+                      <span className="text-[#54483E]">Material & Finish:</span>
                       <span className="font-medium">{product.material}</span>
                     </div>
                   )}
                   {product.dimensions && (
                     <div className="flex justify-between py-1 border-b border-[#FFF5E6]">
-                      <span className="text-[#84766A]">Dimensions:</span>
+                      <span className="text-[#54483E]">Dimensions:</span>
                       <span className="font-medium text-right max-w-xs">{product.dimensions}</span>
                     </div>
                   )}
@@ -593,10 +596,10 @@ export function ProductDetailView({
               {openSections.shipping && (
                 <div className="mt-3 text-xs sm:text-sm text-[#252522]/85 space-y-2 font-light">
                   <p>
-                    <strong>Delivery:</strong> 2–4 business days within Tamil Nadu; 4–7 business days across other Indian states.
+                    <strong>Delivery:</strong> {siteConfig.shipping.deliveryTimelineEstimate}. {siteConfig.shipping.deliveryChennai}.
                   </p>
                   <p>
-                    <strong>Returns:</strong> 7-day hassle-free return window for unused items in original packaging. Immediate zero-cost replacement for transit breakage.
+                    <strong>Returns:</strong> 7-day hassle-free return window for unused items in original packaging. Immediate zero-cost replacement for transit breakage with unboxing video proof.
                   </p>
                 </div>
               )}
@@ -637,7 +640,7 @@ export function ProductDetailView({
                 <p className="text-xs font-bold text-[#2D6A4F] uppercase tracking-wider">
                   Added to Shopping Bag
                 </p>
-                <p className="text-[11px] text-[#84766A]">
+                <p className="text-[11px] text-[#54483E]">
                   Quantity: {quantity} • {selectedVariant ? selectedVariant.name : "Standard Edition"}
                 </p>
               </div>
@@ -645,7 +648,7 @@ export function ProductDetailView({
             <button
               type="button"
               onClick={() => setShowToast(false)}
-              className="p-1 text-[#84766A] hover:text-[#6E2023] rounded-md transition-colors"
+              className="p-1 text-[#54483E] hover:text-[#6E2023] rounded-md transition-colors"
               aria-label="Dismiss notification"
             >
               <X className="w-4 h-4" />
@@ -702,7 +705,7 @@ export function ProductDetailView({
           <p className="text-xs font-bold text-[#6E2023] truncate leading-tight">
             {product.name}
           </p>
-          <p className="text-[10px] text-[#84766A] truncate">
+          <p className="text-[10px] text-[#54483E] truncate font-medium">
             {selectedVariant ? selectedVariant.name : "Artisan Edition"} • Qty: {quantity}
           </p>
         </div>

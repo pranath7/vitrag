@@ -6,6 +6,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useCart } from "@/context/CartContext";
 import { formatPrice, generateWhatsAppOrderUrl } from "@/lib/utils";
+import { siteConfig } from "@/lib/config";
 import { X, Plus, Minus, Trash2, ShoppingBag, ArrowRight, MessageSquare, Gift } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { ProductArtwork } from "@/components/product/ProductArtwork";
@@ -66,7 +67,7 @@ export function SlideOverCart() {
             </Link>
             <button
               onClick={closeCart}
-              className="p-2 text-[#84766A] hover:text-[#6E2023] transition-colors focus:outline-none"
+              className="p-2 text-[#54483E] hover:text-[#6E2023] transition-colors focus:outline-none"
               aria-label="Close cart"
             >
               <X className="w-5 h-5" />
@@ -83,7 +84,7 @@ export function SlideOverCart() {
                 <h3 className="font-heading text-2xl text-[#6E2023] mb-2 font-medium">
                   Your bag is empty
                 </h3>
-                <p className="text-sm text-[#84766A] max-w-xs mb-8 font-light">
+                <p className="text-sm text-[#54483E] max-w-xs mb-8 font-light">
                   Discover our thoughtfully curated collection of dinnerware, serving essentials, and festive gifts.
                 </p>
                 <div className="space-y-3 w-full">
@@ -121,12 +122,12 @@ export function SlideOverCart() {
                         6-Piece Crystal Glasses Set
                       </span>
                     </div>
-                    <p className="text-[11px] text-[#84766A] mt-0.5 font-light">
+                    <p className="text-[11px] text-[#54483E] mt-0.5 font-light">
                       Complimentary Diwali Festive Gift (Qty: 1)
                     </p>
                   </div>
                   <div className="text-right shrink-0">
-                    <span className="text-xs text-[#84766A] line-through block">₹2,999</span>
+                    <span className="text-xs text-[#54483E] line-through block">₹2,999</span>
                     <span className="text-xs font-bold text-[#2D6A4F]">FREE</span>
                   </div>
                 </div>
@@ -156,7 +157,7 @@ export function SlideOverCart() {
                           </Link>
                           <button
                             onClick={() => removeItem(item.id)}
-                            className="text-[#84766A] hover:text-[#6E2023] p-1 transition-colors"
+                            className="text-[#54483E] hover:text-[#6E2023] p-1 transition-colors"
                             aria-label="Remove item"
                           >
                             <Trash2 className="w-3.5 h-3.5" />
@@ -164,7 +165,7 @@ export function SlideOverCart() {
                         </div>
 
                         {item.variantName && (
-                          <p className="text-xs text-[#84766A] mt-0.5">
+                          <p className="text-xs text-[#54483E] mt-0.5">
                             Variant: {item.variantName}
                           </p>
                         )}
@@ -202,7 +203,7 @@ export function SlideOverCart() {
                           </button>
                         </div>
 
-                        <span className="text-xs text-[#84766A]">
+                        <span className="text-xs text-[#54483E]">
                           {item.quantity} {item.quantity === 1 ? "piece" : "pieces"}
                         </span>
                       </div>
@@ -221,7 +222,7 @@ export function SlideOverCart() {
                 <p className="text-[#6E2023] font-semibold flex items-center gap-1.5">
                   <span>✓</span> Direct Showroom Concierge &amp; Order Dispatch
                 </p>
-                <p className="text-[11px] text-[#84766A]">
+                <p className="text-[11px] text-[#54483E]">
                   Pricing and courier details confirmed directly with our showroom team on WhatsApp.
                 </p>
               </div>
@@ -233,19 +234,19 @@ export function SlideOverCart() {
                     <span>₹{(subtotalPaise / 100).toLocaleString("en-IN")}</span>
                   </div>
                 )}
-                <div className="flex justify-between text-xs text-[#84766A]">
+                <div className="flex justify-between text-xs text-[#54483E]">
                   <span>Items Selected</span>
                   <span className="text-[#6E2023] font-semibold">
                     {items.reduce((a, b) => a + b.quantity, 0)} pieces + 6-Pc Glasses (Free)
                   </span>
                 </div>
-                <div className="flex justify-between text-xs text-[#84766A]">
+                <div className="flex justify-between text-xs text-[#54483E]">
                   <span>Festive Bundle Bonus</span>
                   <span className="text-[#2D6A4F] font-bold">6-Pc Glasses Free (₹0)</span>
                 </div>
-                <div className="flex justify-between text-xs text-[#84766A]">
+                <div className="flex justify-between text-xs text-[#54483E]">
                   <span>Delivery Estimate</span>
-                  <span className="text-[#25D366] font-semibold">3–5 Business Days (Insured)</span>
+                  <span className="text-[#2D6A4F] font-semibold">{siteConfig.shipping.deliveryTimelineShort}</span>
                 </div>
               </div>
 
@@ -276,7 +277,7 @@ export function SlideOverCart() {
                   className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#25D366] hover:bg-[#20ba59] text-white text-xs uppercase tracking-widest font-semibold transition-all rounded-lg shadow-sm active:scale-[0.99]"
                 >
                   <MessageSquare className="w-4 h-4 fill-white" />
-                  Order via WhatsApp (6369142027)
+                  Order via WhatsApp ({siteConfig.contact.displayPhone})
                 </a>
 
                 <Button
@@ -292,7 +293,7 @@ export function SlideOverCart() {
                 <Link
                   href="/cart"
                   onClick={closeCart}
-                  className="block text-center text-xs tracking-wider uppercase text-[#84766A] hover:text-[#6E2023] py-1 transition-colors"
+                  className="block text-center text-xs tracking-wider uppercase text-[#54483E] hover:text-[#6E2023] py-1 transition-colors font-medium"
                 >
                   View Full Cart Details
                 </Link>

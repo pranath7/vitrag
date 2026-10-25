@@ -34,6 +34,10 @@ export const siteConfig = {
     freeShippingThresholdDisplay: "₹4,000",
     standardDeliveryFeePaise: 19900, // ₹199
     deliveryTime: "3–5 Days",
+    deliveryPromiseNeutral: "Pan-India delivery available",
+    deliveryTimelineEstimate: "Pan-India delivery available • Timeline confirmed upon pincode (Typically 3–5 business days)",
+    deliveryTimelineShort: "3–5 Business Days (Insured)",
+    deliveryChennai: "Local Chennai dispatch within 24–48 hours",
     unboxingVideoMandatory: true,
   },
 

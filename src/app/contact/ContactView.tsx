@@ -66,7 +66,7 @@ export function ContactView() {
         <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl text-[#6E2023] font-medium">
           Visit Us in Chennai
         </h1>
-        <p className="text-base text-[#84766A] font-light max-w-xl mx-auto leading-relaxed">
+        <p className="text-base text-[#54483E] font-light max-w-xl mx-auto leading-relaxed">
           Experience our tactile glazes, examine porcelain weight, and consult with our table styling specialists in person.
         </p>
       </div>
@@ -97,7 +97,7 @@ export function ContactView() {
                     Visiting Hours
                   </strong>
                   <span>{siteConfig.contact.hours}</span>
-                  <span className="block text-[11px] text-[#84766A] mt-0.5">
+                  <span className="block text-[11px] text-[#54483E] mt-0.5">
                     Sunday by prior appointment only
                   </span>
                 </div>
@@ -117,7 +117,7 @@ export function ContactView() {
                     >
                       {siteConfig.contact.displayPhone}
                     </a>
-                    <span className="text-[#84766A]">•</span>
+                    <span className="text-[#54483E]">•</span>
                     <a
                       href={`https://wa.me/${siteConfig.contact.whatsappNumber}`}
                       target="_blank"
@@ -188,8 +188,8 @@ export function ContactView() {
               <h2 className="font-heading text-3xl text-[#6E2023] font-medium">
                 Message Sent
               </h2>
-              <p className="text-xs text-[#84766A] max-w-md mx-auto leading-relaxed font-light">
-                Thank you, {formData.name}. Your message has been sent to our concierge desk on WhatsApp (6369142027). We will respond promptly.
+              <p className="text-xs text-[#54483E] max-w-md mx-auto leading-relaxed font-light">
+                Thank you, {formData.name}. Your message has been sent to our concierge desk on WhatsApp ({siteConfig.contact.displayPhone}). We will respond promptly.
               </p>
               <Button
                 onClick={() => setSubmitted(false)}
@@ -205,7 +205,7 @@ export function ContactView() {
                 <h2 className="font-heading text-2xl text-[#6E2023] font-medium">
                   Send an Enquiry
                 </h2>
-                <p className="text-xs text-[#84766A] mt-1 font-light">
+                <p className="text-xs text-[#54483E] mt-1 font-light">
                   Have a question regarding custom dinner sets, packaging, or store visits? Reach out below.
                 </p>
               </div>

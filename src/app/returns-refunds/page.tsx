@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 function Breadcrumb() {
   return (
     <nav aria-label="Breadcrumb" className="mb-8">
-      <ol className="flex items-center gap-2 text-sm text-[#8B8176]">
+      <ol className="flex items-center gap-2 text-sm text-[#54483E]">
         <li>
           <Link
             href="/"
@@ -59,7 +59,7 @@ export default function ReturnsRefundsPage() {
           <h1 className="font-heading text-4xl text-[#252522] sm:text-5xl">
             Returns &amp; Refunds
           </h1>
-          <p className="mt-4 text-sm text-[#8B8176]">
+          <p className="mt-4 text-sm text-[#54483E]">
             Last updated: October 2026
           </p>
           <p className="mt-4 text-base leading-relaxed text-[#252522]/80 sm:text-lg">
@@ -166,7 +166,7 @@ export default function ReturnsRefundsPage() {
                 avoid damage during return transit
               </li>
             </ol>
-            <p className="text-sm text-[#8B8176]">
+            <p className="text-sm text-[#54483E]">
               Return shipping costs may be borne by the customer unless the
               return is due to a defective or incorrect item sent by us.
             </p>

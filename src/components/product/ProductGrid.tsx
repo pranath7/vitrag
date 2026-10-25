@@ -187,7 +187,7 @@ export function ProductGrid({
             {title}
           </h1>
           {description && (
-            <p className="mt-3 text-sm sm:text-base text-[#84766A] max-w-2xl font-light leading-relaxed">
+            <p className="mt-3 text-sm sm:text-base text-[#54483E] max-w-2xl font-light leading-relaxed">
               {description}
             </p>
           )}
@@ -208,13 +208,13 @@ export function ProductGrid({
                 <span className="w-2 h-2 rounded-full bg-[#6E2023]" />
               )}
             </button>
-            <span className="text-xs uppercase tracking-wider text-[#8B8176]">
+            <span className="text-xs uppercase tracking-wider text-[#54483E]">
               Showing <span className="font-semibold text-[#252522]">{filteredProducts.length}</span> Pieces
             </span>
           </div>
 
           <div className="flex items-center gap-2">
-            <label htmlFor="sort-select" className="hidden sm:inline-block text-xs uppercase tracking-wider text-[#8B8176]">
+            <label htmlFor="sort-select" className="hidden sm:inline-block text-xs uppercase tracking-wider text-[#54483E]">
               Sort By:
             </label>
             <div className="relative">
@@ -227,7 +227,7 @@ export function ProductGrid({
                 <option value="featured">Curated (Featured)</option>
                 <option value="name-asc">Alphabetical: A to Z</option>
               </select>
-              <ArrowUpDown className="w-3 h-3 text-[#8B8176] absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <ArrowUpDown className="w-3 h-3 text-[#54483E] absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
             </div>
           </div>
         </div>
@@ -256,7 +256,7 @@ export function ProductGrid({
             {/* Collection Filter */}
             {!currentCollectionId && (
               <div className="space-y-3">
-                <h4 className="text-xs uppercase tracking-widest text-[#8B8176] font-semibold">
+                <h4 className="text-xs uppercase tracking-widest text-[#54483E] font-semibold">
                   Collections
                 </h4>
                 <div className="space-y-2 text-xs">
@@ -307,7 +307,7 @@ export function ProductGrid({
                 <h3 className="font-heading text-2xl text-[#252522]">
                   No pieces matched your selection
                 </h3>
-                <p className="text-xs text-[#8B8176] max-w-sm mx-auto font-light">
+                <p className="text-xs text-[#54483E] max-w-sm mx-auto font-light">
                   Try clearing active price or category filters to explore our full tableware range.
                 </p>
                 <Button onClick={resetFilters} variant="primary" size="sm">
@@ -340,7 +340,7 @@ export function ProductGrid({
                 </h3>
                 <button
                   onClick={() => setMobileFilterOpen(false)}
-                  className="p-1 text-[#8B8176] hover:text-[#6E2023]"
+                  className="p-1 text-[#54483E] hover:text-[#6E2023]"
                   aria-label="Close filters"
                 >
                   <X className="w-5 h-5" />
@@ -402,7 +402,7 @@ export function ProductGrid({
               </Button>
               <button
                 onClick={resetFilters}
-                className="w-full text-center text-xs uppercase tracking-wider text-[#8B8176] hover:text-[#6E2023] py-2 font-medium"
+                className="w-full text-center text-xs uppercase tracking-wider text-[#54483E] hover:text-[#6E2023] py-2 font-medium"
               >
                 Reset All Filters
               </button>

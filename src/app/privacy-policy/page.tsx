@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 function Breadcrumb() {
   return (
     <nav aria-label="Breadcrumb" className="mb-8">
-      <ol className="flex items-center gap-2 text-sm text-[#8B8176]">
+      <ol className="flex items-center gap-2 text-sm text-[#54483E]">
         <li>
           <Link
             href="/"
@@ -59,7 +59,7 @@ export default function PrivacyPolicyPage() {
           <h1 className="font-heading text-4xl text-[#252522] sm:text-5xl">
             Privacy Policy
           </h1>
-          <p className="mt-4 text-sm text-[#8B8176]">
+          <p className="mt-4 text-sm text-[#54483E]">
             Last updated: October 2026
           </p>
           <p className="mt-4 text-base leading-relaxed text-[#252522]/80 sm:text-lg">
@@ -380,7 +380,7 @@ export default function PrivacyPolicyPage() {
                 <li>Address: Patni Plaza, Shop No. 3, NSC Bose Road, Sowcarpet, Chennai, Tamil Nadu 600001</li>
               </ul>
             </div>
-            <p className="text-sm text-[#8B8176]">
+            <p className="text-sm text-[#54483E]">
               For grievance redressal under the Information Technology Act, 2000,
               please direct your communication to the email address above with
               the subject line &quot;Privacy Grievance.&quot;

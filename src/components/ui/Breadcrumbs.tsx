@@ -10,7 +10,7 @@ export interface BreadcrumbItem {
 export function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
   return (
     <nav aria-label="Breadcrumb" className="py-4">
-      <ol className="flex flex-wrap items-center gap-1.5 text-xs tracking-wider uppercase text-[#8B8176]">
+      <ol className="flex flex-wrap items-center gap-1.5 text-xs tracking-wider uppercase text-[#54483E]">
         <li>
           <Link href="/" className="transition-colors hover:text-[#6E2023]">
             Home
@@ -21,7 +21,7 @@ export function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
           return (
             <React.Fragment key={index}>
               <li aria-hidden="true" className="select-none">
-                <ChevronRight className="w-3 h-3 text-[#8B8176]/50" />
+                <ChevronRight className="w-3 h-3 text-[#54483E]/60" />
               </li>
               <li>
                 {isLast || !item.href ? (

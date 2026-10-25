@@ -7,11 +7,11 @@ export const collections: Collection[] = [
     name: "Diwali Grand Sale",
     shortName: "Diwali Sale",
     description:
-      "Exclusive Diwali Festive Offers — Up to 50% Off Luxury Dry Fruit Servers, Tiered Crystal Sets & Glass Platters. Ready for festive gifting.",
+      "Exclusive Diwali Festive Offers — Up to 70% Off Luxury Dry Fruit Servers, Tiered Crystal Sets & Glass Platters. Ready for festive gifting.",
     image: "https://res.cloudinary.com/pmip0yum/image/upload/v1792859135/vitrag/diwali_sale/fsb3z2rvcifain5ejhzf.jpg",
     seoTitle: "Diwali Festive Sale — Luxury Dry Fruit Servers & Tableware | VITRAG",
     seoDescription:
-      "Shop limited-edition 4-piece and 6-piece dry fruit trays and crystal servers on Diwali Sale starting at ₹6,499. Complimentary pan-India dispatch.",
+      "Shop limited-edition 4-piece and 6-piece dry fruit trays and crystal servers on Diwali Sale. Complimentary pan-India dispatch and signature festive packaging.",
   },
   {
     id: "signature-editions",
@@ -61,6 +61,42 @@ export const collections: Collection[] = [
     seoDescription:
       "Exquisite dry-fruit gift boxes crafted in solid wood, brass, and enamel. Ideal for Diwali, weddings, and corporate gifting.",
   },
+  {
+    id: "gift-sets",
+    slug: "gift-sets",
+    name: "Curated Gift Sets",
+    shortName: "Gift Sets",
+    description:
+      "Thoughtfully packaged luxury gift hampers combining dining essentials, artisanal trays, and festive tableware for housewarmings and milestones.",
+    image: "https://res.cloudinary.com/pmip0yum/image/upload/v1792840536/vitrag/categories/u108qh4mrzwmk5frkpwx.jpg",
+    seoTitle: "Curated Tableware Gift Sets & Hampers | VITRAG",
+    seoDescription:
+      "Discover beautifully packaged tableware gift sets for housewarmings, anniversaries, and festive celebrations.",
+  },
+  {
+    id: "wedding-gifts",
+    slug: "wedding-gifts",
+    name: "Wedding & Trousseau Gifts",
+    shortName: "Wedding Gifting",
+    description:
+      "Opulent 24K gold-accented dinner sets, grand banquet services, and bespoke trousseau dining collections for newlyweds.",
+    image: "https://res.cloudinary.com/pmip0yum/image/upload/v1792840534/vitrag/categories/flvbxuosczgcuepmxcmn.jpg",
+    seoTitle: "Luxury Wedding Tableware & Trousseau Gifts | VITRAG",
+    seoDescription:
+      "Bespoke wedding gifts and bridal dinner sets handcrafted with luxury presentation for weddings across India.",
+  },
+  {
+    id: "mugs-cups",
+    slug: "mugs-cups",
+    name: "Mugs, Cups & Teaware",
+    shortName: "Teaware & Barware",
+    description:
+      "Hand-finished stoneware cups, emerald camellia teaware, and cut-crystal glassware for daily rituals and celebratory pours.",
+    image: "https://res.cloudinary.com/pmip0yum/image/upload/v1792840533/vitrag/products/n5hycyxmhehrdwjdmtbw.png",
+    seoTitle: "Artisanal Ceramic Cups, Teaware & Crystal Glassware | VITRAG",
+    seoDescription:
+      "Shop handcrafted studio pottery tea cup and saucer sets and luxury lead-free crystal glassware.",
+  },
 ];
 
 export const products: Product[] = [
@@ -73,10 +109,10 @@ export const products: Product[] = [
     description:
       "Designed for Meaningful Moments — celebrate the Festival of Lights with VITRAG's marquee 6-piece luxury snack and dry fruit server. Featuring 6 individual pristine white porcelain jars topped with brilliant diamond-cut crystal knobs and airtight glass lids, resting within an elevated transparent acrylic gallery railing tray. Ideal for serving premium almonds, cashews, chocolate pearls, apricots, walnuts, and festive Diwali confections. Delivered in luxury presentation gift packaging.",
     category: "Dry Fruit Boxes",
-    collectionIds: ["diwali-sale", "dry-fruit-boxes", "signature-editions"],
+    collectionIds: ["diwali-sale", "dry-fruit-boxes", "signature-editions", "gift-sets"],
     sku: "VIT-DWL-01-CRY6",
-    price: 699900, // ₹6,999 (Discounted Diwali Price)
-    compareAtPrice: 1299900, // ₹12,999 (MRP)
+    price: 849900, // ₹8,499 (Discounted Diwali Price - 70% Off)
+    compareAtPrice: 2849900, // ₹28,499 (MRP)
     currency: "INR",
     images: [
       {
@@ -88,8 +124,8 @@ export const products: Product[] = [
       {
         id: "dwl-crystal-6pc-box",
         name: "6-Piece Tiered Crystal Server Tray (Festive Gift Box)",
-        price: 699900,
-        compareAtPrice: 1299900,
+        price: 849900,
+        compareAtPrice: 2849900,
         sku: "VIT-DWL-01-CRY6-SET",
         stockQuantity: 35,
         availability: "in-stock",
@@ -109,7 +145,7 @@ export const products: Product[] = [
       "Dry Fruit Box",
       "Festive Gifting",
       "Bestseller",
-      "46% Off",
+      "70% Off",
     ],
     featured: true,
     bestseller: true,
@@ -118,7 +154,7 @@ export const products: Product[] = [
     availability: "in-stock",
     seoTitle: "6 Pcs Crystal Knobs Dry Fruit & Snack Server Tray | Diwali Sale | VITRAG",
     seoDescription:
-      "Shop the marquee VITRAG 6-piece crystal knobs dry fruit & snack server tray on Diwali sale for ₹6,999 (MRP ₹12,999). Luxury festive packaging and pan-India delivery.",
+      "Shop the marquee VITRAG 6-piece crystal knobs dry fruit & snack server tray on Diwali festive sale. Luxury presentation gift packaging and pan-India delivery.",
   },
   {
     id: "diwali-6pc-petal-ceramic-server-gold-handle",
@@ -128,10 +164,10 @@ export const products: Product[] = [
     description:
       "Elevate Everyday Living — bringing refined festive warmth to your Diwali gathering. This 6-piece set features sculpted droplet petal-shaped porcelain bowls nestled into a custom scalloped white acrylic tray, accented by an ergonomic polished gold center handle. Created for slow festive conversations and serving dry fruits, berries, roasted nuts, and Diwali sweets in unmatched elegance.",
     category: "Dry Fruit Boxes",
-    collectionIds: ["diwali-sale", "dry-fruit-boxes", "signature-editions"],
+    collectionIds: ["diwali-sale", "dry-fruit-boxes", "signature-editions", "gift-sets"],
     sku: "VIT-DWL-02-PTL6",
-    price: 699900, // ₹6,999 (Discounted Diwali Price)
-    compareAtPrice: 1299900, // ₹12,999 (MRP)
+    price: 799900, // ₹7,999 (Discounted Diwali Price - 70% Off)
+    compareAtPrice: 2669900, // ₹26,699 (MRP)
     currency: "INR",
     images: [
       {
@@ -143,8 +179,8 @@ export const products: Product[] = [
       {
         id: "dwl-petal-6pc-set",
         name: "6-Piece Petal Bowl Set with Gold Handle Tray",
-        price: 699900,
-        compareAtPrice: 1299900,
+        price: 799900,
+        compareAtPrice: 2669900,
         sku: "VIT-DWL-02-PTL6-SET",
         stockQuantity: 40,
         availability: "in-stock",
@@ -164,7 +200,7 @@ export const products: Product[] = [
       "Gold Handle",
       "Festive Gifting",
       "Trending",
-      "46% Off",
+      "70% Off",
     ],
     featured: true,
     bestseller: true,
@@ -173,7 +209,7 @@ export const products: Product[] = [
     availability: "in-stock",
     seoTitle: "6 Pcs Petal Ceramic Dry Fruit Server Tray | Diwali Sale | VITRAG",
     seoDescription:
-      "Diwali festive offer: 6-piece petal ceramic dry fruit server with gold handle tray for ₹6,999 (MRP ₹12,999). Elegant festive table decor and wedding gifting.",
+      "Diwali festive offer: 6-piece petal ceramic dry fruit server with gold handle tray. Elegant festive table decor and wedding gifting.",
   },
   {
     id: "diwali-4pc-glass-serving-platter-gold-handles",
@@ -183,10 +219,10 @@ export const products: Product[] = [
     description:
       "Elevate Everyday Living — a contemporary festive centerpiece for celebratory Diwali banquets. Crafted with 4 high-clarity tempered rectangular glass dishes with ergonomic cylindrical handles, arranged along an elongated white porcelain platter framed by dual chevron-angled 24K gold handles. Perfect for festive mithai, dips, warm appetizers, nuts, and savories.",
     category: "Platter & Serving",
-    collectionIds: ["diwali-sale", "platters-serving", "signature-editions"],
+    collectionIds: ["diwali-sale", "platters-serving", "signature-editions", "gift-sets"],
     sku: "VIT-DWL-03-GLS4",
-    price: 649900, // ₹6,499 (Discounted Diwali Price)
-    compareAtPrice: 1099900, // ₹10,999 (MRP)
+    price: 649900, // ₹6,499 (Discounted Diwali Price - 70% Off)
+    compareAtPrice: 2169900, // ₹21,699 (MRP)
     currency: "INR",
     images: [
       {
@@ -199,7 +235,7 @@ export const products: Product[] = [
         id: "dwl-glass-4pc-platter",
         name: "4-Piece Glass Bowls with Chevron Gold Handle Platter",
         price: 649900,
-        compareAtPrice: 1099900,
+        compareAtPrice: 2169900,
         sku: "VIT-DWL-03-GLS4-SET",
         stockQuantity: 30,
         availability: "in-stock",
@@ -219,7 +255,7 @@ export const products: Product[] = [
       "Gold Handles",
       "Serving Platter",
       "Festive Gifting",
-      "41% Off",
+      "70% Off",
     ],
     featured: true,
     bestseller: true,
@@ -228,7 +264,7 @@ export const products: Product[] = [
     availability: "in-stock",
     seoTitle: "4 Pcs Glass Serving Platter with Chevron Gold Handles | Diwali Sale | VITRAG",
     seoDescription:
-      "Exclusive Diwali price: 4-piece glass serving platter with chevron gold handles for ₹6,499 (MRP ₹10,999). Save ₹4,500 with complimentary delivery across India.",
+      "Exclusive Diwali sale: 4-piece glass serving platter with chevron gold handles. Luxury presentation gift packaging with complimentary pan-India delivery.",
   },
   // --- SIGNATURE EDITIONS ---
   {
@@ -239,7 +275,7 @@ export const products: Product[] = [
     description:
       "Elevate Every Pour: crafted with timeless precision, this 6-piece premium crystal glass set combines brilliant clarity with a deep geometric cut base. Designed for fine single malts, classic cocktails, and festive celebrations. Presented in VITRAG's signature gold-lined burgundy presentation box, ready for luxury gifting.",
     category: "Signature Editions",
-    collectionIds: ["signature-editions"],
+    collectionIds: ["signature-editions", "mugs-cups", "gift-sets"],
     sku: "VIT-SIG-01-WHS",
     price: 249900, // ₹2,499
     compareAtPrice: 299900,
@@ -284,7 +320,7 @@ export const products: Product[] = [
     description:
       "Little Details Make Special Moments: an exquisite centerpiece serving bowl standing gracefully on an elevated pedestal base. Hand-finished in a delicate blush glaze with sculpted rose petals, 24K gold accented rim, and an accompanying ceramic serving ladle. Perfect for festive halwa, kheer, fruit salads, dry fruits, or artisan dips.",
     category: "Signature Editions",
-    collectionIds: ["signature-editions", "platters-serving"],
+    collectionIds: ["signature-editions", "platters-serving", "gift-sets"],
     sku: "VIT-SIG-02-ROSE",
     price: 169900, // ₹1,699
     compareAtPrice: 199900,
@@ -329,7 +365,7 @@ export const products: Product[] = [
     description:
       "A Cup for Every Moment: where royal emerald glaze meets sculpted ceramic artistry. Each cup features an embossed multi-layered camellia blossom with gold stamens, paired with a rippled wave-edge saucer and a distinctive spherical gold bead on the ergonomic handle. Crafted for slow morning coffees, evening teas, and cherished conversations.",
     category: "Signature Editions",
-    collectionIds: ["signature-editions"],
+    collectionIds: ["signature-editions", "mugs-cups", "gift-sets"],
     sku: "VIT-SIG-03-CAM",
     price: 219900, // ₹2,199
     compareAtPrice: 259900,
@@ -376,7 +412,7 @@ export const products: Product[] = [
     description:
       "Crafted from fine translucent porcelain, the Royal Heritage collection celebrates royal banquet traditions with a modern minimalist sensibility. Each piece is bordered with hand-painted gold lining and finished with a scratch-resistant satin glaze.",
     category: "Dinner Sets",
-    collectionIds: ["dinner-sets"],
+    collectionIds: ["dinner-sets", "wedding-gifts"],
     sku: "VIT-DS-01",
     price: 499900, // ₹4,999
     compareAtPrice: 599900,
@@ -419,7 +455,7 @@ export const products: Product[] = [
     description:
       "Designed for grand family dinners and festive gatherings in Chennai, the Imperial Banquet service brings together 32 pieces of vitrified porcelain. Highlights include fluted soup and curry bowls, twin rice platters, and heat-retaining ceramic serving tureens.",
     category: "Dinner Sets",
-    collectionIds: ["dinner-sets"],
+    collectionIds: ["dinner-sets", "wedding-gifts"],
     sku: "VIT-DS-02",
     price: 699900, // ₹6,999
     compareAtPrice: 799900,
@@ -583,7 +619,7 @@ export const products: Product[] = [
     description:
       "A celebration of classical Indian woodwork. Hand-carved from seasoned solid sheesham wood and adorned with hand-beaten floral brass repoussé inlays on the lid. The interior is lined with rich royal velvet and holds 4 removable brass canisters for cashews, almonds, pistachios, and raisins.",
     category: "Dry Fruit Boxes",
-    collectionIds: ["dry-fruit-boxes"],
+    collectionIds: ["dry-fruit-boxes", "gift-sets", "wedding-gifts"],
     sku: "VIT-DF-01",
     price: 189900, // ₹1,899
     compareAtPrice: 229900,
@@ -626,7 +662,7 @@ export const products: Product[] = [
     description:
       "Crafted with seasoned timber and lined in deep burgundy velvet, this caddy features 4 airtight glass jars with polished brass lids to keep dry fruits fresh and crisp. A favorite for wedding trousseau gifting and corporate Diwali hampers in Chennai.",
     category: "Dry Fruit Boxes",
-    collectionIds: ["dry-fruit-boxes"],
+    collectionIds: ["dry-fruit-boxes", "gift-sets", "wedding-gifts"],
     sku: "VIT-DF-02",
     price: 229900, // ₹2,299
     currency: "INR",

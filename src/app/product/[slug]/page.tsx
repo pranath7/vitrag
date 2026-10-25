@@ -35,12 +35,19 @@ export async function generateMetadata({
     };
   }
 
+  // Ensure prices are excluded from social-sharing / ad metadata per campaign policy
+  const cleanDescription = (product.seoDescription || product.description)
+    .replace(/₹\s*[\d,]+/g, "")
+    .replace(/\(MRP\s*[^)]*\)/gi, "")
+    .replace(/\s{2,}/g, " ")
+    .trim();
+
   return {
     title: product.seoTitle,
-    description: product.seoDescription,
+    description: cleanDescription,
     openGraph: {
       title: product.seoTitle,
-      description: product.seoDescription,
+      description: cleanDescription,
       images: product.images.map((img) => ({
         url: img.src,
         alt: img.alt,

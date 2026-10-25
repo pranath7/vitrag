@@ -166,7 +166,7 @@ export function ProductCard({ product: initialProduct }: ProductCardProps) {
       {/* 2. Product Details */}
       <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between bg-white border-t border-[#FFF5E6]">
         <div>
-          <p className="text-[10px] uppercase tracking-widest text-[#84766A] mb-1 font-sans font-medium">
+          <p className="text-[10px] uppercase tracking-widest text-[#54483E] mb-1 font-sans font-medium">
             {product.category}
           </p>
           <h3 className="font-heading text-base sm:text-lg text-[#6E2023] group-hover:text-[#55181A] transition-colors line-clamp-1 font-medium">
@@ -174,7 +174,7 @@ export function ProductCard({ product: initialProduct }: ProductCardProps) {
               {product.name}
             </Link>
           </h3>
-          <p className="text-xs text-[#84766A] line-clamp-1 mt-1 font-light">
+          <p className="text-xs text-[#54483E] line-clamp-1 mt-1 font-light">
             {product.shortDescription}
           </p>
         </div>
@@ -182,14 +182,21 @@ export function ProductCard({ product: initialProduct }: ProductCardProps) {
         {/* Price & Action */}
         <div className="mt-3 pt-2.5 border-t border-[#FFF5E6]">
           <div className="flex items-center justify-between">
-            <div className="flex items-baseline gap-1.5">
+            <div className="flex items-baseline gap-1.5 flex-wrap">
               <span className="font-heading text-sm sm:text-base font-bold text-[#6E2023]">
                 {formatPrice(product.price)}
               </span>
               {product.compareAtPrice && product.compareAtPrice > product.price && (
-                <span className="text-[10px] text-[#84766A] line-through">
-                  {formatPrice(product.compareAtPrice)}
-                </span>
+                <>
+                  <span className="text-[10px] text-[#54483E] line-through">
+                    {formatPrice(product.compareAtPrice)}
+                  </span>
+                  {discountPercent && (
+                    <span className="text-[9px] font-bold text-[#2D6A4F] bg-[#2D6A4F]/10 px-1 py-0.2 rounded">
+                      {discountPercent}% OFF
+                    </span>
+                  )}
+                </>
               )}
             </div>
 

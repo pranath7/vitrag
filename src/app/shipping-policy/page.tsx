@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { siteConfig } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "Shipping Policy — VITRAG | Tableware & Gifting",
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 function Breadcrumb() {
   return (
     <nav aria-label="Breadcrumb" className="mb-8">
-      <ol className="flex items-center gap-2 text-sm text-[#8B8176]">
+      <ol className="flex items-center gap-2 text-sm text-[#54483E]">
         <li>
           <Link
             href="/"
@@ -42,7 +43,7 @@ function PolicySection({
       <h2 className="font-heading text-2xl text-[#252522] sm:text-3xl">
         {title}
       </h2>
-      <div className="mt-4 space-y-4 text-base leading-relaxed text-[#252522]/80">
+      <div className="mt-4 space-y-4 text-base leading-relaxed text-[#252522]">
         {children}
       </div>
     </section>
@@ -59,10 +60,10 @@ export default function ShippingPolicyPage() {
           <h1 className="font-heading text-4xl text-[#252522] sm:text-5xl">
             Shipping Policy
           </h1>
-          <p className="mt-4 text-sm text-[#8B8176]">
+          <p className="mt-4 text-sm text-[#54483E]">
             Last updated: October 2026
           </p>
-          <p className="mt-4 text-base leading-relaxed text-[#252522]/80 sm:text-lg">
+          <p className="mt-4 text-base leading-relaxed text-[#252522] sm:text-lg">
             At VITRAG, we take great care in packaging and delivering your
             tableware safely. Below you&apos;ll find everything you need to know
             about our shipping process.
@@ -73,14 +74,12 @@ export default function ShippingPolicyPage() {
           {/* Shipping Coverage */}
           <PolicySection title="Shipping Coverage">
             <p>
-              We currently offer shipping across <strong>Chennai</strong> and{" "}
-              <strong>Tamil Nadu</strong>, with plans to expand our delivery
-              network across India in the near future.
+              We provide insured dispatch across <strong>India</strong> from our Sowcarpet, Chennai showroom.
+              Local deliveries within Chennai and Tamil Nadu arrive swiftly, while pan-India shipments are coordinated with leading express courier networks.
             </p>
             <p>
-              For orders outside our current serviceable areas, please reach out
-              to us via WhatsApp or email, and we&apos;ll do our best to arrange
-              delivery on a case-by-case basis.
+              For remote destinations or bulk wedding / corporate consignments, please reach out
+              to our concierge team via WhatsApp ({siteConfig.contact.displayPhone}), and we will confirm optimal logistics and transit times for your pincode.
             </p>
           </PolicySection>
 
@@ -95,7 +94,7 @@ export default function ShippingPolicyPage() {
               the next business day.
             </p>
             <p>
-              You will receive a confirmation email or WhatsApp message once your
+              You will receive a confirmation message on WhatsApp once your
               order has been dispatched with tracking details.
             </p>
           </PolicySection>
@@ -116,20 +115,20 @@ export default function ShippingPolicyPage() {
                     </th>
                   </tr>
                 </thead>
-                <tbody className="text-[#252522]/80">
+                <tbody className="text-[#252522]">
                   <tr className="border-b border-[#EADBC8]">
-                    <td className="py-3 pr-4">Chennai & Tamil Nadu</td>
-                    <td className="py-3 font-medium text-[#6E2023]">3–5 business days</td>
+                    <td className="py-3 pr-4">Chennai &amp; Tamil Nadu</td>
+                    <td className="py-3 font-medium text-[#6E2023]">{siteConfig.shipping.deliveryTimelineEstimate}</td>
                   </tr>
                   <tr className="border-b border-[#EADBC8]">
                     <td className="py-3 pr-4">Pan-India Express</td>
-                    <td className="py-3 font-medium text-[#6E2023]">3–5 business days</td>
+                    <td className="py-3 font-medium text-[#6E2023]">{siteConfig.shipping.deliveryTimelineEstimate}</td>
                   </tr>
                 </tbody>
               </table>
             </div>
-            <p className="text-sm text-[#8B8176]">
-              All items are dispatched with fragile-cushioning and live parcel tracking numbers directly shared on WhatsApp.
+            <p className="text-sm text-[#54483E]">
+              All items are dispatched with multi-layer fragile cushioning and live parcel tracking numbers directly shared on WhatsApp.
             </p>
           </PolicySection>
 
@@ -226,7 +225,7 @@ export default function ShippingPolicyPage() {
                 Our team will verify the claim and immediately ship an insured replacement piece or process your refund.
               </li>
             </ol>
-            <p className="text-sm text-[#8B8176]">
+            <p className="text-sm text-[#54483E]">
               Please note: Claims submitted without an opening/unboxing video cannot be entertained.
             </p>
           </PolicySection>
@@ -237,22 +236,22 @@ export default function ShippingPolicyPage() {
           <h2 className="font-heading text-xl text-[#252522] sm:text-2xl">
             Have Questions About Your Shipment?
           </h2>
-          <p className="mt-3 text-sm leading-relaxed text-[#252522]/70 sm:text-base">
+          <p className="mt-3 text-sm leading-relaxed text-[#54483E] sm:text-base">
             Reach out directly to our Sowcarpet showroom team at{" "}
             <a
-              href="mailto:pranathwork@gmail.com"
+              href={`mailto:${siteConfig.contact.email}`}
               className="text-[#6E2023] underline underline-offset-2 hover:text-[#6E2023]/80 font-medium"
             >
-              pranathwork@gmail.com
+              {siteConfig.contact.email}
             </a>{" "}
             or message us on WhatsApp at{" "}
             <a
-              href="https://wa.me/916369142027"
+              href={`https://wa.me/${siteConfig.contact.whatsappNumber}`}
               target="_blank"
               rel="noopener noreferrer"
               className="text-[#6E2023] underline font-semibold hover:text-[#55181A]"
             >
-              +91 63691 42027
+              {siteConfig.contact.displayPhone}
             </a>.
           </p>
         </div>

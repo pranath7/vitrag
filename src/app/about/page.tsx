@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 function Breadcrumb() {
   return (
     <nav aria-label="Breadcrumb" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 border-b border-[#EADBC8]/60 bg-[#FFF5E6]">
-      <ol className="flex items-center gap-2 text-xs text-[#84766A]">
+      <ol className="flex items-center gap-2 text-xs text-[#54483E]">
         <li>
           <Link
             href="/"
@@ -182,7 +182,7 @@ export default function AboutPage() {
               <h2 className="font-heading text-3xl text-[#6E2023] sm:text-4xl font-medium">
                 What We Stand For
               </h2>
-              <p className="mt-4 text-base leading-relaxed text-[#84766A] sm:text-lg font-light">
+              <p className="mt-4 text-base leading-relaxed text-[#54483E] sm:text-lg font-light">
                 Every piece in our collection reflects four guiding principles.
               </p>
 
@@ -214,7 +214,7 @@ export default function AboutPage() {
               <h2 className="font-heading text-3xl text-[#6E2023] sm:text-4xl font-medium">
                 Explore Our Collections
               </h2>
-              <p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-[#84766A] sm:text-lg font-light">
+              <p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-[#54483E] sm:text-lg font-light">
                 Discover tableware that elevates your dining and gifts that
                 speak from the heart. Every piece, beautifully chosen.
               </p>
@@ -252,7 +252,7 @@ function ValueCard({
       <h3 className="font-heading text-xl text-[#6E2023] sm:text-2xl font-medium">
         {title}
       </h3>
-      <p className="mt-3 text-sm leading-relaxed text-[#84766A] sm:text-base font-light">
+      <p className="mt-3 text-sm leading-relaxed text-[#54483E] sm:text-base font-light">
         {description}
       </p>
     </article>

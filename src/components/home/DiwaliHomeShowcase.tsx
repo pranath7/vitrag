@@ -83,7 +83,7 @@ export function DiwaliHomeShowcase({ initialProducts }: DiwaliHomeShowcaseProps)
             <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-[#6E2023] font-medium tracking-tight">
               Diwali Marquee Gifting Exclusives
             </h2>
-            <p className="text-sm sm:text-base text-[#84766A] mt-2 max-w-2xl font-light">
+            <p className="text-sm sm:text-base text-[#54483E] mt-2 max-w-2xl font-light">
               Curated especially for the Festival of Lights. Featuring 4-piece and 6-piece luxury dry-fruit servers, tiered crystal diamond knobs, and polished gold chevron platters at special festive prices.
             </p>
           </div>
@@ -171,7 +171,7 @@ export function DiwaliHomeShowcase({ initialProducts }: DiwaliHomeShowcaseProps)
 
                 <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
                   <div>
-                    <div className="flex items-center justify-between text-[11px] text-[#84766A] uppercase tracking-wider font-medium mb-1">
+                    <div className="flex items-center justify-between text-[11px] text-[#54483E] uppercase tracking-wider font-medium mb-1">
                       <span>{prod.category}</span>
                       <span className="text-[#2D6A4F] font-bold">
                         {prod.availability === "in-stock" ? "In Stock" : prod.availability}
@@ -182,7 +182,7 @@ export function DiwaliHomeShowcase({ initialProducts }: DiwaliHomeShowcaseProps)
                         {prod.name}
                       </Link>
                     </h3>
-                    <p className="text-xs text-[#84766A] mt-1.5 font-light line-clamp-2">
+                    <p className="text-xs text-[#54483E] mt-1.5 font-light line-clamp-2">
                       {prod.shortDescription || prod.description}
                     </p>
                   </div>
@@ -194,7 +194,7 @@ export function DiwaliHomeShowcase({ initialProducts }: DiwaliHomeShowcaseProps)
                           ₹{(prod.price / 100).toLocaleString("en-IN")}
                         </span>
                         {prod.compareAtPrice && (
-                          <span className="text-xs text-[#84766A] line-through">
+                          <span className="text-xs text-[#54483E] line-through">
                             ₹{(prod.compareAtPrice / 100).toLocaleString("en-IN")}
                           </span>
                         )}

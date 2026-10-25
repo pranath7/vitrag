@@ -54,20 +54,20 @@ export default function ComparePage() {
               Why Discerning Hosts Choose VITRAG Over Mass Retail
             </h1>
 
-            <p className="text-base sm:text-lg text-[#84766A] font-light leading-relaxed">
+            <p className="text-base sm:text-lg text-[#54483E] font-light leading-relaxed">
               We believe in total transparency. We don&apos;t claim to be the right choice for every buyer, nor do we attempt to be. Here is plainly how VITRAG differs from generic commercial crockery sellers and big-box marketplace vendors.
             </p>
 
             {/* Honest Trade-Offs Callout */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 pt-6 text-left">
               <div className="bg-white/80 border border-[#EADBC8] p-5 sm:p-6 rounded-2xl shadow-xs">
-                <span className="text-[10px] uppercase tracking-widest text-[#84766A] font-semibold block mb-1">
+                <span className="text-[10px] uppercase tracking-widest text-[#54483E] font-semibold block mb-1">
                   When a Generic Brand is Better
                 </span>
                 <h3 className="font-heading text-lg text-[#252522] mb-2 font-medium">
                   Outdoor Catering &amp; Disposable Budgets
                 </h3>
-                <p className="text-xs text-[#84766A] font-light leading-relaxed">
+                <p className="text-xs text-[#54483E] font-light leading-relaxed">
                   If you need cheap, mass-produced melamine plates, disposable party bowls for a one-time industrial picnic, or cafeteria grade machine-stamped dishware at sub-₹200 price points, generic departmental retailers and marketplaces are a more economical choice.
                 </p>
               </div>
@@ -98,7 +98,7 @@ export default function ComparePage() {
             <h2 className="font-heading text-2xl sm:text-4xl text-[#6E2023] font-medium">
               Side-by-Side Comparison
             </h2>
-            <p className="text-xs sm:text-sm text-[#84766A] mt-2 font-light">
+            <p className="text-xs sm:text-sm text-[#54483E] mt-2 font-light">
               We selected the core dimensions that genuinely impact quality of life, food hygiene, hosting aesthetics, and gifting impressions.
             </p>
           </div>
@@ -107,13 +107,13 @@ export default function ComparePage() {
             <table className="w-full min-w-[580px] text-left text-xs sm:text-sm border-collapse">
               <thead>
                 <tr className="bg-[#FAF3E7] border-b border-[#EADBC8]">
-                  <th className="py-4 px-4 sm:px-6 font-semibold uppercase tracking-wider text-[11px] text-[#84766A] w-2/5">
+                  <th className="py-4 px-4 sm:px-6 font-semibold uppercase tracking-wider text-[11px] text-[#54483E] w-2/5">
                     Evaluation Criterion
                   </th>
                   <th className="py-4 px-4 sm:px-6 font-semibold uppercase tracking-wider text-[11px] text-[#6E2023] bg-[#6E2023]/10 w-[30%]">
                     VITRAG Tableware
                   </th>
-                  <th className="py-4 px-4 sm:px-6 font-semibold uppercase tracking-wider text-[11px] text-[#84766A] w-[30%]">
+                  <th className="py-4 px-4 sm:px-6 font-semibold uppercase tracking-wider text-[11px] text-[#54483E] w-[30%]">
                     Generic Online / Mass Crockery
                   </th>
                 </tr>
@@ -125,7 +125,7 @@ export default function ComparePage() {
                     <span className="block text-sm font-heading font-semibold text-[#6E2023]">
                       Material &amp; Craftsmanship
                     </span>
-                    <span className="text-xs text-[#84766A] font-light">
+                    <span className="text-xs text-[#54483E] font-light">
                       Substantial clay density, tactile glazing, hand-sculpted details
                     </span>
                   </td>
@@ -135,7 +135,7 @@ export default function ComparePage() {
                       <span>Studio ceramic stoneware &amp; lead-free crystal</span>
                     </div>
                   </td>
-                  <td className="py-4 px-4 sm:px-6 text-[#84766A] font-light">
+                  <td className="py-4 px-4 sm:px-6 text-[#54483E] font-light">
                     <div className="flex items-center gap-2">
                       <X className="w-4 h-4 text-rose-500 shrink-0" />
                       <span>Thin bone ash composite or brittle low-fire ceramic</span>
@@ -149,7 +149,7 @@ export default function ComparePage() {
                     <span className="block text-sm font-heading font-semibold text-[#6E2023]">
                       24K Real Gold Accents
                     </span>
-                    <span className="text-xs text-[#84766A] font-light">
+                    <span className="text-xs text-[#54483E] font-light">
                       Metallic luster rim application
                     </span>
                   </td>
@@ -159,7 +159,7 @@ export default function ComparePage() {
                       <span>High-temperature fired 24K real gold rims</span>
                     </div>
                   </td>
-                  <td className="py-4 px-4 sm:px-6 text-[#84766A] font-light">
+                  <td className="py-4 px-4 sm:px-6 text-[#54483E] font-light">
                     <div className="flex items-center gap-2">
                       <X className="w-4 h-4 text-rose-500 shrink-0" />
                       <span>Synthetic gold paint decal that rubs off quickly</span>
@@ -173,7 +173,7 @@ export default function ComparePage() {
                     <span className="block text-sm font-heading font-semibold text-[#6E2023]">
                       Food Safety &amp; Toxicity
                     </span>
-                    <span className="text-xs text-[#84766A] font-light">
+                    <span className="text-xs text-[#54483E] font-light">
                       Glaze safety for hot curries, acidic gravies &amp; daily food
                     </span>
                   </td>
@@ -183,7 +183,7 @@ export default function ComparePage() {
                       <span>100% Certified Lead-Free &amp; Cadmium-Free</span>
                     </div>
                   </td>
-                  <td className="py-4 px-4 sm:px-6 text-[#84766A] font-light">
+                  <td className="py-4 px-4 sm:px-6 text-[#54483E] font-light">
                     <div className="flex items-center gap-2">
                       <X className="w-4 h-4 text-rose-500 shrink-0" />
                       <span>Often unverified imports with heavy-metal glazes</span>
@@ -197,7 +197,7 @@ export default function ComparePage() {
                     <span className="block text-sm font-heading font-semibold text-[#6E2023]">
                       Gift-Ready Presentation Box
                     </span>
-                    <span className="text-xs text-[#84766A] font-light">
+                    <span className="text-xs text-[#54483E] font-light">
                       First impression for wedding, Diwali, and executive gifts
                     </span>
                   </td>
@@ -207,7 +207,7 @@ export default function ComparePage() {
                       <span>Signature burgundy &amp; gold rigid presentation caskets</span>
                     </div>
                   </td>
-                  <td className="py-4 px-4 sm:px-6 text-[#84766A] font-light">
+                  <td className="py-4 px-4 sm:px-6 text-[#54483E] font-light">
                     <div className="flex items-center gap-2">
                       <X className="w-4 h-4 text-rose-500 shrink-0" />
                       <span>Plain industrial brown corrugated carton</span>
@@ -221,7 +221,7 @@ export default function ComparePage() {
                     <span className="block text-sm font-heading font-semibold text-[#6E2023]">
                       Zero Breakage Guarantee
                     </span>
-                    <span className="text-xs text-[#84766A] font-light">
+                    <span className="text-xs text-[#54483E] font-light">
                       What happens if an item breaks during courier delivery
                     </span>
                   </td>
@@ -231,7 +231,7 @@ export default function ComparePage() {
                       <span>Immediate replacement via unboxing video proof</span>
                     </div>
                   </td>
-                  <td className="py-4 px-4 sm:px-6 text-[#84766A] font-light">
+                  <td className="py-4 px-4 sm:px-6 text-[#54483E] font-light">
                     <div className="flex items-center gap-2">
                       <X className="w-4 h-4 text-rose-500 shrink-0" />
                       <span>Protracted return disputes &amp; &apos;transit damage&apos; denials</span>
@@ -245,7 +245,7 @@ export default function ComparePage() {
                     <span className="block text-sm font-heading font-semibold text-[#6E2023]">
                       Concierge Ordering &amp; Customization
                     </span>
-                    <span className="text-xs text-[#84766A] font-light">
+                    <span className="text-xs text-[#54483E] font-light">
                       Personalized piece counts, video previews, and wedding sets
                     </span>
                   </td>
@@ -255,7 +255,7 @@ export default function ComparePage() {
                       <span>Direct 1-on-1 WhatsApp consultation with showroom</span>
                     </div>
                   </td>
-                  <td className="py-4 px-4 sm:px-6 text-[#84766A] font-light">
+                  <td className="py-4 px-4 sm:px-6 text-[#54483E] font-light">
                     <div className="flex items-center gap-2">
                       <X className="w-4 h-4 text-rose-500 shrink-0" />
                       <span>Automated bot tickets with 72-hour reply delays</span>
@@ -269,7 +269,7 @@ export default function ComparePage() {
                     <span className="block text-sm font-heading font-semibold text-[#6E2023]">
                       Physical Showroom Presence
                     </span>
-                    <span className="text-xs text-[#84766A] font-light">
+                    <span className="text-xs text-[#54483E] font-light">
                       Ability to touch, feel, and inspect before ordering in bulk
                     </span>
                   </td>
@@ -279,7 +279,7 @@ export default function ComparePage() {
                       <span>Patni Plaza, Sowcarpet, Chennai flagship showroom</span>
                     </div>
                   </td>
-                  <td className="py-4 px-4 sm:px-6 text-[#84766A] font-light">
+                  <td className="py-4 px-4 sm:px-6 text-[#54483E] font-light">
                     <div className="flex items-center gap-2">
                       <X className="w-4 h-4 text-rose-500 shrink-0" />
                       <span>Virtual-only drop-shippers with no verifiable store</span>
@@ -312,7 +312,7 @@ export default function ComparePage() {
               <h3 className="font-heading text-xl text-[#6E2023] font-medium">
                 1. Clay Purity &amp; Glaze Resilience
               </h3>
-              <p className="text-xs sm:text-sm text-[#84766A] font-light leading-relaxed">
+              <p className="text-xs sm:text-sm text-[#54483E] font-light leading-relaxed">
                 Commercial tableware is made by dry-pressing synthetic powder at high speeds to maximize factory yield. VITRAG ceramics are high-fired stoneware using naturally refined minerals, resulting in chip-resistant density that withstands daily Indian dining, sambars, and biryanis without discoloration.
               </p>
             </div>
@@ -324,7 +324,7 @@ export default function ComparePage() {
               <h3 className="font-heading text-xl text-[#6E2023] font-medium">
                 2. Presentation that Precedes the Product
               </h3>
-              <p className="text-xs sm:text-sm text-[#84766A] font-light leading-relaxed">
+              <p className="text-xs sm:text-sm text-[#54483E] font-light leading-relaxed">
                 A gift begins the second your guest receives the box. Rather than shipping crockery wrapped in bubble wrap and taped styrofoam, our pieces arrive in velvet-cushioned burgundy rigid boxes embossed with gold cresting, ready to gift directly to newlyweds or corporate partners.
               </p>
             </div>
@@ -336,7 +336,7 @@ export default function ComparePage() {
               <h3 className="font-heading text-xl text-[#6E2023] font-medium">
                 3. Sowcarpet Showroom Accountability
               </h3>
-              <p className="text-xs sm:text-sm text-[#84766A] font-light leading-relaxed">
+              <p className="text-xs sm:text-sm text-[#54483E] font-light leading-relaxed">
                 Online commerce shouldn&apos;t feel anonymous. Our flagship showroom in Patni Plaza, Sowcarpet, Chennai has been a trusted hub of hospitality and crockery for decades. You can speak directly to our founder, see the tableware in person, or request live video walk-throughs before ordering.
               </p>
             </div>
@@ -354,7 +354,7 @@ export default function ComparePage() {
             <h2 className="font-heading text-2xl sm:text-4xl text-[#6E2023] font-medium">
               What Customers Say After Switching
             </h2>
-            <p className="text-xs sm:text-sm text-[#84766A] mt-2 font-light">
+            <p className="text-xs sm:text-sm text-[#54483E] mt-2 font-light">
               Real feedback from hosts and wedding planners who previously bought from generic online retail chains.
             </p>
           </div>
@@ -376,7 +376,7 @@ export default function ComparePage() {
                 <p className="font-heading text-sm text-[#6E2023] font-semibold">
                   Meera &amp; Rajesh Kannan
                 </p>
-                <p className="text-[11px] text-[#84766A]">
+                <p className="text-[11px] text-[#54483E]">
                   Anna Nagar, Chennai • Wedding Host
                 </p>
               </div>
@@ -398,7 +398,7 @@ export default function ComparePage() {
                 <p className="font-heading text-sm text-[#6E2023] font-semibold">
                   Siddharth Madhavan
                 </p>
-                <p className="text-[11px] text-[#84766A]">
+                <p className="text-[11px] text-[#54483E]">
                   Alwarpet, Chennai • Frequent Host
                 </p>
               </div>
@@ -420,7 +420,7 @@ export default function ComparePage() {
                 <p className="font-heading text-sm text-[#6E2023] font-semibold">
                   Pooja Shenoy
                 </p>
-                <p className="text-[11px] text-[#84766A]">
+                <p className="text-[11px] text-[#54483E]">
                   Bangalore • Corporate Gifting Partner
                 </p>
               </div>
@@ -441,10 +441,10 @@ export default function ComparePage() {
                 <h2 className="font-heading text-2xl sm:text-3xl text-[#6E2023] font-medium">
                   Direct Showroom Value Without Middleman Markups
                 </h2>
-                <p className="text-xs sm:text-sm text-[#84766A] font-light leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#54483E] font-light leading-relaxed">
                   When you purchase luxury homeware from department store chains, up to 60% of the price covers mall leasing, celebrity marketing, and multiple distributor tiers.
                 </p>
-                <p className="text-xs sm:text-sm text-[#84766A] font-light leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#54483E] font-light leading-relaxed">
                   At VITRAG, we operate directly from Patni Plaza in Sowcarpet, Chennai. All pieces are quoted transparently on request based on the exact configuration you need — ensuring you pay strictly for premium ceramic craftsmanship, pure 24K gold accents, and bespoke packaging.
                 </p>
               </div>

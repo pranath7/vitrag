@@ -202,7 +202,7 @@ export function CheckoutView() {
             <h1 className="font-heading text-3xl sm:text-4xl text-[#252522] mt-2">
               Thank You, {formData.fullName}!
             </h1>
-            <p className="text-xs sm:text-sm text-[#8B8176] mt-2 max-w-md mx-auto leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#54483E] mt-2 max-w-md mx-auto leading-relaxed">
               Your order breakdown has been prepared for WhatsApp number <strong>{siteConfig.contact.displayPhone}</strong>.
             </p>
           </div>
@@ -224,7 +224,7 @@ export function CheckoutView() {
             </a>
           </div>
 
-          <div className="text-left bg-white border border-[#EADBC8] p-5 space-y-2 text-xs text-[#8B8176]">
+          <div className="text-left bg-white border border-[#EADBC8] p-5 space-y-2 text-xs text-[#54483E]">
             <strong className="block text-[#252522] font-medium">Next Steps:</strong>
             <p>1. Our concierge desk will review your items and confirm immediate stock.</p>
             <p>2. We will calculate exact postal/courier charges to PIN code <strong>{formData.pinCode}</strong>.</p>
@@ -262,7 +262,7 @@ export function CheckoutView() {
         <h1 className="font-heading text-3xl text-[#252522] mb-3">
           Your bag is empty
         </h1>
-        <p className="text-xs text-[#8B8176] mb-6">
+        <p className="text-xs text-[#54483E] mb-6">
           Please add items to your shopping bag before proceeding to checkout.
         </p>
         <Button href="/shop" variant="primary">
@@ -276,7 +276,7 @@ export function CheckoutView() {
     <div className="py-12 sm:py-16">
       <div className="border-b border-[#EADBC8] pb-6 mb-10 flex items-center justify-between">
         <div>
-          <span className="text-xs uppercase tracking-widest text-[#84766A]">
+          <span className="text-xs uppercase tracking-widest text-[#54483E]">
             Secure Checkout Process
           </span>
           <h1 className="font-heading text-3xl sm:text-4xl text-[#6E2023] mt-1 font-medium">
@@ -309,14 +309,14 @@ export function CheckoutView() {
             <div className="bg-white p-6 sm:p-8 border border-[#EADBC8] space-y-4">
               <h2 className="font-heading text-xl text-[#252522] border-b border-[#EADBC8] pb-3 flex items-center justify-between">
                 <span>1. Contact & Customer Details</span>
-                <span className="text-xs text-[#8B8176] font-sans font-normal">
+                <span className="text-xs text-[#54483E] font-sans font-normal">
                   Step 1 of 2
                 </span>
               </h2>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="sm:col-span-2">
-                  <label className="block text-xs uppercase tracking-wider text-[#8B8176] font-semibold mb-1">
+                  <label className="block text-xs uppercase tracking-wider text-[#54483E] font-semibold mb-1">
                     Full Name *
                   </label>
                   <input
@@ -331,7 +331,7 @@ export function CheckoutView() {
                 </div>
 
                 <div>
-                  <label className="block text-xs uppercase tracking-wider text-[#8B8176] font-semibold mb-1">
+                  <label className="block text-xs uppercase tracking-wider text-[#54483E] font-semibold mb-1">
                     Phone / WhatsApp *
                   </label>
                   <input
@@ -346,7 +346,7 @@ export function CheckoutView() {
                 </div>
 
                 <div>
-                  <label className="block text-xs uppercase tracking-wider text-[#8B8176] font-semibold mb-1">
+                  <label className="block text-xs uppercase tracking-wider text-[#54483E] font-semibold mb-1">
                     Email Address (Optional)
                   </label>
                   <input
@@ -365,14 +365,14 @@ export function CheckoutView() {
             <div className="bg-white p-6 sm:p-8 border border-[#EADBC8] space-y-4">
               <h2 className="font-heading text-xl text-[#252522] border-b border-[#EADBC8] pb-3 flex items-center justify-between">
                 <span>2. Delivery Address</span>
-                <span className="text-xs text-[#8B8176] font-sans font-normal">
+                <span className="text-xs text-[#54483E] font-sans font-normal">
                   Step 2 of 2
                 </span>
               </h2>
 
               <div className="space-y-4">
                 <div>
-                  <label className="block text-xs uppercase tracking-wider text-[#8B8176] font-semibold mb-1">
+                  <label className="block text-xs uppercase tracking-wider text-[#54483E] font-semibold mb-1">
                     Street Address, Flat/Apartment *
                   </label>
                   <input
@@ -388,7 +388,7 @@ export function CheckoutView() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <div>
-                    <label className="block text-xs uppercase tracking-wider text-[#8B8176] font-semibold mb-1">
+                    <label className="block text-xs uppercase tracking-wider text-[#54483E] font-semibold mb-1">
                       City *
                     </label>
                     <input
@@ -402,7 +402,7 @@ export function CheckoutView() {
                   </div>
 
                   <div>
-                    <label className="block text-xs uppercase tracking-wider text-[#8B8176] font-semibold mb-1">
+                    <label className="block text-xs uppercase tracking-wider text-[#54483E] font-semibold mb-1">
                       State *
                     </label>
                     <input
@@ -416,7 +416,7 @@ export function CheckoutView() {
                   </div>
 
                   <div>
-                    <label className="block text-xs uppercase tracking-wider text-[#8B8176] font-semibold mb-1">
+                    <label className="block text-xs uppercase tracking-wider text-[#54483E] font-semibold mb-1">
                       PIN Code *
                     </label>
                     <input
@@ -432,7 +432,7 @@ export function CheckoutView() {
                 </div>
 
                 <div>
-                  <label className="block text-xs uppercase tracking-wider text-[#8B8176] font-semibold mb-1">
+                  <label className="block text-xs uppercase tracking-wider text-[#54483E] font-semibold mb-1">
                     Special Packaging or Delivery Instructions
                   </label>
                   <textarea
@@ -474,11 +474,11 @@ export function CheckoutView() {
                           Official Store Flow
                         </span>
                       </div>
-                      <p className="text-xs text-[#8B8176] font-light leading-relaxed">
+                      <p className="text-xs text-[#54483E] font-light leading-relaxed">
                         Orders are confirmed directly with our showroom team on WhatsApp <strong>+91 63691 42027</strong>. Complete your payment via UPI to:
                       </p>
                       <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-white border border-[#EADBC8] rounded-lg mt-1">
-                        <span className="text-[11px] text-[#8B8176]">UPI ID:</span>
+                        <span className="text-[11px] text-[#54483E]">UPI ID:</span>
                         <code className="text-xs font-bold text-[#6E2023] tracking-wider select-all">
                           9840610405@pthdfc
                         </code>
@@ -534,7 +534,7 @@ export function CheckoutView() {
                 </div>
               </div>
               <div className="text-right">
-                <span className="text-[10px] text-[#8B8176] line-through block">₹2,999</span>
+                <span className="text-[10px] text-[#54483E] line-through block">₹2,999</span>
                 <span className="text-xs font-bold text-[#2D6A4F]">FREE (₹0)</span>
               </div>
             </div>
@@ -545,11 +545,11 @@ export function CheckoutView() {
                   <span className="font-medium text-[#252522] block line-clamp-1">
                     {item.name}
                   </span>
-                  <span className="text-[#8B8176]">
+                  <span className="text-[#54483E]">
                     Qty: {item.quantity} {item.quantity === 1 ? "piece" : "pieces"}
                   </span>
                   {item.variantName && (
-                    <span className="text-[#8B8176] block">
+                    <span className="text-[#54483E] block">
                       Finish: {item.variantName}
                     </span>
                   )}
@@ -569,30 +569,30 @@ export function CheckoutView() {
 
           <div className="border-t border-[#EADBC8] pt-4 space-y-2 text-xs">
             {subtotalPaise > 0 && (
-              <div className="flex justify-between text-[#8B8176] text-sm">
+              <div className="flex justify-between text-[#54483E] text-sm">
                 <span>Estimated Subtotal</span>
                 <span className="text-base font-heading font-bold text-[#6E2023]">
                   ₹{(subtotalPaise / 100).toLocaleString("en-IN")}
                 </span>
               </div>
             )}
-            <div className="flex justify-between text-[#8B8176]">
+            <div className="flex justify-between text-[#54483E]">
               <span>Diwali Festive Bonus</span>
               <span className="text-xs font-bold text-[#2D6A4F]">
                 6-Pc Glasses Free (₹0)
               </span>
             </div>
-            <div className="flex justify-between text-[#8B8176]">
+            <div className="flex justify-between text-[#54483E]">
               <span>Total Selected Items</span>
               <span className="text-sm font-semibold text-[#252522]">
                 {items.reduce((a, b) => a + b.quantity, 0)} pieces + 6 Glasses (Free)
               </span>
             </div>
-            <div className="flex justify-between text-[#8B8176]">
+            <div className="flex justify-between text-[#54483E]">
               <span>Delivery Timeline</span>
-              <span className="text-[#252522] font-medium">3–5 Business Days (Insured)</span>
+              <span className="text-[#252522] font-medium">{siteConfig.shipping.deliveryTimelineEstimate}</span>
             </div>
-            <div className="flex justify-between text-[#8B8176]">
+            <div className="flex justify-between text-[#54483E]">
               <span>Pricing &amp; Shipping</span>
               <span className="text-[#2D6A4F] font-semibold">Free Pan-India Delivery</span>
             </div>
@@ -604,7 +604,7 @@ export function CheckoutView() {
 
           {/* Promo / Discount Code Box */}
           <div className="pt-3 border-t border-[#EADBC8]">
-            <label className="block text-[11px] uppercase tracking-wider text-[#8B8176] font-semibold mb-1.5">
+            <label className="block text-[11px] uppercase tracking-wider text-[#54483E] font-semibold mb-1.5">
               Promo or Voucher Code
             </label>
             <div className="flex gap-2">
@@ -647,10 +647,10 @@ export function CheckoutView() {
             )}
           </div>
 
-          <div className="bg-[#FFF5E6] p-4 border border-[#EADBC8] rounded-lg space-y-2 text-[11px] text-[#8B8176]">
+          <div className="bg-[#FFF5E6] p-4 border border-[#EADBC8] rounded-lg space-y-2 text-[11px] text-[#54483E]">
             <p className="font-medium text-[#252522]">Our Commitment:</p>
-            <p>• Fast delivery within <strong>3–5 business days</strong> with professional crockery packing.</p>
-            <p>• Verified UPI payment directly to <strong>9840610405@pthdfc</strong>.</p>
+            <p>• Fast delivery ({siteConfig.shipping.deliveryTimelineEstimate}) with professional crockery packing.</p>
+            <p>• Verified UPI payment directly to <strong>{siteConfig.contact.upiId}</strong>.</p>
             <p>• Replacement guarantee on breakage with unboxing video verification.</p>
           </div>
         </div>

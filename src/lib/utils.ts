@@ -59,8 +59,8 @@ export function generateWhatsAppOrderUrl(
     message += `\n🎁 *Complimentary Festive Gift Unlocked:* 6-Piece Luxury Crystal Glassware Set (Worth ₹2,999) — FREE (₹0)\n`;
   }
 
-  message += `\n*Delivery Timeline:* 3–5 Business Days\n`;
-  message += `*UPI Payment Destination:* 9840610405@pthdfc\n`;
+  message += `\n*Delivery Timeline:* ${siteConfig.shipping.deliveryTimelineShort}\n`;
+  message += `*UPI Payment Destination:* ${siteConfig.contact.upiId}\n`;
 
   if (notes && notes.trim()) {
     message += `\n*Customer Note:* ${notes.trim()}\n`;
@@ -78,14 +78,19 @@ export function generateWhatsAppProductEnquiryUrl(
   productName: string,
   sku: string,
   _pricePaise?: number,
-  productUrl?: string
+  productUrl?: string,
+  selectedVariantName?: string
 ): string {
   const number = siteConfig.contact.whatsappNumber;
-  let message = `Hello VITRAG,\n\nI am interested in learning more about:\n*${productName}* (SKU: ${sku})\n`;
+  let message = `Hello VITRAG,\n\nI am interested in learning more about:\n*${productName}*`;
+  if (selectedVariantName) {
+    message += `\n• Selected Option: ${selectedVariantName}`;
+  }
+  message += `\n• SKU: ${sku}\n`;
   if (productUrl) {
     message += `Link: ${productUrl}\n`;
   }
-  message += `\nCould you please share details on availability, pricing, or customisation options?`;
+  message += `\nCould you please share details on availability, delivery timeline, or customisation options?`;
 
   return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 }

@@ -46,7 +46,7 @@ export default function NotFound() {
           <h1 className="font-heading text-4xl sm:text-5xl text-[#6E2023] font-medium leading-tight">
             This Page Cannot Be Found
           </h1>
-          <p className="text-xs sm:text-sm text-[#84766A] max-w-md mx-auto font-light leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#54483E] max-w-md mx-auto font-light leading-relaxed">
             The collection, piece, or page you were seeking may have been renamed, archived, or temporarily moved to our private showroom archive.
           </p>
         </div>
@@ -59,7 +59,7 @@ export default function NotFound() {
             placeholder="Search dinner sets, platters, gift boxes..."
             className="w-full text-xs sm:text-sm pl-10 pr-24 py-3 bg-white border border-[#EADBC8] rounded-xl focus:outline-none focus:border-[#6E2023] shadow-inner"
           />
-          <Search className="w-4 h-4 text-[#84766A] absolute left-3.5 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-[#54483E] absolute left-3.5 top-1/2 -translate-y-1/2" />
           <button
             type="submit"
             className="absolute right-1.5 top-1/2 -translate-y-1/2 px-4 py-1.5 bg-[#6E2023] hover:bg-[#58181A] text-white text-xs font-semibold rounded-lg transition-colors"
@@ -70,7 +70,7 @@ export default function NotFound() {
 
         {/* Curated Pathways Grid */}
         <div className="pt-4 border-t border-[#EADBC8]/70">
-          <p className="text-[11px] uppercase tracking-widest text-[#84766A] font-semibold mb-4">
+          <p className="text-[11px] uppercase tracking-widest text-[#54483E] font-semibold mb-4">
             Curated Destinations
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-left">
@@ -82,7 +82,7 @@ export default function NotFound() {
               <p className="text-xs font-semibold text-[#252522] group-hover:text-[#6E2023]">
                 Home
               </p>
-              <p className="text-[10px] text-[#84766A] font-light">Main Showcase</p>
+              <p className="text-[10px] text-[#54483E] font-light">Main Showcase</p>
             </Link>
 
             <Link
@@ -93,7 +93,7 @@ export default function NotFound() {
               <p className="text-xs font-semibold text-[#252522] group-hover:text-[#6E2023]">
                 All Pieces
               </p>
-              <p className="text-[10px] text-[#84766A] font-light">Complete Catalogue</p>
+              <p className="text-[10px] text-[#54483E] font-light">Complete Catalogue</p>
             </Link>
 
             <Link
@@ -104,7 +104,7 @@ export default function NotFound() {
               <p className="text-xs font-semibold text-[#252522] group-hover:text-[#6E2023]">
                 Signature
               </p>
-              <p className="text-[10px] text-[#84766A] font-light">Marquee Series</p>
+              <p className="text-[10px] text-[#54483E] font-light">Marquee Series</p>
             </Link>
 
             <Link
@@ -115,7 +115,7 @@ export default function NotFound() {
               <p className="text-xs font-semibold text-[#252522] group-hover:text-[#6E2023]">
                 Dinner Sets
               </p>
-              <p className="text-[10px] text-[#84766A] font-light">Fine Porcelain</p>
+              <p className="text-[10px] text-[#54483E] font-light">Fine Porcelain</p>
             </Link>
           </div>
         </div>

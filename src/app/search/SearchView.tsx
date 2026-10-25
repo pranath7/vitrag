@@ -64,7 +64,7 @@ export function SearchView() {
         <h1 className="font-heading text-4xl sm:text-5xl text-[#6E2023] font-medium">
           Search Our Catalogue
         </h1>
-        <p className="text-sm text-[#84766A] font-light">
+        <p className="text-sm text-[#54483E] font-light">
           Find handcrafted dinnerware, serving platters, dry-fruit boxes, and curated gifts.
         </p>
 
@@ -76,13 +76,13 @@ export function SearchView() {
             placeholder="Search by product name, category, material, or keyword..."
             className="w-full pl-12 pr-28 py-4 bg-white border border-[#EADBC8] text-sm text-[#252522] rounded-xl focus:outline-none focus:border-[#6E2023] shadow-sm"
           />
-          <Search className="w-5 h-5 text-[#84766A] absolute left-4 top-1/2 -translate-y-1/2" />
+          <Search className="w-5 h-5 text-[#54483E] absolute left-4 top-1/2 -translate-y-1/2" />
           
           {query && (
             <button
               type="button"
               onClick={handleClear}
-              className="absolute right-24 top-1/2 -translate-y-1/2 text-[#84766A] hover:text-[#6E2023] p-1"
+              className="absolute right-24 top-1/2 -translate-y-1/2 text-[#54483E] hover:text-[#6E2023] p-1"
             >
               <X className="w-4 h-4" />
             </button>
@@ -98,7 +98,7 @@ export function SearchView() {
 
         {/* Popular Tags */}
         <div className="flex flex-wrap items-center justify-center gap-2 pt-2">
-          <span className="text-xs uppercase tracking-wider text-[#8B8176]">
+          <span className="text-xs uppercase tracking-wider text-[#54483E]">
             Popular:
           </span>
           {popularSearches.map((term) => (
@@ -125,7 +125,7 @@ export function SearchView() {
               <h2 className="font-heading text-2xl text-[#252522]">
                 Results for &ldquo;{initialQuery}&rdquo;
               </h2>
-              <span className="text-xs uppercase tracking-wider text-[#8B8176]">
+              <span className="text-xs uppercase tracking-wider text-[#54483E]">
                 Found {results.length} piece{results.length === 1 ? "" : "s"}
               </span>
             </div>
@@ -141,7 +141,7 @@ export function SearchView() {
                 <h3 className="font-heading text-2xl text-[#252522]">
                   No matching items found
                 </h3>
-                <p className="text-xs text-[#8B8176] font-light leading-relaxed">
+                <p className="text-xs text-[#54483E] font-light leading-relaxed">
                   We couldn&apos;t find anything matching &ldquo;{initialQuery}&rdquo;. Try checking the spelling or browse our popular collections.
                 </p>
                 <div className="pt-2">
@@ -165,8 +165,8 @@ export function SearchView() {
                 <span className="font-heading text-xl text-[#252522] group-hover:text-[#6E2023] block">
                   Dinner Sets
                 </span>
-                <span className="text-[11px] text-[#8B8176] mt-1 block">
-                  Porcelain & Stoneware
+                <span className="text-[11px] text-[#54483E] mt-1 block">
+                  Porcelain &amp; Stoneware
                 </span>
               </Link>
               <Link
@@ -174,10 +174,10 @@ export function SearchView() {
                 className="p-6 bg-white border border-[#EADBC8] hover:border-[#6E2023] transition-colors group"
               >
                 <span className="font-heading text-xl text-[#252522] group-hover:text-[#6E2023] block">
-                  Platters & Serving
+                  Platters &amp; Serving
                 </span>
-                <span className="text-[11px] text-[#8B8176] mt-1 block">
-                  Ceramic & Mango Wood
+                <span className="text-[11px] text-[#54483E] mt-1 block">
+                  Ceramic &amp; Mango Wood
                 </span>
               </Link>
               <Link
@@ -187,8 +187,8 @@ export function SearchView() {
                 <span className="font-heading text-xl text-[#252522] group-hover:text-[#6E2023] block">
                   Curated Gift Sets
                 </span>
-                <span className="text-[11px] text-[#8B8176] mt-1 block">
-                  Hostess & Celebration
+                <span className="text-[11px] text-[#54483E] mt-1 block">
+                  Hostess &amp; Celebration
                 </span>
               </Link>
               <Link
@@ -198,8 +198,8 @@ export function SearchView() {
                 <span className="font-heading text-xl text-[#252522] group-hover:text-[#6E2023] block">
                   Dry-Fruit Boxes
                 </span>
-                <span className="text-[11px] text-[#8B8176] mt-1 block">
-                  Brass & Velvet Caskets
+                <span className="text-[11px] text-[#54483E] mt-1 block">
+                  Brass &amp; Velvet Caskets
                 </span>
               </Link>
             </div>

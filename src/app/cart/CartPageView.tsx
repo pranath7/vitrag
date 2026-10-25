@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useCart } from "@/context/CartContext";
 import { formatPrice, generateWhatsAppOrderUrl } from "@/lib/utils";
+import { siteConfig } from "@/lib/config";
 import {
   ShoppingBag,
   Plus,
@@ -35,7 +36,7 @@ export function CartPageView() {
         <h1 className="font-heading text-3xl sm:text-4xl text-[#6E2023] mb-3 font-medium">
           Your Shopping Bag is Empty
         </h1>
-        <p className="text-sm text-[#84766A] font-light leading-relaxed mb-8">
+        <p className="text-sm text-[#54483E] font-light leading-relaxed mb-8">
           Explore our handcrafted ceramic dinnerware, artisanal platters, and luxury gifting boxes to begin setting your table.
         </p>
         <div className="space-y-3">
@@ -62,13 +63,13 @@ export function CartPageView() {
           <h1 className="font-heading text-3xl sm:text-4xl text-[#6E2023] font-medium">
             Shopping Bag
           </h1>
-          <p className="text-xs uppercase tracking-wider text-[#84766A] mt-1 font-medium">
+          <p className="text-xs uppercase tracking-wider text-[#54483E] mt-1 font-medium">
             {items.reduce((a, b) => a + b.quantity, 0)} pieces selected
           </p>
         </div>
         <button
           onClick={clearCart}
-          className="text-xs uppercase tracking-wider text-[#84766A] hover:text-[#6E2023] flex items-center gap-1 font-medium transition-colors"
+          className="text-xs uppercase tracking-wider text-[#54483E] hover:text-[#6E2023] flex items-center gap-1 font-medium transition-colors"
         >
           <RotateCcw className="w-3.5 h-3.5" />
           Clear Bag
@@ -78,7 +79,7 @@ export function CartPageView() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
         {/* Items Table */}
         <div className="lg:col-span-8 space-y-4">
-          <div className="hidden sm:grid grid-cols-12 gap-4 pb-3 border-b border-[#EADBC8] text-[11px] uppercase tracking-wider text-[#84766A] font-semibold">
+          <div className="hidden sm:grid grid-cols-12 gap-4 pb-3 border-b border-[#EADBC8] text-[11px] uppercase tracking-wider text-[#54483E] font-semibold">
             <span className="col-span-6">Item</span>
             <span className="col-span-2 text-center">Quantity</span>
             <span className="col-span-2 text-right">Price</span>
@@ -104,18 +105,18 @@ export function CartPageView() {
                   <h4 className="font-heading text-sm sm:text-base font-semibold text-[#6E2023] mt-0.5">
                     6-Piece Luxury Crystal Glassware Set
                   </h4>
-                  <p className="text-[11px] text-[#84766A]">
+                  <p className="text-[11px] text-[#54483E]">
                     Lead-free crystal drinking glasses • Included with every order
                   </p>
                 </div>
               </div>
               <div className="w-full sm:col-span-2 flex items-center justify-between sm:justify-center">
-                <span className="sm:hidden text-xs text-[#84766A]">Quantity:</span>
+                <span className="sm:hidden text-xs text-[#54483E]">Quantity:</span>
                 <span className="text-xs font-semibold px-2.5 py-1 bg-white border border-[#EADBC8] rounded-md">
                   1 Set (6 Pcs)
                 </span>
               </div>
-              <div className="w-full sm:col-span-2 flex items-center justify-between sm:justify-end text-xs text-[#84766A] line-through">
+              <div className="w-full sm:col-span-2 flex items-center justify-between sm:justify-end text-xs text-[#54483E] line-through">
                 <span className="sm:hidden">MRP:</span>
                 <span>₹2,999</span>
               </div>
@@ -153,13 +154,13 @@ export function CartPageView() {
                       {item.name}
                     </Link>
                     {item.variantName && (
-                      <p className="text-xs text-[#84766A] mt-0.5">
+                      <p className="text-xs text-[#54483E] mt-0.5">
                         Finish: {item.variantName}
                       </p>
                     )}
                     <button
                       onClick={() => removeItem(item.id)}
-                      className="text-xs text-[#84766A] hover:text-[#6E2023] flex items-center gap-1 mt-2 sm:hidden"
+                      className="text-xs text-[#54483E] hover:text-[#6E2023] flex items-center gap-1 mt-2 sm:hidden"
                     >
                       <Trash2 className="w-3 h-3" />
                       Remove
@@ -169,7 +170,7 @@ export function CartPageView() {
 
                 {/* Quantity */}
                 <div className="w-full sm:col-span-2 flex items-center justify-between sm:justify-center">
-                  <span className="sm:hidden text-xs text-[#84766A]">Quantity:</span>
+                  <span className="sm:hidden text-xs text-[#54483E]">Quantity:</span>
                   <div className="flex items-center border border-[#EADBC8] bg-white rounded-lg overflow-hidden">
                     <button
                       onClick={() => updateQuantity(item.id, item.quantity - 1)}
@@ -193,7 +194,7 @@ export function CartPageView() {
                 </div>
 
                 {/* Unit Price */}
-                <div className="w-full sm:col-span-2 flex items-center justify-between sm:justify-end text-xs sm:text-sm text-[#84766A]">
+                <div className="w-full sm:col-span-2 flex items-center justify-between sm:justify-end text-xs sm:text-sm text-[#54483E]">
                   <span className="sm:hidden">Unit Price:</span>
                   <span>{formatPrice(item.price)}</span>
                 </div>
@@ -206,7 +207,7 @@ export function CartPageView() {
                   </span>
                   <button
                     onClick={() => removeItem(item.id)}
-                    className="hidden sm:block text-[#84766A] hover:text-[#6E2023] p-1 transition-colors"
+                    className="hidden sm:block text-[#54483E] hover:text-[#6E2023] p-1 transition-colors"
                     aria-label="Remove item"
                   >
                     <Trash2 className="w-4 h-4" />
@@ -233,23 +234,23 @@ export function CartPageView() {
           </h2>
 
           <div className="space-y-3 text-sm">
-            <div className="flex justify-between text-[#84766A]">
+            <div className="flex justify-between text-[#54483E]">
               <span>Estimated Subtotal</span>
               <span className="font-semibold text-[#6E2023] text-base">
                 {formatPrice(subtotalPaise)}
               </span>
             </div>
-            <div className="flex justify-between text-[#84766A]">
+            <div className="flex justify-between text-[#54483E]">
               <span>Taxes & GST</span>
               <span className="text-[#252522] font-medium">Included</span>
             </div>
-            <div className="flex justify-between text-[#84766A]">
+            <div className="flex justify-between text-[#54483E]">
               <span>Diwali Festive Bonus</span>
               <span className="text-xs text-[#2D6A4F] font-bold">
                 6-Pc Glasses Free (₹0)
               </span>
             </div>
-            <div className="flex justify-between text-[#84766A]">
+            <div className="flex justify-between text-[#54483E]">
               <span>Shipping</span>
               <span className="text-xs text-[#6E2023] font-semibold">
                 Free Pan-India Insured
@@ -288,7 +289,7 @@ export function CartPageView() {
               className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 bg-[#25D366] hover:bg-[#20ba59] text-white text-xs uppercase tracking-widest font-semibold transition-all rounded-lg shadow-md active:scale-[0.99]"
             >
               <MessageSquare className="w-4 h-4 fill-white" />
-              Order Instantly on WhatsApp (6369142027)
+              Order Instantly on WhatsApp ({siteConfig.contact.phone})
             </a>
 
             <Button
@@ -303,14 +304,14 @@ export function CartPageView() {
           </div>
 
           {/* Guarantee Badges */}
-          <div className="pt-4 border-t border-[#EADBC8] space-y-2 text-xs text-[#84766A]">
+          <div className="pt-4 border-t border-[#EADBC8] space-y-2 text-xs text-[#54483E]">
             <div className="flex items-center gap-2">
               <ShieldCheck className="w-4 h-4 text-[#6E2023]" />
-              <span>Safe Transit Guarantee</span>
+              <span>Safe Transit Guarantee • Breakage Insurance</span>
             </div>
             <div className="flex items-center gap-2">
               <Truck className="w-4 h-4 text-[#6E2023]" />
-              <span>Insured dispatch from Chennai</span>
+              <span>{siteConfig.shipping.deliveryChennai} • {siteConfig.shipping.deliveryPromiseNeutral}</span>
             </div>
           </div>
         </div>

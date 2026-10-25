@@ -17,7 +17,7 @@ export default function SearchPage() {
         <Breadcrumbs items={[{ label: "Search Catalogue" }]} />
         <Suspense
           fallback={
-            <div className="py-20 text-center text-[#8B8176]">
+            <div className="py-20 text-center text-[#54483E]">
               Loading catalogue...
             </div>
           }

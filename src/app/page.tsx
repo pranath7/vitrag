@@ -51,7 +51,7 @@ export default function HomePage() {
                 <span>🪔</span>
                 <span>Diwali Grand Festive Sale</span>
                 <span className="bg-[#FFD700] text-[#6E2023] text-[9px] px-1.5 py-0.2 rounded-full font-bold">
-                  Up to 46% Off
+                  Up to 70% Off
                 </span>
               </div>
 
@@ -63,8 +63,8 @@ export default function HomePage() {
               </h1>
 
               {/* Subheading */}
-              <p className="text-sm sm:text-base lg:text-lg text-[#7A6B60] max-w-md font-light leading-relaxed">
-                Serve snacks, dry fruits or festive treats in unmatched style. Handcrafted luxury sets starting from <strong className="text-[#6E2023] font-semibold">₹6,499</strong> with complimentary pan-India delivery.
+              <p className="text-sm sm:text-base lg:text-lg text-[#54483E] max-w-md font-light leading-relaxed">
+                Serve snacks, dry fruits or festive treats in unmatched style. Handcrafted luxury sets starting from <strong className="text-[#6E2023] font-semibold">₹6,499</strong> (70% Off) with pan-India insured delivery.
               </p>
 
               {/* Call to Action Buttons */}
@@ -80,7 +80,7 @@ export default function HomePage() {
                   href="/product/diwali-meaningful-moments-6pc-crystal-server-tray"
                   className="inline-flex items-center justify-center gap-2 bg-white/90 hover:bg-white text-[#5A1218] border border-[#CBAE9B] text-xs uppercase tracking-[0.16em] font-medium px-6 py-4 rounded-xs transition-all shadow-xs"
                 >
-                  <span>6-Pc Crystal Set (₹6,999)</span>
+                  <span>6-Pc Crystal Set (₹8,499)</span>
                 </Link>
               </div>
 
@@ -88,9 +88,9 @@ export default function HomePage() {
               <div className="grid grid-cols-3 gap-3 sm:gap-4 pt-6 sm:pt-8 border-t border-[#EADBC8] max-w-md">
                 <div className="pr-3 sm:pr-4 border-r border-[#CBAE9B]/60">
                   <span className="block font-heading text-2xl sm:text-3xl text-[#5A1218] font-semibold leading-none">
-                    46%
+                    70%
                   </span>
-                  <span className="block text-[9px] sm:text-[10px] uppercase tracking-[0.16em] text-[#84766A] mt-1.5 font-medium leading-tight">
+                  <span className="block text-[9px] sm:text-[10px] uppercase tracking-[0.16em] text-[#54483E] mt-1.5 font-medium leading-tight">
                     Festive Savings
                   </span>
                 </div>
@@ -98,7 +98,7 @@ export default function HomePage() {
                   <span className="block font-heading text-sm sm:text-base text-[#5A1218] font-bold uppercase tracking-wider leading-none">
                     Diwali
                   </span>
-                  <span className="block text-[9px] sm:text-[10px] uppercase tracking-[0.16em] text-[#84766A] mt-1.5 font-medium leading-tight">
+                  <span className="block text-[9px] sm:text-[10px] uppercase tracking-[0.16em] text-[#54483E] mt-1.5 font-medium leading-tight">
                     Gift Boxes
                   </span>
                 </div>
@@ -106,7 +106,7 @@ export default function HomePage() {
                   <span className="block font-heading text-sm sm:text-base text-[#5A1218] font-bold uppercase tracking-wider leading-none">
                     Free
                   </span>
-                  <span className="block text-[9px] sm:text-[10px] uppercase tracking-[0.16em] text-[#84766A] mt-1.5 font-medium leading-tight">
+                  <span className="block text-[9px] sm:text-[10px] uppercase tracking-[0.16em] text-[#54483E] mt-1.5 font-medium leading-tight">
                     Pan-India Delivery
                   </span>
                 </div>
@@ -127,21 +127,22 @@ export default function HomePage() {
                     alt="Designed for Meaningful Moments — Vitrag 6-Piece Crystal Knobs Dry Fruit Server Tray"
                     fill
                     className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                    sizes="(max-width: 640px) 340px, (max-width: 1024px) 480px, 560px"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 480px, 560px"
                     priority
+                    fetchPriority="high"
                   />
                   <div className="absolute inset-0 ring-1 ring-inset ring-[#CBAE9B]/50 rounded-2xl sm:rounded-3xl pointer-events-none" />
 
                   {/* Subtle Floating Price Tag */}
                   <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 bg-white/95 backdrop-blur-md border border-[#CBAE9B] px-3 py-1.5 rounded-xl shadow-md flex items-center gap-2 pointer-events-none">
                     <span className="text-[10px] sm:text-xs font-bold text-[#6E2023] uppercase tracking-wider">
-                      Diwali Sale: ₹6,999
+                      Diwali Sale: ₹8,499
                     </span>
-                    <span className="text-[9px] sm:text-[10px] text-[#84766A] line-through">
-                      ₹12,999
+                    <span className="text-[9px] sm:text-[10px] text-[#54483E] line-through">
+                      ₹28,499
                     </span>
                     <span className="bg-[#2D6A4F] text-white text-[8px] sm:text-[9px] font-bold px-1.5 py-0.5 rounded-full">
-                      46% OFF
+                      70% OFF
                     </span>
                   </div>
                 </Link>
@@ -160,7 +161,7 @@ export default function HomePage() {
                     />
                     <text className="text-[9px] uppercase tracking-[0.22em] fill-[#8C6D58] font-bold font-serif">
                       <textPath href="#sealCircle" startOffset="0%">
-                        • DIWALI SALE • 50% OFF •
+                        • DIWALI SALE • 70% OFF •
                       </textPath>
                     </text>
                   </svg>
@@ -175,7 +176,7 @@ export default function HomePage() {
                 {/* 3. Scroll Down Indicator */}
                 <a
                   href="#diwali-exclusives"
-                  className="hidden xl:flex flex-col items-center gap-2 absolute -right-12 bottom-4 text-[#84766A] hover:text-[#5A1218] transition-colors group cursor-pointer"
+                  className="hidden xl:flex flex-col items-center gap-2 absolute -right-12 bottom-4 text-[#54483E] hover:text-[#5A1218] transition-colors group cursor-pointer"
                   aria-label="Scroll to collection"
                 >
                   <span className="text-[10px] uppercase tracking-[0.25em] [writing-mode:vertical-lr] font-medium text-[#8C6D58]">
@@ -210,7 +211,7 @@ export default function HomePage() {
               <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl text-[#6E2023] font-medium tracking-tight">
                 Crafted for Cherished Moments
               </h2>
-              <p className="text-xs sm:text-sm text-[#84766A] mt-1 max-w-xl font-light">
+              <p className="text-xs sm:text-sm text-[#54483E] mt-1 max-w-xl font-light">
                 Discover our signature campaign editions — fine lead-free crystal barware and artisan floral ceramics.
               </p>
             </div>
@@ -223,112 +224,78 @@ export default function HomePage() {
             </Link>
           </div>
 
-          {/* 3 Compact Vertical Poster Cards */}
+          {/* 3 Compact Vertical Poster Cards (Deriving directly from products data source) */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6 justify-items-center">
-            {/* Poster 1: Elevate Every Pour */}
-            <article className="group flex flex-col bg-white border border-[#EADBC8] rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:border-[#6E2023]/40 transition-all duration-300 w-full max-w-[220px] sm:max-w-[235px]">
-              <Link
-                href="/product/elevate-every-pour-crystal-whiskey-glass-set"
-                className="relative aspect-9/16 w-full overflow-hidden block bg-[#252522]"
-              >
-                <Image
-                  src="https://res.cloudinary.com/pmip0yum/image/upload/v1792840531/vitrag/products/nfcut030ltu9iza7ded8.png"
-                  alt="Elevate Every Pour — 6 Pcs Crystal Whiskey Glass Set"
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 640px) 220px, 235px"
-                />
-              </Link>
-              <div className="p-3 bg-white flex flex-col justify-between gap-1 border-t border-[#EADBC8]/60">
-                <div className="flex items-center justify-between gap-2">
-                  <h3 className="font-heading text-sm text-[#6E2023] font-medium truncate">
-                    Elevate Every Pour
-                  </h3>
-                  <span className="text-[10px] uppercase font-semibold text-[#6E2023] bg-[#CBAE9B]/25 px-1.5 py-0.5 rounded shrink-0">
-                    Price on Request
-                  </span>
-                </div>
-                <div className="flex items-center justify-between text-[11px] text-[#84766A]">
-                  <span>6 Pcs Crystal Set</span>
-                  <Link
-                    href="/product/elevate-every-pour-crystal-whiskey-glass-set"
-                    className="text-[#6E2023] font-semibold hover:underline"
-                  >
-                    Details →
-                  </Link>
-                </div>
-              </div>
-            </article>
+            {[
+              {
+                slug: "elevate-every-pour-crystal-whiskey-glass-set",
+                defaultName: "Elevate Every Pour",
+                defaultSub: "6 Pcs Crystal Set",
+                image: "https://res.cloudinary.com/pmip0yum/image/upload/v1792840531/vitrag/products/nfcut030ltu9iza7ded8.png",
+              },
+              {
+                slug: "serve-beautifully-rose-pedestal-serving-bowl",
+                defaultName: "Serve Beautifully",
+                defaultSub: "Rose Pedestal Bowl",
+                image: "https://res.cloudinary.com/pmip0yum/image/upload/v1792840532/vitrag/products/b68vbkwcapraqbr1fqrv.png",
+              },
+              {
+                slug: "a-cup-for-every-moment-emerald-camellia-cup-saucer-set",
+                defaultName: "A Cup for Every Moment",
+                defaultSub: "Emerald Camellia Set",
+                image: "https://res.cloudinary.com/pmip0yum/image/upload/v1792840533/vitrag/products/n5hycyxmhehrdwjdmtbw.png",
+              },
+            ].map((poster) => {
+              const matched = products.find((p) => p.slug === poster.slug);
+              const priceDisplay = matched ? `₹${(matched.price / 100).toLocaleString("en-IN")}` : "Price on Request";
+              const compareDisplay = matched?.compareAtPrice ? `₹${(matched.compareAtPrice / 100).toLocaleString("en-IN")}` : null;
 
-            {/* Poster 2: Serve Beautifully */}
-            <article className="group flex flex-col bg-white border border-[#EADBC8] rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:border-[#6E2023]/40 transition-all duration-300 w-full max-w-[220px] sm:max-w-[235px]">
-              <Link
-                href="/product/serve-beautifully-rose-pedestal-serving-bowl"
-                className="relative aspect-9/16 w-full overflow-hidden block bg-[#252522]"
-              >
-                <Image
-                  src="https://res.cloudinary.com/pmip0yum/image/upload/v1792840532/vitrag/products/b68vbkwcapraqbr1fqrv.png"
-                  alt="Serve Beautifully — Rose Elegance Pedestal Serving Bowl"
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 640px) 220px, 235px"
-                />
-              </Link>
-              <div className="p-3 bg-white flex flex-col justify-between gap-1 border-t border-[#EADBC8]/60">
-                <div className="flex items-center justify-between gap-2">
-                  <h3 className="font-heading text-sm text-[#6E2023] font-medium truncate">
-                    Serve Beautifully
-                  </h3>
-                  <span className="text-[10px] uppercase font-semibold text-[#6E2023] bg-[#CBAE9B]/25 px-1.5 py-0.5 rounded shrink-0">
-                    Price on Request
-                  </span>
-                </div>
-                <div className="flex items-center justify-between text-[11px] text-[#84766A]">
-                  <span>Rose Pedestal Bowl</span>
+              return (
+                <article
+                  key={poster.slug}
+                  className="group flex flex-col bg-white border border-[#EADBC8] rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:border-[#6E2023]/40 transition-all duration-300 w-full max-w-[220px] sm:max-w-[235px]"
+                >
                   <Link
-                    href="/product/serve-beautifully-rose-pedestal-serving-bowl"
-                    className="text-[#6E2023] font-semibold hover:underline"
+                    href={`/product/${poster.slug}`}
+                    className="relative aspect-9/16 w-full overflow-hidden block bg-[#252522]"
                   >
-                    Details →
+                    <Image
+                      src={matched?.images[0]?.src || poster.image}
+                      alt={matched?.name || poster.defaultName}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      sizes="(max-width: 640px) 220px, 235px"
+                    />
                   </Link>
-                </div>
-              </div>
-            </article>
-
-            {/* Poster 3: A Cup for Every Moment */}
-            <article className="group flex flex-col bg-white border border-[#EADBC8] rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:border-[#6E2023]/40 transition-all duration-300 w-full max-w-[220px] sm:max-w-[235px]">
-              <Link
-                href="/product/a-cup-for-every-moment-emerald-camellia-cup-saucer-set"
-                className="relative aspect-9/16 w-full overflow-hidden block bg-[#252522]"
-              >
-                <Image
-                  src="https://res.cloudinary.com/pmip0yum/image/upload/v1792840533/vitrag/products/n5hycyxmhehrdwjdmtbw.png"
-                  alt="A Cup for Every Moment — Emerald Camellia Cup & Saucer Set"
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 640px) 220px, 235px"
-                />
-              </Link>
-              <div className="p-3 bg-white flex flex-col justify-between gap-1 border-t border-[#EADBC8]/60">
-                <div className="flex items-center justify-between gap-2">
-                  <h3 className="font-heading text-sm text-[#6E2023] font-medium truncate">
-                    A Cup for Every Moment
-                  </h3>
-                  <span className="text-[10px] uppercase font-semibold text-[#6E2023] bg-[#CBAE9B]/25 px-1.5 py-0.5 rounded shrink-0">
-                    Price on Request
-                  </span>
-                </div>
-                <div className="flex items-center justify-between text-[11px] text-[#84766A]">
-                  <span>Emerald Camellia Set</span>
-                  <Link
-                    href="/product/a-cup-for-every-moment-emerald-camellia-cup-saucer-set"
-                    className="text-[#6E2023] font-semibold hover:underline"
-                  >
-                    Details →
-                  </Link>
-                </div>
-              </div>
-            </article>
+                  <div className="p-3 bg-white flex flex-col justify-between gap-1 border-t border-[#EADBC8]/60">
+                    <div className="flex items-center justify-between gap-2">
+                      <h3 className="font-heading text-sm text-[#6E2023] font-medium truncate">
+                        {poster.defaultName}
+                      </h3>
+                      <div className="flex items-center gap-1 shrink-0">
+                        <span className="text-[11px] font-bold text-[#6E2023]">
+                          {priceDisplay}
+                        </span>
+                        {compareDisplay && (
+                          <span className="text-[9px] text-[#54483E] line-through">
+                            {compareDisplay}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between text-[11px] text-[#54483E]">
+                      <span>{poster.defaultSub}</span>
+                      <Link
+                        href={`/product/${poster.slug}`}
+                        className="text-[#6E2023] font-semibold hover:underline"
+                      >
+                        Details →
+                      </Link>
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -406,7 +373,7 @@ export default function HomePage() {
                 <h3 className="font-heading text-base sm:text-lg text-[#6E2023] group-hover:text-[#55181A] transition-colors font-medium">
                   {col.name}
                 </h3>
-                <p className="text-[11px] text-[#84766A] mt-1 font-light">
+                <p className="text-[11px] text-[#54483E] mt-1 font-light">
                   {col.shortName}
                 </p>
               </Link>
@@ -427,7 +394,7 @@ export default function HomePage() {
             <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-[#6E2023]">
               Considered Favourites
             </h2>
-            <p className="text-sm sm:text-base text-[#84766A] mt-3 font-light">
+            <p className="text-sm sm:text-base text-[#54483E] mt-3 font-light">
               Pieces selected for their architectural form, artisanal glazes, and versatile role on the contemporary table.
             </p>
           </div>
@@ -562,7 +529,7 @@ export default function HomePage() {
                 <h3 className="font-heading text-2xl text-[#6E2023] group-hover:text-[#55181A] transition-colors mt-2">
                   Wedding & Trousseau
                 </h3>
-                <p className="text-xs text-[#84766A] mt-2 font-light leading-relaxed">
+                <p className="text-xs text-[#54483E] mt-2 font-light leading-relaxed">
                   Heirloom 24K gold dinner sets and bridal banquet gifts crafted to last generations.
                 </p>
               </div>
@@ -582,7 +549,7 @@ export default function HomePage() {
                 <h3 className="font-heading text-2xl text-[#6E2023] group-hover:text-[#55181A] transition-colors mt-2">
                   Housewarming Gifts
                 </h3>
-                <p className="text-xs text-[#84766A] mt-2 font-light leading-relaxed">
+                <p className="text-xs text-[#54483E] mt-2 font-light leading-relaxed">
                   Platter trios, brass spice boxes, and canister suites that make a new house feel like home.
                 </p>
               </div>
@@ -602,7 +569,7 @@ export default function HomePage() {
                 <h3 className="font-heading text-2xl text-[#6E2023] group-hover:text-[#55181A] transition-colors mt-2">
                   Festive Gifting
                 </h3>
-                <p className="text-xs text-[#84766A] mt-2 font-light leading-relaxed">
+                <p className="text-xs text-[#54483E] mt-2 font-light leading-relaxed">
                   Handcrafted sheesham and brass repoussé dry-fruit chests for Diwali, Eid, and New Year.
                 </p>
               </div>
@@ -691,13 +658,13 @@ export default function HomePage() {
               href="/collections/mugs-cups"
               className="p-6 bg-white border border-[#EADBC8] rounded-xl text-center hover:border-[#6E2023] hover:shadow-lg transition-all group"
             >
-              <span className="block text-[11px] uppercase tracking-wider text-[#84766A]">
+              <span className="block text-[11px] uppercase tracking-wider text-[#54483E]">
                 Daily Moments
               </span>
               <span className="font-heading text-xl sm:text-2xl text-[#6E2023] group-hover:text-[#55181A] transition-colors block mt-1">
                 Everyday Dining
               </span>
-              <span className="text-[10px] text-[#84766A] mt-2 block">
+              <span className="text-[10px] text-[#54483E] mt-2 block">
                 Mugs, Cups &amp; Snack Bowls
               </span>
             </Link>
@@ -706,13 +673,13 @@ export default function HomePage() {
               href="/collections/platters-serving"
               className="p-6 bg-white border border-[#EADBC8] rounded-xl text-center hover:border-[#6E2023] hover:shadow-lg transition-all group"
             >
-              <span className="block text-[11px] uppercase tracking-wider text-[#84766A]">
+              <span className="block text-[11px] uppercase tracking-wider text-[#54483E]">
                 Table Hosting
               </span>
               <span className="font-heading text-xl sm:text-2xl text-[#6E2023] group-hover:text-[#55181A] transition-colors block mt-1">
                 Festive Hosting
               </span>
-              <span className="text-[10px] text-[#84766A] mt-2 block">
+              <span className="text-[10px] text-[#54483E] mt-2 block">
                 Platters, Jars &amp; Serving Bowls
               </span>
             </Link>
@@ -721,13 +688,13 @@ export default function HomePage() {
               href="/collections/dry-fruit-boxes"
               className="p-6 bg-white border border-[#EADBC8] rounded-xl text-center hover:border-[#6E2023] hover:shadow-lg transition-all group"
             >
-              <span className="block text-[11px] uppercase tracking-wider text-[#84766A]">
+              <span className="block text-[11px] uppercase tracking-wider text-[#54483E]">
                 Thoughtful Keepsakes
               </span>
               <span className="font-heading text-xl sm:text-2xl text-[#6E2023] group-hover:text-[#55181A] transition-colors block mt-1">
                 Artisan Gifting
               </span>
-              <span className="text-[10px] text-[#84766A] mt-2 block">
+              <span className="text-[10px] text-[#54483E] mt-2 block">
                 Dry-Fruit Boxes &amp; Hampers
               </span>
             </Link>
@@ -736,13 +703,13 @@ export default function HomePage() {
               href="/collections/dinner-sets"
               className="p-6 bg-white border border-[#EADBC8] rounded-xl text-center hover:border-[#6E2023] hover:shadow-lg transition-all group"
             >
-              <span className="block text-[11px] uppercase tracking-wider text-[#84766A]">
+              <span className="block text-[11px] uppercase tracking-wider text-[#54483E]">
                 Grand Occasions
               </span>
               <span className="font-heading text-xl sm:text-2xl text-[#6E2023] group-hover:text-[#55181A] transition-colors block mt-1">
                 Heirloom Dinnerware
               </span>
-              <span className="text-[10px] text-[#84766A] mt-2 block">
+              <span className="text-[10px] text-[#54483E] mt-2 block">
                 Complete Banquet &amp; Trousseau Sets
               </span>
             </Link>
@@ -763,7 +730,7 @@ export default function HomePage() {
               <h3 className="font-heading text-xl text-[#6E2023] mb-1">
                 Breakage Replacement
               </h3>
-              <p className="text-xs text-[#84766A] font-light leading-relaxed">
+              <p className="text-xs text-[#54483E] font-light leading-relaxed">
                 Multi-layer air cushioned packaging. Transit breakage replaced promptly upon sharing unboxing video proof.
               </p>
             </div>
@@ -775,7 +742,7 @@ export default function HomePage() {
               <h3 className="font-heading text-xl text-[#6E2023] mb-1">
                 Signature Presentation
               </h3>
-              <p className="text-xs text-[#84766A] font-light leading-relaxed">
+              <p className="text-xs text-[#54483E] font-light leading-relaxed">
                 Luxury burgundy boxes, champagne detailing, and personalized gift notes upon request.
               </p>
             </div>
@@ -785,10 +752,10 @@ export default function HomePage() {
                 <Truck className="w-6 h-6 text-[#6E2023]" />
               </div>
               <h3 className="font-heading text-xl text-[#6E2023] mb-1">
-                Fast 3–5 Day Delivery
+                {siteConfig.shipping.deliveryPromiseNeutral}
               </h3>
-              <p className="text-xs text-[#84766A] font-light leading-relaxed">
-                Complimentary Pan-India shipping on orders above ₹4,000. Reliable, insured courier dispatch.
+              <p className="text-xs text-[#54483E] font-light leading-relaxed">
+                Complimentary Pan-India shipping on orders above {siteConfig.shipping.freeShippingThresholdDisplay}. Reliable, insured courier dispatch ({siteConfig.shipping.deliveryTimelineShort}).
               </p>
             </div>
 
@@ -799,8 +766,8 @@ export default function HomePage() {
               <h3 className="font-heading text-xl text-[#6E2023] mb-1">
                 Personal WhatsApp Care
               </h3>
-              <p className="text-xs text-[#84766A] font-light leading-relaxed">
-                Direct assistance on 6369142027 for customization, wedding registries, and bulk corporate orders.
+              <p className="text-xs text-[#54483E] font-light leading-relaxed">
+                Direct assistance on {siteConfig.contact.displayPhone} for customization, wedding registries, and bulk corporate orders.
               </p>
             </div>
           </div>
@@ -819,7 +786,7 @@ export default function HomePage() {
             <h2 className="font-heading text-3xl sm:text-4xl text-[#6E2023]">
               Tables of Gathering
             </h2>
-            <p className="text-xs sm:text-sm text-[#84766A] mt-2 font-light">
+            <p className="text-xs sm:text-sm text-[#54483E] mt-2 font-light">
               Follow our visual diary of tablescapes, ceramic glazes, and festive host moments.
             </p>
           </div>
@@ -827,19 +794,19 @@ export default function HomePage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="aspect-square bg-white border border-[#EADBC8] rounded-xl flex flex-col items-center justify-center p-6 text-center group hover:border-[#6E2023] transition-colors shadow-2xs">
               <span className="font-heading text-base text-[#6E2023] font-medium">Festive Table</span>
-              <span className="text-[10px] uppercase tracking-wider text-[#84766A] mt-1">Dinnerware in Use</span>
+              <span className="text-[10px] uppercase tracking-wider text-[#54483E] mt-1">Dinnerware in Use</span>
             </div>
             <div className="aspect-square bg-white border border-[#EADBC8] rounded-xl flex flex-col items-center justify-center p-6 text-center group hover:border-[#6E2023] transition-colors shadow-2xs">
               <span className="font-heading text-base text-[#6E2023] font-medium">Artisan Glaze</span>
-              <span className="text-[10px] uppercase tracking-wider text-[#84766A] mt-1">Studio Process</span>
+              <span className="text-[10px] uppercase tracking-wider text-[#54483E] mt-1">Studio Process</span>
             </div>
             <div className="aspect-square bg-white border border-[#EADBC8] rounded-xl flex flex-col items-center justify-center p-6 text-center group hover:border-[#6E2023] transition-colors shadow-2xs">
               <span className="font-heading text-base text-[#6E2023] font-medium">Gift Hamper</span>
-              <span className="text-[10px] uppercase tracking-wider text-[#84766A] mt-1">Trousseau Box</span>
+              <span className="text-[10px] uppercase tracking-wider text-[#54483E] mt-1">Trousseau Box</span>
             </div>
             <div className="aspect-square bg-white border border-[#EADBC8] rounded-xl flex flex-col items-center justify-center p-6 text-center group hover:border-[#6E2023] transition-colors shadow-2xs">
               <span className="font-heading text-base text-[#6E2023] font-medium">Morning Chai</span>
-              <span className="text-[10px] uppercase tracking-wider text-[#84766A] mt-1">Artisan Kullads</span>
+              <span className="text-[10px] uppercase tracking-wider text-[#54483E] mt-1">Artisan Kullads</span>
             </div>
           </div>
         </div>

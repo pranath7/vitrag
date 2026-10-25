@@ -99,7 +99,7 @@ export function BulkOrdersView() {
         <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl text-[#6E2023] font-medium">
           Thoughtful Gifting. Made for Business.
         </h1>
-        <p className="text-base text-[#84766A] font-light max-w-xl mx-auto leading-relaxed">
+        <p className="text-base text-[#54483E] font-light max-w-xl mx-auto leading-relaxed">
           From Diwali executive hampers to wedding trousseau favors and milestone client appreciation, we craft bespoke tableware gifts that leave an enduring impression.
         </p>
       </div>
@@ -115,8 +115,8 @@ export function BulkOrdersView() {
               <h2 className="font-heading text-3xl text-[#6E2023] font-medium">
                 Enquiry Dispatched!
               </h2>
-              <p className="text-xs sm:text-sm text-[#84766A] max-w-md mx-auto leading-relaxed font-light">
-                Thank you, {formData.name}. Your bulk gifting enquiry has been sent to our corporate desk on WhatsApp (6369142027). Our concierge team will review your quantities and budget to prepare a tailored PDF proposal within 24 business hours.
+              <p className="text-xs sm:text-sm text-[#54483E] max-w-md mx-auto leading-relaxed font-light">
+                Thank you, {formData.name}. Your bulk gifting enquiry has been sent to our corporate desk on WhatsApp ({siteConfig.contact.displayPhone}). Our concierge team will review your quantities and budget to prepare a tailored PDF proposal within 24 business hours.
               </p>
               <div className="pt-4">
                 <Button
@@ -134,7 +134,7 @@ export function BulkOrdersView() {
                 <h2 className="font-heading text-2xl text-[#6E2023] font-medium">
                   Request a Tailored Bulk Proposal
                 </h2>
-                <p className="text-xs text-[#84766A] mt-1 font-light">
+                <p className="text-xs text-[#54483E] mt-1 font-light">
                   Fill in your requirements below to instantly connect with our Chennai gifting concierge on WhatsApp.
                 </p>
               </div>

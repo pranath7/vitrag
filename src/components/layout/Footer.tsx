@@ -334,13 +334,6 @@ export function Footer() {
           <div className="flex flex-wrap items-center gap-6 text-[#FFF5E6]/75">
             <span>Chennai • Pan-India Insured Shipping</span>
             <span>Handcrafted Ceramics &amp; Fine Dinnerware</span>
-            <Link
-              href="/admin"
-              className="text-[#CBAE9B]/50 hover:text-white transition-colors underline decoration-[#CBAE9B]/20"
-              title="Store Owner & Staff Administration Console"
-            >
-              Merchant Console
-            </Link>
           </div>
         </div>
       </div>

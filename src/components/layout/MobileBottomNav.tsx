@@ -10,7 +10,7 @@ import {
   LayoutGrid,
   ShoppingBag,
   MessageSquare,
-  Lock,
+  Search,
 } from "lucide-react";
 
 export function MobileBottomNav() {
@@ -40,6 +40,12 @@ export function MobileBottomNav() {
       isActive: pathname.startsWith("/shop") || pathname.startsWith("/collections"),
     },
     {
+      label: "Search",
+      href: "/search",
+      icon: Search,
+      isActive: pathname === "/search",
+    },
+    {
       label: "Bag",
       onClick: openCart,
       icon: ShoppingBag,
@@ -52,12 +58,6 @@ export function MobileBottomNav() {
       icon: MessageSquare,
       isExternal: true,
       highlight: true,
-    },
-    {
-      label: "Admin",
-      href: "/admin",
-      icon: Lock,
-      isActive: pathname.startsWith("/admin"),
     },
   ];
 

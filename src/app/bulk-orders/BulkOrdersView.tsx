@@ -62,25 +62,20 @@ export function BulkOrdersView() {
     setErrorMsg("");
 
     try {
-      const bulkId = `VIT-BULK-${Math.floor(200 + Math.random() * 800)}`;
-      const newBulkInquiry: AdminBulkInquiry = {
-        id: bulkId,
-        createdAt: new Date().toISOString(),
-        name: formData.name,
-        company: formData.company || undefined,
-        phone: formData.phone,
-        email: formData.email || undefined,
-        productInterest: formData.productInterest,
-        quantity: formData.quantity,
-        budgetPerGift: formData.budgetPerGift,
-        deliveryDate: formData.deliveryDate || undefined,
-        pinCode: formData.pinCode,
-        notes: formData.notes || undefined,
-        status: "new",
-      };
-      saveAdminBulkInquiry(newBulkInquiry);
+      fetch("/api/bulk-inquiries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+        .then((r) => r.json())
+        .then((res) => {
+          if (res.success && res.inquiry) {
+            saveAdminBulkInquiry(res.inquiry);
+          }
+        })
+        .catch((e) => console.warn("Bulk inquiry API warning:", e));
     } catch (saveErr) {
-      console.warn("Could not save bulk inquiry to admin storage:", saveErr);
+      console.warn("Could not save bulk inquiry:", saveErr);
     }
 
     // Generate WhatsApp direct link

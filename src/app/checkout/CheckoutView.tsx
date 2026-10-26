@@ -57,12 +57,12 @@ export function CheckoutView() {
   const [promoApplied, setPromoApplied] = useState<string | null>(null);
   const [checkoutError, setCheckoutError] = useState("");
 
-  // Track Leftout / Abandoned Carts in real time (debounced)
+  // Track Leftout / Abandoned Carts in real time (debounced via server API)
   useEffect(() => {
     if (items.length === 0 || orderSent) return;
     if (formData.phone.trim().length >= 4 || formData.fullName.trim().length >= 2) {
       const timer = setTimeout(() => {
-        saveAdminAbandonedCart({
+        const cartPayload = {
           id: cartSessionId,
           customerName: formData.fullName.trim() || undefined,
           customerPhone: formData.phone.trim() || undefined,
@@ -76,9 +76,21 @@ export function CheckoutView() {
             image: i.image,
           })),
           totalEstimatedPaise: subtotalPaise,
-          lastActive: new Date().toISOString(),
-          recovered: false,
-        });
+        };
+
+        // Post to server-side endpoint for validation
+        fetch("/api/abandoned-carts", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(cartPayload),
+        })
+          .then((r) => r.json())
+          .then((res) => {
+            if (res.success && res.cart) {
+              saveAdminAbandonedCart(res.cart);
+            }
+          })
+          .catch(() => {});
       }, 1200);
 
       return () => clearTimeout(timer);
@@ -139,10 +151,7 @@ export function CheckoutView() {
     setOrderSent(true);
 
     try {
-      const orderId = `VIT-ORD-${Math.floor(1000 + Math.random() * 9000)}`;
-      const newAdminOrder: AdminOrder = {
-        id: orderId,
-        createdAt: new Date().toISOString(),
+      const orderPayload = {
         customerName: formData.fullName,
         customerPhone: formData.phone,
         customerEmail: formData.email || undefined,
@@ -168,15 +177,25 @@ export function CheckoutView() {
             image: items[0]?.image || "",
           },
         ],
-        status: "new",
         totalEstimatedPaise: subtotalPaise,
-        paymentMode: "whatsapp",
-        source: "Website Checkout",
       };
-      saveAdminOrder(newAdminOrder);
+
+      fetch("/api/orders", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(orderPayload),
+      })
+        .then((r) => r.json())
+        .then((res) => {
+          if (res.success && res.order) {
+            saveAdminOrder(res.order);
+          }
+        })
+        .catch((e) => console.warn("Order submit warning:", e));
+
       markCartRecovered(cartSessionId);
     } catch (saveErr) {
-      console.warn("Could not save to admin order history:", saveErr);
+      console.warn("Could not process order:", saveErr);
     }
 
     try {

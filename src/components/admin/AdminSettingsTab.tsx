@@ -226,29 +226,20 @@ export function AdminSettingsTab({
           </div>
         </div>
 
-        {/* Security & Access */}
+        {/* Security & Access Notice */}
         <div className="bg-white p-6 rounded-xl border border-[#EADBC8] shadow-xs space-y-4">
           <div className="flex items-center gap-2 text-[#6E2023] font-semibold text-sm border-b border-[#EADBC8]/70 pb-3">
             <Lock className="w-4 h-4 text-[#CBAE9B]" />
-            <span>Admin Console Security Passcode</span>
+            <span>Console Access &amp; Authorization Security</span>
           </div>
 
-          <div className="space-y-1 text-xs max-w-sm">
-            <label className="font-semibold text-[#252522]">
-              Console Passcode *
-            </label>
-            <input
-              type="text"
-              required
-              value={formData.adminPasscode}
-              onChange={(e) =>
-                setFormData({ ...formData, adminPasscode: e.target.value })
-              }
-              className="w-full p-2.5 bg-[#FFF5E6]/30 border border-[#D9D0C1] rounded-lg font-mono text-xs"
-            />
-            <span className="text-[10px] text-[#84766A]">
-              Default is "vitrag2026". You can update it here for showroom staff.
-            </span>
+          <div className="text-xs text-[#54483E] space-y-2 max-w-xl">
+            <p className="font-medium text-[#252522]">
+              Server-Enforced Authorization Active
+            </p>
+            <p>
+              Administrative access is protected by hardened server-side authorization and secure session cookies. Admin credentials are maintained in private environment configuration (<code className="font-mono bg-[#FFF5E6] px-1 py-0.5 rounded text-[#6E2023]">ADMIN_PASSCODE</code>) and are never exposed in public store documents.
+            </p>
           </div>
         </div>
 

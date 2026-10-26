@@ -4,40 +4,215 @@ service cloud.firestore {
   match /databases/{database}/documents {
 
     // ===============================================================
-    // VITRAG Tableware & Gifting — Production Firestore Security Rules
-    // Project: vitrag-672ed
-    // Architecture: Passcode-gated Merchant Console + Public Luxury Storefront
+    // Assumed Data Model
+    // ===============================================================
+    //
+    // This security rules file assumes the following data structures:
+    //
+    // Collection: products
+    // Document ID: productId (e.g. matching product.id)
+    // Fields:
+    //   - id: string (required, 1-100 chars, immutable) - Unique product ID
+    //   - name: string (required, 1-200 chars) - Product title
+    //   - price: number (required, >= 0) - Base retail price in paise
+    //   - availability: string (required, in ['in-stock', 'out-of-stock', 'made-to-order', 'enquiry-only']) - Stock status
+    //   - slug: string (optional, 1-200 chars) - URL-friendly slug
+    //   - category: string (optional, 1-100 chars) - Category taxonomy
+    //   - description: string (optional, 0-10000 chars) - Long form product description
+    //   - shortDescription: string (optional, 0-2000 chars) - Card summary
+    //   - sku: string (optional, 1-100 chars) - Stock keeping unit
+    //   - compareAtPrice: number (optional, >= 0) - Original MRP in paise
+    //   - currency: string (optional, 1-10 chars) - Currency code (e.g., 'INR')
+    //   - stockQuantity: number (optional, >= 0) - Inventory count
+    //   - featured: bool (optional) - Homepage featured flag
+    //   - bestseller: bool (optional) - Bestseller badge flag
+    //   - newArrival: bool (optional) - New arrival badge flag
+    //   - material: string (optional, 0-500 chars) - Fabrication material
+    //   - dimensions: string (optional, 0-500 chars) - Dimensions
+    //   - weight: string (optional, 0-200 chars) - Packaged weight
+    //   - pieceCount: number (optional, >= 0) - Set item count
+    //   - careInstructions: string (optional, 0-2000 chars) - Care instructions
+    //   - collectionIds: list (optional, max 50 items) - Associated collection IDs
+    //   - tags: list (optional, max 50 items) - Search tags
+    //   - images: list (optional, max 50 items) - Product image objects
+    //   - variants: list (optional, max 50 items) - Product variant options
+    //   - seoTitle: string (optional, 0-200 chars) - Meta title
+    //   - seoDescription: string (optional, 0-500 chars) - Meta description
+    //   - createdAt: string (optional, 0-50 chars) - ISO timestamp of creation
+    //   - updatedAt: string (optional, 0-50 chars) - ISO timestamp of last update
+    //
+    // Collection: orders
+    // Document ID: orderId (e.g. 'ORD-...')
+    // Fields:
+    //   - id: string (required) - Unique order identifier
+    //   - createdAt: string (required) - ISO timestamp of order placement
+    //   - customerName: string (required) - Customer full name (PII)
+    //   - customerPhone: string (required) - Contact phone number (PII)
+    //   - customerEmail: string (optional) - Customer email (PII)
+    //   - shippingAddress: string (required) - Delivery street address (PII)
+    //   - city: string (required) - Delivery city (PII)
+    //   - state: string (required) - Delivery state (PII)
+    //   - pinCode: string (required) - Postal PIN code (PII)
+    //   - giftNote: string (optional) - Optional gift message
+    //   - items: list (required) - List of order items (productId, name, quantity, pricePaise)
+    //   - status: string (required) - Order status ('new' | 'quoted' | 'paid' | 'processing' | 'dispatched' | 'delivered' | 'cancelled')
+    //   - totalEstimatedPaise: number (required) - Total order value in paise
+    //   - paymentMode: string (required) - ('whatsapp' | 'upi' | 'cod' | 'bank_transfer')
+    //   - paymentReference: string (optional) - Transaction UTR or reference
+    //   - courierName: string (optional) - Logistics carrier name
+    //   - trackingNumber: string (optional) - Courier tracking AWB
+    //   - dispatchDate: string (optional) - Date of dispatch
+    //   - internalNotes: string (optional) - Internal merchant notes
+    //   - source: string (required) - ('Website Checkout' | 'WhatsApp Direct' | 'Showroom Walk-in' | 'Phone Order')
+    //
+    // Collection: abandoned_carts
+    // Document ID: cartId (e.g. 'cart_...')
+    // Fields:
+    //   - id: string (required) - Cart session ID
+    //   - customerName: string (optional) - Captured visitor name (PII)
+    //   - customerPhone: string (optional) - Captured visitor phone (PII)
+    //   - customerEmail: string (optional) - Captured visitor email (PII)
+    //   - items: list (required) - Cart item snapshots
+    //   - totalEstimatedPaise: number (required) - Abandoned cart value in paise
+    //   - lastActive: string (required) - ISO timestamp of last interaction
+    //   - recovered: bool (required) - Recovery status flag
+    //   - recoveryMessageSent: bool (optional) - Communication sent flag
+    //   - notes: string (optional) - Internal recovery follow-up notes
+    //
+    // Collection: bulk_inquiries
+    // Document ID: inquiryId (e.g. 'inq_...')
+    // Fields:
+    //   - id: string (required) - Inquiry ID
+    //   - createdAt: string (required) - ISO timestamp of submission
+    //   - name: string (required) - Contact person name (PII)
+    //   - company: string (optional) - Organization / corporate entity
+    //   - phone: string (required) - Contact phone number (PII)
+    //   - email: string (optional) - Contact email address (PII)
+    //   - productInterest: string (required) - Product / catalog interest description
+    //   - quantity: string (required) - Estimated order volume
+    //   - budgetPerGift: string (required) - Target unit budget
+    //   - deliveryDate: string (optional) - Requested delivery date
+    //   - pinCode: string (required) - Delivery destination postal PIN code
+    //   - notes: string (optional) - Customer requirements / customization notes
+    //   - status: string (required) - ('new' | 'contacted' | 'sample_sent' | 'quote_shared' | 'converted' | 'closed')
+    //   - estimatedValuePaise: number (optional) - Deal pipeline value in paise
+    //   - internalNotes: string (optional) - Internal sales follow-up notes
+    //
+    // Collection: store_settings
+    // Document ID: settingsDoc (e.g. 'general')
+    // Fields:
+    //   - whatsappNumber: string (required) - Store WhatsApp contact number
+    //   - displayPhone: string (required) - Store public hotline
+    //   - email: string (required) - Support contact email
+    //   - upiId: string (required) - UPI VPA address for merchant payments
+    //   - address: string (required) - Store physical address
+    //   - announcementText: string (required) - Site banner notice text
+    //   - announcementEnabled: bool (required) - Site banner visibility toggle
+    //   - freeShippingThresholdPaise: number (required) - Free shipping threshold
+    //   - standardDeliveryFeePaise: number (required) - Flat shipping rate
+    //   - storeCurrency: string (required) - Store currency ('INR')
+    //
+    // ===============================================================
+
+    // ===============================================================
+    // Authorization & Validation Helpers
+    // ===============================================================
+
+    // Check if the request is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Check if the authenticated user has verified administrator privileges
+    function isAdmin() {
+      return isAuthenticated() && (request.auth.token.admin == true || request.auth.token.role == 'admin');
+    }
+
+    // Validate product document structure, required fields, data types, and bounds
+    function isValidProduct(data) {
+      return data.keys().hasAll(['id', 'name', 'price', 'availability']) &&
+        data.id is string &&
+        data.id.size() > 0 &&
+        data.id.size() <= 100 &&
+        data.name is string &&
+        data.name.size() > 0 &&
+        data.name.size() <= 200 &&
+        data.price is number &&
+        data.price >= 0 &&
+        data.availability is string &&
+        (data.availability in ['in-stock', 'out-of-stock', 'made-to-order', 'enquiry-only']) &&
+        (!('slug' in data) || (data.slug is string && data.slug.size() <= 200)) &&
+        (!('category' in data) || (data.category is string && data.category.size() <= 100)) &&
+        (!('sku' in data) || (data.sku is string && data.sku.size() <= 100)) &&
+        (!('description' in data) || (data.description is string && data.description.size() <= 10000)) &&
+        (!('shortDescription' in data) || (data.shortDescription is string && data.shortDescription.size() <= 2000)) &&
+        (!('compareAtPrice' in data) || (data.compareAtPrice is number && data.compareAtPrice >= 0)) &&
+        (!('currency' in data) || (data.currency is string && data.currency.size() <= 10)) &&
+        (!('stockQuantity' in data) || (data.stockQuantity is number && data.stockQuantity >= 0)) &&
+        (!('featured' in data) || data.featured is bool) &&
+        (!('bestseller' in data) || data.bestseller is bool) &&
+        (!('newArrival' in data) || data.newArrival is bool) &&
+        (!('material' in data) || (data.material is string && data.material.size() <= 500)) &&
+        (!('dimensions' in data) || (data.dimensions is string && data.dimensions.size() <= 500)) &&
+        (!('weight' in data) || (data.weight is string && data.weight.size() <= 200)) &&
+        (!('pieceCount' in data) || (data.pieceCount is number && data.pieceCount >= 0)) &&
+        (!('careInstructions' in data) || (data.careInstructions is string && data.careInstructions.size() <= 2000)) &&
+        (!('seoTitle' in data) || (data.seoTitle is string && data.seoTitle.size() <= 200)) &&
+        (!('seoDescription' in data) || (data.seoDescription is string && data.seoDescription.size() <= 500)) &&
+        (!('createdAt' in data) || (data.createdAt is string && data.createdAt.size() <= 50)) &&
+        (!('updatedAt' in data) || (data.updatedAt is string && data.updatedAt.size() <= 50)) &&
+        (!('collectionIds' in data) || (data.collectionIds is list && data.collectionIds.size() <= 50)) &&
+        (!('tags' in data) || (data.tags is list && data.tags.size() <= 50)) &&
+        (!('images' in data) || (data.images is list && data.images.size() <= 50)) &&
+        (!('variants' in data) || (data.variants is list && data.variants.size() <= 50));
+    }
+
+    // ===============================================================
+    // Collection Security Rules
     // ===============================================================
 
     // 1. PRODUCTS COLLECTION
     // Luxury crockery, dinner sets, barware, and homeware catalog.
-    // Storefront visitors read catalog; Merchant Console seeds/updates/deletes products.
+    // Public luxury storefront visitors can read; only authenticated admins can write.
     match /products/{productId} {
-      allow read, write: if true;
+      allow read: if true;
+      allow write: if isAdmin();
     }
 
     // 2. ORDERS COLLECTION
-    // Customer orders placed via checkout or recorded via Admin Order Management.
+    // Customer orders containing PII (names, phone numbers, delivery addresses, order amounts).
+    // Access is strictly restricted to authenticated administrators.
     match /orders/{orderId} {
-      allow read, write: if true;
+      allow read, write: if isAdmin();
     }
 
     // 3. ABANDONED CARTS COLLECTION
-    // Real-time visitor checkout recovery and cart tracking.
+    // Checkout recovery sessions containing customer contact information and cart contents.
+    // Access is strictly restricted to authenticated administrators.
     match /abandoned_carts/{cartId} {
-      allow read, write: if true;
+      allow read, write: if isAdmin();
     }
 
     // 4. BULK INQUIRIES COLLECTION
-    // Corporate gifting and wedding trousseau lead submissions.
+    // Corporate gifting and high-value lead submissions containing customer PII and requirements.
+    // Access is strictly restricted to authenticated administrators.
     match /bulk_inquiries/{inquiryId} {
-      allow read, write: if true;
+      allow read, write: if isAdmin();
     }
 
     // 5. STORE SETTINGS COLLECTION
-    // Site-wide announcements, delivery fee thresholds, contact phone & UPI ID.
+    // Internal store configuration including admin passcodes, payment VPAs, and thresholds.
+    // Access is strictly restricted to authenticated administrators.
     match /store_settings/{settingsDoc} {
-      allow read, write: if true;
+      allow read, write: if isAdmin();
+    }
+
+    // ===============================================================
+    // Fallback: Default Deny
+    // ===============================================================
+    // Ensure no unmapped or sensitive paths are accessible.
+    match /{document=**} {
+      allow read, write: if false;
     }
   }
 }

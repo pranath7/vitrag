@@ -17,7 +17,7 @@ export function AdminLoginView({ onSuccess }: AdminLoginViewProps) {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!passcode.trim()) {
       setError("Please enter the store admin passcode.");
@@ -27,20 +27,18 @@ export function AdminLoginView({ onSuccess }: AdminLoginViewProps) {
     setLoading(true);
     setError("");
 
-    setTimeout(() => {
-      const res = loginAdmin(passcode.trim(), remember);
+    try {
+      const res = await loginAdmin(passcode.trim(), remember);
       setLoading(false);
       if (res.success) {
         onSuccess();
       } else {
-        setError(res.error || "Incorrect passcode. Default is: vitrag2026");
+        setError(res.error || "Incorrect passcode. Access denied.");
       }
-    }, 200);
-  };
-
-  const handleQuickDemoFill = () => {
-    setPasscode("vitrag2026");
-    setError("");
+    } catch {
+      setLoading(false);
+      setError("An unexpected error occurred during login. Please try again.");
+    }
   };
 
   return (
@@ -124,13 +122,9 @@ export function AdminLoginView({ onSuccess }: AdminLoginViewProps) {
                 <span className="ml-2">Keep me signed in</span>
               </label>
 
-              <button
-                type="button"
-                onClick={handleQuickDemoFill}
-                className="text-xs text-[#6E2023] hover:underline font-medium"
-              >
-                Use default (vitrag2026)
-              </button>
+              <span className="text-[11px] text-[#84766A]">
+                Protected Console
+              </span>
             </div>
 
             <button

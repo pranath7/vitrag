@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import {
   checkAdminAuth,
+  checkServerAdminSession,
   logoutAdmin,
   getAdminProducts,
   saveAdminProduct,
@@ -86,11 +87,18 @@ export default function AdminPage() {
 
   // Initial check on mount
   useEffect(() => {
-    const authed = checkAdminAuth();
-    setIsAuthenticated(authed);
-    if (authed) {
-      refreshAllData();
-    }
+    let mounted = true;
+    checkServerAdminSession().then((authed) => {
+      if (mounted) {
+        setIsAuthenticated(authed);
+        if (authed) {
+          refreshAllData();
+        }
+      }
+    });
+    return () => {
+      mounted = false;
+    };
   }, [refreshAllData]);
 
   // Real-time Firestore synchronizer for admin console

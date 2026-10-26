@@ -77,7 +77,6 @@ export interface AdminStoreSettings {
   announcementEnabled: boolean;
   freeShippingThresholdPaise: number;
   standardDeliveryFeePaise: number;
-  adminPasscode: string;
   storeCurrency: string;
 }
 

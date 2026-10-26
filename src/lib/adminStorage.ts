@@ -55,7 +55,6 @@ const DEFAULT_SETTINGS: AdminStoreSettings = {
   announcementEnabled: siteConfig.announcement.enabled ?? true,
   freeShippingThresholdPaise: siteConfig.shipping.freeShippingThresholdPaise || 400000,
   standardDeliveryFeePaise: siteConfig.shipping.standardDeliveryFeePaise || 19900,
-  adminPasscode: "vitrag2026",
   storeCurrency: "INR",
 };
 
@@ -548,26 +547,60 @@ export function checkAdminAuth(): boolean {
   }
 }
 
-export function loginAdmin(passcode: string, remember: boolean = true): { success: boolean; error?: string } {
-  if (!isBrowser()) return { success: false, error: "Browser environment required." };
-  const settings = getAdminSettings();
-  const validCode = settings.adminPasscode || "vitrag2026";
-
-  if (passcode.trim() === validCode) {
-    try {
-      if (remember) {
-        localStorage.setItem(STORAGE_KEYS.AUTH, "authenticated_true");
+export async function checkServerAdminSession(): Promise<boolean> {
+  if (!isBrowser()) return false;
+  try {
+    const res = await fetch("/api/admin/session", { cache: "no-store" });
+    if (res.ok) {
+      const data = await res.json();
+      if (data?.authenticated) {
+        sessionStorage.setItem(STORAGE_KEYS.AUTH, "authenticated_true");
+        return true;
       }
-      sessionStorage.setItem(STORAGE_KEYS.AUTH, "authenticated_true");
-    } catch {}
-    return { success: true };
-  }
+    }
+  } catch {}
+  return checkAdminAuth();
+}
 
-  return { success: false, error: "Incorrect admin passcode. Try 'vitrag2026'." };
+export async function loginAdmin(
+  passcode: string,
+  remember: boolean = true
+): Promise<{ success: boolean; error?: string }> {
+  if (!isBrowser()) return { success: false, error: "Browser environment required." };
+
+  try {
+    const res = await fetch("/api/admin/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ passcode: passcode.trim(), remember }),
+    });
+
+    const data = await res.json();
+    if (res.ok && data.success) {
+      try {
+        if (remember) {
+          localStorage.setItem(STORAGE_KEYS.AUTH, "authenticated_true");
+        }
+        sessionStorage.setItem(STORAGE_KEYS.AUTH, "authenticated_true");
+      } catch {}
+      return { success: true };
+    }
+
+    return {
+      success: false,
+      error: data.error || "Authentication failed. Incorrect passcode.",
+    };
+  } catch (err) {
+    console.warn("Login API error:", err);
+    return { success: false, error: "Network error during authentication." };
+  }
 }
 
 export function logoutAdmin(): void {
   if (!isBrowser()) return;
+  try {
+    fetch("/api/admin/logout", { method: "POST" }).catch(() => {});
+  } catch {}
   try {
     localStorage.removeItem(STORAGE_KEYS.AUTH);
     sessionStorage.removeItem(STORAGE_KEYS.AUTH);
